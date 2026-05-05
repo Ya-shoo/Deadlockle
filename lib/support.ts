@@ -2,7 +2,8 @@
 // the Ko-fi handle once an account exists. SHARE_TEXT is consumed by the
 // Twitter/X intent on the same panel.
 export const SUPPORT_LINKS = {
-  kofi: "https://ko-fi.com/yashpa",
+  kofiUsername: "yushoo",
+  kofi: "https://ko-fi.com/yushoo",
 } as const;
 
 export const SHARE_TEXT =
