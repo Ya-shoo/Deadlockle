@@ -1,7 +1,10 @@
 import { ANSWER_POOL, HEROES_BY_KEY, type Ability, type Hero } from "./heroes";
 import { ITEM_ANSWER_POOL, type Item } from "./items";
 import { CONVERSATIONS, type Conversation } from "./conversations";
-import { hasVoiceClips, pickClip, type VoiceClip } from "./voicelines";
+import {
+  SOUND_CONVERSATIONS,
+  type SoundConversation,
+} from "./sound-conversations";
 
 // Returns the UTC date string YYYY-MM-DD for a given Date (default: now).
 export function dayString(d: Date = new Date()): string {
@@ -106,52 +109,33 @@ export function getConversationForDay(day: string): {
   };
 }
 
-// Sound mode reuses the Quote pool (curated two-speaker conversations),
-// but only conversations whose BOTH speakers have voice clips on file.
-// We skip whichever conversation Quote already picked for today so a
-// player won't see the same exchange twice on the same day.
-const SOUND_CONVERSATION_POOL: Conversation[] = CONVERSATION_POOL.filter(
-  (c) => hasVoiceClips(c.speakers[0]) && hasVoiceClips(c.speakers[1]),
+// Conversation mode pool — wiki-sourced exchanges with matching audio.
+// Filtered to ensure both speakers are also in the Classic answer pool
+// so the hero combobox can produce both as guesses.
+const SOUND_CONVERSATION_POOL: SoundConversation[] = SOUND_CONVERSATIONS.filter(
+  (c) => {
+    const a = HEROES_BY_KEY[c.speakers[0]];
+    const b = HEROES_BY_KEY[c.speakers[1]];
+    return !!a && !!b && ANSWER_POOL.includes(a) && ANSWER_POOL.includes(b);
+  },
 );
 
 export function getSoundForDay(day: string): {
-  conversation: Conversation;
+  conversation: SoundConversation;
   speakers: [Hero, Hero];
-  // For each line in conversation.lines, the clip that should play when
-  // that line's audio button is unlocked. Indexed by line position.
-  clips: (VoiceClip | null)[];
 } {
   if (SOUND_CONVERSATION_POOL.length === 0) {
     throw new Error("SOUND_CONVERSATION_POOL is empty");
   }
 
-  // Pick this puzzle's conversation. If our raw pick collides with what
-  // Quote mode chose today, slide forward by one — a single offset is
-  // enough because the pools differ only by the audio-coverage filter.
-  let idx = fnv1a(`deadlockle:sound:${day}`) % SOUND_CONVERSATION_POOL.length;
-  const quotePick = CONVERSATION_POOL.length
-    ? CONVERSATION_POOL[fnv1a(`deadlockle:quote:${day}`) % CONVERSATION_POOL.length]
-    : null;
-  if (quotePick && SOUND_CONVERSATION_POOL[idx] === quotePick) {
-    idx = (idx + 1) % SOUND_CONVERSATION_POOL.length;
-  }
-
+  const idx = fnv1a(`deadlockle:sound:${day}`) % SOUND_CONVERSATION_POOL.length;
   const conv = SOUND_CONVERSATION_POOL[idx];
   const speakers: [Hero, Hero] = [
     HEROES_BY_KEY[conv.speakers[0]]!,
     HEROES_BY_KEY[conv.speakers[1]]!,
   ];
 
-  // Per-line clip pick: seed by (day, speakerKey, lineIdx) so each play
-  // button gets a distinct sample of that speaker's voice. Same daily
-  // seed always yields the same clip for the same line.
-  const clips = conv.lines.map((line, i) => {
-    const speakerKey = conv.speakers[line.speaker];
-    const seed = fnv1a(`deadlockle:sound:${day}:${speakerKey}:${i}`);
-    return pickClip(speakerKey, seed);
-  });
-
-  return { conversation: conv, speakers, clips };
+  return { conversation: conv, speakers };
 }
 
 // Re-exported for symmetry with OWdle. Keeps lookups by key cheap.

@@ -108,8 +108,8 @@ export function HomeContent() {
               Deadlock
             </a>
             . Six modes, one hero per day. Classic uses an attribute grid;
-            Quote, Ability, Item, and Mugshot progressively reveal the answer
-            with each wrong guess. Sound is coming soon. New puzzles drop at
+            Quote, Ability, Item, Mugshot, and Conversation progressively
+            reveal the answer with each wrong guess. New puzzles drop at
             midnight UTC, no signup, no ads, progress saved locally.
           </p>
           <p className="mt-4 text-base leading-relaxed text-ink-soft">

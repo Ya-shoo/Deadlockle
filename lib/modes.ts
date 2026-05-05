@@ -43,9 +43,9 @@ export const MODES: ModeDef[] = [
   },
   {
     slug: "sound",
-    label: "Sound",
+    label: "Conversation",
     blurb:
-      "A two-speaker conversation. Voice samples unlock late if you get stuck.",
+      "A two-speaker conversation. The actual voice clip unlocks late if you get stuck.",
     built: true,
   },
   {

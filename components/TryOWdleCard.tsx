@@ -7,6 +7,9 @@ export function TryOWdleCard() {
   return (
     <a
       href={OWDLE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Try OWdle, the daily Overwatch quiz (opens in a new tab)"
       className="group relative block cursor-pointer overflow-hidden border border-line bg-surface p-6 transition-colors hover:bg-muted focus-visible:bg-muted active:bg-muted sm:p-7"
       style={{ touchAction: "manipulation", WebkitTapHighlightColor: "rgba(214,160,92,0.18)" }}
     >

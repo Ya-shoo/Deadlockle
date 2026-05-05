@@ -168,12 +168,15 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 6"
-          title="Sound — coming soon"
-          href={null}
+          title="Conversation — hear the Deadlock heroes talk"
+          href="/sound/"
         >
           <p>
-            A short Deadlock voice line, lengthening with each miss. Currently
-            in production — the home page shows it as <em>Coming Soon</em>.
+            The audio sibling of Quote: a pre-match exchange between two
+            heroes, with each speaker guessed in their own combobox. Dialogue
+            reveals one line per guess, and after a few misses the actual voice
+            clip unlocks — you hear the heroes talking, which is usually enough
+            to clinch the answer.
           </p>
         </Section>
 

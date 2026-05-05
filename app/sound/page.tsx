@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { SoundGame } from "@/components/SoundGame";
 
-const TITLE = "Sound — Guess the Deadlock Speakers by Voice";
+const TITLE = "Conversation — Guess the Deadlock Speakers by Voice";
 const DESCRIPTION =
-  "Daily Deadlock sound quiz. A pre-match conversation between two heroes — guess both speakers. Voice samples unlock as hints if you get stuck.";
+  "Daily Deadlock conversation quiz. A pre-match exchange between two heroes — guess both speakers. The actual voice clip unlocks as a hint if you get stuck.";
 
 export const metadata: Metadata = {
   title: TITLE,
