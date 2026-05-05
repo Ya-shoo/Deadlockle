@@ -171,7 +171,16 @@ export function HomeContent() {
 function DefaultHero({ day }: { day: string | null }) {
   return (
     <div>
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
+      {/* Date + countdown line sits directly on the panning Ken Burns
+          banner, so the shadow handles bright frames (key art with
+          warm amber highlights) without dimming on dark frames. */}
+      <p
+        className="font-mono text-xs uppercase tracking-[0.2em] text-info"
+        style={{
+          textShadow:
+            "0 1px 0 rgba(0,0,0,0.7), 0 0 12px rgba(0,0,0,0.55)",
+        }}
+      >
         <span suppressHydrationWarning>
           {day ? prettyDay(day) : "Today"}
         </span>
@@ -196,13 +205,24 @@ function BeginButton() {
   return (
     <Link
       href="/classic/"
-      className="group relative inline-flex"
+      className="begin-cta group relative inline-flex"
       aria-label="Begin with Classic mode"
     >
+      {/* outer amber bloom — soft halo. Pulses gently while hovered
+          (see globals.css .begin-cta rule) so it stays perceptually
+          present against the panning banner. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -inset-2 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: "rgba(214, 160, 92, 0.32)" }}
+        className="begin-halo pointer-events-none absolute -inset-3 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+        style={{ background: "rgba(214, 160, 92, 0.45)" }}
+      />
+
+      {/* inner crisp glow — narrower, less blur, holds a hard edge
+          even when the banner pans bright/warm tones behind it. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -inset-0.5 opacity-0 blur-md transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+        style={{ background: "rgba(233, 198, 148, 0.55)" }}
       />
 
       <span className="relative inline-flex items-center gap-4 border border-edge bg-muted px-8 py-4 font-display text-base font-bold uppercase tracking-[0.16em] shadow-xl shadow-black/50 transition-transform duration-200 group-hover:-translate-y-0.5 group-active:translate-y-0">
@@ -264,7 +284,13 @@ function DailyCompleteHero({
     >
       <CompleteBadge count={count} totalGuesses={totalGuesses} />
       <div className="flex-1 text-center sm:text-left">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-correct">
+        <p
+          className="font-mono text-xs uppercase tracking-[0.2em] text-correct"
+          style={{
+            textShadow:
+              "0 1px 0 rgba(0,0,0,0.7), 0 0 12px rgba(0,0,0,0.55)",
+          }}
+        >
           <span aria-hidden>✓</span> Daily complete · {prettyDay(day)}
           <span className="text-ink-faint"> · </span>
           <NextResetCountdown />
