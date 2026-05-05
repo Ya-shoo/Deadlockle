@@ -1,0 +1,1542 @@
+[
+  {
+    "key": "close-quarters",
+    "name": "Close Quarters",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/close-quarters.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Close_Quarters"
+  },
+  {
+    "key": "extended-magazine",
+    "name": "Extended Magazine",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extended-magazine.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extended_Magazine"
+  },
+  {
+    "key": "headshot-booster",
+    "name": "Headshot Booster",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/headshot-booster.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Headshot_Booster"
+  },
+  {
+    "key": "high-velocity-rounds",
+    "name": "High-Velocity Rounds",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/high-velocity-rounds.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/High-Velocity_Rounds"
+  },
+  {
+    "key": "monster-rounds",
+    "name": "Monster Rounds",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/monster-rounds.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Monster_Rounds"
+  },
+  {
+    "key": "rapid-rounds",
+    "name": "Rapid Rounds",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/rapid-rounds.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Rapid_Rounds"
+  },
+  {
+    "key": "restorative-shot",
+    "name": "Restorative Shot",
+    "slot": "weapon",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/restorative-shot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Restorative_Shot"
+  },
+  {
+    "key": "active-reload",
+    "name": "Active Reload",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/active-reload.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Active_Reload"
+  },
+  {
+    "key": "fleetfoot",
+    "name": "Fleetfoot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/fleetfoot.webp",
+    "description": "Fleetfoot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Fleetfoot"
+  },
+  {
+    "key": "intensifying-magazine",
+    "name": "Intensifying Magazine",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/intensifying-magazine.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Intensifying_Magazine"
+  },
+  {
+    "key": "kinetic-dash",
+    "name": "Kinetic Dash",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/kinetic-dash.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Kinetic_Dash"
+  },
+  {
+    "key": "long-range",
+    "name": "Long Range",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/long-range.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Long_Range"
+  },
+  {
+    "key": "melee-charge",
+    "name": "Melee Charge",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/melee-charge.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Melee_Charge"
+  },
+  {
+    "key": "mystic-shot",
+    "name": "Mystic Shot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-shot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Shot"
+  },
+  {
+    "key": "opening-rounds",
+    "name": "Opening Rounds",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/opening-rounds.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Opening_Rounds"
+  },
+  {
+    "key": "recharging-rush",
+    "name": "Recharging Rush",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/recharging-rush.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Recharging_Rush"
+  },
+  {
+    "key": "slowing-bullets",
+    "name": "Slowing Bullets",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/slowing-bullets.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Slowing_Bullets"
+  },
+  {
+    "key": "spirit-shredder-bullets",
+    "name": "Spirit Shredder Bullets",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-shredder-bullets.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Shredder_Bullets"
+  },
+  {
+    "key": "split-shot",
+    "name": "Split Shot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/split-shot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Split_Shot"
+  },
+  {
+    "key": "stalker",
+    "name": "Stalker",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/stalker.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Stalker"
+  },
+  {
+    "key": "swift-striker",
+    "name": "Swift Striker",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/swift-striker.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Swift_Striker"
+  },
+  {
+    "key": "titanic-magazine",
+    "name": "Titanic Magazine",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/titanic-magazine.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Titanic_Magazine"
+  },
+  {
+    "key": "weakening-headshot",
+    "name": "Weakening Headshot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/weakening-headshot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Weakening_Headshot"
+  },
+  {
+    "key": "alchemical-fire",
+    "name": "Alchemical Fire",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/alchemical-fire.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Alchemical_Fire"
+  },
+  {
+    "key": "ballistic-enchantment",
+    "name": "Ballistic Enchantment",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/ballistic-enchantment.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Ballistic_Enchantment"
+  },
+  {
+    "key": "berserker",
+    "name": "Berserker",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/berserker.webp",
+    "description": "Berserker is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Berserker"
+  },
+  {
+    "key": "blood-tribute",
+    "name": "Blood Tribute",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/blood-tribute.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Blood_Tribute"
+  },
+  {
+    "key": "burst-fire",
+    "name": "Burst Fire",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/burst-fire.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Burst_Fire"
+  },
+  {
+    "key": "cultist-sacrifice",
+    "name": "Cultist Sacrifice",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/cultist-sacrifice.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Cultist_Sacrifice"
+  },
+  {
+    "key": "escalating-resilience",
+    "name": "Escalating Resilience",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/escalating-resilience.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Escalating_Resilience"
+  },
+  {
+    "key": "express-shot",
+    "name": "Express Shot",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/express-shot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Express_Shot"
+  },
+  {
+    "key": "headhunter",
+    "name": "Headhunter",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/headhunter.webp",
+    "description": "Headhunter is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Headshot Booster, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Headhunter"
+  },
+  {
+    "key": "heroic-aura",
+    "name": "Heroic Aura",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/heroic-aura.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Heroic_Aura"
+  },
+  {
+    "key": "hollow-point",
+    "name": "Hollow Point",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/hollow-point.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Hollow_Point"
+  },
+  {
+    "key": "hunter-27s-aura",
+    "name": "Hunter%27s Aura",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/hunter-27s-aura.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Hunter%27s_Aura"
+  },
+  {
+    "key": "point-blank",
+    "name": "Point Blank",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/point-blank.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Point_Blank"
+  },
+  {
+    "key": "sharpshooter",
+    "name": "Sharpshooter",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/sharpshooter.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Sharpshooter"
+  },
+  {
+    "key": "spirit-rend",
+    "name": "Spirit Rend",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-rend.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Rend"
+  },
+  {
+    "key": "tesla-bullets",
+    "name": "Tesla Bullets",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/tesla-bullets.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Tesla_Bullets"
+  },
+  {
+    "key": "toxic-bullets",
+    "name": "Toxic Bullets",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/toxic-bullets.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Toxic_Bullets"
+  },
+  {
+    "key": "weighted-shots",
+    "name": "Weighted Shots",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/weighted-shots.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Weighted_Shots"
+  },
+  {
+    "key": "armor-piercing-rounds",
+    "name": "Armor Piercing Rounds",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/armor-piercing-rounds.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Armor_Piercing_Rounds"
+  },
+  {
+    "key": "capacitor",
+    "name": "Capacitor",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/capacitor.webp",
+    "description": "Capacitor is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Tesla Bullets, makes up  3,200 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Capacitor"
+  },
+  {
+    "key": "crippling-headshot",
+    "name": "Crippling Headshot",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/crippling-headshot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Crippling_Headshot"
+  },
+  {
+    "key": "crushing-fists",
+    "name": "Crushing Fists",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/crushing-fists.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Crushing_Fists"
+  },
+  {
+    "key": "frenzy",
+    "name": "Frenzy",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/frenzy.webp",
+    "description": "Frenzy is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Frenzy"
+  },
+  {
+    "key": "glass-cannon",
+    "name": "Glass Cannon",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/glass-cannon.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Glass_Cannon"
+  },
+  {
+    "key": "lucky-shot",
+    "name": "Lucky Shot",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/lucky-shot.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Lucky_Shot"
+  },
+  {
+    "key": "ricochet",
+    "name": "Ricochet",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/ricochet.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Ricochet"
+  },
+  {
+    "key": "shadow-weave",
+    "name": "Shadow Weave",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/shadow-weave.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Shadow_Weave"
+  },
+  {
+    "key": "silencer",
+    "name": "Silencer",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/silencer.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Silencer"
+  },
+  {
+    "key": "spellslinger",
+    "name": "Spellslinger",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spellslinger.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spellslinger"
+  },
+  {
+    "key": "spiritual-overflow",
+    "name": "Spiritual Overflow",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spiritual-overflow.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spiritual_Overflow"
+  },
+  {
+    "key": "extra-health",
+    "name": "Extra Health",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-health.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extra_Health"
+  },
+  {
+    "key": "extra-regen",
+    "name": "Extra Regen",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-regen.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extra_Regen"
+  },
+  {
+    "key": "extra-stamina",
+    "name": "Extra Stamina",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-stamina.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extra_Stamina"
+  },
+  {
+    "key": "healing-rite",
+    "name": "Healing Rite",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/healing-rite.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Healing_Rite"
+  },
+  {
+    "key": "melee-lifesteal",
+    "name": "Melee Lifesteal",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/melee-lifesteal.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Melee_Lifesteal"
+  },
+  {
+    "key": "rebuttal",
+    "name": "Rebuttal",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/rebuttal.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Rebuttal"
+  },
+  {
+    "key": "sprint-boots",
+    "name": "Sprint Boots",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/sprint-boots.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Sprint_Boots"
+  },
+  {
+    "key": "battle-vest",
+    "name": "Battle Vest",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/battle-vest.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Battle_Vest"
+  },
+  {
+    "key": "bullet-lifesteal-28item-29",
+    "name": "Bullet Lifesteal %28item%29",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/bullet-lifesteal-28item-29.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Bullet_Lifesteal_%28item%29"
+  },
+  {
+    "key": "debuff-reducer",
+    "name": "Debuff Reducer",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/debuff-reducer.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Debuff_Reducer"
+  },
+  {
+    "key": "enchanter-27s-emblem",
+    "name": "Enchanter%27s Emblem",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/enchanter-27s-emblem.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Enchanter%27s_Emblem"
+  },
+  {
+    "key": "enduring-speed",
+    "name": "Enduring Speed",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/enduring-speed.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Enduring_Speed"
+  },
+  {
+    "key": "guardian-ward",
+    "name": "Guardian Ward",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/guardian-ward.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Guardian_Ward"
+  },
+  {
+    "key": "healbane",
+    "name": "Healbane",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/healbane.webp",
+    "description": "Healbane is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Healbane"
+  },
+  {
+    "key": "healing-booster",
+    "name": "Healing Booster",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/healing-booster.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Healing_Booster"
+  },
+  {
+    "key": "reactive-barrier",
+    "name": "Reactive Barrier",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/reactive-barrier.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Reactive_Barrier"
+  },
+  {
+    "key": "restorative-locket",
+    "name": "Restorative Locket",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/restorative-locket.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Restorative_Locket"
+  },
+  {
+    "key": "return-fire",
+    "name": "Return Fire",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/return-fire.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Return_Fire"
+  },
+  {
+    "key": "spirit-lifesteal-28item-29",
+    "name": "Spirit Lifesteal %28item%29",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-lifesteal-28item-29.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Lifesteal_%28item%29"
+  },
+  {
+    "key": "spirit-shielding",
+    "name": "Spirit Shielding",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-shielding.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Shielding"
+  },
+  {
+    "key": "weapon-shielding",
+    "name": "Weapon Shielding",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/weapon-shielding.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Weapon_Shielding"
+  },
+  {
+    "key": "bullet-resilience",
+    "name": "Bullet Resilience",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/bullet-resilience.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Bullet_Resilience"
+  },
+  {
+    "key": "counterspell",
+    "name": "Counterspell",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/counterspell.webp",
+    "description": "Counterspell is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Counterspell"
+  },
+  {
+    "key": "dispel-magic",
+    "name": "Dispel Magic",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/dispel-magic.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Dispel_Magic"
+  },
+  {
+    "key": "fortitude",
+    "name": "Fortitude",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/fortitude.webp",
+    "description": "Fortitude is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Extra Health, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Fortitude"
+  },
+  {
+    "key": "fury-trance",
+    "name": "Fury Trance",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/fury-trance.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Fury_Trance"
+  },
+  {
+    "key": "healing-nova",
+    "name": "Healing Nova",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/healing-nova.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Healing_Nova"
+  },
+  {
+    "key": "lifestrike",
+    "name": "Lifestrike",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/lifestrike.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Lifestrike"
+  },
+  {
+    "key": "majestic-leap",
+    "name": "Majestic Leap",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/majestic-leap.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Majestic_Leap"
+  },
+  {
+    "key": "metal-skin",
+    "name": "Metal Skin",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/metal-skin.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Metal_Skin"
+  },
+  {
+    "key": "rescue-beam",
+    "name": "Rescue Beam",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/rescue-beam.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Rescue_Beam"
+  },
+  {
+    "key": "spirit-resilience",
+    "name": "Spirit Resilience",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-resilience.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Resilience"
+  },
+  {
+    "key": "stamina-mastery",
+    "name": "Stamina Mastery",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/stamina-mastery.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Stamina_Mastery"
+  },
+  {
+    "key": "trophy-collector",
+    "name": "Trophy Collector",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/trophy-collector.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Trophy_Collector"
+  },
+  {
+    "key": "veil-walker",
+    "name": "Veil Walker",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/veil-walker.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Veil_Walker"
+  },
+  {
+    "key": "warp-stone",
+    "name": "Warp Stone",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/warp-stone.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Warp_Stone"
+  },
+  {
+    "key": "cheat-death",
+    "name": "Cheat Death",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/cheat-death.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Cheat_Death"
+  },
+  {
+    "key": "colossus",
+    "name": "Colossus",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/colossus.webp",
+    "description": "Colossus is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Extra Health, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Colossus"
+  },
+  {
+    "key": "divine-barrier",
+    "name": "Divine Barrier",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/divine-barrier.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Divine_Barrier"
+  },
+  {
+    "key": "diviner-27s-kevlar",
+    "name": "Diviner%27s Kevlar",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/diviner-27s-kevlar.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Diviner%27s_Kevlar"
+  },
+  {
+    "key": "healing-tempo",
+    "name": "Healing Tempo",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/healing-tempo.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Healing_Tempo"
+  },
+  {
+    "key": "infuser",
+    "name": "Infuser",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/infuser.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Infuser"
+  },
+  {
+    "key": "inhibitor",
+    "name": "Inhibitor",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/inhibitor.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Inhibitor"
+  },
+  {
+    "key": "juggernaut",
+    "name": "Juggernaut",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/juggernaut.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Juggernaut"
+  },
+  {
+    "key": "leech",
+    "name": "Leech",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/leech.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Leech"
+  },
+  {
+    "key": "phantom-strike",
+    "name": "Phantom Strike",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/phantom-strike.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Phantom_Strike"
+  },
+  {
+    "key": "plated-armor",
+    "name": "Plated Armor",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/plated-armor.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Plated_Armor"
+  },
+  {
+    "key": "siphon-bullets",
+    "name": "Siphon Bullets",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/siphon-bullets.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Siphon_Bullets"
+  },
+  {
+    "key": "spellbreaker",
+    "name": "Spellbreaker",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spellbreaker.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spellbreaker"
+  },
+  {
+    "key": "unstoppable",
+    "name": "Unstoppable",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/unstoppable.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Unstoppable"
+  },
+  {
+    "key": "vampiric-burst",
+    "name": "Vampiric Burst",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/vampiric-burst.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Vampiric_Burst"
+  },
+  {
+    "key": "witchmail",
+    "name": "Witchmail",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/witchmail.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Witchmail"
+  },
+  {
+    "key": "extra-charge",
+    "name": "Extra Charge",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-charge.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extra_Charge"
+  },
+  {
+    "key": "extra-spirit",
+    "name": "Extra Spirit",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-spirit.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Extra_Spirit"
+  },
+  {
+    "key": "golden-goose-egg",
+    "name": "Golden Goose Egg",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/golden-goose-egg.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Golden_Goose_Egg"
+  },
+  {
+    "key": "mystic-burst",
+    "name": "Mystic Burst",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-burst.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Burst"
+  },
+  {
+    "key": "mystic-expansion",
+    "name": "Mystic Expansion",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-expansion.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Expansion"
+  },
+  {
+    "key": "mystic-regeneration",
+    "name": "Mystic Regeneration",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-regeneration.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Regeneration"
+  },
+  {
+    "key": "rusted-barrel",
+    "name": "Rusted Barrel",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/rusted-barrel.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Rusted_Barrel"
+  },
+  {
+    "key": "spirit-strike",
+    "name": "Spirit Strike",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/spirit-strike.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Strike"
+  },
+  {
+    "key": "arcane-surge",
+    "name": "Arcane Surge",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/arcane-surge.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Arcane_Surge"
+  },
+  {
+    "key": "bullet-resist-shredder",
+    "name": "Bullet Resist Shredder",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/bullet-resist-shredder.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Bullet_Resist_Shredder"
+  },
+  {
+    "key": "cold-front",
+    "name": "Cold Front",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/cold-front.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Cold_Front"
+  },
+  {
+    "key": "compress-cooldown",
+    "name": "Compress Cooldown",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/compress-cooldown.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Compress_Cooldown"
+  },
+  {
+    "key": "duration-extender",
+    "name": "Duration Extender",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/duration-extender.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Duration_Extender"
+  },
+  {
+    "key": "improved-spirit",
+    "name": "Improved Spirit",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/improved-spirit.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Improved_Spirit"
+  },
+  {
+    "key": "mystic-slow",
+    "name": "Mystic Slow",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-slow.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Slow"
+  },
+  {
+    "key": "mystic-vulnerability",
+    "name": "Mystic Vulnerability",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-vulnerability.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Vulnerability"
+  },
+  {
+    "key": "quicksilver-reload",
+    "name": "Quicksilver Reload",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/quicksilver-reload.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Quicksilver_Reload"
+  },
+  {
+    "key": "slowing-hex",
+    "name": "Slowing Hex",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/slowing-hex.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Slowing_Hex"
+  },
+  {
+    "key": "spirit-sap",
+    "name": "Spirit Sap",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-sap.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Sap"
+  },
+  {
+    "key": "suppressor",
+    "name": "Suppressor",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/suppressor.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Suppressor"
+  },
+  {
+    "key": "decay",
+    "name": "Decay",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/decay.webp",
+    "description": "Decay is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Decay"
+  },
+  {
+    "key": "disarming-hex",
+    "name": "Disarming Hex",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/disarming-hex.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Disarming_Hex"
+  },
+  {
+    "key": "greater-expansion",
+    "name": "Greater Expansion",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/greater-expansion.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Greater_Expansion"
+  },
+  {
+    "key": "knockdown",
+    "name": "Knockdown",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/knockdown.webp",
+    "description": "Knockdown is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Knockdown"
+  },
+  {
+    "key": "radiant-regeneration",
+    "name": "Radiant Regeneration",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/radiant-regeneration.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Radiant_Regeneration"
+  },
+  {
+    "key": "rapid-recharge",
+    "name": "Rapid Recharge",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/rapid-recharge.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Rapid_Recharge"
+  },
+  {
+    "key": "silence-wave",
+    "name": "Silence Wave",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/silence-wave.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Silence_Wave"
+  },
+  {
+    "key": "spirit-snatch",
+    "name": "Spirit Snatch",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-snatch.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Snatch"
+  },
+  {
+    "key": "superior-cooldown",
+    "name": "Superior Cooldown",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/superior-cooldown.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Superior_Cooldown"
+  },
+  {
+    "key": "superior-duration",
+    "name": "Superior Duration",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/superior-duration.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Superior_Duration"
+  },
+  {
+    "key": "surge-of-power",
+    "name": "Surge of Power",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/surge-of-power.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Surge_of_Power"
+  },
+  {
+    "key": "tankbuster",
+    "name": "Tankbuster",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/tankbuster.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Tankbuster"
+  },
+  {
+    "key": "torment-pulse",
+    "name": "Torment Pulse",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/torment-pulse.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Torment_Pulse"
+  },
+  {
+    "key": "arctic-blast",
+    "name": "Arctic Blast",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/arctic-blast.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Arctic_Blast"
+  },
+  {
+    "key": "boundless-spirit",
+    "name": "Boundless Spirit",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/boundless-spirit.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Boundless_Spirit"
+  },
+  {
+    "key": "cursed-relic",
+    "name": "Cursed Relic",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/cursed-relic.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Cursed_Relic"
+  },
+  {
+    "key": "echo-shard",
+    "name": "Echo Shard",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/echo-shard.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Echo_Shard"
+  },
+  {
+    "key": "escalating-exposure",
+    "name": "Escalating Exposure",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/escalating-exposure.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Escalating_Exposure"
+  },
+  {
+    "key": "ethereal-shift",
+    "name": "Ethereal Shift",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/ethereal-shift.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Ethereal_Shift"
+  },
+  {
+    "key": "focus-lens",
+    "name": "Focus Lens",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/focus-lens.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Focus_Lens"
+  },
+  {
+    "key": "lightning-scroll",
+    "name": "Lightning Scroll",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/lightning-scroll.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Lightning_Scroll"
+  },
+  {
+    "key": "magic-carpet",
+    "name": "Magic Carpet",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/magic-carpet.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Magic_Carpet"
+  },
+  {
+    "key": "mercurial-magnum",
+    "name": "Mercurial Magnum",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mercurial-magnum.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mercurial_Magnum"
+  },
+  {
+    "key": "mystic-reverb",
+    "name": "Mystic Reverb",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mystic-reverb.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Mystic_Reverb"
+  },
+  {
+    "key": "refresher",
+    "name": "Refresher",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/refresher.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Refresher"
+  },
+  {
+    "key": "scourge",
+    "name": "Scourge",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/scourge.webp",
+    "description": "Scourge is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Scourge"
+  },
+  {
+    "key": "spirit-burn",
+    "name": "Spirit Burn",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spirit-burn.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Spirit_Burn"
+  },
+  {
+    "key": "transcendent-cooldown",
+    "name": "Transcendent Cooldown",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/transcendent-cooldown.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Transcendent_Cooldown"
+  },
+  {
+    "key": "vortex-web",
+    "name": "Vortex Web",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/vortex-web.webp",
+    "description": null,
+    "wikiUrl": "https://deadlock.wiki/Vortex_Web"
+  }
+]

@@ -1,0 +1,247 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Brand } from "@/components/Brand";
+
+const TITLE = "How to Play — Daily Deadlock Hero Quiz Guide";
+const DESCRIPTION =
+  "Complete guide to Deadlockle, the daily Wordle-style quiz for Valve's Deadlock. Rules, strategy, and FAQ for every mode — Classic, Quote, Ability, Item, and Mugshot.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/how-to-play/" },
+  openGraph: {
+    title: `${TITLE}`,
+    description: DESCRIPTION,
+    url: "/how-to-play/",
+    type: "article",
+    siteName: "Deadlockle",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
+
+const FAQ: Array<{ q: string; a: string }> = [
+  {
+    q: "What is Deadlockle?",
+    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle — the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and quotes.",
+  },
+  {
+    q: "When does the daily puzzle reset?",
+    a: "Every day at midnight UTC. The home page shows a countdown to the next reset. Once you finish all five modes, the home page switches to a Daily Complete state showing your total guesses.",
+  },
+  {
+    q: "Do I need to sign up or pay?",
+    a: "No. Deadlockle is free, has no ads, and requires no account. Your daily progress is stored in your browser's localStorage so you can close the tab and resume later in the day.",
+  },
+  {
+    q: "How is Deadlockle different from Deadlockdle, Lockle, or DLDE?",
+    a: "All are daily Deadlock guessing games inspired by Wordle. Deadlockle's Classic mode uses an eight-attribute comparison grid (class, role, gun, damage, nature, gender, HP, move speed) and pairs it with four image/dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
+  },
+  {
+    q: "Is Deadlockle official?",
+    a: "No. Deadlockle is an unofficial fan project. Deadlock and all hero, item, and ability names are trademarks of Valve Corporation. Hero and item data come from deadlock-api.com.",
+  },
+];
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+export default function HowToPlayPage() {
+  return (
+    <main className="flex-1">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+
+      <article className="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-20">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
+          Guide · 5 modes
+        </p>
+        <h1 className="mt-4 font-display text-4xl leading-[1.05] text-ink sm:text-5xl">
+          How to play <Brand as="span" size="md" className="!text-4xl sm:!text-5xl !tracking-[0.04em]" />
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+          <strong className="text-ink">Deadlockle</strong> (also known as{" "}
+          <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a free daily
+          Wordle-style hero-guessing game for Valve's Deadlock. Each day at
+          midnight UTC, five new puzzles unlock — one for each mode. There's
+          no signup, no ads, and no gating. Your progress is saved in your
+          browser, so you can solve a few, close the tab, and come back later
+          in the day to finish.
+        </p>
+
+        <hr className="my-12 border-line" />
+
+        <Section
+          eyebrow="Mode 1"
+          title="Classic — guess the Deadlock hero by attributes"
+          href="/classic/"
+        >
+          <p>
+            Type any Deadlock hero into the search box. The grid lights up
+            with eight attribute tiles per guess — <em>class, role, gun, damage, nature, gender, HP, move speed</em>. Green means a match, amber means close (numerical within range), red means off. Use the comparisons to triangulate the daily hero.
+          </p>
+          <p className="mt-3">
+            <strong className="text-ink">Strategy:</strong> open with a hero
+            who covers mid-range stats — Paradox, Vyper, or Pocket give wide
+            tile coverage on the first guess. Don't lock onto a single{" "}
+            <em>hero type</em> until you've also narrowed <em>nature</em> and{" "}
+            <em>damage style</em>; those three together usually pin the answer
+            within four guesses.
+          </p>
+        </Section>
+
+        <Section
+          eyebrow="Mode 2"
+          title="Quote — guess both Deadlock speakers"
+          href="/quote/"
+        >
+          <p>
+            A line of dialogue appears, spoken by one Deadlock hero and
+            addressed to another. You need to identify <em>both</em>. Wrong
+            guesses don't reveal the answer — they just take a try off the
+            counter. Quotes are sourced from in-game voice lines on the
+            official Deadlock wiki.
+          </p>
+          <p className="mt-3">
+            <strong className="text-ink">Strategy:</strong> tone is the
+            biggest tell — Drifter's clipped centuries-old cadence sounds
+            nothing like Paige's bureaucratic precision. The{" "}
+            <em>addressed-to</em> hero is harder; lean on canonical
+            relationships (Apollo and Graves are classmates, Mo &amp; Krill
+            bicker constantly with Bebop).
+          </p>
+        </Section>
+
+        <Section
+          eyebrow="Mode 3"
+          title="Ability — whose Deadlock ability is this?"
+          href="/ability/"
+        >
+          <p>
+            A heavily-blurred ability icon appears. Each wrong guess reveals
+            more of the icon. All four signature abilities are in the pool
+            for every hero — so a fire-themed icon could be Infernus's Napalm
+            or one of Seven's offensive abilities. Narrow on{" "}
+            <em>shape and composition</em>, not just color.
+          </p>
+        </Section>
+
+        <Section
+          eyebrow="Mode 4"
+          title="Item — guess the Deadlock shop item icon"
+          href="/item/"
+        >
+          <p>
+            A blurred shop-item icon appears. Each wrong guess sharpens it.
+            The pool covers the full Deadlock item shop. <strong className="text-ink">Hard
+            mode</strong> rotates the icon by a deterministic 90°, 180°, or
+            270° based on the daily seed — useful when normal mode feels too
+            silhouette-readable.
+          </p>
+        </Section>
+
+        <Section
+          eyebrow="Mode 5"
+          title="Mugshot — identify a Deadlock hero from a portrait crop"
+          href="/mugshot/"
+        >
+          <p>
+            A tight crop of a hero's portrait appears — eyes, an earring, a
+            collar fragment. Each wrong guess pulls the camera back, revealing
+            more of the face. Most players solve it in 2–4 guesses if they
+            recognize Deadlock's distinctive 1930s-NYC character design.
+          </p>
+        </Section>
+
+        <Section
+          eyebrow="Mode 6"
+          title="Sound — coming soon"
+          href={null}
+        >
+          <p>
+            A short Deadlock voice line, lengthening with each miss. Currently
+            in production — the home page shows it as <em>Coming Soon</em>.
+          </p>
+        </Section>
+
+        <hr className="my-12 border-line" />
+
+        <h2 className="font-display text-3xl text-ink">
+          Frequently asked questions
+        </h2>
+        <dl className="mt-8 space-y-8">
+          {FAQ.map((item) => (
+            <div key={item.q}>
+              <dt className="font-display text-xl text-ink">{item.q}</dt>
+              <dd className="mt-2 text-base leading-relaxed text-ink-soft">
+                {item.a}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <hr className="my-12 border-line" />
+
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-base text-ink-soft">
+            Ready? Start with the flagship mode.
+          </p>
+          <Link
+            href="/classic/"
+            className="inline-flex items-center gap-3 border border-edge bg-muted px-6 py-3 font-display text-sm font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-inset"
+          >
+            Play Classic
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
+      </article>
+    </main>
+  );
+}
+
+function Section({
+  eyebrow,
+  title,
+  href,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  href: string | null;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mt-12 first:mt-0">
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+        {eyebrow}
+      </p>
+      <h2 className="mt-2 font-display text-2xl leading-tight text-ink sm:text-3xl">
+        {title}
+      </h2>
+      <div className="mt-4 space-y-3 text-base leading-relaxed text-ink-soft">
+        {children}
+      </div>
+      {href ? (
+        <Link
+          href={href}
+          className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-accent underline-offset-2 hover:underline"
+        >
+          Play this mode <span aria-hidden>→</span>
+        </Link>
+      ) : null}
+    </section>
+  );
+}

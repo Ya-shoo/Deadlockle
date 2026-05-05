@@ -1,0 +1,1978 @@
+[
+  {
+    "key": "infernus",
+    "id": 1,
+    "class_name": "hero_inferno",
+    "name": "Infernus",
+    "hero_type": "marksman",
+    "gun_tag": "Rapid Fire",
+    "tags": [
+      "Arsonist",
+      "Explosive",
+      "Burn Rubber"
+    ],
+    "complexity": 1,
+    "hp": 840,
+    "move_speed": 6.7,
+    "stamina": 3,
+    "lore": "Like most teenagers; Infernus was wild, rebellious, and impetuous.  Unlike most teenagers, Infernus was a creature from another plane and had a supernatural mastery over fire.  Needless to say:  his youth was filled with no small amount of arson, murder, and evidence disposal.  But that was then.  Now an adult, Infernus has mellowed out considerably.  He’s happy working at a bar with good live music, and talking to interesting people.  That being said when someone at the bar gets belligerent or violent, he’s not afraid to dust off the skills he once honed.",
+    "role": "Lights up enemies and watches them burn",
+    "gender": "male",
+    "nature": "ixian",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Napalm",
+        "description": "Spew an incendiary mixture, dealing spirit damage, applying slow, and coating targets in napalm.",
+        "icon": "/abilities/infernus-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_molotov.png"
+      },
+      {
+        "name": "Flame Dash",
+        "description": "Dash forward, gaining slow resistance while leaving a flaming trail that deals spirit damage over time. Hold [W] while active to dash farther.",
+        "icon": "/abilities/infernus-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_dash.png"
+      },
+      {
+        "name": "Afterburn",
+        "description": "Weapon hits build up a burning effect, dealing spirit damage over time. Abilities refresh the base burn duration.",
+        "icon": "/abilities/infernus-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_deflect.png"
+      },
+      {
+        "name": "Concussive Combustion",
+        "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay.Once cast, Concussive Combustion cannot be interrupted.",
+        "icon": "/abilities/infernus-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_bomb.png"
+      }
+    ],
+    "portrait_url": "/portraits/infernus.png",
+    "splash_url": "/mugshots/infernus.jpg"
+  },
+  {
+    "key": "seven",
+    "id": 2,
+    "class_name": "hero_gigawatt",
+    "name": "Seven",
+    "hero_type": "mystic",
+    "gun_tag": "Burst Fire",
+    "tags": [
+      "High Voltage",
+      "Merciless",
+      "Area Denial"
+    ],
+    "complexity": 1,
+    "hp": 740,
+    "move_speed": 6.7,
+    "stamina": 3,
+    "lore": "When mystic energy awoke on Earth, the world changed... anything was possible.  But just because anything WAS possible, didn’t mean that anything SHOULD be possible.  And so the government made rules.   Laws.  A means for US citizens to enjoy the benefits of the supernatural world in safety.  But rules and laws are for lesser men.  Men with limitations.  Men who were not Seven.  \n\nThere are many rumors about what Seven did to land himself in Lost Whisper, an oubliette for the most dangerous of occultists.  But there is no doubt about what happened on the night of his execution. \n\nWards placed by the most powerful ritualists of 7 different nations… wards designed to not just prevent mystical interference with the execution, but to simultaneously obliterate Seven's soul so that it could never be contacted, resurrected, or otherwise be used by someone looking to follow in his footsteps... failed.\n\nOnlookers viewed in horror as the strongest mentalist employed by the US Army’s head popped like a grape.  They screamed as Scotland Yard’s premiere occult investigator, the one who allegedly captured Seven, crumbled to ash.  Seven's body buckled and writhed against his restraints; his skin burning from eldritch electricity... and yet he would not die.  He laughed.\n\nHe laughed as he tore himself free from his bondage.\n\nHe laughed as his captors cowered in fear.\n\nHe laughed as he massacred his tormentors.\n\nHe laughed as he tasted the fresh air that was denied to him for years.\n\nAnd he laughed when he thought about what he was going to do once he reached New York City.",
+    "role": "Electrocutes crowds of enemies",
+    "gender": "male",
+    "nature": "undead",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Lightning Ball",
+        "description": "Shoot a ball of lightning that travels in a straight line. Does damage to all targets in its radius.",
+        "icon": "/abilities/seven-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_ball.png"
+      },
+      {
+        "name": "Static Charge",
+        "description": "Apply a charge to a target enemy hero. After a short duration, the static charge stuns and damages enemies within the radius.",
+        "icon": "/abilities/seven-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_static.png"
+      },
+      {
+        "name": "Power Surge",
+        "description": "Power up your weapon with a shock effect, making your bullets proc shock damage on your target. This shock damage bounces to enemies near your target.",
+        "icon": "/abilities/seven-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_chain.png"
+      },
+      {
+        "name": "Storm Cloud",
+        "description": "Channel an expanding storm cloud around you that damages all enemies within its radius. Enemies do not take damage when they are out of line-of-sight.",
+        "icon": "/abilities/seven-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_storm.png"
+      }
+    ],
+    "portrait_url": "/portraits/seven.png",
+    "splash_url": "/mugshots/seven.jpg"
+  },
+  {
+    "key": "vindicta",
+    "id": 3,
+    "class_name": "hero_hornet",
+    "name": "Vindicta",
+    "hero_type": "marksman",
+    "gun_tag": "Long Range",
+    "tags": [
+      "Sniper",
+      "Soaring",
+      "One Shot Kill"
+    ],
+    "complexity": 1,
+    "hp": 765,
+    "move_speed": 7.9,
+    "stamina": 2,
+    "lore": "A victim of John Hathorne during the Salem Witch Trials, Vindicta got a second chance of life when her spirit was brought back to the mortal plane during the first Maelstrom (the event that introduced the supernatural to the public at large).\n\nWaging a one ghost war against \"The Friends of Humanity\", a neo inquisition formed by Hathorne's descendants; Vindicta looks to keep the supernatural safe from Hathorne's ilk, and she isn't afraid to stack as many bodies as needed to do it.",
+    "role": "Snipes the unsuspecting",
+    "gender": "female",
+    "nature": "spirit",
+    "damage_style": "hitscan",
+    "sub_role": "sniper",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Stake",
+        "description": "Throw a stake that tethers enemies to the location where the stake lands. Enemy movement is restricted to the length of the tether.",
+        "icon": "/abilities/vindicta-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_stake.png"
+      },
+      {
+        "name": "Flight",
+        "description": "Leap into the air and fly. While in flight your weapon deals bonus spirit damage and your items have increased range.",
+        "icon": "/abilities/vindicta-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_flight.png"
+      },
+      {
+        "name": "Crow Familiar",
+        "description": "Your crow familiar deals impact damage, reduces their bullet resist and applies a bleed that deals damage based on the target's current health.",
+        "icon": "/abilities/vindicta-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_crow.png"
+      },
+      {
+        "name": "Assassinate",
+        "description": "Use your scoped rifle to fire a powerful shot over long distances. 0s of being scoped.",
+        "icon": "/abilities/vindicta-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_assassinate.png"
+      }
+    ],
+    "portrait_url": "/portraits/vindicta.png",
+    "splash_url": "/mugshots/vindicta.jpg"
+  },
+  {
+    "key": "lady-geist",
+    "id": 4,
+    "class_name": "hero_ghost",
+    "name": "Lady Geist",
+    "hero_type": "mystic",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Lifesteal",
+      "Self Damage",
+      "Fatale"
+    ],
+    "complexity": 2,
+    "hp": 890,
+    "move_speed": 6.3,
+    "stamina": 3,
+    "lore": "Once, Lady Jeanne Geist was the toast of the town.  But as time passed and her beauty faded she found herself further and further from her glory days in High Society until finally she was nothing more than a frail woman in a nursing home, telling stories of a glorious past.  And that’s when Oathkeeper revealed himself.  A powerful spirit from another plane, Oathkeeper offered her a path to reclaim her past glories… he could restore her youth; all she had to do was drain the essence of the living to sustain herself. \n\nGeist was torn.  Obviously murder was ghoulish business, and undoubtedly Oathkeeper was not an entity that could be trusted… but still, the thought of having a second chance of reliving her youth was too good to pass up.  And so she concocted a plan: after making a pact with Oathkeeper she would bind and ward him, limiting his influence and pull over her.  Oathkeeper would still get fed; but on her terms, not his.\n\nHowever, as years have turned to decades; the strength of the Ward has weakened, and Oathkeeper hungers more than he ever has in the past… ",
+    "role": "Sacrifices health then drains it back",
+    "gender": "female",
+    "nature": "undead",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Essence Bomb",
+        "description": "Sacrifice some of your health to launch a bomb that deals damage after a brief arm time.Self damage type is Spirit and can be mitigated.",
+        "icon": "/abilities/lady-geist-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_bomb.png"
+      },
+      {
+        "name": "Life Drain",
+        "description": "Create a tether that drains enemy health over time and heals you. Target must be in line of sight and within max range to drain.",
+        "icon": "/abilities/lady-geist-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/life_drain.png"
+      },
+      {
+        "name": "Malice",
+        "description": "Sacrifice some of your health to launch blood shards that apply a stack of Malice. Each stack slows the victim and increases the damage they take from you.",
+        "icon": "/abilities/lady-geist-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/geist_dagger.png"
+      },
+      {
+        "name": "Soul Exchange",
+        "description": "Swaps health levels with an enemy target. There is a minimum health percentage that enemies can be brought down to and a minimum amount of health received based on victims current health.",
+        "icon": "/abilities/lady-geist-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_exchange.png"
+      }
+    ],
+    "portrait_url": "/portraits/lady-geist.png",
+    "splash_url": "/mugshots/lady-geist.jpg"
+  },
+  {
+    "key": "abrams",
+    "id": 6,
+    "class_name": "hero_atlas",
+    "name": "Abrams",
+    "hero_type": "brawler",
+    "gun_tag": "Shotgun",
+    "tags": [
+      "Tank",
+      "Brawler",
+      "Bull-Headed"
+    ],
+    "complexity": 1,
+    "hp": 810,
+    "move_speed": 6.4,
+    "stamina": 3,
+    "lore": "Hard hitting, hard headed, and hard drinking; Detective Abrams has been a fixture on the New York investigating scene for years.  From stolen art, to missing persons, to ritual murders; Abrams didn't just take any case that came across his desk... he solved them.\n\nBut his days of following cheating spouses came to an end the day he opened his office door and found The Tome sitting on his desk.\n\nNo instruction was left for him save for a brief note scrawled in onyx blood that read \"Don't let them have it\".  Abrams hasn't figured where the thing came from; but seeing as his home has been broken into, his office tossed on 3 different occasions, and his car firebombed he has a vested interest in figuring out what the hell is going on.",
+    "role": "Charges into close combat",
+    "gender": "male",
+    "nature": "ixian",
+    "damage_style": "hitscan",
+    "sub_role": "tank",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Siphon Life",
+        "description": "Drain health from nearby enemies, dealing spirit damage over time and healing for a portion of the damage dealt.",
+        "icon": "/abilities/abrams-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_drain.png"
+      },
+      {
+        "name": "Shoulder Charge",
+        "description": "Charge forward, pulling enemies you hit. Pushing a hero into a wall applies stun.If you collide with a hero you move faster during your charge.",
+        "icon": "/abilities/abrams-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_charge.png"
+      },
+      {
+        "name": "Infernal Resilience",
+        "description": "Gain bonus defensive attributes. Taking damage grants temporary regeneration for a portion of the damage taken.",
+        "icon": "/abilities/abrams-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_beef.png"
+      },
+      {
+        "name": "Seismic Impact",
+        "description": "Leap high into the air before crashing into the ground, dealing spirit damage and applying stun.",
+        "icon": "/abilities/abrams-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_jump.png"
+      }
+    ],
+    "portrait_url": "/portraits/abrams.png",
+    "splash_url": "/mugshots/abrams.jpg"
+  },
+  {
+    "key": "wraith",
+    "id": 7,
+    "class_name": "hero_wraith",
+    "name": "Wraith",
+    "hero_type": "marksman",
+    "gun_tag": "Rapid Fire",
+    "tags": [
+      "Duelist",
+      "Isolator",
+      "Telekinetic"
+    ],
+    "complexity": 1,
+    "hp": 740,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "The cornerstone of the New York gambling scene, Wraith's organization is about as open a secret as it comes.  However, thanks to a non-trivial amount of bribes, shakedowns, and blackmail, Wraith knows that she's above the law.",
+    "role": "Melts isolated targets",
+    "gender": "female",
+    "nature": "mystical",
+    "damage_style": "hitscan",
+    "sub_role": "carry",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Card Trick",
+        "description": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending of its suit.",
+        "icon": "/abilities/wraith-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_card_trick.png"
+      },
+      {
+        "name": "Project Mind",
+        "description": "Teleport to the targeted location.",
+        "icon": "/abilities/wraith-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_teleport.png"
+      },
+      {
+        "name": "Full Auto",
+        "description": "Temporarily boosts your fire rate and deal bonus spirit damage",
+        "icon": "/abilities/wraith-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_aura.png"
+      },
+      {
+        "name": "Telekinesis",
+        "description": "Lift an enemy hero into the air and then slam them towards the target location.",
+        "icon": "/abilities/wraith-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_lift.png"
+      }
+    ],
+    "portrait_url": "/portraits/wraith.png",
+    "splash_url": "/mugshots/wraith.jpg"
+  },
+  {
+    "key": "mcginnis",
+    "id": 8,
+    "class_name": "hero_forge",
+    "name": "McGinnis",
+    "hero_type": "mystic",
+    "gun_tag": "Heavy Artillery",
+    "tags": [
+      "Inventor",
+      "Support",
+      "Disruption"
+    ],
+    "complexity": 1,
+    "hp": 790,
+    "move_speed": 6.7,
+    "stamina": 2,
+    "lore": "Maggie McGinnis always had a knack for building things.  At 4 she was using Lincoln Logs to recreate architectural marvels.  At 10 she built and rewired a custom light fixture for her parent's anniversary.  At 15 she designed a machine that refined the souls of the dead...that last one got a little more attention than the Lincoln Logs.\n\nNow the head of Fairfax Industries Military R&D department, McGinnis spends her time in the machine shop, not in a lab.  She's not interested in theory, to her science is magic you can touch.",
+    "role": "Controls the battle with combat turrets",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "support",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Mini Turret",
+        "description": "Deploy a turret that shoots enemies, dealing spirit damage over time. The turret expires after a limited lifetime.Turrets deal reduced damage to troopers and objectives.",
+        "icon": "/abilities/mcginnis-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_turret.png"
+      },
+      {
+        "name": "Medicinal Specter",
+        "description": "Deploy a spirit that provides healing to nearby allies.",
+        "icon": "/abilities/mcginnis-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_resupply.png"
+      },
+      {
+        "name": "Spectral Wall",
+        "description": "Cast a wall that applies slow on enemies it passes through. Erupt the wall to divide the terrain in half and damage nearby enemies.",
+        "icon": "/abilities/mcginnis-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_fissure_2.png"
+      },
+      {
+        "name": "Heavy Barrage",
+        "description": "Unleashes a volley of rockets that home in on a targeted location. McGinnis is slowed and is still able to use stamina.",
+        "icon": "/abilities/mcginnis-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_rockets.png"
+      }
+    ],
+    "portrait_url": "/portraits/mcginnis.png",
+    "splash_url": "/mugshots/mcginnis.jpg"
+  },
+  {
+    "key": "paradox",
+    "id": 10,
+    "class_name": "hero_chrono",
+    "name": "Paradox",
+    "hero_type": "marksman",
+    "gun_tag": "Burst Fire",
+    "tags": [
+      "Calculated",
+      "Disruptor",
+      "Tactician"
+    ],
+    "complexity": 3,
+    "hp": 740,
+    "move_speed": 6.7,
+    "stamina": 3,
+    "lore": "Paradox.  An artifact of time, and the name of a notorious thieves' guild... one that prides themselves on constructing elaborate heists that target the most untouchable of individuals and institutions.  What does Paradox do with the countless artifacts, state secrets, and celebrity paternity tests that they have stolen?  Put it on display at pop-up museums, so that they can show the world that no one is out of Paradox’s reach.\n\nShrouded in mystery, each member of Paradox dons a mask and takes on the organization's name.  They are everywhere.  They are nowhere.  And if they want something, they are inevitable.",
+    "role": "Manipulates Space and Time",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Pulse Grenade",
+        "description": "Throw a grenade that begins pulsing when it lands. Each pulse expands the radius and applies spirit damage, time slow, and stacking increased damage for Paradox against the victim.",
+        "icon": "/abilities/paradox-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_bomb.png"
+      },
+      {
+        "name": "Time Wall",
+        "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. Enemies that touch the wall will be briefly slowed and silenced .",
+        "icon": "/abilities/paradox-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_wall.png"
+      },
+      {
+        "name": "Kinetic Carbine",
+        "description": "Charge up a powerful shot of time energy, dealing spirit damage and applying a Time-Stop to enemies hit. The damage dealt increases with weapon damage.",
+        "icon": "/abilities/paradox-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/duo/duo_attack.png"
+      },
+      {
+        "name": "Paradoxical Swap",
+        "description": "Fire a projectile that swaps your position with the target enemy hero.",
+        "icon": "/abilities/paradox-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_swap.png"
+      }
+    ],
+    "portrait_url": "/portraits/paradox.png",
+    "splash_url": "/mugshots/paradox.jpg"
+  },
+  {
+    "key": "dynamo",
+    "id": 11,
+    "class_name": "hero_dynamo",
+    "name": "Dynamo",
+    "hero_type": "mystic",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Teamplay",
+      "Initiator",
+      "Clutch"
+    ],
+    "complexity": 2,
+    "hp": 890,
+    "move_speed": 6.7,
+    "stamina": 3,
+    "lore": "As a Scientist, Professor Dynamo always had an inquisitive mind.  So when a rift in space and time opened up in central park he was first on the scene to investigate – and while he expected such a majestic sight to be life changing, he was thinking more in a metaphorical way as opposed to having his body atomized and reduced to a tiny dying star.\n\nBut while his body is gone, his spirit and lust for knowledge lives on.  A tenured professor at Columbia College, Dynamo looks to learn more about his condition while maintaining his class load, after all: he has future minds to inspire.",
+    "role": "Locks down the enemy team",
+    "gender": "male",
+    "nature": "spirit",
+    "damage_style": "hitscan",
+    "sub_role": "support",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Kinetic Pulse",
+        "description": "Release an energy pulse that travels along the ground, dealing spirit damage and applying knockup.",
+        "icon": "/abilities/dynamo-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_stomp.png"
+      },
+      {
+        "name": "Quantum Entanglement",
+        "description": "Briefly become untargetable while teleporting to the target location. Restores stamina upon use.",
+        "icon": "/abilities/dynamo-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_quantum.png"
+      },
+      {
+        "name": "Rejuvenating Aurora",
+        "description": "While channeling, restore health over time to you and any allies nearby.You can dash and melee without breaking the channel.",
+        "icon": "/abilities/dynamo-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_pork_bun.png"
+      },
+      {
+        "name": "Singularity",
+        "description": "Create a singularity in your hands, dealing spirit damage over time, applying stun, and pulling in nearby enemies.",
+        "icon": "/abilities/dynamo-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_vacuum.png"
+      }
+    ],
+    "portrait_url": "/portraits/dynamo.png",
+    "splash_url": "/mugshots/dynamo.jpg"
+  },
+  {
+    "key": "kelvin",
+    "id": 12,
+    "class_name": "hero_kelvin",
+    "name": "Kelvin",
+    "hero_type": "brawler",
+    "gun_tag": "Heavy Hitter",
+    "tags": [
+      "Protector",
+      "Explorer",
+      "Ice Cold"
+    ],
+    "complexity": 2,
+    "hp": 890,
+    "move_speed": 6.7,
+    "stamina": 3,
+    "lore": "A famed adventuring scientist, Kelvin made it his life's mission to explore and understand the unknowable.  So naturally when rumors surfaced regarding an 8th astral gate hidden in the arctic, Kelvin couldn't build an expedition team fast enough.  Assembling the brightest minds of his generation, Kelvin and his team set forth with much fanfare.\n\nThey never returned.\n\nA year and a half later the frozen body of Kelvin was found by a fishing trawler, his corpse clutching a rock etched with glowing runes.  The crew chipped away at the ice, looking to get a closer look at the body and were shocked when Kelvin opened his eyes.  They checked his vitals... there was no pulse.  They sought to bandage his open wounds... there was no blood.  And yet, impossibly, Kelvin was \"alive\".\n\nHaving no memory of what happened on the expedition, Kelvin is looking for answers.",
+    "role": "Freezes enemies in their tracks",
+    "gender": "male",
+    "nature": "undead",
+    "damage_style": "projectile",
+    "sub_role": "tank",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Frost Grenade",
+        "description": "Throw a grenade that explodes in a cloud of freezing ice that heals allies and applies spirit damage and move speed reduction to enemies.",
+        "icon": "/abilities/kelvin-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/freezing_grenade.png"
+      },
+      {
+        "name": "Ice Path",
+        "description": "Kelvin creates a floating trail of ice and snow that gives movement bonuses to him and his allies. Kelvin gains 60% slow resistance for the duration.",
+        "icon": "/abilities/kelvin-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_path.png"
+      },
+      {
+        "name": "Arctic Beam",
+        "description": "Shoot freezing cold energy out in front of you, damaging targets and progressively reducing their movement and fire rate the longer you sustain the beam on them. You have reduced move speed while using Arctic Beam.",
+        "icon": "/abilities/kelvin-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_beam.png"
+      },
+      {
+        "name": "Frozen Shelter",
+        "description": "Target yourself or a Hero to freeze the air and create an impenetrable dome around them. While in the dome, allies gain rapid regeneration and enemies are slowed. Objectives becomes Invulnerable and Frozen under Frozen Shelter",
+        "icon": "/abilities/kelvin-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/frozen_shelter.png"
+      }
+    ],
+    "portrait_url": "/portraits/kelvin.png",
+    "splash_url": "/mugshots/kelvin.jpg"
+  },
+  {
+    "key": "haze",
+    "id": 13,
+    "class_name": "hero_haze",
+    "name": "Haze",
+    "hero_type": "assassin",
+    "gun_tag": "Rapid Fire",
+    "tags": [
+      "Assassin",
+      "Stealthy",
+      "Lethal"
+    ],
+    "complexity": 1,
+    "hp": 740,
+    "move_speed": 8.2,
+    "stamina": 3,
+    "lore": "The Occult Security and Investigation Commission is a black box government organization that makes the CIA look transparent.  It falls on the men, women, and entities of the OSIC to keep the country safe from sinister forces that are beyond the capabilities of local law enforcement.\n\nAs a member of the notorious Sandman Division, Haze is routinely tasked with infiltrating the dreams of persons of interest, to assess their threat level, and if needed... to put them to sleep.",
+    "role": "Sneaks in and sprays bullets",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "carry",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Sleep Dagger",
+        "description": "Throw a dagger that damages and sleeps the target. Sleeping targets wake up shortly after being damaged.",
+        "icon": "/abilities/haze-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_sleep_dagger.png"
+      },
+      {
+        "name": "Smoke Bomb",
+        "description": "Fade out of sight, becoming invisible and gaining sprint speed. Attacking removes invisibility, but using items does not.",
+        "icon": "/abilities/haze-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_smoke_bomb.png"
+      },
+      {
+        "name": "Fixation",
+        "description": "Shooting a target increases your bullet damage on that target. Gain one stack per bullet hit, two if the hit is a headshot.",
+        "icon": "/abilities/haze-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_fixation.png"
+      },
+      {
+        "name": "Bullet Dance",
+        "description": "Enter a flurry, firing your weapon at nearby enemies with perfect accuracy and added Bullet Damage.",
+        "icon": "/abilities/haze-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_bullet_flurry.png"
+      }
+    ],
+    "portrait_url": "/portraits/haze.png",
+    "splash_url": "/mugshots/haze.jpg"
+  },
+  {
+    "key": "holliday",
+    "id": 14,
+    "class_name": "hero_astro",
+    "name": "Holliday",
+    "hero_type": "marksman",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Crackshot",
+      "Explosive",
+      "Apprehender"
+    ],
+    "complexity": 3,
+    "hp": 790,
+    "move_speed": 8.2,
+    "stamina": 2,
+    "lore": "There are people who spent their whole lives dreaming about moving to New York.  Holliday isn't one of those people.  Content with being a Sheriff in a small town, Holliday enjoyed a career where the only time she had to use her gun was when trick shooting at the county fair...then the murders started.\n\nGrisly and inhumane; the bodies were found with their ribcages ripped open... their innards picked apart as if by birds.  Holliday tracked down the killer, a travelling folk musician that the media dubbed \"The Troubadour\", but when she confronted him he exploded into a murder of crows and flew away.\n\nThat was 6 months ago, and while the murders in central Illinois have stopped, Holliday's investigation has not.  She believes that The Troubadour is travelling to New York, and when she finds him she's going to kill that evil son of a bitch.",
+    "role": "Bounces about dispensing trick shots",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Powder Keg",
+        "description": "Throw a barrel that explodes after a delay, dealing spirit damage and applying knockup. The barrel can be detonated early by being shot, melee'd, or detonated by another barrel.",
+        "icon": "/abilities/holliday-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_powder_keg.png"
+      },
+      {
+        "name": "Bounce Pad",
+        "description": "Drop a bounce pad in the world that launches any hero. You explode on landing, dealing Damage to any nearby enemies.",
+        "icon": "/abilities/holliday-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_bounce_pad.png"
+      },
+      {
+        "name": "Crackshot",
+        "description": "Headshots deal bonus Damage and applies a Fading Move Speed penalty. This effect can only occur when off cooldown.",
+        "icon": "/abilities/holliday-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_crackshot.png"
+      },
+      {
+        "name": "Spirit Lasso",
+        "description": "Throw out your lasso, dealing spirit damage, pulling, and applying stun.Using a Bounce Pad extends the duration of Spirit Lasso.",
+        "icon": "/abilities/holliday-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_spirit_lasso.png"
+      }
+    ],
+    "portrait_url": "/portraits/holliday.png",
+    "splash_url": "/mugshots/holliday.jpg"
+  },
+  {
+    "key": "bebop",
+    "id": 15,
+    "class_name": "hero_bebop",
+    "name": "Bebop",
+    "hero_type": "brawler",
+    "gun_tag": "Beam Weapon",
+    "tags": [
+      "Hook",
+      "Bomb",
+      "Punch"
+    ],
+    "complexity": 2,
+    "hp": 890,
+    "move_speed": 6.45,
+    "stamina": 3,
+    "lore": "Forged by the hands of a widowed junk yard attendant; Bebop was more than just some scrap golem laborer... he was the son she couldn't have.  Together they would work in the iron yard during the day, and listen to jazz at night. It was a predictable, if not comforting routine.  But now, Bebop's creator has fallen ill and while Miss Shelly wouldn't approve of the activities that Bebop does at night to pay for her medicine, what she doesn't know can't hurt her.",
+    "role": "Hooks an enemy for a knockout combo",
+    "gender": "neutral",
+    "nature": "robot",
+    "damage_style": "hybrid",
+    "sub_role": "bruiser",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Exploding Uppercut",
+        "description": "Deal melee damage to nearby enemies and apply knockback. When they land, they deal spirit damage and apply reduced fire rate to other nearby enemies.",
+        "icon": "/abilities/bebop-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_uppercut.png"
+      },
+      {
+        "name": "Sticky Bomb",
+        "description": "Attach a bomb that explodes after a delay, dealing spirit damage to nearby enemies. If the bomb hits or kills a hero, you gain permanent bonus damage on Sticky Bomb. Stacks diminish by half after 60 hits and 7 kills",
+        "icon": "/abilities/bebop-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_sticky_bomb.png"
+      },
+      {
+        "name": "Grapple Arm",
+        "description": "Launch out a mechanical hand that pulls the first character it hits, reeling them in. Grapple Arm can be used on allies.",
+        "icon": "/abilities/bebop-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hook.png"
+      },
+      {
+        "name": "Hyper Beam",
+        "description": "Channel a powerful torrent of energy that deals spirit damage and applies slow.",
+        "icon": "/abilities/bebop-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hyper_beam.png"
+      }
+    ],
+    "portrait_url": "/portraits/bebop.png",
+    "splash_url": "/mugshots/bebop.jpg"
+  },
+  {
+    "key": "calico",
+    "id": 16,
+    "class_name": "hero_nano",
+    "name": "Calico",
+    "hero_type": "assassin",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Tricksy",
+      "Slippery",
+      "Burst Damage"
+    ],
+    "complexity": 2,
+    "hp": 740,
+    "move_speed": 6.8,
+    "stamina": 3,
+    "lore": "Once a decorated member of The Baxter Society, Calico left the august order once she realized that killing monsters for free was less profitable than killing people for money.\n\nNow an in demand contract killer, Calico is living her best life ending someone else's.",
+    "role": "Wreaks havoc from the sidelines",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "diver",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Gloom Bombs",
+        "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage.Enemies hit by multiple bombs take 65% damage.",
+        "icon": "/abilities/calico-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_clustergrenade.png"
+      },
+      {
+        "name": "Leaping Slash",
+        "description": "Dash forward before slashing all enemies in a circle, dealing melee damage. If the ability hits at least one hero, heal a small amount of health.",
+        "icon": "/abilities/calico-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_dash.png"
+      },
+      {
+        "name": "Ava",
+        "description": "Turn to shadows and possess Ava. You gain bonus move speed that increases over time, and become hidden on the minimap.",
+        "icon": "/abilities/calico-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_catform.png"
+      },
+      {
+        "name": "Return to Shadows",
+        "description": "Instantly turn to shadows, becoming untargetable, gaining bonus move speed, and dealing spirit damage. After a delay, return from the shadows, dealing spirit damage again.",
+        "icon": "/abilities/calico-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_shadow_pulse.png"
+      }
+    ],
+    "portrait_url": "/portraits/calico.png",
+    "splash_url": "/mugshots/calico.jpg"
+  },
+  {
+    "key": "grey-talon",
+    "id": 17,
+    "class_name": "hero_orion",
+    "name": "Grey Talon",
+    "hero_type": "marksman",
+    "gun_tag": "Bow",
+    "tags": [
+      "Precision",
+      "Hunter",
+      "Area Denial"
+    ],
+    "complexity": 2,
+    "hp": 790,
+    "move_speed": 6.3,
+    "stamina": 4,
+    "lore": "A founding member of \"The Baxter Society\", Wesley Grey Talon spent close to 40 years hunting monsters that preyed on man before finally deciding to find a replacement and lay down his bow. Grey Talon's duties had meant that he never spent much time with his wife and kid, and now that his son had started a family of his own he realized that this was his last chance to reconnect with the people he loved.\n\nRetirement suited Wesley.  He made up for lost time with his wife.  He doted on his grandkids.  He cooked dinner for the whole family every Wednesday.  He was happy.\n\nThen he got the call.\n\nThe authorities claimed that it was a freak accident... that the fire consumed his son's house before anyone got a chance to escape.  But Wesley knew better.  His son's wife was an Ixian who could snuff out flame with a thought.  If their bodies were found burned they had to be dead long before there was a fire.\n\nAnd so Grey Talon has picked up his bow once more, and when he finds who's responsible there will be a bloody reckoning.",
+    "role": "Delivers long range skill-shots",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "projectile",
+    "sub_role": "sniper",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Charged Shot",
+        "description": "Charge up a powerful shot that pierces through enemies. Hold Ability 1 or to hold the shot.",
+        "icon": "/abilities/grey-talon-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_charged_shot.png"
+      },
+      {
+        "name": "Rain of Arrows",
+        "description": "Launches you high in the air, allowing you to glide slowly. While airborne, you gain Weapon Damage and multishot on your weapon.",
+        "icon": "/abilities/grey-talon-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_power_jump.png"
+      },
+      {
+        "name": "Spirit Snare",
+        "description": "Throw out a trap that begins to arm itself. Once armed, the trap will trigger when an enemy enters its radius, applying Curse and Movement Slow that interrupts, Silences, Disarms, and prevents item usage.Hit the trap with a Charged Shot to detonate early with increased radius.",
+        "icon": "/abilities/grey-talon-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/imobolize_trap.png"
+      },
+      {
+        "name": "Guided Owl",
+        "description": "5s cast time, launch a spirit owl that you control and which explodes on impact, damaging and stunning enemies. Press Jump / mantle to release control.",
+        "icon": "/abilities/grey-talon-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_guided_arrow.png"
+      }
+    ],
+    "portrait_url": "/portraits/grey-talon.png",
+    "splash_url": "/mugshots/grey-talon.jpg"
+  },
+  {
+    "key": "mo-krill",
+    "id": 18,
+    "class_name": "hero_krill",
+    "name": "Mo & Krill",
+    "hero_type": "brawler",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Tag-Team",
+      "Initiator",
+      "Burrower"
+    ],
+    "complexity": 3,
+    "hp": 940,
+    "move_speed": 8,
+    "stamina": 3,
+    "lore": "Mo and Krill are members of The Tunnel Rats, a group that help facilitate illicit trade and commerce between the boroughs thanks to a network of underground tunnels.  But while most denizens of the New York underworld respect the work The Rats do, every once in a while a gang tries to exploit the tunnel system for personal vendettas...that's when Mo and Krill step in and remind the city what happens to those who disrespect their hospitality.",
+    "role": "Burrows underneath his enemies",
+    "gender": "male",
+    "nature": "beast",
+    "damage_style": "hitscan",
+    "sub_role": "bruiser",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Scorn",
+        "description": "Deal damage to nearby enemies and heal yourself based on the damage done. Heal is stronger against enemy heroes.",
+        "icon": "/abilities/mo-krill-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_regen.png"
+      },
+      {
+        "name": "Burrow",
+        "description": "Burrow underground, moving faster, and gaining spirit and bullet armor. Damage from enemy heroes will reduce the speed bonus.",
+        "icon": "/abilities/mo-krill-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_spin.png"
+      },
+      {
+        "name": "Sand Blast",
+        "description": "Spray sand that disarms enemies in front of you and deals damage.",
+        "icon": "/abilities/mo-krill-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_throw_sand.png"
+      },
+      {
+        "name": "Combo",
+        "description": "Hold the target in place, stunning them and dealing damage during the channel. If they die during, or within 3 seconds of Combo ending, you permanently gain max health.",
+        "icon": "/abilities/mo-krill-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_combo.png"
+      }
+    ],
+    "portrait_url": "/portraits/mo-krill.png",
+    "splash_url": "/mugshots/mo-krill.jpg"
+  },
+  {
+    "key": "shiv",
+    "id": 19,
+    "class_name": "hero_shiv",
+    "name": "Shiv",
+    "hero_type": "brawler",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Rage",
+      "Bleed",
+      "Repeat"
+    ],
+    "complexity": 3,
+    "hp": 840,
+    "move_speed": 6.5,
+    "stamina": 3,
+    "lore": "A loyal member of \"The Baxter Society\", an international order of monster hunters, Shiv travels across North America looking to put down creatures that prey on the living.\n\nWhile his less polished nature and criminal past make some of the more traditional members of the Society wary, no one can deny his effectiveness.",
+    "role": "Bleeds out foes, then goes in for a kill",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "diver",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Serrated Knives",
+        "description": "Throw a knife that bleeds an enemy. Each additional hit adds a stack and refreshes the bleed duration, causing the bleed to increase per stack.",
+        "icon": "/abilities/shiv-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_toss.png"
+      },
+      {
+        "name": "Slice and Dice",
+        "description": "Perform a dash forward, damaging enemies along the path. Hit Enemies have their spirit resist reduced.",
+        "icon": "/abilities/shiv-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_flash.png"
+      },
+      {
+        "name": "Bloodletting",
+        "description": "Take only a portion of incoming damage immediately and defer the rest to be taken over time. Activate to clear a portion of the deferred damage.",
+        "icon": "/abilities/shiv-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_bloodletting.png"
+      },
+      {
+        "name": "Killing Blow",
+        "description": null,
+        "icon": "/abilities/shiv-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_killing_blow.png"
+      }
+    ],
+    "portrait_url": "/portraits/shiv.png",
+    "splash_url": "/mugshots/shiv.jpg"
+  },
+  {
+    "key": "ivy",
+    "id": 20,
+    "class_name": "hero_tengu",
+    "name": "Ivy",
+    "hero_type": "marksman",
+    "gun_tag": "Rapid Fire",
+    "tags": [
+      "Team-up",
+      "Disruptor",
+      "Rock Solid"
+    ],
+    "complexity": 3,
+    "hp": 765,
+    "move_speed": 7.2,
+    "stamina": 4,
+    "lore": "The gargoyle didn't know what was happening when it sprang to life...  just that a big human and a small human were being hurt.  And so the gargoyle leapt to action, sending the attackers fleeing in horror.  The small human said thank you and asked the gargoyle's name.  The gargoyle didn't have one.  And so the small human said, \"I'm going to call you Ivy.\"  The gargoyle, being covered in ivy at the time, thought it was a bit obvious, but decided to go along with it for the small human's sake.\n\nThe humans asked if Ivy would come home with them so they could show their appreciation, and so Ivy walked with them.  That night she learned much.  The family were called The Arroyo's.  The little one, Sophia.  Mofongo is what they called a plate of deliciousness.  But most importantly, she learned that the people attacking them were called \"The Mendoza Syndicate\", and they were hurting people...nice people like The Arroyo's.\n\n18 years have passed since the day the Arroyo's took Ivy home... and during that time she made it her mission to dismantle the Mendoza Syndicate and free Spanish Harlem from its grasp.  However the thing about dedicating your life to a single pursuit for nearly 2 decades is that you don't really know what to do once you achieve it.  For the first time in her life, Ivy is prepared to venture outside of Spanish Harlem and see what the world has to offer beyond vigilante justice.",
+    "role": "Sets up a power duo with a lucky ally",
+    "gender": "female",
+    "nature": "mystical",
+    "damage_style": "hitscan",
+    "sub_role": "support",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Entangling Thorns",
+        "description": "Summon a patch of choking thorns that damage and slows enemies in its radius.",
+        "icon": "/abilities/ivy-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_storm_flask.png"
+      },
+      {
+        "name": "Kudzu Connection",
+        "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting.Receive 50% of Bonuses with no connectionConnection requires line of sight.",
+        "icon": "/abilities/ivy-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_tether.png"
+      },
+      {
+        "name": "Stone Form",
+        "description": "Turn yourself into impervious stone and smash into the ground, stunning and damaging enemies nearby. Heals you for a percentage of your max health.",
+        "icon": "/abilities/ivy-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_stone_form.png"
+      },
+      {
+        "name": "Air Drop",
+        "description": "Grab an ally and take flight with them. Drop your ally to cause an explosion, dealing spirit damage.",
+        "icon": "/abilities/ivy-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_lightning_crash.png"
+      }
+    ],
+    "portrait_url": "/portraits/ivy.png",
+    "splash_url": "/mugshots/ivy.jpg"
+  },
+  {
+    "key": "warden",
+    "id": 25,
+    "class_name": "hero_warden",
+    "name": "Warden",
+    "hero_type": "brawler",
+    "gun_tag": "Heavy Hitter",
+    "tags": [
+      "Initiator",
+      "Fearless",
+      "One Man Army"
+    ],
+    "complexity": 2,
+    "hp": 815,
+    "move_speed": 6.3,
+    "stamina": 3,
+    "lore": "Most people think the supernatural came into the world 50 years ago.  They’re wrong.  Its presence shaped folklore for generations… and as long as there have been people afraid of the shadows, there have been those who dedicated their lives to fighting in them.\n\nComing from a lineage of militant alchemists, Warden’s family always trained for the day they would have to stave off a mystic apocalypse… but as time passed the importance of the lessons seemed less and less important.  What once was viewed as a sincere warning slowly morphed into being perceived as amusing anecdotes told by their superstitious grandparents.\n\nWhen the portal opened in Central Park, Warden’s parents realized not only was everything they were told was true, they were unprepared.  Refusing to let the next generation fall asleep on the job, Warden was trained since birth to be a supernatural killing machine with one purpose: stopping the Patrons from ever entering our world.",
+    "role": "Weakens his enemies and chases them down",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "bruiser",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Alchemical Flask",
+        "description": "Throw a flask that damages and reduces the weapon damage and move speed of enemies it hits.",
+        "icon": "/abilities/warden-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_crowd_control.png"
+      },
+      {
+        "name": "Willpower",
+        "description": "Gain a Barrier and bonus move speed.",
+        "icon": "/abilities/warden-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_high_alert.png"
+      },
+      {
+        "name": "Binding Word",
+        "description": "Curse an enemy hero. If they don't move away from their initial position within the escape time, they will be damaged and immobilized.",
+        "icon": "/abilities/warden-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_lock_down.png"
+      },
+      {
+        "name": "Last Stand",
+        "description": "After charging for 2s, release pulses that damage enemies and heal you based on the damage done. While channeling Last Stand you have greatly increased bullet and spirit resist.",
+        "icon": "/abilities/warden-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_riot_protocol.png"
+      }
+    ],
+    "portrait_url": "/portraits/warden.png",
+    "splash_url": "/mugshots/warden.jpg"
+  },
+  {
+    "key": "yamato",
+    "id": 27,
+    "class_name": "hero_yamato",
+    "name": "Yamato",
+    "hero_type": "assassin",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Relentless",
+      "Acrobatics",
+      "Pursuer"
+    ],
+    "complexity": 3,
+    "hp": 740,
+    "move_speed": 8.2,
+    "stamina": 3,
+    "lore": "犯罪組織のボスの家に生まれた花桜梨とその兄の大和にとって、\n父の死後に「セブンスムーン」の跡目を継ぐのは自明のことでもあった。\nそして何年もの間、かれらは対等の立場で組織を率いて利益と成功を\nもたらし、やがてはアメリカへの進出をも目論むようになった。\n\n思い描いていた計画は単純で、 大和がアメリカに渡って花桜梨の\n国際的な存在感を高め、その間花桜梨は日本に残って国内を統制する、\nといったものだった。 兄妹にとって不運だったのは、花桜梨が日本で\n指揮をとるという計画を快く思わない部下たちがいたことだった。\n\nそして迅速かつ暴力的な形で、反乱は発生した。大和は花桜梨を\n守るために命を落とし、花桜梨と数人の忠実な部下たちは、\nその大和の犠牲のおかげもあって、日本からアメリカへと\n逃げ延びることに成功した。\n\nアメリカに着いた花桜梨たちを出迎えたのは、本来であれば大和が\n会う予定となっていた男であった。彼は日本人の名前になじみが\nなかったため性別の区別がついておらず、花桜梨のことを\n「ヤマト」と呼んだ。花桜梨は男の間違いを正そうと思ったが、\n結局そのままにした。兄の記憶を残し続けるためにも、その名を名乗り、\nその夢を受け継ぐことが最善の道であろうと考えたからだ。",
+    "role": "Delivers charged attacks with finesse",
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "diver",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Power Slash",
+        "description": "Channel to increase damage over 1.4 seconds, then release a fully-charged sword strike.Press Ability 1 or to trigger the strike early, dealing partial damage.",
+        "icon": "/abilities/yamato-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_power_slash.png"
+      },
+      {
+        "name": "Flying Slash",
+        "description": "Throw a grappling hook to reel yourself towards an enemy, dealing Light melee damage and slowing the target when you arrive.",
+        "icon": "/abilities/yamato-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_flying_strike.png"
+      },
+      {
+        "name": "Crimson Slash",
+        "description": "Slash enemies in front of you, damaging them and slowing their fire rate. If any enemy heroes are hit, you heal.",
+        "icon": "/abilities/yamato-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_crimson_slash.png"
+      },
+      {
+        "name": "Shadow Transformation",
+        "description": "Become infused with Yamato's shadow soul. After an initial invincible transformation your abilities are refreshed and are 60% faster.",
+        "icon": "/abilities/yamato-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_blinding_steel.png"
+      }
+    ],
+    "portrait_url": "/portraits/yamato.png",
+    "splash_url": "/mugshots/yamato.jpg"
+  },
+  {
+    "key": "lash",
+    "id": 31,
+    "class_name": "hero_lash",
+    "name": "Lash",
+    "hero_type": "assassin",
+    "gun_tag": "Burst Fire",
+    "tags": [
+      "Initiator",
+      "High Flying",
+      "Arrogant"
+    ],
+    "complexity": 3,
+    "hp": 790,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "Jacob Lash is an asshole.",
+    "role": "Dives down to stomp his foes",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "diver",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Ground Strike",
+        "description": "Stomp the ground beneath you, damaging enemies in front of you. If you perform Ground Strike while airborne, you quickly dive towards the ground.",
+        "icon": "/abilities/lash-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_death_slam.png"
+      },
+      {
+        "name": "Grapple",
+        "description": "Pull yourself through the air toward a target. Using Grapple also resets your limit of air jumps and dashes.",
+        "icon": "/abilities/lash-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_lash.png"
+      },
+      {
+        "name": "Flog",
+        "description": "Strike enemies in front of you with your whip, healing for a portion of the damage dealt.",
+        "icon": "/abilities/lash-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_flog.png"
+      },
+      {
+        "name": "Death Slam",
+        "description": "Focus on enemies to connect whips to them. After channeling, connected enemies are lifted and stunned then slammed into the ground.",
+        "icon": "/abilities/lash-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_counter_lash.png"
+      }
+    ],
+    "portrait_url": "/portraits/lash.png",
+    "splash_url": "/mugshots/lash.jpg"
+  },
+  {
+    "key": "viscous",
+    "id": 35,
+    "class_name": "hero_viscous",
+    "name": "Viscous",
+    "hero_type": "mystic",
+    "gun_tag": "Projectile",
+    "tags": [
+      "Evasive",
+      "Disruptor",
+      "Gooey"
+    ],
+    "complexity": 2,
+    "hp": 790,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "The Bermuda Triangle was never a myth, it was a shadowline nexus deep underneath the Atlantic Ocean.  For the most part, the things that escaped this astral gate were benign (like Nessie), but now something dark and predatory known only as The Adversary hunts the seas... and ocean denizens are scared to death.\n\nOne of those inhabitants, a psychic sea anemone, wants to do something about it.  Summoning an ectoplasmic goo body to traverse the surface, Viscous is desperately trying to summon the Patrons in order to keep The Deep safe from the horror that lurks below.",
+    "role": "Rolls around deflecting bullets",
+    "gender": "neutral",
+    "nature": "mystical",
+    "damage_style": "projectile",
+    "sub_role": "bruiser",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Splatter",
+        "description": "Throw a ball of goo that deals damage and leaves puddles of goo behind that apply movement slow to enemies in the radius.",
+        "icon": "/abilities/viscous-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_ball.png"
+      },
+      {
+        "name": "The Cube",
+        "description": "Encase the target in a cube of restorative goo that protects from damage, and increases health regen. Target is unable to take any new actions while cubed.",
+        "icon": "/abilities/viscous-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_restorative_goo.png"
+      },
+      {
+        "name": "Puddle Punch",
+        "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. Punching an enemy deals melee damage and applies slow.You and your allies have increased Air Control.",
+        "icon": "/abilities/viscous-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_punch.png"
+      },
+      {
+        "name": "Goo Ball",
+        "description": "Morph into a large goo ball that deals damage and stuns enemies on impact. The ball grants large amounts of Bullet and Spirit resist, bounces off walls and can double jump.",
+        "icon": "/abilities/viscous-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_sphere.png"
+      }
+    ],
+    "portrait_url": "/portraits/viscous.png",
+    "splash_url": "/mugshots/viscous.jpg"
+  },
+  {
+    "key": "pocket",
+    "id": 50,
+    "class_name": "hero_synth",
+    "name": "Pocket",
+    "hero_type": "assassin",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Trickster",
+      "Burst Damage",
+      "Frogs"
+    ],
+    "complexity": 2,
+    "hp": 790,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "Arin Fairfax, the eldest heir to Fairfax Industries, has been living in hiding for the past 5 years after being shot and left for dead on their 18th birthday.  Arin doesn't know who is trying to keep them from taking control of their parent's company... but in the avarice fueled viper's nest that is Fairfax Industries it could be anyone.\n\nTaking on the name \"Pocket\", Arin desperately wants to keep their true identity a secret… not only for their own protection; but because they want to forge their own identity separate from their parents.",
+    "role": "Infiltrates and disrupts the backline",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Barrage",
+        "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks.Casting while airborne will cause Pocket to float.Casting AirDash or Flying Cloaking will not cancel Barrage.",
+        "icon": "/abilities/pocket-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_barrage.png"
+      },
+      {
+        "name": "Flying Cloak",
+        "description": "Launch a sentient cloak that travels forward and damages enemies. You can press Ability 2 to teleport to its location.",
+        "icon": "/abilities/pocket-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_plasma_flux.png"
+      },
+      {
+        "name": "Enchanter's Satchel",
+        "description": "Escape into your suitcase. When the duration ends, deal spirit damage to nearby enemies.",
+        "icon": "/abilities/pocket-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_pulse.png"
+      },
+      {
+        "name": "Affliction",
+        "description": "Applies damage over time to enemies nearby.Affliction's damage is non-lethal and does not apply item procs.",
+        "icon": "/abilities/pocket-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_affliction.png"
+      }
+    ],
+    "portrait_url": "/portraits/pocket.png",
+    "splash_url": "/mugshots/pocket.jpg"
+  },
+  {
+    "key": "mirage",
+    "id": 52,
+    "class_name": "hero_mirage",
+    "name": "Mirage",
+    "hero_type": "assassin",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Bodyguard",
+      "Traveller",
+      "Focused"
+    ],
+    "complexity": 2,
+    "hp": 740,
+    "move_speed": 7,
+    "stamina": 3,
+    "lore": "The Djinn are one of the more curious groups of people in the modern world.  Possessing great power in controlled doses, Djinn are incapable of maintaining corporeal form for longer than 48 minutes without resting within a vessel.  As a result, most Djinn employ human bodyguards for transport, protection, and companionship.\n\nMirage is one such bodyguard.  Employed by Djinn ambassador Nashala Dion, Mirage is in New York on a diplomatic mission.  It's the hope of the Djinn that they can negotiate with the US government for a sale of part of Wyoming so that they can build a sovereign nation for their people.",
+    "role": "Times his shots and catches fleeing targets",
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Fire Scarabs",
+        "description": "Infest an enemy with fire scarabs, stealing life from them and causing them to deal reduced damage.",
+        "icon": "/abilities/mirage-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_fire_beetles.png"
+      },
+      {
+        "name": "Dust Devil",
+        "description": "Transform yourself into a whirlwind that travels forward, damaging enemies, slowing their move speed and lifting them up in the air. After emerging from the tornado you gain bullet evasion.",
+        "icon": "/abilities/mirage-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_tornado.png"
+      },
+      {
+        "name": "Djinn's Mark",
+        "description": "Active: Consume all Djinn Mark's to deal its damage now.",
+        "icon": "/abilities/mirage-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_sand_phantom.png"
+      },
+      {
+        "name": "Traveler",
+        "description": "Target a location on the minimap. After a brief wait, teleport to that location.",
+        "icon": "/abilities/mirage-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_teleport.png"
+      }
+    ],
+    "portrait_url": "/portraits/mirage.png",
+    "splash_url": "/mugshots/mirage.jpg"
+  },
+  {
+    "key": "vyper",
+    "id": 58,
+    "class_name": "hero_viper",
+    "name": "Vyper",
+    "hero_type": "assassin",
+    "gun_tag": "Rapid Fire",
+    "tags": [
+      "Gunner",
+      "Slippery",
+      "Rat-a-Tat"
+    ],
+    "complexity": 1,
+    "hp": 790,
+    "move_speed": 6.9,
+    "stamina": 4,
+    "lore": "When it comes to breaking the law, not getting caught is a pretty important part of the job.  Vyper never got that memo.  Luckily for her, if there’s one thing she’s better at than being arrested, it’s escaping out of jail.\n\nHaving done time in every major prison in the tri-state area, Vyper has built an impressive network of street level lowlifes that owe her one.  She’s also built an impressive network of street level lowlifes that want her dead, but she tries to focus on the positive.",
+    "role": "Slither in and assassinate enemies",
+    "gender": "female",
+    "nature": "beast",
+    "damage_style": "hitscan",
+    "sub_role": "diver",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Screwjab Dagger",
+        "description": "Throw a dagger, dealing spirit damage and applying slow. Every subsequent dagger against the same target stacks in spirit damage and slow.",
+        "icon": "/abilities/vyper-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_debuffdagger.png"
+      },
+      {
+        "name": "Lethal Venom",
+        "description": "Inject a target with lethal venom. After a delay the venom triggers, dealing Spirit Damage.",
+        "icon": "/abilities/vyper-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_venom.png"
+      },
+      {
+        "name": "Slither",
+        "description": "You have increased Slide Distance, can Slide up hills, and can turn faster while Sliding.",
+        "icon": "/abilities/vyper-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_snakedash.png"
+      },
+      {
+        "name": "Petrifying Bola",
+        "description": "Throw an explosive bola. On exploding, the bola Slows and Damages all enemies in the area.",
+        "icon": "/abilities/vyper-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_petrifybola.png"
+      }
+    ],
+    "portrait_url": "/portraits/vyper.png",
+    "splash_url": "/mugshots/vyper.jpg"
+  },
+  {
+    "key": "sinclair",
+    "id": 60,
+    "class_name": "hero_magician",
+    "name": "Sinclair",
+    "hero_type": "mystic",
+    "gun_tag": "Burst Fire",
+    "tags": [
+      "Trickster",
+      "Copycat",
+      "Versatile"
+    ],
+    "complexity": 4,
+    "hp": 740,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "Henry's parents told him he was too young and impulsive to mess with real magic, and so they gave him a deck of cards to play with.  He took to sleight of hand naturally and soon was dazzling his classmates with fantastic feats of illusions that were done without mystic artifacts or incantation.\n\nWhen he was in high school he met Savannah, and their mutual love of stage magic sparked a whirlwind romance.  Soon they fell in love and created an act together.  Obviously they were meant to be; and so at prom, Henry proposed to Savannah and they married soon after graduation.\n\nUnsurprisingly both sets of parents were not thrilled at this prospect, but Henry and Savannah knew they were soulmates.  And so they cemented their love for one another by having a blood mystic bind their souls for eternity.\n\nWhen an on-stage accident claimed both their lives, no one was sure who to blame.  Henry claims Savannah was out of position.  Savannah says Henry didn't wait for his cue.  But one thing's for sure, since their souls are tied to each other neither one of them have been able to move on.  Now a bickering pair of ghosts, Henry and Savannah need to work together if they want to have any chance of undoing their eternal union.",
+    "role": "Misdirect and hex enemies",
+    "gender": "male",
+    "nature": "spirit",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Vexing Bolt",
+        "description": "Fire a bolt of magic that deals Damage, increasing as it travels. If you have an Assistant, they also cast Vexing Bolt at reduced damage.",
+        "icon": "/abilities/sinclair-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_magicbolt.png"
+      },
+      {
+        "name": "Spectral Assistant",
+        "description": "Summon an Assistant at the targeted location. The Assistant attacks whenever you fire your weapon, dealing Damage.",
+        "icon": "/abilities/sinclair-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_cloneturret.png"
+      },
+      {
+        "name": "Rabbit Hex",
+        "description": "Hex a target area and transforming all enemies into a Rabbit for a limited duration. Rabbits are small and move faster, but take increased Damage and are unable to perform most actions.Hex does not interrupt abilities.",
+        "icon": "/abilities/sinclair-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_animalcurse.png"
+      },
+      {
+        "name": "Audience Participation",
+        "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead.Copies will inherit this ability's upgrade points.Audience Participation will also copy the cooldown.",
+        "icon": "/abilities/sinclair-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_copyult.png"
+      }
+    ],
+    "portrait_url": "/portraits/sinclair.png",
+    "splash_url": "/mugshots/sinclair.jpg"
+  },
+  {
+    "key": "mina",
+    "id": 63,
+    "class_name": "hero_vampirebat",
+    "name": "Mina",
+    "hero_type": "marksman",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Harasser",
+      "Nimble",
+      "Vexing"
+    ],
+    "complexity": 3,
+    "hp": 670,
+    "move_speed": 6.5,
+    "stamina": 2,
+    "lore": "Mina Ha had it all...rich parents, elite education, and an arranged marriage that would see her ascend from run-of-the-mill upper class to American royalty.  She was happy.\n\nThen her betrothed was assassinated.\n\nMina wept; not for the life of her fiancé, but for the future that was stolen from her.  Why couldn’t the killer just wait until after the wedding? Then she’d have the last name she always dreamed of and no one would even have to pretend to love anyone.  It could have been perfect, but life wasn’t fair...and so Mina did what she always does when things don’t go her way: she told her parents to fix it.\n\nMr. And Mrs. Ha knew that the only way to appease their daughter was to offer her something greater than what she lost... and marrying into one of the world’s most lauded families was a tall order to top.  They had to think big.  They had to think outside of the box.  They had to promise their daughter immortality.\n\nIt took a small fortune, but eventually they found a vampire who was willing to turn her.  Unsurprisingly, Mina thought the idea of eternal youth and a trust fund was an acceptable plan B and happily agreed to the proposal.  Now a fledgling vampire, Mina is quickly discovering that the clout she held as a human has no weight in vampire high society...and while at first that annoyed her, if there is one thing Mina has a knack for, it's learning the rules so she can subvert them.  She will be the Viscount of New York, the other vampires just don't know it yet.",
+    "role": null,
+    "gender": "female",
+    "nature": "undead",
+    "damage_style": "hitscan",
+    "sub_role": "sniper",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Rake",
+        "description": "Active: Slash with your umbrella, dealing spirit damage, increasing with their missing health. Receive a heal for every target killed.Passive: Holding causes you to briefly float.Rake executes non-heroes below 60 health.",
+        "icon": "/abilities/mina-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_rake.png"
+      },
+      {
+        "name": "Sanguine Retreat",
+        "description": "Briefly disperse, becoming untargetable and flying to a target location. Can be recast within a brief window.",
+        "icon": "/abilities/mina-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_sanguine_retreat.png"
+      },
+      {
+        "name": "Love Bites",
+        "description": "Bullets and abilities apply spirit damage, building up to a burst of bonus spirit damage. Love Bites has a unique cooldown per target.",
+        "icon": "/abilities/mina-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_love_bites.png"
+      },
+      {
+        "name": "Nox Nostra",
+        "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence.Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
+        "icon": "/abilities/mina-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_nox_nostra.png"
+      }
+    ],
+    "portrait_url": "/portraits/mina.png",
+    "splash_url": "/mugshots/mina.jpg"
+  },
+  {
+    "key": "drifter",
+    "id": 64,
+    "class_name": "hero_drifter",
+    "name": "Drifter",
+    "hero_type": "assassin",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Stalker",
+      "Bloodthirsty",
+      "Cruel"
+    ],
+    "complexity": 3,
+    "hp": 765,
+    "move_speed": 6.9,
+    "stamina": 3,
+    "lore": "An ancient vampire roaming across America, the nameless monstrosity known as The Drifter has been preying on the living for generations.\n\nUnlike most vampires, Drifter doesn’t value finery or titles and has naked contempt for vampiric laws and tradition.  This refusal to toe the line has made him a marked man all over the North American Baronies; but while Viscounts and Elders cry for his execution, Drifter continues to do what he pleases...",
+    "role": null,
+    "gender": "male",
+    "nature": "undead",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Rend",
+        "description": "Swipe at enemies in a cone ahead of you, dealing spirit damage. If the enemy is in close range, deal bonus melee damage.",
+        "icon": "/abilities/drifter-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_claw.png"
+      },
+      {
+        "name": "Stalker's Mark",
+        "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time.While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
+        "icon": "/abilities/drifter-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_stalkersmark.png"
+      },
+      {
+        "name": "Bloodscent",
+        "description": null,
+        "icon": "/abilities/drifter-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_thehunger.png"
+      },
+      {
+        "name": "Eternal Night",
+        "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration.You gain bonus sprint speed.",
+        "icon": "/abilities/drifter-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/darkness.png"
+      }
+    ],
+    "portrait_url": "/portraits/drifter.png",
+    "splash_url": "/mugshots/drifter.jpg"
+  },
+  {
+    "key": "venator",
+    "id": 65,
+    "class_name": "hero_priest",
+    "name": "Venator",
+    "hero_type": "marksman",
+    "gun_tag": "Crossbow",
+    "tags": [
+      "Devout",
+      "Arms Expert",
+      "Tactical"
+    ],
+    "complexity": 2,
+    "hp": 790,
+    "move_speed": 6.4,
+    "stamina": 3,
+    "lore": "The Venators of St. Benedict are a Vatican-sanctioned order whose members are deployed to regions with a high concentration of supernatural predators.   Few in number, their modus operandi is to observe, identify, and exterminate. They are methodical, they are precise, and once they identify a threat to the flock they are relentless.\n\nBut even amongst those who are called The Sword Of St. Benedict, one stands apart from the others.  A man whose hardened heart has allowed him to pay terrible prices in the name of the greater good... and he has once again been dispatched to New York.",
+    "role": null,
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "projectile",
+    "sub_role": "sniper",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Consecrating Grenade",
+        "description": "Fire a grenade that bounces before exploding, dealing weapon damage and setting enemies on fire. Burning targets deal pure damage to enemies in the area and suffer from reduced healing.",
+        "icon": "/abilities/venator-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_grenade.png"
+      },
+      {
+        "name": "Gutshot",
+        "description": "Fire a blast with your shotgun, dealing weapon damage and pushing enemies back. Enemies near a wall receive stun and take bonus weapon damage.",
+        "icon": "/abilities/venator-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_shotgun.png"
+      },
+      {
+        "name": "Hex-Lined Snap Trap",
+        "description": "Kick a trap that arms after a brief delay. The trap springs on the first enemy it touches, dealing spirit damage, applying immobilize, and revealing enemies for a duration afterwards.",
+        "icon": "/abilities/venator-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_trap.png"
+      },
+      {
+        "name": "Ira Domini",
+        "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage.The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
+        "icon": "/abilities/venator-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_crossbow.png"
+      }
+    ],
+    "portrait_url": "/portraits/venator.png",
+    "splash_url": "/mugshots/venator.jpg"
+  },
+  {
+    "key": "victor",
+    "id": 66,
+    "class_name": "hero_frank",
+    "name": "Victor",
+    "hero_type": "brawler",
+    "gun_tag": "Pistol",
+    "tags": [
+      "You",
+      "Can't",
+      "Kill Me"
+    ],
+    "complexity": 2,
+    "hp": 810,
+    "move_speed": 6.3,
+    "stamina": 3,
+    "lore": "A lot of people spend their whole lives wondering who they really are. For Victor, this existential question is made more complicated as he woke up on a mortuary table with no knowledge of his creator, why he was made, and whom he is made of.\n\nNow searching the five boroughs for answers, Victor is hoping to find someone who can identify any part of him.",
+    "role": null,
+    "gender": "male",
+    "nature": "undead",
+    "damage_style": "hitscan",
+    "sub_role": "bruiser",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Pain Battery",
+        "description": "Taking any damage passively charges up your Pain Battery. Once full, activating the ability fires multiple shocking bolts, dealing spirit damage once per target.",
+        "icon": "/abilities/victor-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_pain_battery.png"
+      },
+      {
+        "name": "Jumpstart",
+        "description": "Deal spirit damage to yourself. Then, gain bonus regeneration and bonus move speed, decaying over time.",
+        "icon": "/abilities/victor-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_jump_start.png"
+      },
+      {
+        "name": "Aura of Suffering",
+        "description": "Unleash pain, dealing spirit damage over time to both enemies and yourself. The damage continues to increase the longer the ability is channeled, up to a maximum amount.",
+        "icon": "/abilities/victor-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_aura_of_suffering.png"
+      },
+      {
+        "name": "Shocking Reanimation",
+        "description": "Release a wave after taking lethal damage, applying a diminishing slow. After a brief channel you reanimate, dealing spirit damage and applying stun to nearby enemies.",
+        "icon": "/abilities/victor-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_shocking_reanimation.png"
+      }
+    ],
+    "portrait_url": "/portraits/victor.png",
+    "splash_url": "/mugshots/victor.jpg"
+  },
+  {
+    "key": "paige",
+    "id": 67,
+    "class_name": "hero_bookworm",
+    "name": "Paige",
+    "hero_type": "mystic",
+    "gun_tag": "Projectile",
+    "tags": [
+      "Helpful",
+      "Protector",
+      "Booksmart"
+    ],
+    "complexity": 1,
+    "hp": 690,
+    "move_speed": 6.9,
+    "stamina": 2,
+    "lore": "The daughter of a rare book dealer, Paige grew up in a loving home that prioritized kindness, magic, and storytelling.  But while Paige took naturally to her parents' values, her little brother Bryce did not.\n\nA rebellious teen, Bryce resented not only his family’s saccharine attitude, but also their refusal to let him dabble in magics that they deemed too dangerous.  Paige tried everything she could think of to keep him out of trouble, but like most teenagers, the more his big sister tried to tell him what was best for him, the more he turned away.\n\nPaige doesn't know what Bryce did to get kicked out of the house...just that she came home from the library to find her brother gone and her parents crying.\n\nDays turned to weeks, to months, to years.  Paige grew to become a talented bibliomancer, making a living as a storyteller reading at libraries across the five boroughs; and while her parents have remained silent about what happened with Bryce, Paige's obsession with finding him has only grown.  She will discover what happened to her brother... and no man or god is going to stand in her way.",
+    "role": null,
+    "gender": "female",
+    "nature": "human",
+    "damage_style": "projectile",
+    "sub_role": "support",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Bookwyrm",
+        "description": "Conjure a dragon that appears at the target location before flying forward, dealing spirit damage and leaving a burning path in its trail.",
+        "icon": "/abilities/paige-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_dragon.png"
+      },
+      {
+        "name": "Plot Armor",
+        "description": "Grant an ally a barrier. While the barrier holds, they gain bonus weapon damage.",
+        "icon": "/abilities/paige-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_defendandfight.png"
+      },
+      {
+        "name": "Captivating Read",
+        "description": "Target an area with latent magic, applying slow. The magic detonates after a delay, dealing spirit damage and applying immobilize.",
+        "icon": "/abilities/paige-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_blindinglight.png"
+      },
+      {
+        "name": "Rallying Charge",
+        "description": "Release a wave of spectral knights and steeds that charge across the entire city, healing allies and dealing spirit damage to enemies. The strength of the heal and spirit damage is amplified as the knights travel further.",
+        "icon": "/abilities/paige-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_charge.png"
+      }
+    ],
+    "portrait_url": "/portraits/paige.png",
+    "splash_url": "/mugshots/paige.jpg"
+  },
+  {
+    "key": "the-doorman",
+    "id": 69,
+    "class_name": "hero_doorman",
+    "name": "The Doorman",
+    "hero_type": "mystic",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Disorienting",
+      "Map Control",
+      "Mind Games"
+    ],
+    "complexity": 1,
+    "hp": 765,
+    "move_speed": 7.9,
+    "stamina": 3,
+    "lore": "He's proper, he's polite, but the humble Doorman of The Baroness Hotel is more than meets the eye.\n\nWhile he had only planned to experience life on this plane for a few weeks, The Doorman quickly discovered that the New York service industry was a great way to see the strange demands that please humans.",
+    "role": null,
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Call Bell",
+        "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow.Can be shot to detonate early.",
+        "icon": "/abilities/the-doorman-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_bell.png"
+      },
+      {
+        "name": "Doorway",
+        "description": "Place two connected doors in the world. Players and most projectiles entering one door will exit out through the other.",
+        "icon": "/abilities/the-doorman-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_doorway.png"
+      },
+      {
+        "name": "Luggage Cart",
+        "description": "Send out a luggage Cart that deals spirit damage and pulls enemy heroes along its path. Can be alt cast with to target friendly heroes instead.",
+        "icon": "/abilities/the-doorman-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_luggagetrolley.png"
+      },
+      {
+        "name": "Hotel Guest",
+        "description": "Send the target's physical body to be a guest at the Baroness Hotel. The guest is to promptly make their way to the exit elevator, where they'll be sent back to their original position.",
+        "icon": "/abilities/the-doorman-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_elevator.png"
+      }
+    ],
+    "portrait_url": "/portraits/the-doorman.png",
+    "splash_url": "/mugshots/the-doorman.jpg"
+  },
+  {
+    "key": "billy",
+    "id": 72,
+    "class_name": "hero_punkgoat",
+    "name": "Billy",
+    "hero_type": "brawler",
+    "gun_tag": "Close Range",
+    "tags": [
+      "Punk",
+      "Chaotic",
+      "G.O.A.T."
+    ],
+    "complexity": 3,
+    "hp": 830,
+    "move_speed": 7,
+    "stamina": 3,
+    "lore": "Billy is a white hot ball of rage, furious at the very notion of...something.  Maybe it’s the cops.  Maybe it’s magic regulations.  Maybe it’s the service at the gyro place downtown.  (Not the good one.  The other one.)\n\nDon't ask him how he got the goat head.",
+    "role": null,
+    "gender": "male",
+    "nature": "beast",
+    "damage_style": "hybrid",
+    "sub_role": "tank",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Bashdown",
+        "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage.The slam creates a shockwave that deals spirit damage and applies knockup.",
+        "icon": "/abilities/billy-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_sigilslam.png"
+      },
+      {
+        "name": "Rising Ram",
+        "description": "Charge head-first into an enemy and send them into the air along with Billy.Cooldown reduced by 50% on impact.",
+        "icon": "/abilities/billy-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_risingram.png"
+      },
+      {
+        "name": "Blasted",
+        "description": "Passive: Melee hits restore ammo and inflict wrecked on the victim for 7.0s.",
+        "icon": "/abilities/billy-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_blasted.png"
+      },
+      {
+        "name": "Chain Gang",
+        "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain.After a delay, yank everyone towards Billy and deal spirit damage.The chain breaks if you lose line of sight for a short while.",
+        "icon": "/abilities/billy-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_chaingang.png"
+      }
+    ],
+    "portrait_url": "/portraits/billy.png",
+    "splash_url": "/mugshots/billy.jpg"
+  },
+  {
+    "key": "graves",
+    "id": 76,
+    "class_name": "hero_necro",
+    "name": "Graves",
+    "hero_type": "marksman",
+    "gun_tag": "Pistol",
+    "tags": [
+      "Morbid",
+      "Area Denial",
+      "Necromancer"
+    ],
+    "complexity": 2,
+    "hp": 740,
+    "move_speed": 7,
+    "stamina": 2,
+    "lore": "The daughter of high-power defense attorneys, Darcy Graves grew up in a home where every conversation was a debate, argument, or negotiation. It was exhausting. But while her parents were often too busy meeting with clients or working on cases to bond with her, the dead were always there to listen.\n\nGraves enjoyed her time in the cemetery.  It was a quiet place to calm her thoughts and talk through her problems...but one day her one-sided conversations started to change.\n\nIt began with a faint whisper.  A woman's voice that seemed to respond to Graves' complaints.  Intrigued, the teenager listened...and followed the voice's instructions until it guided her to a lead-lined box buried in Van Cortlandt Park.  But while most high school students would freak out if they were to unearth a severed lich hand, Graves was certainly not most teens.  The hand now free of its prison, the lich's voice grew stronger... It had spent years looking to find a student she could pass her knowledge to, and Graves was eager to learn.\n\nNow a fledgling necromancer, Darcy balances not only her homework at Blackmore Academy...but the demands of graveyard denizens, each of whom have their own unfinished business that they seek her aid in resolving.",
+    "role": null,
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hitscan",
+    "sub_role": "carry",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Jar of Dead",
+        "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead.Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
+        "icon": "/abilities/graves-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_skull.png"
+      },
+      {
+        "name": "Grasping Hands",
+        "description": "Unearth a line of grasping hands, dealing spirit damage and applying immobilize to enemies when they pass through. Alt-Cast rotates the orientation of the wall.",
+        "icon": "/abilities/graves-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_hands.png"
+      },
+      {
+        "name": "Essence Theft",
+        "description": "Your weapon steals weapon damage and spirit resist over time, up to a maximum amount per target.",
+        "icon": "/abilities/graves-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_siphon.png"
+      },
+      {
+        "name": "Borrowed Decree",
+        "description": null,
+        "icon": "/abilities/graves-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_gravestone.png"
+      }
+    ],
+    "portrait_url": "/portraits/graves.png",
+    "splash_url": "/mugshots/graves.jpg"
+  },
+  {
+    "key": "apollo",
+    "id": 77,
+    "class_name": "hero_fencer",
+    "name": "Apollo",
+    "hero_type": "assassin",
+    "gun_tag": "Spreadshot",
+    "tags": [
+      "Finesse",
+      "Mobility",
+      "A Cut Above"
+    ],
+    "complexity": 2,
+    "hp": 780,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "A land of beauty, tradition and conflict; North Ixia is no stranger to brutal political violence. So when Apollo was told that it was for his own safety he was being sent to New York for school, he knew the situation was serious.\n\nAdjusting to life at Blackmore Academy didn’t come easy to Apollo. His school was supposed to be filled with The Cursed Apple’s best and brightest but all he saw, with few exceptions, was a sea of aggressive mediocrity. Electing not to waste his time with frivolous things like parties and dances, he instead put his energy on the piste, where he rigorously trains as captain of the Blackmore fencing team.\n\nHowever, at the end of the day Apollo does not fret too much on the tedium of life in New York. He knows that eventually the time will come when his father will call on him to come home and he will get to show that he is worthy of wielding his family's ancestral blade.",
+    "role": null,
+    "gender": "male",
+    "nature": "human",
+    "damage_style": "hybrid",
+    "sub_role": "skirmisher",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Disengaging Sigil",
+        "description": "Draw a sigil sphere in front of you and then leap backwards as it explodes, damaging and slowing enemies caught in it.",
+        "icon": "/abilities/apollo-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_sigil.png"
+      },
+      {
+        "name": "Riposte",
+        "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable, before performing a dash forward that stuns an enemy and reduces their Melee Resist.Does not trigger against trooper or neutral damage.",
+        "icon": "/abilities/apollo-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_riposte.png"
+      },
+      {
+        "name": "Flawless Advance",
+        "description": "Perform a series of lunges in any direction, delivering piercing stabs ahead of you. Hold your ability key to time your attacks, dealing more damage the longer it's held.",
+        "icon": "/abilities/apollo-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_lungingstab.png"
+      },
+      {
+        "name": "Itani Lo Sahn",
+        "description": "Charge up and perform a long range slash. Struck enemies cannot take action or heal and are stuck in slow motion.",
+        "icon": "/abilities/apollo-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_ult.png"
+      }
+    ],
+    "portrait_url": "/portraits/apollo.png",
+    "splash_url": "/mugshots/apollo.jpg"
+  },
+  {
+    "key": "rem",
+    "id": 79,
+    "class_name": "hero_familiar",
+    "name": "Rem",
+    "hero_type": null,
+    "gun_tag": null,
+    "tags": [
+      "Helpful",
+      "Tiny",
+      "zZzzZ"
+    ],
+    "complexity": 3,
+    "hp": 690,
+    "move_speed": 7.2,
+    "stamina": 3,
+    "lore": "An accidental stowaway from the world of dreams, Rem has found himself stranded in the city that never sleeps.  Driven by his curious nature, Rem and his helpful friends have been seen wandering across the five boroughs in search of a way back home.\n\nSo if you ever find yourself dozing off while taking the Blue line home from work, maybe you’ve just had an encounter with one of the Cursed Apple’s newest denizens.",
+    "role": null,
+    "gender": "neutral",
+    "nature": "ixian",
+    "damage_style": "melee",
+    "sub_role": "mage",
+    "damage_source": "spirit",
+    "abilities": [
+      {
+        "name": "Pillow Toss",
+        "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback.Landing hits reduces the cooldown of your other abilities.",
+        "icon": "/abilities/rem-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_pillow.png"
+      },
+      {
+        "name": "Tag Along",
+        "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration.Hop between allies with Ability 2 to refresh the duration, once per ally.You are knocked off if stunned by an ultimate ability.You can use items and all self-casts target your ally instead.",
+        "icon": "/abilities/rem-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_tag_along.png"
+      },
+      {
+        "name": "Lil Helpers",
+        "description": "Signal a Helper to lend a hand. Follow a trooper: Provides healing, damage, resists, and allows tagging along.",
+        "icon": "/abilities/rem-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_helpers.png"
+      },
+      {
+        "name": "Naptime",
+        "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities.When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
+        "icon": "/abilities/rem-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_sleep.png"
+      }
+    ],
+    "portrait_url": "/portraits/rem.png",
+    "splash_url": "/mugshots/rem.jpg"
+  },
+  {
+    "key": "silver",
+    "id": 80,
+    "class_name": "hero_werewolf",
+    "name": "Silver",
+    "hero_type": "marksman",
+    "gun_tag": "Long Range",
+    "tags": [
+      "Feral",
+      "Hot Mess",
+      "Transformation"
+    ],
+    "complexity": 1,
+    "hp": 840,
+    "move_speed": 6.7,
+    "stamina": 2,
+    "lore": "Lilah Silver is a mess.  She drinks too much, she smokes too much, and the less is said about her personal life the better.   But despite Silver's flaws she has managed to carve out a career as a successful bounty hunter, and while she would like to think that her successes are solely because she has incredible intuition, the fact that she’s a werewolf doesn’t hurt.",
+    "role": null,
+    "gender": "female",
+    "nature": "beast",
+    "damage_style": "hitscan",
+    "sub_role": "skirmisher",
+    "damage_source": "weapon",
+    "abilities": [
+      {
+        "name": "Slam Fire",
+        "description": "Instantly reload your gun. You gain bonus fire rate and deal bonus weapon damage based on the target's health for a limited number of shots, but suffer from reduced accuracy.",
+        "icon": "/abilities/silver-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_slamfire.png"
+      },
+      {
+        "name": "Boot Kick",
+        "description": null,
+        "icon": "/abilities/silver-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_jumpback.png"
+      },
+      {
+        "name": "Entangling Bola",
+        "description": "Throw a bola, dealing spirit damage, applying slow and preventing movement abilities, stamina, or jumping.",
+        "icon": "/abilities/silver-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_bola.png"
+      },
+      {
+        "name": "Lycan Curse",
+        "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse.Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
+        "icon": "/abilities/silver-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_lycancurse.png"
+      }
+    ],
+    "portrait_url": "/portraits/silver.png",
+    "splash_url": "/mugshots/silver.jpg"
+  },
+  {
+    "key": "celeste",
+    "id": 81,
+    "class_name": "hero_unicorn",
+    "name": "Celeste",
+    "hero_type": "marksman",
+    "gun_tag": "Burst Fire",
+    "tags": [
+      "Performer",
+      "Disruptive",
+      "Dazzling"
+    ],
+    "complexity": 2,
+    "hp": 700,
+    "move_speed": 6.2,
+    "stamina": 4,
+    "lore": "Even in a world of magic, some things are still rare and unusual. So what is a unicorn to do?  Announce her presence to the world and potentially have poachers looking to saw off her horn? Or hide in plain sight at a Coney Island Side Show where most folk would assume her appearance was just part of an act?\n\nOver the years \"The Dazzling Celeste\" has grown into one of the more popular attractions on Coney, and while the applause from a cheering audience is appreciated; what keeps her waking up in the morning is the found family she's made at work.\n\nKeruba the Mermaid.\n\nBlockhead Lenny.\n\nChickenwing.\n\nTed.\n\nThese were her people.  So when she discovered that one of her own sold part of their soul in order to cover a gambling debt, Celeste knew it was time to step out of the shadows and do whatever it takes to get it back.  Is revealing her power to The Patrons a risk?  Yes.  But that's tomorrow's problem... her family needs help today.",
+    "role": null,
+    "gender": "female",
+    "nature": "mystical",
+    "damage_style": "hitscan",
+    "sub_role": "mage",
+    "damage_source": "hybrid",
+    "abilities": [
+      {
+        "name": "Light Eater",
+        "description": "Blast enemies in a cone in front of you with a flare of light. Blasted enemies take spirit damage when attacked by Celeste and provides her spirit lifesteal.",
+        "icon": "/abilities/celeste-signature1.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_flare.png"
+      },
+      {
+        "name": "Dazzling Trick",
+        "description": "Surround yourself in a protective prism. If the barrier is destroyed, it silences nearby enemies and deals a portion of the barrier as damage.",
+        "icon": "/abilities/celeste-signature2.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_shield.png"
+      },
+      {
+        "name": "Radiant Daggers",
+        "description": "Call down a beam of light from the sky. After a short duration, the beam will fully form, causing an explosion that deals spirit damage to all targets in the area.",
+        "icon": "/abilities/celeste-signature3.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_luminousflux.png"
+      },
+      {
+        "name": "Shining Wonder",
+        "description": "Launch a deadly orb of light that deals spirit damage and applies slow and reduces Dash Distance on impact. The orb then bounces to the enemies within range.",
+        "icon": "/abilities/celeste-signature4.png",
+        "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_orb.png"
+      }
+    ],
+    "portrait_url": "/portraits/celeste.png",
+    "splash_url": "/mugshots/celeste.jpg"
+  }
+]

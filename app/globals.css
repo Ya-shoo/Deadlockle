@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Theme tokens — Deadlock: art-deco occult-noir.
+   1930s NYC / Victorian, smoky teal base, warm amber trim.
+   ========================================================= */
+
+:root {
+  /* surfaces — desaturated teal-blue, like a smoky parlour */
+  --bg-base: #0c1820;
+  --bg-surface: #132532;
+  --bg-muted: #1c3243;
+  --bg-inset: #0f1c26;
+  /* foreground — warm cream so titles read like vintage paper */
+  --fg-default: #f3e8d3;
+  --fg-muted: #b6a98e;
+  --fg-subtle: #6e7a85;
+  /* lines */
+  --border-default: #284258;
+  --border-strong: #d6a05c;
+  --hairline: rgba(243, 232, 211, 0.08);
+  /* accent — Deadlock amber gold, signature warm metal */
+  --accent: #d6a05c;
+  --accent-fg: #0c1820;
+  --accent-soft: #e9c694;
+  /* secondary — cool teal for info/eyebrows, plays against amber */
+  --info: #5ec5d4;
+  --info-on: #0c1820;
+  /* tile match colors — recolored to fit the palette */
+  --tile-correct: #7fb86c;
+  --tile-correct-fg: #0c1820;
+  --tile-partial: #d6a05c;
+  --tile-partial-fg: #0c1820;
+  --tile-far: #c75a4a;
+  --tile-far-fg: #0c1820;
+  --tile-wrong: #1c3243;
+  --tile-wrong-fg: #8b95a8;
+  /* fonts */
+  --theme-font-display: var(--font-cinzel);
+  --theme-font-body: var(--font-source-sans);
+  --theme-font-mono: var(--font-jetbrains);
+  /* shape — deco frames use small chamfers + hairline trim, not OW's
+     aggressive notches. Subtle. */
+  --radius-tile: 2px;
+  --radius-card: 2px;
+  --radius-pill: 0px;
+  --tile-clip: polygon(
+    4px 0,
+    100% 0,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    0 100%,
+    0 4px
+  );
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* atmosphere — warm amber smoke from above, cool teal from below */
+  --bg-pattern:
+    radial-gradient(
+      ellipse 70% 45% at 15% -5%,
+      rgba(214, 160, 92, 0.10),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 55% 40% at 85% 105%,
+      rgba(94, 197, 212, 0.07),
+      transparent 70%
+    );
+  --noise-opacity: 0.05;
+  /* film grain instead of CRT scanlines — feels more "smoky room" */
+  --grain-opacity: 0.06;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-muted: var(--bg-muted);
+  --color-inset: var(--bg-inset);
+  --color-ink: var(--fg-default);
+  --color-ink-soft: var(--fg-muted);
+  --color-ink-faint: var(--fg-subtle);
+  --color-line: var(--border-default);
+  --color-edge: var(--border-strong);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-on-info: var(--info-on);
+  --color-correct: var(--tile-correct);
+  --color-on-correct: var(--tile-correct-fg);
+  --color-partial: var(--tile-partial);
+  --color-on-partial: var(--tile-partial-fg);
+  --color-far: var(--tile-far);
+  --color-on-far: var(--tile-far-fg);
+  --color-wrong: var(--tile-wrong);
+  --color-on-wrong: var(--tile-wrong-fg);
+  --font-display: var(--theme-font-display);
+  --font-sans: var(--theme-font-body);
+  --font-mono: var(--theme-font-mono);
+  --radius-tile: var(--radius-tile);
+  --radius-card: var(--radius-card);
+}
+
+/* ---------- base ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--fg-default);
+  font-family: var(--theme-font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* atmospheric warm/cool wash */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--bg-pattern);
+  z-index: 0;
+}
+
+/* film grain overlay — fine SVG noise, replaces OWdle's scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- typography helpers ---------- */
+
+.font-display {
+  font-family: var(--theme-font-display), ui-serif, Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.font-mono {
+  font-family: var(--theme-font-mono), ui-monospace, "SF Mono", monospace;
+}
+
+/* Cinzel is capitals-only by design; don't double-uppercase. Use this on
+   body-font headlines that should still read deco. */
+.display-headline {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+
+/* ---------- focus ring ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none;
+}
+
+/* ---------- selection ---------- */
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+/* ---------- shared component shapes ---------- */
+
+.tile-shape {
+  border-radius: var(--radius-tile);
+  clip-path: var(--tile-clip);
+}
+
+/* Deco hairline trim — thin double border, used on cards/panels to give
+   them that 1930s NYC parlour-room feel. Apply as a class. */
+.deco-frame {
+  position: relative;
+  border: 1px solid var(--border-default);
+}
+.deco-frame::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+}
+
+/* ---------- view transitions ---------- */
+
+@view-transition {
+  navigation: auto;
+}
