@@ -22,11 +22,24 @@ function fnv1a(s: string): number {
   return h >>> 0;
 }
 
+// Manual rotation knob — bump the counter for a given UTC day to advance
+// every mode's pick to the next deterministic answer for that day. Used
+// when a daily answer needs to change after the fact (e.g. duplicate from
+// a recent day, accidental spoiler).
+const DAY_ROTATION: Record<string, number> = {
+  "2026-05-08": 1,
+};
+
+function salt(day: string): string {
+  const r = DAY_ROTATION[day] ?? 0;
+  return r > 0 ? `:r${r}` : "";
+}
+
 export function getHeroForDay(day: string): Hero {
   if (ANSWER_POOL.length === 0) {
     throw new Error("ANSWER_POOL is empty — check data/heroes.json");
   }
-  const idx = fnv1a(`deadlockle:classic:${day}`) % ANSWER_POOL.length;
+  const idx = fnv1a(`deadlockle:classic:${day}${salt(day)}`) % ANSWER_POOL.length;
   return ANSWER_POOL[idx];
 }
 
@@ -50,10 +63,10 @@ export function getAbilityForDay(day: string): {
   if (ABILITY_POOL.length === 0) {
     throw new Error("ABILITY_POOL is empty");
   }
-  const heroIdx = fnv1a(`deadlockle:ability:${day}`) % ABILITY_POOL.length;
+  const heroIdx = fnv1a(`deadlockle:ability:${day}${salt(day)}`) % ABILITY_POOL.length;
   const hero = ABILITY_POOL[heroIdx];
   const eligible = hero.abilities.filter((a) => a.icon);
-  const abIdx = fnv1a(`deadlockle:ability:${day}:idx`) % eligible.length;
+  const abIdx = fnv1a(`deadlockle:ability:${day}${salt(day)}:idx`) % eligible.length;
   const ability = eligible[abIdx];
   return {
     hero,
@@ -69,7 +82,7 @@ export function getMugshotForDay(day: string): {
   if (MUGSHOT_POOL.length === 0) {
     throw new Error("MUGSHOT_POOL is empty");
   }
-  const heroIdx = fnv1a(`deadlockle:mugshot:${day}`) % MUGSHOT_POOL.length;
+  const heroIdx = fnv1a(`deadlockle:mugshot:${day}${salt(day)}`) % MUGSHOT_POOL.length;
   const hero = MUGSHOT_POOL[heroIdx];
   return { hero, imageUrl: hero.splash_url! };
 }
@@ -78,7 +91,7 @@ export function getItemForDay(day: string): { item: Item; iconUrl: string } {
   if (ITEM_ANSWER_POOL.length === 0) {
     throw new Error("ITEM_ANSWER_POOL is empty");
   }
-  const idx = fnv1a(`deadlockle:item:${day}`) % ITEM_ANSWER_POOL.length;
+  const idx = fnv1a(`deadlockle:item:${day}${salt(day)}`) % ITEM_ANSWER_POOL.length;
   const item = ITEM_ANSWER_POOL[idx];
   return { item, iconUrl: item.icon! };
 }
@@ -98,7 +111,7 @@ export function getConversationForDay(day: string): {
   if (CONVERSATION_POOL.length === 0) {
     throw new Error("CONVERSATION_POOL is empty");
   }
-  const idx = fnv1a(`deadlockle:quote:${day}`) % CONVERSATION_POOL.length;
+  const idx = fnv1a(`deadlockle:quote:${day}${salt(day)}`) % CONVERSATION_POOL.length;
   const conv = CONVERSATION_POOL[idx];
   return {
     conversation: conv,
@@ -128,7 +141,7 @@ export function getSoundForDay(day: string): {
     throw new Error("SOUND_CONVERSATION_POOL is empty");
   }
 
-  const idx = fnv1a(`deadlockle:sound:${day}`) % SOUND_CONVERSATION_POOL.length;
+  const idx = fnv1a(`deadlockle:sound:${day}${salt(day)}`) % SOUND_CONVERSATION_POOL.length;
   return getSoundByIndex(idx);
 }
 
