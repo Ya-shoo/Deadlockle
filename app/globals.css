@@ -246,6 +246,144 @@ select:focus-visible {
   }
 }
 
+/* ---------- mode card ----------
+   Compact deco-card for the home grid. Each mode is a tactile,
+   liftable surface; amber corner ticks flicker in on hover, and
+   the outer border warms to amber so it reads like a real card
+   you're picking up off a felt table. */
+
+.mode-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 50, 67, 0.55) 0%,
+    rgba(15, 28, 38, 0.85) 100%
+  );
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  isolation: isolate;
+  box-shadow:
+    0 1px 0 rgba(243, 232, 211, 0.03) inset,
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 4px 10px -6px rgba(0, 0, 0, 0.55);
+  transition:
+    transform 240ms var(--ease-out),
+    border-color 200ms ease,
+    box-shadow 280ms var(--ease-out),
+    background-color 220ms ease;
+  will-change: transform;
+}
+
+/* deco corner ticks. Hidden by default, fade in + brighten on hover. */
+.mode-card__corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(214, 160, 92, 0);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+  transition:
+    border-color 240ms ease,
+    width 240ms var(--ease-out),
+    height 240ms var(--ease-out);
+}
+
+.mode-card__corner--tl {
+  top: 6px;
+  left: 6px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.mode-card__corner--br {
+  bottom: 6px;
+  right: 6px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* arrow chevron — tucked bottom-right, slides in on hover */
+.mode-card__arrow {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: var(--accent-soft);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms var(--ease-out);
+}
+
+/* hover / focus: lift, brighten edge, warm glow, corners light up */
+.mode-card:hover,
+.mode-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  background: linear-gradient(
+    180deg,
+    rgba(40, 66, 88, 0.7) 0%,
+    rgba(20, 36, 48, 0.9) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(243, 232, 211, 0.06) inset,
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 14px 28px -10px rgba(0, 0, 0, 0.75),
+    0 8px 22px -12px rgba(214, 160, 92, 0.32);
+}
+
+.mode-card:hover .mode-card__corner,
+.mode-card:focus-visible .mode-card__corner {
+  border-color: rgba(214, 160, 92, 0.85);
+  width: 14px;
+  height: 14px;
+}
+
+.mode-card:hover .mode-card__arrow,
+.mode-card:focus-visible .mode-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* press: shorter, softer shadow — feels like the card sets back down */
+.mode-card:active {
+  transform: translateY(-1px);
+  transition-duration: 90ms;
+  box-shadow:
+    0 1px 0 rgba(243, 232, 211, 0.03) inset,
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 6px 14px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* state nuance — won mode gets a faint green left edge so the
+   board reads at a glance once you've cleared a few. */
+.mode-card--won {
+  border-left-color: rgba(127, 184, 108, 0.55);
+}
+
+.mode-card--won:hover,
+.mode-card--won:focus-visible {
+  border-left-color: rgba(127, 184, 108, 0.9);
+}
+
+.mode-card--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mode-card,
+  .mode-card__corner,
+  .mode-card__arrow {
+    transition: none;
+  }
+  .mode-card:hover,
+  .mode-card:focus-visible {
+    transform: none;
+  }
+}
+
 /* ---------- view transitions ---------- */
 
 @view-transition {

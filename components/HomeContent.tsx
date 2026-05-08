@@ -74,11 +74,12 @@ export function HomeContent() {
           </span>
         </div>
 
-        <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {MODES.map((mode) => (
-            <li key={mode.slug} className="bg-canvas">
+        <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+          {MODES.map((mode, idx) => (
+            <li key={mode.slug}>
               <ModeCard
                 mode={mode}
+                index={idx + 1}
                 status={mode.built ? statuses[mode.slug] : undefined}
               />
             </li>
@@ -428,41 +429,59 @@ function CompleteBadge({
 
 function ModeCard({
   mode,
+  index,
   status,
 }: {
   mode: ModeDef;
+  index: number;
   status: Status | undefined;
 }) {
+  const indexLabel = String(index).padStart(2, "0");
+
   if (!mode.built) {
     return (
-      <div className="block h-full p-6 opacity-50">
-        <ModeCardInner label={mode.label} blurb={mode.blurb}>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-info">
-            Soon
-          </span>
-        </ModeCardInner>
+      <div
+        className="mode-card mode-card--disabled relative flex h-full flex-col p-5"
+        aria-disabled="true"
+      >
+        <ModeCardInner
+          label={mode.label}
+          blurb={mode.blurb}
+          indexLabel={indexLabel}
+          tag={
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-info">
+              Soon
+            </span>
+          }
+        />
       </div>
     );
   }
 
+  const state: "won" | "resume" | "fresh" = status?.won
+    ? "won"
+    : status && status.guesses > 0
+      ? "resume"
+      : "fresh";
+
   let tag: React.ReactNode;
-  if (status?.won) {
+  if (state === "won") {
     tag = (
       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-correct">
-        <span aria-hidden>✓</span> in {status.guesses}
+        <span aria-hidden>✓</span> in {status!.guesses}
       </span>
     );
-  } else if (status && status.guesses > 0) {
+  } else if (state === "resume") {
     tag = (
       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-info">
-        {status.guesses} {status.guesses === 1 ? "guess" : "guesses"} ·
-        Resume →
+        {status!.guesses} {status!.guesses === 1 ? "guess" : "guesses"} ·
+        Resume
       </span>
     );
   } else {
     tag = (
-      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-        Play →
+      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent-soft">
+        Play
       </span>
     );
   }
@@ -470,11 +489,17 @@ function ModeCard({
   return (
     <Link
       href={`/${mode.slug}/`}
-      className="group block h-full p-6 transition-colors hover:bg-muted focus-visible:bg-muted"
+      className={`mode-card mode-card--${state} group relative flex h-full flex-col p-5`}
     >
-      <ModeCardInner label={mode.label} blurb={mode.blurb}>
-        {tag}
-      </ModeCardInner>
+      <span aria-hidden className="mode-card__corner mode-card__corner--tl" />
+      <span aria-hidden className="mode-card__corner mode-card__corner--br" />
+      <ModeCardInner
+        label={mode.label}
+        blurb={mode.blurb}
+        indexLabel={indexLabel}
+        tag={tag}
+        showArrow
+      />
     </Link>
   );
 }
@@ -482,19 +507,35 @@ function ModeCard({
 function ModeCardInner({
   label,
   blurb,
-  children,
+  indexLabel,
+  tag,
+  showArrow = false,
 }: {
   label: string;
   blurb: string;
-  children: React.ReactNode;
+  indexLabel: string;
+  tag: React.ReactNode;
+  showArrow?: boolean;
 }) {
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between gap-3">
-        <h3 className="font-display text-2xl text-ink">{label}</h3>
-        {children}
+    <div className="relative flex h-full flex-col">
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint">
+          {indexLabel}
+        </span>
+        {tag}
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-ink-soft">{blurb}</p>
+      <h3 className="mt-2 font-display text-xl leading-tight text-ink">
+        {label}
+      </h3>
+      <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-ink-soft">
+        {blurb}
+      </p>
+      {showArrow && (
+        <span aria-hidden className="mode-card__arrow font-mono text-base">
+          →
+        </span>
+      )}
     </div>
   );
 }
