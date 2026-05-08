@@ -6,7 +6,9 @@ import { motion } from "motion/react";
 import { dayString, prettyDay } from "@/lib/daily";
 import { loadModeState } from "@/lib/storage";
 import {
+  ARCHIVED_MODES,
   BUILT_MODE_SLUGS,
+  IS_DEV_BUILD,
   MODES,
   type ModeDef,
   type ModeSlug,
@@ -17,6 +19,7 @@ import { NextResetCountdown } from "./NextResetCountdown";
 import { RequestNextGame } from "./RequestNextGame";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
+import { WelcomeModal } from "./WelcomeModal";
 
 type Status = { won: boolean; guesses: number };
 type StatusMap = Partial<Record<ModeSlug, Status>>;
@@ -24,6 +27,12 @@ type StatusMap = Partial<Record<ModeSlug, Status>>;
 export function HomeContent() {
   const [day, setDay] = useState<string | null>(null);
   const [statuses, setStatuses] = useState<StatusMap>({});
+  // Dev-only archive panel. Hidden by default even in dev so the regular
+  // play loop isn't cluttered while testing; the toggle below the modes
+  // grid reveals archived modes (currently just Quote → superseded by
+  // Conversation). Production builds have ARCHIVED_MODES === [], so the
+  // toggle never renders.
+  const [showArchive, setShowArchive] = useState(false);
 
   useEffect(() => {
     const d = dayString();
@@ -85,6 +94,34 @@ export function HomeContent() {
             </li>
           ))}
         </ul>
+
+        {IS_DEV_BUILD && ARCHIVED_MODES.length > 0 && (
+          <div className="mt-8 border-t border-dashed border-line/60 pt-5">
+            <button
+              type="button"
+              onClick={() => setShowArchive((s) => !s)}
+              aria-expanded={showArchive}
+              className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint transition-colors hover:text-info"
+            >
+              <span className="text-accent-soft">[dev]</span>{" "}
+              {showArchive ? "Hide" : "Show"} archive · {ARCHIVED_MODES.length}{" "}
+              {ARCHIVED_MODES.length === 1 ? "mode" : "modes"}
+            </button>
+            {showArchive && (
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+                {ARCHIVED_MODES.map((mode, idx) => (
+                  <li key={mode.slug}>
+                    <ModeCard
+                      mode={mode}
+                      index={MODES.length + idx + 1}
+                      status={mode.built ? statuses[mode.slug] : undefined}
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </section>
 
       {/* About section — keyword-rich intro for new visitors and search
@@ -100,27 +137,27 @@ export function HomeContent() {
           </h3>
           <p className="mt-3 text-base leading-relaxed text-ink-soft">
             <strong className="text-ink">Deadlockle</strong> (also known as{" "}
-            <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a free daily
-            Wordle-style hero-guessing game for Valve's{" "}
+            <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a daily
+            Wordle-style hero-guessing puzzle for Valve's{" "}
             <a
               href="https://store.steampowered.com/app/1422450/Deadlock/"
               className="text-accent underline-offset-2 hover:underline"
             >
               Deadlock
             </a>
-            . Six modes, one hero per day. Classic uses an attribute grid;
-            Quote, Ability, Item, Mugshot, and Conversation progressively
-            reveal the answer with each wrong guess. New puzzles drop at
-            midnight UTC, no signup, no ads, progress saved locally.
+            . Five modes, one hero per day. Classic is the eight-attribute
+            deduction grid; Ability, Item, Mugshot, and Conversation each
+            reveal the answer in their own way as you guess. New puzzles
+            arrive at midnight UTC, and your board waits where you left it —
+            solve a few, come back later, take your time.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            <Link
-              href="/how-to-play/"
-              className="text-accent underline-offset-2 hover:underline"
-            >
-              Read the full how-to-play guide →
-            </Link>
-          </p>
+          <Link
+            href="/guides/"
+            className="mt-6 inline-flex items-center gap-3 border border-edge bg-muted px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft transition-colors hover:bg-inset hover:text-ink"
+          >
+            Guides
+            <span aria-hidden>→</span>
+          </Link>
         </div>
       </section>
 
@@ -158,10 +195,10 @@ export function HomeContent() {
             unofficial fan project.
           </p>
           <Link
-            href="/how-to-play/"
+            href="/guides/"
             className="underline-offset-2 hover:underline"
           >
-            How to play →
+            Guides →
           </Link>
         </div>
       </footer>
@@ -191,67 +228,70 @@ function DefaultHero({ day }: { day: string | null }) {
       </p>
       <Brand as="h1" size="2xl" className="mt-6 leading-[0.95]" />
       <p className="mt-6 max-w-xl text-lg text-ink-soft">
-        Your daily Deadlock quiz. Six modes, one hero.
+        Your daily Deadlock guessing game. Five modes, fresh every day.
       </p>
       <div className="mt-8">
         <BeginButton />
+      </div>
+      <div className="mt-5">
+        <WelcomeModal />
       </div>
     </div>
   );
 }
 
-// Primary call-to-action. Dark-on-amber deco panel — feels like a brass
-// nameplate, fits Deadlock's parlour aesthetic.
+// Primary call-to-action that anchors first-time visitors to the start
+// of the sequential progression. Always points at Classic — the modes
+// grid below carries the per-mode entry points for returning users.
+// Body is solid amber with dark teal ink. Glow stays contained — dark
+// elevation shadow at rest, tight warm rim on hover — so the button
+// reads as a weighty nameplate, not a radiating beacon.
 function BeginButton() {
   return (
     <Link
       href="/classic/"
       className="begin-cta group relative inline-flex"
-      aria-label="Begin with Classic mode"
+      aria-label="Begin"
     >
-      {/* outer amber bloom — soft halo. Pulses gently while hovered
-          (see globals.css .begin-cta rule) so it stays perceptually
-          present against the panning banner. */}
+      {/* hover halo — tight + low opacity so it reads as a warm rim
+          (room light catching the edge), not a bloom radiating outward.
+          Pulses gently via globals.css .begin-cta. */}
       <span
         aria-hidden
-        className="begin-halo pointer-events-none absolute -inset-3 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
-        style={{ background: "rgba(214, 160, 92, 0.45)" }}
+        className="begin-halo pointer-events-none absolute -inset-1 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+        style={{ background: "rgba(214, 160, 92, 0.32)" }}
       />
 
-      {/* inner crisp glow — narrower, less blur, holds a hard edge
-          even when the banner pans bright/warm tones behind it. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -inset-0.5 opacity-0 blur-md transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
-        style={{ background: "rgba(233, 198, 148, 0.55)" }}
-      />
-
-      <span className="relative inline-flex items-center gap-4 border border-edge bg-muted px-8 py-4 font-display text-base font-bold uppercase tracking-[0.16em] shadow-xl shadow-black/50 transition-transform duration-200 group-hover:-translate-y-0.5 group-active:translate-y-0">
+      {/* button body — solid brass panel with deco hairline inset. Dark
+          drop shadow at rest gives it weight (a real plate sitting on
+          the table). On hover it brightens slightly and gains a tight
+          downward amber drop. */}
+      <span className="relative inline-flex items-center gap-4 bg-accent px-10 py-5 font-display text-lg font-bold uppercase tracking-[0.18em] text-on-accent shadow-md shadow-black/30 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:bg-accent-soft group-hover:shadow-[0_8px_18px_-10px_var(--accent)] group-active:translate-y-0">
+        {/* deco hairline inset — engraved-on-brass feel, signature
+            parlour detail. Dark teal on amber so it reads cleanly. */}
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-1 border border-hairline"
+          className="pointer-events-none absolute inset-1 border"
+          style={{ borderColor: "rgba(12, 24, 32, 0.22)" }}
         />
         <svg
           aria-hidden
           width="10"
           height="12"
           viewBox="0 0 10 12"
-          className="relative shrink-0 text-accent-soft"
+          className="relative shrink-0 text-on-accent"
         >
           <polygon points="0,0 10,6 0,12" fill="currentColor" />
         </svg>
 
-        <span className="relative">
-          <span className="text-ink-soft">Begin with </span>
-          <span className="text-accent-soft">Classic</span>
-        </span>
+        <span className="relative">Begin</span>
 
         <svg
           aria-hidden
           width="18"
           height="12"
           viewBox="0 0 18 12"
-          className="relative shrink-0 text-accent-soft transition-transform duration-200 group-hover:translate-x-1"
+          className="relative shrink-0 text-on-accent transition-transform duration-200 group-hover:translate-x-1"
         >
           <path
             d="M0 6 L16 6 M11 1 L17 6 L11 11"

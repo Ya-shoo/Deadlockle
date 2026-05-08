@@ -25,11 +25,23 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { spawn } from "node:child_process";
 import ffmpegPath from "ffmpeg-static";
+import {
+  buildStandardizedCentroid,
+  computeStandardization,
+  diarizeAndSplit,
+  gatherHeroFrames,
+  loadVoiceprintCache,
+  saveVoiceprintCache,
+} from "./lib/diarize.mjs";
+import { alignLinesToWhisper, runWhisper } from "./lib/whisper-align.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HEROES_IN = resolve(__dirname, "..", "data", "heroes.json");
+const VOICELINES_IN = resolve(__dirname, "..", "data", "voicelines.json");
+const VOICEPRINTS_OUT = resolve(__dirname, "..", "data", "voiceprints.json");
 const OUT_MANIFEST = resolve(__dirname, "..", "data", "sound-conversations.json");
 const OUT_DIR = resolve(__dirname, "..", "public", "voicelines", "conversations");
+const PUBLIC_ROOT = resolve(__dirname, "..", "public");
 
 const WIKI = "https://deadlock.wiki";
 const UA = "deadlockle-conversation-audio/0.1 (yashpa0326@gmail.com)";
@@ -251,7 +263,19 @@ function transcodeToMono64k(srcPath, outPath) {
 
 // Run ffmpeg silencedetect on a file and capture the stderr output that
 // the filter writes its findings to. Returns the raw stderr text.
-function runSilenceDetect(audioPath, threshold = "-25dB", minDur = "0.15") {
+//
+// Parameter notes:
+//  - threshold: how quiet a region must be to count as silence. -25dB is
+//    permissive (catches breath pauses); -32dB requires deeper silence
+//    (only between-speaker handoffs typically qualify).
+//  - minDur: minimum silence run-length. 0.15s catches mid-sentence
+//    breaths; 0.4s typically only fires on speaker handoffs and
+//    paragraph-level pauses.
+//
+// computeLineRanges below walks a ladder of these from strict → permissive
+// so we prefer cleanly-split conversations and only fall back to looser
+// parameters when the strict pass can't find enough boundaries.
+function runSilenceDetect(audioPath, threshold = "-32dB", minDur = "0.4") {
   return new Promise((resolveFn, rejectFn) => {
     const args = [
       "-i", audioPath,
@@ -290,18 +314,168 @@ function getDurationSeconds(audioPath) {
 // into the expected number of segments — caller should drop the
 // conversation in that case.
 //
-// Strategy:
-//  1. Detect silences with a generous threshold.
-//  2. Strip the leading and trailing silences (head/tail dead air).
-//  3. From the remaining internal silences, pick the (lineCount-1)
-//     longest as the line boundaries.
-//  4. Each line's audio runs from the previous boundary's silence_end
-//     to the next boundary's silence_start, so playback excludes the
-//     pause and starts crisply on speech.
-async function computeLineRanges(audioPath, lineCount) {
+// Strategy: walk a ladder of (threshold, minDur) parameter pairs from
+// strict (deep silence + long minDur — only between-speaker handoffs
+// register) to permissive (catches shallower / shorter pauses too).
+// For each pair:
+//   1. Detect silences.
+//   2. Strip leading and trailing silences (head/tail dead air).
+//   3. If we have at least (lineCount - 1) internal silences, pick the
+//      longest as line boundaries.
+//   4. Validate the resulting per-line durations are roughly proportional
+//      to text length (median chars/sec across lines, with each line
+//      required to land within tolerance bounds). If not, this split is
+//      probably cutting mid-sentence — try the next looser parameter set.
+//
+// Each line's audio runs from the previous boundary's silence_end to the
+// next boundary's silence_start, so playback excludes the pause and
+// starts crisply on speech.
+
+const SILENCE_PARAM_LADDER = [
+  // Deep silence + long pause → reliably matches speaker handoffs only.
+  { threshold: "-35dB", minDur: "0.5" },
+  { threshold: "-32dB", minDur: "0.4" },
+  { threshold: "-30dB", minDur: "0.4" },
+  { threshold: "-30dB", minDur: "0.3" },
+  { threshold: "-28dB", minDur: "0.25" },
+  // Permissive fallbacks for conversations with brief / shallow speaker
+  // handoffs. The WPS validator still gates the result, so loosening
+  // here mainly recovers cases where we previously lacked enough
+  // silences at all — not cases where the splits would be wrong.
+  { threshold: "-26dB", minDur: "0.2" },
+  { threshold: "-25dB", minDur: "0.15" },
+  { threshold: "-22dB", minDur: "0.15" },
+];
+
+async function computeLineRanges(audioPath, lines, voiceprints = null, speakers = null) {
+  const lineCount = lines.length;
   if (lineCount < 1) return null;
-  const stderr = await runSilenceDetect(audioPath);
   const duration = await getDurationSeconds(audioPath);
+
+  // Single-line conversations: just play the whole file.
+  if (lineCount === 1) {
+    return [{ start: 0, duration: round3(duration) }];
+  }
+
+  // Strategy 0 — whisper.cpp forced alignment. Highest accuracy: we know
+  // the transcript, Whisper tells us when each word is spoken, and
+  // Needleman-Wunsch sequence alignment tolerates small ASR errors. This
+  // is the primary strategy. Falls through to MFCC diarization if it
+  // fails (e.g., Whisper transcription too sparse to align reliably).
+  try {
+    const words = await runWhisper(audioPath);
+    const aligned = alignLinesToWhisper(words, lines);
+    if (aligned.ok) {
+      const reason = validateRangesByText(aligned.ranges, lines);
+      if (!reason) {
+        return aligned.ranges;
+      }
+      // WPS validator rejected — Whisper alignment produced something
+      // implausible. Fall through to next strategy.
+    }
+  } catch (e) {
+    // whisper-cli missing / model missing / decode error — silently fall
+    // back so the build doesn't blow up.
+    if (process.env.DEADLOCKLE_DEBUG) {
+      console.log(`    [whisper unavailable: ${e.message}]`);
+    }
+  }
+
+  // Strategy 1 — speaker diarization. Decode + MFCC + classify against
+  // per-hero voiceprints, then snap transitions to the nearest detected
+  // silence. Primary fallback for clips where Whisper alignment didn't
+  // pan out — handles cases where one speaker has voicelines on file.
+  if (voiceprints && speakers && voiceprints.stats) {
+    const centroidA = voiceprints.centroids.get(speakers[0]);
+    const centroidB = voiceprints.centroids.get(speakers[1]);
+    if (centroidA && centroidB) {
+      const silenceData = await collectSilences(audioPath, duration);
+      const result = await diarizeAndSplit({
+        audioPath,
+        lines,
+        centroidA,
+        centroidB,
+        stats: voiceprints.stats,
+        silences: silenceData.internal,
+        headSilenceEnd: silenceData.headEnd,
+        tailSilenceStart: silenceData.tailStart,
+      });
+      if (result.ok) {
+        // Validate the diarization-derived ranges against the WPS check.
+        // Same backstop as the silence-only path — if the words/seconds
+        // ratio is implausible, refuse. This catches edge cases where
+        // diarization snaps to the wrong silence.
+        const reason = validateRangesByText(result.ranges, lines);
+        if (!reason) {
+          return result.ranges;
+        }
+        // fall through to silence-only fallback
+      }
+    }
+  }
+
+  // Strategy 2 — silence-only ladder. Used when voiceprints are missing
+  // for one of the speakers (e.g., newer heroes without sampled voicelines)
+  // or when diarization can't decide. Walks from strict silence params to
+  // permissive, with WPS validation gating each candidate split.
+  let lastError = null;
+  for (const params of SILENCE_PARAM_LADDER) {
+    const candidate = await tryComputeRanges(
+      audioPath,
+      duration,
+      lines,
+      params,
+    );
+    if (candidate.ok) return candidate.ranges;
+    lastError = candidate.reason;
+  }
+  if (lastError) {
+    return { _failed: true, reason: lastError };
+  }
+  return null;
+}
+
+// Collect silences for snap-to-nearest in diarization. Uses moderately
+// permissive params so we have plenty of candidates to snap to (we're
+// not relying on these to BE the boundaries — diarization decides
+// where the boundary is, silence just decides where to land it).
+async function collectSilences(audioPath, duration) {
+  const stderr = await runSilenceDetect(audioPath, "-28dB", "0.2");
+  const matches = [
+    ...stderr.matchAll(/silence_(start|end):\s*(-?\d+(?:\.\d+)?)/g),
+  ];
+  const silences = [];
+  let cur = null;
+  for (const m of matches) {
+    const t = parseFloat(m[2]);
+    if (m[1] === "start") {
+      cur = { start: Math.max(0, t) };
+    } else if (cur) {
+      cur.end = Math.min(duration, t);
+      cur.duration = cur.end - cur.start;
+      if (cur.duration > 0) silences.push(cur);
+      cur = null;
+    }
+  }
+  let headEnd = 0;
+  let tailStart = duration;
+  const internal = silences.slice();
+  if (internal.length && internal[0].start <= 0.25) {
+    headEnd = internal[0].end;
+    internal.shift();
+  }
+  if (
+    internal.length &&
+    internal[internal.length - 1].end >= duration - 0.25
+  ) {
+    tailStart = internal[internal.length - 1].start;
+    internal.pop();
+  }
+  return { internal, headEnd, tailStart };
+}
+
+async function tryComputeRanges(audioPath, duration, lines, { threshold, minDur }) {
+  const stderr = await runSilenceDetect(audioPath, threshold, minDur);
 
   const matches = [
     ...stderr.matchAll(/silence_(start|end):\s*(-?\d+(?:\.\d+)?)/g),
@@ -320,14 +494,9 @@ async function computeLineRanges(audioPath, lineCount) {
     }
   }
 
-  // Single-line conversations: just play the whole file.
-  if (lineCount === 1) {
-    return [{ start: 0, duration }];
-  }
-
   // Strip lead-in and trailing silence — they aren't real boundaries.
-  const HEAD_TOL = 0.2;
-  const TAIL_TOL = 0.2;
+  const HEAD_TOL = 0.25;
+  const TAIL_TOL = 0.25;
   let leadInEnd = 0;
   let trailingStart = duration;
   if (silences.length && silences[0].start <= HEAD_TOL) {
@@ -342,7 +511,10 @@ async function computeLineRanges(audioPath, lineCount) {
     silences.pop();
   }
 
-  if (silences.length < lineCount - 1) return null;
+  const lineCount = lines.length;
+  if (silences.length < lineCount - 1) {
+    return { ok: false, reason: `not_enough_silences (${silences.length} < ${lineCount - 1})` };
+  }
 
   // Pick the longest (lineCount - 1) silences and re-sort by time.
   const picked = [...silences]
@@ -355,18 +527,84 @@ async function computeLineRanges(audioPath, lineCount) {
   for (const s of picked) {
     const start = prevEnd;
     const end = s.start;
-    if (end - start <= 0.1) return null; // implausibly short
+    if (end - start <= 0.15) {
+      return { ok: false, reason: "segment_too_short" };
+    }
     ranges.push({ start: round3(start), duration: round3(end - start) });
     prevEnd = s.end;
   }
   const finalStart = prevEnd;
   const finalEnd = trailingStart;
-  if (finalEnd - finalStart <= 0.1) return null;
+  if (finalEnd - finalStart <= 0.15) {
+    return { ok: false, reason: "trailing_segment_too_short" };
+  }
   ranges.push({
     start: round3(finalStart),
     duration: round3(finalEnd - finalStart),
   });
-  return ranges;
+
+  // Plausibility check: per-line audio_duration should be roughly
+  // proportional to spoken text length. Sentence-internal pause
+  // mis-splits show up as a line whose audio is way too short
+  // for its words (or way too long, for the line that absorbed the
+  // skipped portion). We compute the median chars/sec across lines
+  // and require every line's chars/sec to land in a tolerance band
+  // around it. Median is robust to single outliers and tolerates
+  // brisk lines / dragged lines fine; what it rejects is a single
+  // line whose ratio is implausibly off relative to the rest.
+  const reason = validateRangesByText(ranges, lines);
+  if (reason) {
+    return { ok: false, reason };
+  }
+  return { ok: true, ranges };
+}
+
+// Returns null if the per-line durations look proportional to text length,
+// otherwise returns a short reason string (used in logging).
+function validateRangesByText(ranges, lines) {
+  // Use word count rather than raw character count — punctuation and
+  // contractions skew chars-per-sec, but words-per-sec is steady (~2.5
+  // for a Deadlock voice line). Skip lines with zero/blank text just
+  // in case (shouldn't happen post-cleanWikiText).
+  const stats = ranges.map((r, i) => {
+    const wordCount = (lines[i].text.match(/\b\w[\w'-]*\b/g) || []).length;
+    return {
+      idx: i,
+      wordCount,
+      duration: r.duration,
+      // Avoid div-by-zero. A pure-punctuation line shouldn't exist but be
+      // defensive.
+      wps: wordCount > 0 ? wordCount / r.duration : null,
+    };
+  });
+
+  // Compute median wps across lines that have words, ignoring extremes.
+  const wpsValues = stats.map((s) => s.wps).filter((v) => v != null);
+  if (wpsValues.length === 0) return "no_word_stats";
+  wpsValues.sort((a, b) => a - b);
+  const medianWps = wpsValues[Math.floor(wpsValues.length / 2)];
+
+  // Tolerance: a single line's words-per-second can be at most 2.5×
+  // the median (suspiciously rushed: line is too short for its words,
+  // suggesting the audio was cut mid-line) or at least 0.4× the median
+  // (suspiciously dragged: the line absorbed audio that belongs to a
+  // neighbour). For very short lines (1-2 words) widen the tolerance
+  // since a single word's timing varies a lot.
+  const FAST_FACTOR = 2.5;
+  const SLOW_FACTOR = 0.4;
+  for (const s of stats) {
+    if (s.wps == null) continue;
+    const isShort = s.wordCount <= 2;
+    const fastBound = isShort ? FAST_FACTOR * 1.6 : FAST_FACTOR;
+    const slowBound = isShort ? SLOW_FACTOR * 0.6 : SLOW_FACTOR;
+    if (s.wps > medianWps * fastBound) {
+      return `line_${s.idx}_too_fast (${s.wordCount}w/${s.duration.toFixed(2)}s, wps=${s.wps.toFixed(2)} vs median=${medianWps.toFixed(2)})`;
+    }
+    if (s.wps < medianWps * slowBound) {
+      return `line_${s.idx}_too_slow (${s.wordCount}w/${s.duration.toFixed(2)}s, wps=${s.wps.toFixed(2)} vs median=${medianWps.toFixed(2)})`;
+    }
+  }
+  return null;
 }
 
 function round3(n) {
@@ -385,7 +623,167 @@ async function resolveFileUrl(filename) {
   return null;
 }
 
+// Walk the existing manifest + local MP3s, re-run silence-detect with the
+// updated splitter, and write back. Used after tweaking the splitter to
+// fix mis-split conversations without re-downloading 30+MB of audio.
+async function recomputeOnly() {
+  const manifest = JSON.parse(await readFile(OUT_MANIFEST, "utf-8"));
+  const { centroids, stats } = await loadOrBuildVoiceprints({ rebuild: false });
+  const heroesWithPrints = centroids.size;
+  console.log(
+    `Recomputing ranges for ${manifest.length} conversations (voiceprints for ${heroesWithPrints} heroes)...`,
+  );
+  const updated = [];
+  let dropped = 0;
+  let changed = 0;
+  let unchanged = 0;
+  let diarized = 0;
+  let silenceOnly = 0;
+  for (const c of manifest) {
+    // c.audio is `/voicelines/...` (web-rooted). Strip the leading slash
+    // so path.resolve treats it as relative to public/ rather than as an
+    // absolute filesystem path (which would discard the earlier segments).
+    const localPath = resolve(
+      PUBLIC_ROOT,
+      c.audio.replace(/^\//, ""),
+    );
+    try {
+      const haveBoth =
+        centroids.has(c.speakers[0]) && centroids.has(c.speakers[1]);
+      if (haveBoth) diarized++;
+      else silenceOnly++;
+      const ranges = await computeLineRanges(
+        localPath,
+        c.lines,
+        haveBoth ? { centroids, stats } : null,
+        c.speakers,
+      );
+      if (!ranges || ranges._failed) {
+        dropped++;
+        const reason = ranges?.reason ?? "no_ranges";
+        console.log(`  drop ${c.audio.split("/").pop()} — ${reason}`);
+        // Leave the local MP3 in place: this lets us iterate on the
+        // splitter / validator and re-run --recompute-only without
+        // re-downloading. A separate prune pass can clean up files that
+        // are no longer in the manifest if disk usage matters.
+        continue;
+      }
+      const before = c.lines
+        .map((l) => `${l.audioStart}+${l.audioDuration}`)
+        .join(",");
+      const linesWithAudio = c.lines.map((line, i) => ({
+        speaker: line.speaker,
+        text: line.text,
+        audioStart: ranges[i].start,
+        audioDuration: ranges[i].duration,
+      }));
+      const after = linesWithAudio
+        .map((l) => `${l.audioStart}+${l.audioDuration}`)
+        .join(",");
+      if (before !== after) changed++;
+      else unchanged++;
+      const finalSize = (await stat(localPath)).size;
+      updated.push({
+        speakers: c.speakers,
+        audio: c.audio,
+        bytes: finalSize,
+        lines: linesWithAudio,
+      });
+    } catch (e) {
+      console.log(`  drop ${c.audio.split("/").pop()} — ${e.message}`);
+      dropped++;
+      await unlink(localPath).catch(() => {});
+    }
+  }
+  await writeFile(OUT_MANIFEST, JSON.stringify(updated, null, 2));
+  console.log(
+    `\nRecompute done: ${updated.length} kept (${changed} re-split, ${unchanged} unchanged), ${dropped} dropped.`,
+  );
+  console.log(
+    `  → ${diarized} attempted with diarization, ${silenceOnly} silence-only (missing voiceprint).`,
+  );
+}
+
+// Build (or load) per-hero voiceprints. Two-pass:
+//   1. Gather speech-only MFCC frames from every hero's voiceline clips.
+//   2. Compute global mean+std across the combined frame pool — this is
+//      the standardization basis used at both build and classify time.
+//   3. Standardize each hero's frames against that and average to a
+//      centroid.
+//
+// Cached to data/voiceprints.json so subsequent runs are fast. `rebuild:
+// true` forces full recomputation (use after voicelines.json changes —
+// e.g., new heroes added — since the global stats need to include them).
+async function loadOrBuildVoiceprints({ rebuild = false } = {}) {
+  if (!rebuild) {
+    const cached = await loadVoiceprintCache(VOICEPRINTS_OUT);
+    if (cached.stats && cached.centroids.size > 0) {
+      return cached;
+    }
+  }
+  let voicelines;
+  try {
+    voicelines = JSON.parse(await readFile(VOICELINES_IN, "utf-8"));
+  } catch (e) {
+    console.log(`  (no data/voicelines.json — ${e.message}; diarization disabled)`);
+    return { centroids: new Map(), stats: null };
+  }
+  const heroKeys = Object.keys(voicelines);
+  console.log(
+    `Building voiceprints (full rebuild for global standardization)...`,
+  );
+
+  // Pass 1: gather raw frames per hero.
+  const heroFrames = new Map();
+  for (const k of heroKeys) {
+    const clips = voicelines[k]?.clips ?? [];
+    if (clips.length === 0) continue;
+    const clipPaths = clips
+      .map((c) => resolve(PUBLIC_ROOT, c.url.replace(/^\//, "")))
+      .filter(Boolean);
+    const frames = await gatherHeroFrames(k, clipPaths);
+    heroFrames.set(k, frames);
+    console.log(`  ${k.padEnd(15)} ${clips.length} clips → ${frames.length} speech frames`);
+  }
+
+  // Pass 2: pool ALL frames, compute global mean/std.
+  const pooled = [];
+  for (const frames of heroFrames.values()) {
+    for (const f of frames) pooled.push(f);
+  }
+  const stats = computeStandardization(pooled);
+  if (!stats) {
+    console.log(`  (no usable frames across any hero — diarization disabled)`);
+    return { centroids: new Map(), stats: null };
+  }
+  console.log(
+    `  global stats: ${pooled.length} frames pooled across ${heroFrames.size} heroes`,
+  );
+
+  // Pass 3: standardize each hero's frames into a centroid.
+  const centroids = new Map();
+  for (const [k, frames] of heroFrames.entries()) {
+    const centroid = buildStandardizedCentroid(frames, stats);
+    if (centroid) {
+      centroids.set(k, centroid);
+    } else {
+      console.log(`  ${k.padEnd(15)} insufficient speech frames — no centroid`);
+    }
+  }
+  await saveVoiceprintCache(VOICEPRINTS_OUT, centroids, stats);
+  console.log(`  → ${centroids.size} centroids saved`);
+  return { centroids, stats };
+}
+
 async function main() {
+  if (process.argv.includes("--rebuild-voiceprints")) {
+    await loadOrBuildVoiceprints({ rebuild: true });
+    return;
+  }
+  if (process.argv.includes("--recompute-only")) {
+    await recomputeOnly();
+    return;
+  }
   await mkdir(OUT_DIR, { recursive: true });
   const heroes = JSON.parse(await readFile(HEROES_IN, "utf-8"));
 
@@ -489,6 +887,7 @@ async function main() {
   // (lineCount - 1) boundaries are dropped — better to ship a smaller
   // pool of accurately-split clips than gamble on misaligned audio.
   console.log(`\nPass 3: downloading, transcoding, splitting audio...`);
+  const { centroids, stats } = await loadOrBuildVoiceprints();
   const manifest = [];
   let droppedNoSplit = 0;
   for (const c of conversations) {
@@ -506,9 +905,19 @@ async function main() {
       await transcodeToMono64k(tmpPath, outPath);
       await unlink(tmpPath).catch(() => {});
 
-      const ranges = await computeLineRanges(outPath, c.lines.length);
-      if (!ranges) {
+      const haveBoth =
+        centroids.has(c.speakers[0]) && centroids.has(c.speakers[1]);
+      const ranges = await computeLineRanges(
+        outPath,
+        c.lines,
+        haveBoth ? { centroids, stats } : null,
+        c.speakers,
+      );
+      if (!ranges || ranges._failed) {
         droppedNoSplit++;
+        if (ranges?._failed) {
+          console.log(`    ${c.file}: drop (split fail — ${ranges.reason})`);
+        }
         await unlink(outPath).catch(() => {});
         continue;
       }

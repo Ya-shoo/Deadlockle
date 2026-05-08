@@ -16,7 +16,6 @@ import {
 } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { HeroCombobox } from "./HeroCombobox";
-import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
 import { ShareButton } from "./ShareButton";
 import { NextModeCTA } from "./NextModeCTA";
@@ -182,18 +181,13 @@ export function AbilityGame() {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-2.5">
         <AnimatePresence initial={false}>
           {[...guessedHeroes].reverse().map((hero, revIdx) => {
             const originalIdx = guessedHeroes.length - 1 - revIdx;
             const isLatest = originalIdx === guessedHeroes.length - 1;
             return (
-              <GuessRow
-                key={hero.key}
-                guess={hero}
-                answer={answer}
-                isLatest={isLatest}
-              />
+              <WrongGuessCard key={hero.key} hero={hero} isLatest={isLatest} />
             );
           })}
         </AnimatePresence>
@@ -207,6 +201,32 @@ export function AbilityGame() {
         </div>
       )}
     </main>
+  );
+}
+
+function WrongGuessCard({ hero, isLatest }: { hero: Hero; isLatest: boolean }) {
+  return (
+    <motion.div
+      layout
+      initial={isLatest ? { opacity: 0, y: -10 } : false}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="tile-shape mx-auto flex w-full max-w-xs flex-col items-center justify-center gap-3 border border-far/40 bg-far/15 px-5 py-6"
+    >
+      {hero.portrait_url && (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={hero.portrait_url}
+          alt={hero.name}
+          width={112}
+          height={112}
+          className="h-24 w-24 rounded-(--radius-card) bg-muted object-cover sm:h-28 sm:w-28"
+        />
+      )}
+      <div className="font-display text-2xl uppercase tracking-wide text-ink sm:text-3xl">
+        {hero.name}
+      </div>
+    </motion.div>
   );
 }
 

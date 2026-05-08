@@ -4,7 +4,7 @@ import { Brand } from "@/components/Brand";
 
 const TITLE = "How to Play — Daily Deadlock Hero Quiz Guide";
 const DESCRIPTION =
-  "Complete guide to Deadlockle, the daily Wordle-style quiz for Valve's Deadlock. Rules, strategy, and FAQ for every mode — Classic, Quote, Ability, Item, and Mugshot.";
+  "Complete guide to Deadlockle, the daily Wordle-style quiz for Valve's Deadlock. Rules, strategy, and FAQ for every mode — Classic, Ability, Item, Mugshot, and Conversation.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const FAQ: Array<{ q: string; a: string }> = [
   {
     q: "What is Deadlockle?",
-    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle — the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and quotes.",
+    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle — the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
   },
   {
     q: "When does the daily puzzle reset?",
@@ -105,28 +105,6 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 2"
-          title="Quote — guess both Deadlock speakers"
-          href="/quote/"
-        >
-          <p>
-            A line of dialogue appears, spoken by one Deadlock hero and
-            addressed to another. You need to identify <em>both</em>. Wrong
-            guesses don't reveal the answer — they just take a try off the
-            counter. Quotes are sourced from in-game voice lines on the
-            official Deadlock wiki.
-          </p>
-          <p className="mt-3">
-            <strong className="text-ink">Strategy:</strong> tone is the
-            biggest tell — Drifter's clipped centuries-old cadence sounds
-            nothing like Paige's bureaucratic precision. The{" "}
-            <em>addressed-to</em> hero is harder; lean on canonical
-            relationships (Apollo and Graves are classmates, Mo &amp; Krill
-            bicker constantly with Bebop).
-          </p>
-        </Section>
-
-        <Section
-          eyebrow="Mode 3"
           title="Ability — whose Deadlock ability is this?"
           href="/ability/"
         >
@@ -140,7 +118,7 @@ export default function HowToPlayPage() {
         </Section>
 
         <Section
-          eyebrow="Mode 4"
+          eyebrow="Mode 3"
           title="Item — guess the Deadlock shop item icon"
           href="/item/"
         >
@@ -154,7 +132,7 @@ export default function HowToPlayPage() {
         </Section>
 
         <Section
-          eyebrow="Mode 5"
+          eyebrow="Mode 4"
           title="Mugshot — identify a Deadlock hero from a portrait crop"
           href="/mugshot/"
         >
@@ -167,16 +145,17 @@ export default function HowToPlayPage() {
         </Section>
 
         <Section
-          eyebrow="Mode 6"
+          eyebrow="Mode 5"
           title="Conversation — hear the Deadlock heroes talk"
           href="/sound/"
         >
           <p>
-            The audio sibling of Quote: a pre-match exchange between two
-            heroes, with each speaker guessed in their own combobox. Dialogue
-            reveals one line per guess, and after a few misses the actual voice
-            clip unlocks — you hear the heroes talking, which is usually enough
-            to clinch the answer.
+            A pre-match exchange between two heroes, with each speaker guessed
+            in their own combobox. Dialogue reveals one line per guess, and
+            after a few misses the actual voice clip unlocks — you hear the
+            heroes talking, which is usually enough to clinch the answer.
+            Once you solve it, every line's voice clip becomes playable so
+            you can hear the full conversation back.
           </p>
         </Section>
 

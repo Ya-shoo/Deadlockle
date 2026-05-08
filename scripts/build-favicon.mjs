@@ -1,9 +1,9 @@
-// One-shot generator for the site icon. Crops the "D" from Deadlock's
-// official wordmark (deadlock.wiki/Special:FilePath/Deadlock_Logo.png),
-// pads to square on the site's deep-teal canvas, and writes:
+// One-shot generator for the site icon. Pulls Deadlock's official spoked-
+// wheel mark (community-curated transparent PNG hosted on SteamGridDB),
+// pads it onto a black square canvas, and writes:
 //   - app/icon.png         (512×512, modern HD favicon via Next.js convention)
 //   - app/apple-icon.png   (180×180, iOS home screen)
-//   - app/favicon.ico      (multi-res 16/32/48 PNG-in-ICO for legacy)
+//   - app/favicon.ico      (multi-res 16/32/48 PNG-in-ICO for legacy Chrome / IE)
 //
 // Re-run only if the source logo changes or the canvas color shifts.
 
@@ -15,93 +15,68 @@ import { dirname, resolve } from "node:path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const APP_DIR = resolve(__dirname, "..", "app");
 
-// Source: Deadlock's official wordmark on the wiki. Wordmark is at the
-// bottom of the canvas; the spoked-wheel mark is at the top. We want the
-// stencil "D" character only.
-const SOURCE_URL = "https://deadlock.wiki/Special:FilePath/Deadlock_Logo.png";
+// Source: SteamGridDB community asset 147360 — the Deadlock wheel mark in
+// the iconic mint-green disc treatment, ~3979×3966, transparent edges. The
+// dark spokes blend into the black canvas so the green disc reads as the
+// foreground shape with negative-space spokes — visually cleaner than the
+// cream variant on dark chrome.
+const SOURCE_URL =
+  "https://cdn2.steamgriddb.com/logo/804a8294a8f33203683b3e6ed46fe092.png";
 
-// Site's deep-teal canvas. Matches --color-canvas in globals.css so the
-// favicon blends with the page bg in tabbar previews.
-const BG = "#0c1820";
-const ACCENT_RGBA = { r: 0xd6, g: 0xa0, b: 0x5c, alpha: 0.55 }; // amber gold hairline
+// Pure black canvas — matches favicon dock chrome on most platforms and
+// makes the cream wheel pop without competing with the page bg.
+const BG = "#000000";
 
-// D-letter crop in the source image (625×324). The wordmark runs roughly
-// y=180–305 and the "D" is the leftmost ~80px. Box the D tightly enough
-// that the next letter (E) doesn't bleed in; alpha-isolation + trim then
-// auto-centers the glyph regardless of small errors.
-const CROP = { left: 14, top: 182, width: 82, height: 122 };
-
-// Pad the cropped D into a square canvas with this much padding around
-// the glyph. Higher = more breathing room, smaller D in the final icon.
-const SQUARE_PADDING = 28; // pixels at the master 512×512 size
+// Master canvas size. Padding controls how much breathing room sits around
+// the wheel — too tight and the spokes touch the tile edge; too loose and
+// the icon reads as small at 16×16. 36px on 512 ≈ 86% fill, which keeps
+// the wheel visually dominant in tab bars while leaving deco margins.
+const MASTER_SIZE = 512;
+const SQUARE_PADDING = 36;
 
 async function fetchBuffer(url) {
-  const res = await fetch(url, { headers: { "User-Agent": "deadlockle-favicon-builder" } });
+  const res = await fetch(url, {
+    headers: { "User-Agent": "deadlockle-favicon-builder" },
+  });
   if (!res.ok) throw new Error(`HTTP ${res.status} on ${url}`);
   return Buffer.from(await res.arrayBuffer());
 }
 
-// Render the master 512×512 mark: dark canvas + a thin amber hairline
-// frame echoing the in-app deco trim + the white stencil D centered.
+// Render the master 512×512 mark: black canvas + the wheel logo centered
+// with consistent margins on every side.
 async function renderMaster() {
   const src = await fetchBuffer(SOURCE_URL);
 
-  // 1. Crop the D from the source wordmark.
-  const cropped = await sharp(src).extract(CROP).png().toBuffer();
+  // The PNG ships with transparent edges but slight asymmetric whitespace
+  // (rough hand-drawn outer ring isn't perfectly centered in the bbox).
+  // Trim fully-transparent pixels first so the geometric center we
+  // composite at lines up with the visual center of the wheel.
+  const trimmed = await sharp(src).trim({ threshold: 1 }).png().toBuffer();
 
-  // 2. Source has a solid dark-gray bg (not transparent). Re-derive an
-  // alpha channel from luminance so the D floats cleanly: bright pixels
-  // become opaque white, dark pixels become transparent. Soft threshold
-  // preserves the stencil's distressed edge anti-aliasing.
-  const { data, info } = await sharp(cropped).removeAlpha().raw().toBuffer({
-    resolveWithObject: true,
-  });
-  const px = info.width * info.height;
-  const rgba = Buffer.alloc(px * 4);
-  for (let i = 0; i < px; i++) {
-    const r = data[i * 3];
-    const g = data[i * 3 + 1];
-    const b = data[i * 3 + 2];
-    const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-    // Soft ramp: pixels brighter than ~90/255 start contributing alpha,
-    // saturating around ~190. Avoids both a halo and a clipped edge.
-    const alpha = Math.max(0, Math.min(255, Math.round((lum - 90) * 2.6)));
-    rgba[i * 4] = 255;
-    rgba[i * 4 + 1] = 255;
-    rgba[i * 4 + 2] = 255;
-    rgba[i * 4 + 3] = alpha;
-  }
-  const isolated = await sharp(rgba, {
-    raw: { width: info.width, height: info.height, channels: 4 },
+  // Resize-contain into the inner box defined by SQUARE_PADDING. `contain`
+  // preserves aspect ratio and pads with transparency, so a near-square
+  // logo still sits centered if the trimmed bbox isn't perfectly 1:1.
+  const innerSize = MASTER_SIZE - SQUARE_PADDING * 2;
+  const sized = await sharp(trimmed)
+    .resize(innerSize, innerSize, {
+      fit: "contain",
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
+    })
+    .png()
+    .toBuffer();
+
+  // Composite onto the black master canvas, centered.
+  return sharp({
+    create: {
+      width: MASTER_SIZE,
+      height: MASTER_SIZE,
+      channels: 4,
+      background: BG,
+    },
   })
-    .trim({ threshold: 5 }) // drop fully-transparent border
+    .composite([{ input: sized, gravity: "center" }])
     .png()
     .toBuffer();
-
-  // 3. Resize the isolated D to fit inside the 512×512 canvas with padding.
-  const target = 512 - SQUARE_PADDING * 2;
-  const dResized = await sharp(isolated)
-    .resize(target, target, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-    .png()
-    .toBuffer();
-
-  // 3. Build the canvas with hairline deco border + composite the D.
-  const frame = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
-    <rect x="0" y="0" width="512" height="512" fill="${BG}"/>
-    <rect x="22" y="22" width="468" height="468" fill="none"
-          stroke="rgba(${ACCENT_RGBA.r},${ACCENT_RGBA.g},${ACCENT_RGBA.b},${ACCENT_RGBA.alpha})"
-          stroke-width="2"/>
-    <rect x="34" y="34" width="444" height="444" fill="none"
-          stroke="rgba(${ACCENT_RGBA.r},${ACCENT_RGBA.g},${ACCENT_RGBA.b},0.25)"
-          stroke-width="1"/>
-  </svg>`;
-
-  const master = await sharp(Buffer.from(frame))
-    .composite([{ input: dResized, gravity: "center" }])
-    .png()
-    .toBuffer();
-
-  return master;
 }
 
 // Multi-resolution PNG-in-ICO writer. ICO = 6-byte ICONDIR header +
@@ -150,7 +125,10 @@ async function main() {
   const icoImages = await Promise.all(
     icoSizes.map(async (size) => ({
       size,
-      buf: await sharp(master).resize(size, size).png({ compressionLevel: 9 }).toBuffer(),
+      buf: await sharp(master)
+        .resize(size, size)
+        .png({ compressionLevel: 9 })
+        .toBuffer(),
     })),
   );
   await writeFile(resolve(APP_DIR, "favicon.ico"), buildIco(icoImages));

@@ -129,14 +129,28 @@ export function getSoundForDay(day: string): {
   }
 
   const idx = fnv1a(`deadlockle:sound:${day}`) % SOUND_CONVERSATION_POOL.length;
-  const conv = SOUND_CONVERSATION_POOL[idx];
+  return getSoundByIndex(idx);
+}
+
+// Direct-index access into the conversation pool. Only used by the dev-only
+// `?conv=N` rotation toolbar in SoundGame for QA — exposed here so the
+// pool stays a single source of truth.
+export function getSoundByIndex(idx: number): {
+  conversation: SoundConversation;
+  speakers: [Hero, Hero];
+} {
+  const wrapped =
+    ((idx % SOUND_CONVERSATION_POOL.length) + SOUND_CONVERSATION_POOL.length) %
+    SOUND_CONVERSATION_POOL.length;
+  const conv = SOUND_CONVERSATION_POOL[wrapped];
   const speakers: [Hero, Hero] = [
     HEROES_BY_KEY[conv.speakers[0]]!,
     HEROES_BY_KEY[conv.speakers[1]]!,
   ];
-
   return { conversation: conv, speakers };
 }
+
+export const SOUND_POOL_SIZE = SOUND_CONVERSATION_POOL.length;
 
 // Re-exported for symmetry with OWdle. Keeps lookups by key cheap.
 export { HEROES_BY_KEY };

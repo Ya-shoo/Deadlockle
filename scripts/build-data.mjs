@@ -25,13 +25,18 @@ const SPLASH_SIZE = 800;
 const SPLASH_QUALITY = 80;
 
 // Hand-curated overlay keyed by hero `key` (lowercased name with hyphens).
-// Fields the API doesn't expose:
+// Fields the API doesn't expose, plus fallbacks for fields Valve hasn't
+// filled in upstream yet (newer heroes often have null hero_type / gun_tag /
+// role / specific ability descriptions in the API response).
 //   gender:         "male" | "female" | "non-binary" | "neutral"
 //   nature:         "human" | "undead" | "spirit" | "beast" | "robot" | "mystical" | "ixian"
 //   damage_style:   "hitscan" | "projectile" | "hybrid" | "melee"  -- delivery
 //   sub_role:       "sniper" | "carry" | "skirmisher" | "diver" | "bruiser" | "tank" | "mage" | "support"
 //                   our refinement of Valve's 4-bucket hero_type
 //   damage_source:  "weapon" | "spirit" | "hybrid"  -- where damage comes from in team fights
+//   role:                fallback for the API tagline (`description.role`)
+//   hero_type, gun_tag:  fallback for Valve's 4-bucket archetype + weapon tag
+//   ability_overrides:   { [abilityName]: description } fallback for null ability text
 const OVERLAY = {
   "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
@@ -49,7 +54,12 @@ const OVERLAY = {
   "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "weapon"  },
   "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "hybrid"  },
-  "shiv":         { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
+  "shiv":         {
+    gender: "male", nature: "human", damage_style: "hitscan", sub_role: "diver", damage_source: "hybrid",
+    ability_overrides: {
+      "Killing Blow": "Leap forward, dealing spirit damage to the first enemy hero hit; if they are below the kill threshold, execute them outright.",
+    },
+  },
   "ivy":          { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "support",    damage_source: "hybrid"  },
   "warden":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "weapon"  },
   "yamato":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
@@ -59,18 +69,65 @@ const OVERLAY = {
   "mirage":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
   "vyper":        { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "sinclair":     { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
-  "mina":         { gender: "female",     nature: "undead",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
-  "drifter":      { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
-  "venator":      { gender: "female",     nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "weapon"  },
-  "victor":       { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "weapon"  },
-  "paige":        { gender: "female",     nature: "human",     damage_style: "projectile", sub_role: "support",    damage_source: "spirit"  },
-  "the-doorman":  { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
-  "billy":        { gender: "male",       nature: "beast",     damage_style: "hybrid",     sub_role: "tank",       damage_source: "hybrid"  },
-  "graves":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "carry",      damage_source: "weapon"  },
-  "apollo":       { gender: "male",       nature: "human",     damage_style: "hybrid",     sub_role: "skirmisher", damage_source: "weapon"  },
-  "rem":          { gender: "neutral",    nature: "ixian",     damage_style: "melee",      sub_role: "mage",       damage_source: "spirit"  },
-  "silver":       { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
-  "celeste":      { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "mage",       damage_source: "hybrid"  },
+  "mina":         {
+    gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "sniper", damage_source: "weapon",
+    role: "Drains life at mid-range and slips away as a swarm of bats",
+  },
+  "drifter":      {
+    gender: "male", nature: "undead", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
+    role: "Stalks isolated prey and feeds on the blood of the lonely",
+    ability_overrides: {
+      "Bloodscent": "Isolated heroes leave a blood trail and emit an audible heartbeat, letting you deal amplified damage to them and gain permanent weapon damage when they die nearby.",
+    },
+  },
+  "venator":      {
+    gender: "female", nature: "human", damage_style: "projectile", sub_role: "sniper", damage_source: "weapon",
+    role: "Hunts the supernatural with crossbow bolts and blessed traps",
+  },
+  "victor":       {
+    gender: "male", nature: "undead", damage_style: "hitscan", sub_role: "bruiser", damage_source: "weapon",
+    role: "Channels his own pain into shocking, undying retribution",
+  },
+  "paige":        {
+    gender: "female", nature: "human", damage_style: "projectile", sub_role: "support", damage_source: "spirit",
+    role: "Weaves stories into spells that shield her allies and bind her foes",
+  },
+  "the-doorman":  {
+    gender: "male", nature: "human", damage_style: "hitscan", sub_role: "mage", damage_source: "spirit",
+    role: "Opens uncanny doors to displace enemies and reroute the battlefield",
+  },
+  "billy":        {
+    gender: "male", nature: "beast", damage_style: "hybrid", sub_role: "tank", damage_source: "hybrid",
+    role: "Charges headfirst into the mosh pit and refuses to back down",
+  },
+  "graves":       {
+    gender: "female", nature: "human", damage_style: "hitscan", sub_role: "carry", damage_source: "weapon",
+    role: "Raises the dead to overrun lanes and crush her foes' resolve",
+    ability_overrides: {
+      "Borrowed Decree": "Place a gravestone that summons shambling ghouls; they march toward enemies and explode for spirit damage, slowing any hero or objective they reach.",
+    },
+  },
+  "apollo":       {
+    gender: "male", nature: "human", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "weapon",
+    role: "A dueling prince who parries every blow and ends fights in a flash",
+  },
+  "rem":          {
+    gender: "neutral", nature: "ixian", damage_style: "melee", sub_role: "mage", damage_source: "spirit",
+    hero_type: "mystic",
+    gun_tag: "Long Range",
+    role: "Tucks enemies in for a nap while her lil helpers tend the team",
+  },
+  "silver":       {
+    gender: "female", nature: "beast", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
+    role: "A bounty hunter who answers the moon and unleashes her inner wolf",
+    ability_overrides: {
+      "Boot Kick": "Dash forward and kick the first enemy hit, dealing melee damage and marking them so your next shot detonates the mark for bonus spirit damage.",
+    },
+  },
+  "celeste":      {
+    gender: "female", nature: "mystical", damage_style: "hitscan", sub_role: "mage", damage_source: "hybrid",
+    role: "Dazzles the battlefield with prismatic light and bouncing arcane orbs",
+  },
 };
 
 // Convert display name to URL-safe key. Mirrors OW kebab-case.
@@ -210,7 +267,10 @@ async function main() {
           : item.description ?? null;
       abilities.push({
         name: item.name,
-        description: cleanDescription(rawDesc),
+        description:
+          cleanDescription(rawDesc) ??
+          overlay?.ability_overrides?.[item.name] ??
+          null,
         icon: iconUrl,
         sourceImage: item.image ?? null,
       });
@@ -248,13 +308,15 @@ async function main() {
     const num = (s) =>
       typeof stats[s]?.value === "number" ? stats[s].value : null;
 
+    const apiRole =
+      typeof h.description === "object" ? h.description?.role ?? null : null;
     heroesOut.push({
       key,
       id: h.id,
       class_name: h.class_name,
       name: h.name,
-      hero_type: h.hero_type ?? null,
-      gun_tag: h.gun_tag ?? null,
+      hero_type: h.hero_type ?? overlay?.hero_type ?? null,
+      gun_tag: h.gun_tag ?? overlay?.gun_tag ?? null,
       tags: Array.isArray(h.tags) ? h.tags : [],
       complexity: typeof h.complexity === "number" ? h.complexity : null,
       hp: num("max_health"),
@@ -262,8 +324,7 @@ async function main() {
       stamina: num("stamina"),
       lore:
         typeof h.description === "object" ? h.description?.lore ?? null : null,
-      role:
-        typeof h.description === "object" ? h.description?.role ?? null : null,
+      role: apiRole ?? overlay?.role ?? null,
       gender: overlay?.gender ?? null,
       nature: overlay?.nature ?? null,
       damage_style: overlay?.damage_style ?? null,

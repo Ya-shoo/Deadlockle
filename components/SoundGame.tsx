@@ -12,7 +12,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { HEROES, HEROES_BY_KEY, type Hero } from "@/lib/heroes";
-import { dayString, getSoundForDay, prettyDay } from "@/lib/daily";
+import {
+  dayString,
+  getSoundByIndex,
+  getSoundForDay,
+  prettyDay,
+  SOUND_POOL_SIZE,
+} from "@/lib/daily";
+import { IS_DEV_BUILD } from "@/lib/modes";
 import type { SoundConversation } from "@/lib/sound-conversations";
 import { compareHero } from "@/lib/compare";
 import {
@@ -52,13 +59,32 @@ function nextHintAtGuess(currentUnlocked: number): number {
 export function SoundGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ConversationState | null>(null);
+  // Dev-only override: `/sound/?conv=N` pins the conversation to pool
+  // index N so the diarization splits can be QA'd across many clips
+  // without waiting for the daily seed to roll over. Null in production
+  // and on first paint; populated from URL on mount.
+  const [devConvIdx, setDevConvIdx] = useState<number | null>(null);
 
   useEffect(() => {
     const d = dayString();
     setDay(d);
-    const loaded = loadConversationState(MODE, d);
-    const { speakers: today } = getSoundForDay(d);
+
+    // Read ?conv=N from URL (dev only). Treat anything outside [0, pool)
+    // as null so a stray query string doesn't break the regular flow.
+    let convIdx: number | null = null;
+    if (IS_DEV_BUILD && typeof window !== "undefined") {
+      const param = new URLSearchParams(window.location.search).get("conv");
+      const parsed = param == null ? NaN : parseInt(param, 10);
+      if (Number.isFinite(parsed) && parsed >= 0 && parsed < SOUND_POOL_SIZE) {
+        convIdx = parsed;
+      }
+    }
+    setDevConvIdx(convIdx);
+
+    const { speakers: today } =
+      convIdx != null ? getSoundByIndex(convIdx) : getSoundForDay(d);
     const todayPair: [string, string] = [today[0].key, today[1].key];
+    const loaded = loadConversationState(MODE, d);
     const matchesToday =
       loaded.speakers?.[0] === todayPair[0] &&
       loaded.speakers?.[1] === todayPair[1];
@@ -70,7 +96,9 @@ export function SoundGame() {
         won: false,
       };
       setState(fresh);
-      saveConversationState(MODE, fresh);
+      // Don't persist dev-override fresh state — it'd clobber the real
+      // daily progress. Real flow keeps the original save behaviour.
+      if (convIdx == null) saveConversationState(MODE, fresh);
     } else {
       setState({ ...loaded, speakers: todayPair });
     }
@@ -86,7 +114,8 @@ export function SoundGame() {
     );
   }
 
-  const { conversation, speakers } = getSoundForDay(day);
+  const { conversation, speakers } =
+    devConvIdx != null ? getSoundByIndex(devConvIdx) : getSoundForDay(day);
   const [speakerA, speakerB] = speakers;
 
   const aRevealed = state.guesses.some(
@@ -120,10 +149,15 @@ export function SoundGame() {
     : Math.min(visibleLines + PREVIEW_AHEAD, conversation.lines.length);
 
   // Per-line audio unlocks. Once won, all line buttons are playable so
-  // the player can replay any line.
-  const audioUnlockedCount = won
-    ? conversation.lines.length
-    : hintsUnlockedAt(state.guesses.length, conversation.lines.length);
+  // the player can replay any line. In dev builds, every line unlocks
+  // immediately — this turns Conversation mode into a manual QA console
+  // for the diarization splits without forcing the tester to grind
+  // through five wrong guesses on every conversation they want to
+  // audition.
+  const audioUnlockedCount =
+    won || IS_DEV_BUILD
+      ? conversation.lines.length
+      : hintsUnlockedAt(state.guesses.length, conversation.lines.length);
   const allAudioUnlocked = audioUnlockedCount >= conversation.lines.length;
   const guessesUntilNextAudio = allAudioUnlocked
     ? null
@@ -169,6 +203,14 @@ export function SoundGame() {
           <span className="mt-1 text-info">conversation mode</span>
         </div>
       </header>
+
+      {IS_DEV_BUILD && (
+        <DevConversationRotator
+          currentIdx={devConvIdx}
+          speakers={[speakerA.name, speakerB.name]}
+          audioFile={conversation.audio.split("/").pop() ?? conversation.audio}
+        />
+      )}
 
       <div className="mb-8 flex flex-col items-center">
         <ConversationCard
@@ -752,4 +794,86 @@ function emojiFor(status: string): string {
   if (status === "partial") return "🟨";
   if (status === "far") return "🟥";
   return "⬛";
+}
+
+// Dev-only QA toolbar. Lets the tester step through every conversation
+// in the pool to audition diarization splits without waiting for the
+// daily seed to roll. Updates `?conv=N` and reloads so all derived state
+// (saved progress detection, audio unlocks, etc.) re-initialises cleanly
+// from the new index.
+function DevConversationRotator({
+  currentIdx,
+  speakers,
+  audioFile,
+}: {
+  currentIdx: number | null;
+  speakers: [string, string];
+  audioFile: string;
+}) {
+  function navigateTo(idx: number) {
+    const wrapped = ((idx % SOUND_POOL_SIZE) + SOUND_POOL_SIZE) % SOUND_POOL_SIZE;
+    const url = new URL(window.location.href);
+    url.searchParams.set("conv", String(wrapped));
+    window.location.href = url.toString();
+  }
+  function clearOverride() {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("conv");
+    window.location.href = url.toString();
+  }
+  function randomConv() {
+    let next = Math.floor(Math.random() * SOUND_POOL_SIZE);
+    if (next === currentIdx && SOUND_POOL_SIZE > 1) {
+      next = (next + 1) % SOUND_POOL_SIZE;
+    }
+    navigateTo(next);
+  }
+  // Effective index for display — null means "today's daily pick".
+  const label =
+    currentIdx == null
+      ? `today's daily`
+      : `conv ${currentIdx} / ${SOUND_POOL_SIZE - 1}`;
+
+  return (
+    <div className="mx-auto mb-4 flex w-full max-w-2xl flex-wrap items-center gap-2 border border-dashed border-info/40 bg-inset/50 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft">
+      <span className="text-info">DEV · rotate</span>
+      <span className="text-ink-faint">·</span>
+      <span className="text-ink">{label}</span>
+      <span className="text-ink-faint">·</span>
+      <span className="truncate text-ink-faint normal-case tracking-normal">
+        {speakers[0]} × {speakers[1]} ({audioFile})
+      </span>
+      <span className="grow" />
+      <button
+        type="button"
+        onClick={() => navigateTo((currentIdx ?? 0) - 1)}
+        className="border border-line bg-canvas px-2 py-1 text-ink hover:border-accent hover:text-accent"
+      >
+        ← prev
+      </button>
+      <button
+        type="button"
+        onClick={() => navigateTo((currentIdx ?? -1) + 1)}
+        className="border border-line bg-canvas px-2 py-1 text-ink hover:border-accent hover:text-accent"
+      >
+        next →
+      </button>
+      <button
+        type="button"
+        onClick={randomConv}
+        className="border border-line bg-canvas px-2 py-1 text-ink hover:border-accent hover:text-accent"
+      >
+        random
+      </button>
+      {currentIdx != null && (
+        <button
+          type="button"
+          onClick={clearOverride}
+          className="border border-line bg-canvas px-2 py-1 text-ink-faint hover:border-info hover:text-info"
+        >
+          clear
+        </button>
+      )}
+    </div>
+  );
 }
