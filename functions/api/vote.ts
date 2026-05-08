@@ -1,7 +1,10 @@
 // POST /api/vote  { id, name, image?, released? }
-// Records a vote for "next game Deadlockle should build". Composite primary
-// key (game_id, voter_hash) means a voter can vote for the same game at
-// most once per month (the hash includes the current month).
+// Records a vote for "next game Deadlockle should build". The votes table
+// is shared with OWdle (canonical D1: owdle-votes); the `source` column
+// records which site the vote came from. Composite primary key
+// (game_id, voter_hash) means a voter can vote for the same game at most
+// once per 2-day bucket per site (the hash rotates every 2 days and is
+// salted with the project name).
 import type { Handler } from "../_lib/types";
 import { voterHash } from "../_lib/types";
 
@@ -42,8 +45,8 @@ export const onRequestPost: Handler = async ({ request, env }) => {
   // INSERT … SELECT … WHERE pattern only writes a row if the voter is
   // under the daily limit; ON CONFLICT keeps repeat votes idempotent.
   const result = await env.DB.prepare(
-    `INSERT INTO votes (game_id, voter_hash, game_name, game_image, game_released, created_at)
-     SELECT ?, ?, ?, ?, ?, ?
+    `INSERT INTO votes (game_id, voter_hash, game_name, game_image, game_released, created_at, source)
+     SELECT ?, ?, ?, ?, ?, ?, ?
      WHERE (
        SELECT COUNT(*) FROM votes
        WHERE voter_hash = ? AND created_at > ?
@@ -57,6 +60,7 @@ export const onRequestPost: Handler = async ({ request, env }) => {
       image,
       released,
       now,
+      PROJECT,
       hash,
       dayAgo,
       MAX_VOTES_PER_VOTER_PER_DAY,

@@ -27,12 +27,15 @@ export type Context = {
 
 export type Handler = (context: Context) => Response | Promise<Response>;
 
-// sha256 helper used for the voter hash. We salt with project + month
-// so the hash naturally rotates each month — gives us privacy-preserving
-// per-IP dedup that doesn't lock a voter out forever.
+// sha256 helper used for the voter hash. We salt with project + a 2-day
+// epoch bucket so the hash rotates every 2 days — privacy-preserving
+// per-IP dedup that lets a voter recast on the same game every other day.
+// Including `project` keeps OWdle and Deadlockle dedup independent, so a
+// voter can cast at most one vote per (game, site) per 2-day window.
+const TWO_DAYS_MS = 2 * 86400 * 1000;
 export async function voterHash(ip: string, project: string): Promise<string> {
-  const month = new Date().toISOString().slice(0, 7); // "2026-05"
-  const buf = new TextEncoder().encode(`${ip}:${project}:${month}`);
+  const bucket = Math.floor(Date.now() / TWO_DAYS_MS);
+  const buf = new TextEncoder().encode(`${ip}:${project}:${bucket}`);
   const out = await crypto.subtle.digest("SHA-256", buf);
   return Array.from(new Uint8Array(out))
     .map((b) => b.toString(16).padStart(2, "0"))
