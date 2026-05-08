@@ -18,6 +18,8 @@ type Trimmed = {
 };
 
 const CACHE_TTL_SECONDS = 3600;
+const RATE_WINDOW_SECONDS = 60;
+const RATE_MAX_PER_WINDOW = 30;
 
 export const onRequestGet: Handler = async ({ request, env, waitUntil }) => {
   const url = new URL(request.url);
@@ -35,6 +37,31 @@ export const onRequestGet: Handler = async ({ request, env, waitUntil }) => {
 
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
+
+  // Per-IP rate limit on uncached requests. We use the edge cache itself
+  // as a counter — the counter key includes a tumbling minute window, so
+  // it auto-expires. Per-POP only (someone routed across data centres
+  // could exceed the cap), but that's fine for a soft anti-abuse layer.
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+  const window = Math.floor(Date.now() / (RATE_WINDOW_SECONDS * 1000));
+  const counterUrl = new URL(`${url.origin}/__rate__/search/${ip}/${window}`);
+  const counterKey = new Request(counterUrl.toString(), { method: "GET" });
+  const prev = await cache.match(counterKey);
+  const prevCount = prev ? parseInt(await prev.text(), 10) || 0 : 0;
+  if (prevCount >= RATE_MAX_PER_WINDOW) {
+    return json({ error: "rate_limited" }, 429);
+  }
+  waitUntil(
+    cache.put(
+      counterKey,
+      new Response(`${prevCount + 1}`, {
+        headers: {
+          "content-type": "text/plain",
+          "cache-control": `public, max-age=${RATE_WINDOW_SECONDS}`,
+        },
+      }),
+    ),
+  );
 
   if (!env.RAWG_API_KEY) {
     return json({ error: "search_unavailable" }, 503);

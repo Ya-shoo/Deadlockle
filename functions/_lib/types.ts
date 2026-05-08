@@ -38,3 +38,16 @@ export async function voterHash(ip: string, project: string): Promise<string> {
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 }
+
+// Constant-time string comparison. Used for secret/token checks where a
+// non-CT compare leaks tiny timing info that could in theory be used to
+// guess a secret byte-by-byte. On Cloudflare's edge runtime network jitter
+// dominates, so this is defence-in-depth rather than a hot fix.
+export function constantTimeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return diff === 0;
+}

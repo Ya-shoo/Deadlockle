@@ -1,0 +1,36 @@
+# Cloudflare Pages headers — applied at the CDN edge, not by Next.
+
+# Game-asset directories. Hero/item/ability/audio assets we hand-curated
+# (and don't own copyright on) — block cross-origin <img>/<audio>
+# embedding ("hotlinking") by other sites. Same-origin usage on our own
+# pages is unaffected, and crawlers (Googlebot, Bing) still fetch and
+# index normally because CORP is browser-only — so Google Images traffic
+# stays open as a discovery channel.
+
+/portraits/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/abilities/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/items/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/mugshots/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/voicelines/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/splash/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin
+
+/banners/*
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: same-origin

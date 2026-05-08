@@ -2,6 +2,7 @@
 // Returns the top voted games. Gated by the ADMIN_SECRET Pages secret so
 // the tally isn't public — set with `wrangler pages secret put ADMIN_SECRET`.
 import type { Handler } from "../_lib/types";
+import { constantTimeEqual } from "../_lib/types";
 
 type Row = {
   game_id: string;
@@ -13,7 +14,8 @@ type Row = {
 
 export const onRequestGet: Handler = async ({ request, env }) => {
   const auth = request.headers.get("authorization") ?? "";
-  if (!env.ADMIN_SECRET || auth !== `Bearer ${env.ADMIN_SECRET}`) {
+  const expected = env.ADMIN_SECRET ? `Bearer ${env.ADMIN_SECRET}` : "";
+  if (!expected || !constantTimeEqual(auth, expected)) {
     return new Response("Unauthorized", { status: 401 });
   }
 

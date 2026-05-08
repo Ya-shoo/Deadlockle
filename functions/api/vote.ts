@@ -37,23 +37,46 @@ export const onRequestPost: Handler = async ({ request, env }) => {
   const now = Math.floor(Date.now() / 1000);
   const dayAgo = now - 86400;
 
-  // Soft per-voter rate limit: cap at N distinct game votes per 24h.
-  const recent = await env.DB.prepare(
-    "SELECT COUNT(*) AS n FROM votes WHERE voter_hash = ? AND created_at > ?",
-  )
-    .bind(hash, dayAgo)
-    .first<{ n: number }>();
-  if ((recent?.n ?? 0) >= MAX_VOTES_PER_VOTER_PER_DAY) {
-    return json({ error: "rate_limited" }, 429);
-  }
-
-  await env.DB.prepare(
+  // Atomic per-voter rate limit: the count and insert happen in a single
+  // statement so concurrent requests can't briefly exceed the cap. The
+  // INSERT … SELECT … WHERE pattern only writes a row if the voter is
+  // under the daily limit; ON CONFLICT keeps repeat votes idempotent.
+  const result = await env.DB.prepare(
     `INSERT INTO votes (game_id, voter_hash, game_name, game_image, game_released, created_at)
-     VALUES (?, ?, ?, ?, ?, ?)
+     SELECT ?, ?, ?, ?, ?, ?
+     WHERE (
+       SELECT COUNT(*) FROM votes
+       WHERE voter_hash = ? AND created_at > ?
+     ) < ?
      ON CONFLICT(game_id, voter_hash) DO NOTHING`,
   )
-    .bind(id, hash, name, image, released, now)
+    .bind(
+      id,
+      hash,
+      name,
+      image,
+      released,
+      now,
+      hash,
+      dayAgo,
+      MAX_VOTES_PER_VOTER_PER_DAY,
+    )
     .run();
+
+  // If no row was inserted AND no row already existed for (game, voter),
+  // the voter was over the rate limit. We distinguish from a duplicate
+  // (which is a no-op success) by checking whether the row exists.
+  const meta = result.meta as { changes?: number } | undefined;
+  if (!meta?.changes) {
+    const existing = await env.DB.prepare(
+      "SELECT 1 FROM votes WHERE game_id = ? AND voter_hash = ?",
+    )
+      .bind(id, hash)
+      .first();
+    if (!existing) {
+      return json({ error: "rate_limited" }, 429);
+    }
+  }
 
   return json({ ok: true });
 };
