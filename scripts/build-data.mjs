@@ -108,7 +108,7 @@ const OVERLAY = {
     },
   },
   "apollo":       {
-    gender: "male", nature: "human", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "spirit",
+    gender: "male", nature: "ixian", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "spirit",
     role: "A dueling prince who parries every blow and ends fights in a flash",
   },
   "rem":          {
