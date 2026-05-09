@@ -41,7 +41,7 @@ const OVERLAY = {
   "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "vindicta":     { gender: "female",     nature: "spirit",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
-  "lady-geist":   { gender: "female",     nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
+  "lady-geist":   { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "abrams":       { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "tank",       damage_source: "weapon"  },
   "wraith":       { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "carry",      damage_source: "weapon"  },
   "mcginnis":     { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "support",    damage_source: "weapon"  },
@@ -102,6 +102,7 @@ const OVERLAY = {
   },
   "graves":       {
     gender: "female", nature: "human", damage_style: "hitscan", sub_role: "carry", damage_source: "weapon",
+    hero_type: "brawler",
     role: "Raises the dead to overrun lanes and crush her foes' resolve",
     ability_overrides: {
       "Borrowed Decree": "Place a gravestone that summons shambling ghouls; they march toward enemies and explode for spirit damage, slowing any hero or objective they reach.",
@@ -112,10 +113,10 @@ const OVERLAY = {
     role: "A dueling prince who parries every blow and ends fights in a flash",
   },
   "rem":          {
-    gender: "neutral", nature: "ixian", damage_style: "melee", sub_role: "mage", damage_source: "spirit",
+    gender: "male", nature: "mystical", damage_style: "melee", sub_role: "mage", damage_source: "spirit",
     hero_type: "mystic",
     gun_tag: "Long Range",
-    role: "Tucks enemies in for a nap while her lil helpers tend the team",
+    role: "Tucks enemies in for a nap while his lil helpers tend the team",
   },
   "silver":       {
     gender: "female", nature: "beast", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
