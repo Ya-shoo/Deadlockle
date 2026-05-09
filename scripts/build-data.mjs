@@ -93,7 +93,7 @@ const OVERLAY = {
     role: "Weaves stories into spells that shield her allies and bind her foes",
   },
   "the-doorman":  {
-    gender: "male", nature: "human", damage_style: "hitscan", sub_role: "mage", damage_source: "spirit",
+    gender: "male", nature: "spirit", damage_style: "hitscan", sub_role: "mage", damage_source: "spirit",
     role: "Opens uncanny doors to displace enemies and reroute the battlefield",
   },
   "billy":        {

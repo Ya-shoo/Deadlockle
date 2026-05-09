@@ -158,7 +158,13 @@ export function BonusRound({
                       : "text-ink",
                 )}
               >
-                {ability.name}
+                {answered ? (
+                  ability.name
+                ) : (
+                  <span aria-hidden className="select-none text-ink-faint">
+                    ▒▒▒▒▒▒▒▒
+                  </span>
+                )}
               </div>
             </button>
           );

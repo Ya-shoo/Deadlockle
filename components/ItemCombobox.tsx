@@ -164,6 +164,10 @@ export function ItemCombobox({
                 )}
               >
                 {item.icon && (
+                  /* Icon is heavily blurred so players can't visually
+                     match the search dropdown to the daily puzzle's
+                     blurred answer icon. Slot tint and name carry the
+                     identifying info. */
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={item.icon}
@@ -171,6 +175,7 @@ export function ItemCombobox({
                     width={32}
                     height={32}
                     className="h-8 w-8 shrink-0 rounded-sm bg-muted object-contain"
+                    style={{ filter: "blur(8px)" }}
                     loading="lazy"
                   />
                 )}
