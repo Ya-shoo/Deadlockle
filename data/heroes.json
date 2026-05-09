@@ -645,7 +645,7 @@
     "nature": "robot",
     "damage_style": "hybrid",
     "sub_role": "bruiser",
-    "damage_source": "hybrid",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Exploding Uppercut",
@@ -697,7 +697,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "diver",
-    "damage_source": "hybrid",
+    "damage_source": "weapon",
     "abilities": [
       {
         "name": "Gloom Bombs",
@@ -852,8 +852,8 @@
     "gender": "male",
     "nature": "human",
     "damage_style": "hitscan",
-    "sub_role": "diver",
-    "damage_source": "hybrid",
+    "sub_role": "assassin",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Serrated Knives",
@@ -1009,7 +1009,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "diver",
-    "damage_source": "hybrid",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Power Slash",
