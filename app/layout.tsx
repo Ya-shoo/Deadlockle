@@ -28,7 +28,7 @@ const SITE_URL = "https://deadlockle.com";
 const SITE_NAME = "Deadlockle";
 const DEFAULT_TITLE = "Deadlockle · Daily Deadlock Quiz · Guess the Hero";
 const DEFAULT_DESCRIPTION =
-  "Deadlockle is the daily Wordle-style quiz for Valve's Deadlock. Guess the hero by attributes, ability icon, item, voice-line conversation, or cropped mugshot. New puzzle every day, free, no signup.";
+  "Deadlockle is the daily Wordle-style quiz for Valve's Deadlock. Guess the hero by attributes, ability icon, item, voice line conversation, or cropped mugshot. New puzzle every day, free, no signup.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

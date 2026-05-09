@@ -84,8 +84,8 @@ export default function GuidesPage() {
           Strategy walkthroughs for every Deadlockle mode: Classic attribute
           deduction, Ability icon reads, Mugshot recognition, Conversation
           audio, and Item shop tips. Each card outlines the strategy at a
-          glance; click into a mode for the full guide with tips, mechanics,
-          and worked-through approaches.
+          glance; click into a mode for the full guide with tips and
+          mechanics.
         </p>
         <div className="mt-7">
           <Link

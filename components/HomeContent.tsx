@@ -138,7 +138,7 @@ export function HomeContent() {
           <p className="mt-3 text-base leading-relaxed text-ink-soft">
             <strong className="text-ink">Deadlockle</strong> (also known as{" "}
             <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a daily
-            Wordle-style hero-guessing puzzle for Valve's{" "}
+            Wordle-style puzzle for Valve's{" "}
             <a
               href="https://store.steampowered.com/app/1422450/Deadlock/"
               className="text-accent underline-offset-2 hover:underline"

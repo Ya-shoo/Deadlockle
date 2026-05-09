@@ -97,8 +97,8 @@ export const GUIDES: GuideEntry[] = [
         body: "Class, Role, Gun, Damage, Nature, Gender, HP, Speed: all eight tiles compare your guess to the answer. The tiles often resolve the puzzle before the picture does.",
       },
       {
-        title: "Miss intentionally over coin-flipping",
-        body: "When two heroes look identical at the current zoom, one more reveal step almost always settles it. Better to guess a low-confidence hero who narrows attributes than to flip a coin between two visual lookalikes.",
+        title: "Miss intentionally over coin flipping",
+        body: "When two heroes look identical at the current zoom, one more reveal step almost always settles it. Better to guess a hero who narrows attributes than to flip a coin between two visual lookalikes.",
       },
     ],
     tips: [
@@ -124,14 +124,14 @@ export const GUIDES: GuideEntry[] = [
     strategy: [
       {
         title: "Each guess reveals the next line",
-        body: "One line is visible at start; sitting and waiting reveals nothing. Even a low-confidence wrong guess pushes dialogue forward and earns you an attribute row, so there's no penalty for advancing.",
+        body: "One line is visible at start; sitting and waiting reveals nothing. Even a wrong guess pushes dialogue forward and earns you an attribute row, so there's no penalty for advancing.",
       },
       {
         title: "Wrong guesses produce a Classic row too",
-        body: "When you guess against Speaker A or B, an eight-attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice-recognition.",
+        body: "When you guess against Speaker A or B, an eight-attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice recognition.",
       },
       {
-        title: "Audio is the late-game crutch",
+        title: "Audio is the late game crutch",
         body: "The first voice clip unlocks at guess 5; every two more guesses unlocks the next line's clip. If you've heard the heroes in-game, the audio usually ends the round in one more guess.",
       },
     ],
@@ -154,7 +154,7 @@ export const GUIDES: GuideEntry[] = [
     ],
     difficulty: "Strategic",
     intro:
-      "A shop-item icon, blurred. Each wrong guess sharpens it across nine reveal levels (20 px → 0). The pool is the full Deadlock item shop, split across three slots: Weapon, Vitality, Spirit. Hard mode is on by default and rotates the icon by 90°/180°/270°, deterministic for the day.",
+      "A shop item icon, blurred. Each wrong guess sharpens it across nine reveal levels (20 px → 0). The pool is the full Deadlock item shop, split across three slots: Weapon, Vitality, Spirit. Hard mode is on by default and rotates the icon by 90°/180°/270°, deterministic for the day.",
     strategy: [
       {
         title: "Place the slot first",
@@ -166,7 +166,7 @@ export const GUIDES: GuideEntry[] = [
       },
     ],
     tips: [
-      "Hard mode is session-only: it defaults to ON every time you load the page.",
+      "Hard mode is session only: it defaults to ON every time you load the page.",
       "Wrong guesses are stacked with their tier and slot for memory; the answer's slot isn't directly compared.",
       "Eight wrong guesses bring the blur to zero.",
     ],

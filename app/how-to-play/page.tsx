@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const FAQ: Array<{ q: string; a: string }> = [
   {
     q: "What is Deadlockle?",
-    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle, the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
+    a: "Deadlockle is a free daily Wordle-style game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle, the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
   },
   {
     q: "When does the daily puzzle reset?",
@@ -75,7 +75,7 @@ export default function HowToPlayPage() {
         <p className="mt-6 text-lg leading-relaxed text-ink-soft">
           <strong className="text-ink">Deadlockle</strong> (also known as{" "}
           <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a free daily
-          Wordle-style hero-guessing game for Valve's Deadlock. Each day at
+          Wordle-style game for Valve's Deadlock. Each day at
           midnight UTC, five new puzzles unlock, one for each mode. There's
           no signup, no ads, and no gating. Your progress is saved in your
           browser, so you can solve a few, close the tab, and come back later
@@ -109,7 +109,7 @@ export default function HowToPlayPage() {
           href="/ability/"
         >
           <p>
-            A heavily-blurred ability icon appears. Each wrong guess reveals
+            A heavily blurred ability icon appears. Each wrong guess reveals
             more of the icon. All four signature abilities are in the pool
             for every hero, so a fire-themed icon could be Infernus's Napalm
             or one of Seven's offensive abilities. Narrow on{" "}
