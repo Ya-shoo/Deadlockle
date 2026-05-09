@@ -103,6 +103,7 @@ export function AbilityGame() {
         <AbilityArtCard
           ability={ability}
           revealedHero={state.won ? answer : null}
+          nameRevealed={state.won && state.bonus != null}
           day={day}
           cellsRevealed={cellsRevealed}
         />
@@ -160,7 +161,6 @@ export function AbilityGame() {
                 answer={answer}
                 guesses={state.guesses}
                 day={day}
-                headline={`${answer.name}'s "${ability.name}"`}
               />
             </div>
           </motion.div>
@@ -168,8 +168,10 @@ export function AbilityGame() {
       </AnimatePresence>
 
       {/* Bonus round — only after the main hero guess resolves. The four
-          ability options show keybind 1-4 + name only; the icon is hidden
-          (re-showing it would defeat the puzzle). */}
+          ability options show keybind 1-4 + name. The ability NAME at the
+          top of AbilityArtCard is gated on bonus completion so the bonus
+          stays a real puzzle: you see the icon and four named options, you
+          pick which one matched. */}
       {state.won && (
         <div className="mb-8">
           <BonusRound
@@ -233,11 +235,13 @@ function WrongGuessCard({ hero, isLatest }: { hero: Hero; isLatest: boolean }) {
 function AbilityArtCard({
   ability,
   revealedHero,
+  nameRevealed,
   day,
   cellsRevealed,
 }: {
   ability: Ability;
   revealedHero: Hero | null;
+  nameRevealed: boolean;
   day: string;
   cellsRevealed: number;
 }) {
@@ -262,7 +266,7 @@ function AbilityArtCard({
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={ability.icon}
-              alt={revealedHero ? ability.name : "Mystery ability"}
+              alt={nameRevealed ? ability.name : "Mystery ability"}
               className="absolute inset-0 h-full w-full object-contain"
               loading="eager"
               decoding="async"
@@ -303,7 +307,7 @@ function AbilityArtCard({
           </div>
         </div>
       </div>
-      {revealedHero && (
+      {nameRevealed && (
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}

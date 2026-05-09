@@ -58,7 +58,7 @@ export function BonusRound({
           {eyebrowText}
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-          {answered ? "Answer revealed" : "Pick the keybind"}
+          {answered ? "Answer revealed" : "Pick the ability"}
         </p>
       </div>
 
@@ -67,7 +67,7 @@ export function BonusRound({
           ? saved!.correct
             ? `Yep, that was ${hero.name}'s ${hero.abilities[correctIndex].name}.`
             : `Not quite. The icon was ${hero.name}'s ${hero.abilities[correctIndex].name}.`
-          : `Which of ${hero.name}'s abilities was the icon? Pick by keybind.`}
+          : `Which of ${hero.name}'s abilities was the icon?`}
       </p>
 
       <div className="grid gap-3 sm:grid-cols-4 sm:gap-3">
@@ -158,13 +158,7 @@ export function BonusRound({
                       : "text-ink",
                 )}
               >
-                {answered ? (
-                  ability.name
-                ) : (
-                  <span aria-hidden className="select-none text-ink-faint">
-                    ▒▒▒▒▒▒▒▒
-                  </span>
-                )}
+                {ability.name}
               </div>
             </button>
           );
