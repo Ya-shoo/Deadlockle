@@ -33,8 +33,8 @@ export function TryOWdleCard() {
             <span className="text-ink-soft">— the daily Overwatch quiz</span>
           </h3>
           <p className="mt-2 max-w-lg text-sm text-ink-soft">
-            Same daily-puzzle format, different roster. Five game modes,
-            forty-something heroes. Resets at midnight UTC.
+            Same daily puzzle format, different roster. Five game modes,
+            dozens of heroes. Resets at midnight UTC.
           </p>
         </div>
 
