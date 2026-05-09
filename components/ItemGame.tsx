@@ -166,11 +166,6 @@ export function ItemGame() {
                 </div>
               </div>
               <ScoreBadge count={state.guesses.length} />
-              <ItemShareButton
-                day={day}
-                guesses={state.guesses}
-                answer={answer}
-              />
             </div>
           </motion.div>
         )}
@@ -327,49 +322,3 @@ function HardModeToggle({
   );
 }
 
-function ItemShareButton({
-  day,
-  guesses,
-  answer,
-}: {
-  day: string;
-  guesses: string[];
-  answer: Item;
-}) {
-  const [copied, setCopied] = useState(false);
-
-  const buildText = () => {
-    const lines: string[] = [];
-    lines.push(`Deadlockle Item · ${day}`);
-    lines.push(`${answer.name} in ${guesses.length}`);
-    lines.push("");
-    // Each prior guess is a miss; the final one is the win (since `won` was
-    // set on entry).
-    const blocks = guesses.map((_, i) =>
-      i === guesses.length - 1 ? "🟩" : "🟥",
-    );
-    lines.push(blocks.join(""));
-    return lines.join("\n");
-  };
-
-  const onClick = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard
-        .writeText(buildText())
-        .then(() => {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1800);
-        })
-        .catch(() => {});
-    }
-  };
-
-  return (
-    <button
-      onClick={onClick}
-      className="rounded-(--radius-pill) bg-accent px-5 py-2.5 font-mono text-xs uppercase tracking-[0.18em] text-on-accent transition-opacity hover:opacity-90"
-    >
-      {copied ? "Copied" : "Share"}
-    </button>
-  );
-}

@@ -14,7 +14,6 @@ import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
-import { ShareButton } from "./ShareButton";
 import { NextModeCTA } from "./NextModeCTA";
 import { ScoreBadge } from "./ScoreBadge";
 
@@ -287,13 +286,6 @@ export function ClassicGame() {
                 </div>
               </div>
               <ScoreBadge count={state.guesses.length} />
-              <ShareButton
-                modeLabel="Classic"
-                answer={answer}
-                guesses={state.guesses}
-                day={day}
-                hintsUsed={hintsUsed.length}
-              />
             </div>
           </motion.div>
         )}

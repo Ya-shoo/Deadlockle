@@ -17,7 +17,6 @@ import {
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { HeroCombobox } from "./HeroCombobox";
 import { Brand } from "./Brand";
-import { ShareButton } from "./ShareButton";
 import { NextModeCTA } from "./NextModeCTA";
 import { ScoreBadge } from "./ScoreBadge";
 import { BonusRound } from "./BonusRound";
@@ -156,12 +155,6 @@ export function AbilityGame() {
                 </div>
               </div>
               <ScoreBadge count={state.guesses.length} />
-              <ShareButton
-                modeLabel="Ability"
-                answer={answer}
-                guesses={state.guesses}
-                day={day}
-              />
             </div>
           </motion.div>
         )}

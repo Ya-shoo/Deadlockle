@@ -8,7 +8,6 @@ import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
-import { ShareButton } from "./ShareButton";
 import { NextModeCTA } from "./NextModeCTA";
 import { ScoreBadge } from "./ScoreBadge";
 
@@ -140,13 +139,6 @@ export function MugshotGame() {
                 </div>
               </div>
               <ScoreBadge count={state.guesses.length} />
-              <ShareButton
-                modeLabel="Mugshot"
-                answer={answer}
-                guesses={state.guesses}
-                day={day}
-                headline={answer.name}
-              />
             </div>
           </motion.div>
         )}
