@@ -65,7 +65,7 @@ export function BonusRound({
       <p className="mb-5 max-w-md font-display text-base leading-snug text-ink sm:text-lg">
         {answered
           ? saved!.correct
-            ? `Yep — that was ${hero.name}'s ${hero.abilities[correctIndex].name}.`
+            ? `Yep, that was ${hero.name}'s ${hero.abilities[correctIndex].name}.`
             : `Not quite. The icon was ${hero.name}'s ${hero.abilities[correctIndex].name}.`
           : `Which of ${hero.name}'s abilities was the icon? Pick by keybind.`}
       </p>

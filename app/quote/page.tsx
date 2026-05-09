@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import { QuoteGame } from "@/components/QuoteGame";
 import { IS_DEV_BUILD } from "@/lib/modes";
 
-const TITLE = "Quote — Guess the Deadlock Speakers";
+const TITLE = "Quote: Guess the Deadlock Speakers";
 const DESCRIPTION =
-  "Daily Deadlock quote quiz. One hero is talking — guess both the speaker and the hero being addressed. New conversation every day.";
+  "Daily Deadlock quote quiz. One hero is talking. Guess both the speaker and the hero being addressed. New conversation every day.";
 
 // Quote is archived in favor of Conversation mode. The page is kept for
 // dev-only reference; production builds emit a 404 here so search engines

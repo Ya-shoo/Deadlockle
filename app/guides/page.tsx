@@ -4,9 +4,9 @@ import { GuidesGrid } from "@/components/GuidesGrid";
 import { GUIDES } from "@/lib/guides";
 import { Brand } from "@/components/Brand";
 
-const TITLE = "Guides — Deadlockle Strategy & Tips";
+const TITLE = "Guides: Deadlockle Strategy & Tips";
 const DESCRIPTION =
-  "Strategy guides for every Deadlockle mode — Classic attribute deduction, Ability icon reads, Mugshot recognition, Conversation audio, and Item shop tips. Each card has the full walkthrough and a direct link to play.";
+  "Strategy guides for every Deadlockle mode: Classic attribute deduction, Ability icon reads, Mugshot recognition, Conversation audio, and Item shop tips. Each card has the full walkthrough and a direct link to play.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -50,7 +50,7 @@ const itemListStructuredData = {
   itemListElement: GUIDES.map((g, i) => ({
     "@type": "ListItem",
     position: i + 1,
-    name: `${g.label} — ${g.pitch}`,
+    name: `${g.label}: ${g.pitch}`,
     url: `https://deadlockle.com/${g.slug}/`,
   })),
 };
@@ -81,7 +81,7 @@ export default function GuidesPage() {
           guides
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
-          Strategy walkthroughs for every Deadlockle mode — Classic attribute
+          Strategy walkthroughs for every Deadlockle mode: Classic attribute
           deduction, Ability icon reads, Mugshot recognition, Conversation
           audio, and Item shop tips. Each card outlines the strategy at a
           glance; click into a mode for the full guide with tips, mechanics,

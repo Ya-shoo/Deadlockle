@@ -129,7 +129,7 @@ export function QuoteGame() {
           </h1>
           <p className="mt-3 max-w-md text-ink-soft">
             A pre-match exchange between two heroes. Guess each speaker in
-            their own field — more dialogue reveals as you go.
+            their own field. More dialogue reveals as you go.
           </p>
         </div>
         <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
@@ -519,7 +519,7 @@ function ConversationShareButton({
     const [a, b] = speakers;
     const lines: string[] = [];
     lines.push(`Deadlockle Quote · ${day}`);
-    lines.push(`${a.name} & ${b.name} in ${guesses.length}`);
+    lines.push(`Solved in ${guesses.length}`);
     lines.push("");
     for (const g of guesses) {
       const hero = HEROES_BY_KEY[g.heroKey];

@@ -148,8 +148,8 @@ export function HomeContent() {
             . Five modes, one hero per day. Classic is the eight-attribute
             deduction grid; Ability, Item, Mugshot, and Conversation each
             reveal the answer in their own way as you guess. New puzzles
-            arrive at midnight UTC, and your board waits where you left it —
-            solve a few, come back later, take your time.
+            arrive at midnight UTC, and your board waits where you left it.
+            Solve a few, come back later, take your time.
           </p>
           <Link
             href="/guides/"

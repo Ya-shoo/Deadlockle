@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Brand } from "@/components/Brand";
 
-const TITLE = "How to Play — Daily Deadlock Hero Quiz Guide";
+const TITLE = "How to Play: Daily Deadlock Hero Quiz Guide";
 const DESCRIPTION =
-  "Complete guide to Deadlockle, the daily Wordle-style quiz for Valve's Deadlock. Rules, strategy, and FAQ for every mode — Classic, Ability, Item, Mugshot, and Conversation.";
+  "Complete guide to Deadlockle, the daily Wordle-style quiz for Valve's Deadlock. Rules, strategy, and FAQ for every mode: Classic, Ability, Item, Mugshot, and Conversation.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const FAQ: Array<{ q: string; a: string }> = [
   {
     q: "What is Deadlockle?",
-    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle — the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
+    a: "Deadlockle is a free daily Wordle-style hero-guessing game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle, the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
   },
   {
     q: "When does the daily puzzle reset?",
@@ -76,7 +76,7 @@ export default function HowToPlayPage() {
           <strong className="text-ink">Deadlockle</strong> (also known as{" "}
           <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a free daily
           Wordle-style hero-guessing game for Valve's Deadlock. Each day at
-          midnight UTC, five new puzzles unlock — one for each mode. There's
+          midnight UTC, five new puzzles unlock, one for each mode. There's
           no signup, no ads, and no gating. Your progress is saved in your
           browser, so you can solve a few, close the tab, and come back later
           in the day to finish.
@@ -86,16 +86,16 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 1"
-          title="Classic — guess the Deadlock hero by attributes"
+          title="Classic: guess the Deadlock hero by attributes"
           href="/classic/"
         >
           <p>
             Type any Deadlock hero into the search box. The grid lights up
-            with eight attribute tiles per guess — <em>class, role, gun, damage, nature, gender, HP, move speed</em>. Green means a match, amber means close (numerical within range), red means off. Use the comparisons to triangulate the daily hero.
+            with eight attribute tiles per guess: <em>class, role, gun, damage, nature, gender, HP, move speed</em>. Green means a match, amber means close (numerical within range), red means off. Use the comparisons to triangulate the daily hero.
           </p>
           <p className="mt-3">
             <strong className="text-ink">Strategy:</strong> open with a hero
-            who covers mid-range stats — Paradox, Vyper, or Pocket give wide
+            who covers mid-range stats. Paradox, Vyper, or Pocket give wide
             tile coverage on the first guess. Don't lock onto a single{" "}
             <em>hero type</em> until you've also narrowed <em>nature</em> and{" "}
             <em>damage style</em>; those three together usually pin the answer
@@ -105,13 +105,13 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 2"
-          title="Ability — whose Deadlock ability is this?"
+          title="Ability: whose Deadlock ability is this?"
           href="/ability/"
         >
           <p>
             A heavily-blurred ability icon appears. Each wrong guess reveals
             more of the icon. All four signature abilities are in the pool
-            for every hero — so a fire-themed icon could be Infernus's Napalm
+            for every hero, so a fire-themed icon could be Infernus's Napalm
             or one of Seven's offensive abilities. Narrow on{" "}
             <em>shape and composition</em>, not just color.
           </p>
@@ -119,25 +119,25 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 3"
-          title="Item — guess the Deadlock shop item icon"
+          title="Item: guess the Deadlock shop item icon"
           href="/item/"
         >
           <p>
             A blurred shop-item icon appears. Each wrong guess sharpens it.
             The pool covers the full Deadlock item shop. <strong className="text-ink">Hard
             mode</strong> rotates the icon by a deterministic 90°, 180°, or
-            270° based on the daily seed — useful when normal mode feels too
+            270° based on the daily seed, useful when normal mode feels too
             silhouette-readable.
           </p>
         </Section>
 
         <Section
           eyebrow="Mode 4"
-          title="Mugshot — identify a Deadlock hero from a portrait crop"
+          title="Mugshot: identify a Deadlock hero from a portrait crop"
           href="/mugshot/"
         >
           <p>
-            A tight crop of a hero's portrait appears — eyes, an earring, a
+            A tight crop of a hero's portrait appears: eyes, an earring, a
             collar fragment. Each wrong guess pulls the camera back, revealing
             more of the face. Most players solve it in 2–4 guesses if they
             recognize Deadlock's distinctive 1930s-NYC character design.
@@ -146,13 +146,13 @@ export default function HowToPlayPage() {
 
         <Section
           eyebrow="Mode 5"
-          title="Conversation — hear the Deadlock heroes talk"
+          title="Conversation: hear the Deadlock heroes talk"
           href="/sound/"
         >
           <p>
             A pre-match exchange between two heroes, with each speaker guessed
             in their own combobox. Dialogue reveals one line per guess, and
-            after a few misses the actual voice clip unlocks — you hear the
+            after a few misses the actual voice clip unlocks. You hear the
             heroes talking, which is usually enough to clinch the answer.
             Once you solve it, every line's voice clip becomes playable so
             you can hear the full conversation back.

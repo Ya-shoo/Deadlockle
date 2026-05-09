@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { AbilityGame } from "@/components/AbilityGame";
 
-const TITLE = "Ability — Whose Deadlock Ability Is This?";
+const TITLE = "Ability: Whose Deadlock Ability Is This?";
 const DESCRIPTION =
-  "Daily Deadlock ability quiz. Identify the hero from their ability icon — each wrong guess unblurs the icon a little more. Fresh puzzle every day.";
+  "Daily Deadlock ability quiz. Identify the hero from their ability icon. Each wrong guess unblurs the icon a little more. Fresh puzzle every day.";
 
 export const metadata: Metadata = {
   title: TITLE,

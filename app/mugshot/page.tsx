@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MugshotGame } from "@/components/MugshotGame";
 
-const TITLE = "Mugshot — Guess the Deadlock Hero";
+const TITLE = "Mugshot: Guess the Deadlock Hero";
 const DESCRIPTION =
   "Daily Deadlock mugshot quiz. Identify the hero from a tightly cropped portrait that pulls back with each guess. New puzzle every day.";
 

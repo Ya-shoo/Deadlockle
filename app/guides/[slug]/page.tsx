@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getGuide(slug);
   if (!guide) return {};
 
-  const title = `${guide.label} Mode Guide — Deadlockle Strategy & Tips`;
+  const title = `${guide.label} Mode Guide · Deadlockle Strategy & Tips`;
   const description = guide.pitch;
 
   return {

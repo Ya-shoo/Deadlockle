@@ -342,8 +342,8 @@ export function SoundGame() {
       {state.guesses.length === 0 && (
         <div className="mt-10 rounded-(--radius-card) border border-dashed border-line bg-inset/40 p-8 text-center">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">
-            Pick a hero in either field. Each guess reveals more dialogue —
-            after {FIRST_HINT_AT} wrong guesses, the first line&apos;s voice
+            Pick a hero in either field. Each guess reveals more dialogue.
+            After {FIRST_HINT_AT} wrong guesses, the first line&apos;s voice
             clip unlocks, then one more every {HINT_INTERVAL} guesses.
           </p>
         </div>
@@ -753,7 +753,7 @@ function ConversationShareButton({
     const [a, b] = speakers;
     const lines: string[] = [];
     lines.push(`Deadlockle Conversation · ${day}`);
-    lines.push(`${a.name} & ${b.name} in ${guesses.length}`);
+    lines.push(`Solved in ${guesses.length}`);
     lines.push("");
     for (const g of guesses) {
       const hero = HEROES_BY_KEY[g.heroKey];

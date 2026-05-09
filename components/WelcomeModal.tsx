@@ -137,7 +137,7 @@ export function WelcomeModal() {
               </p>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                 Guess the daily hero. Each guess lights up eight attribute
-                tiles —{" "}
+                tiles:{" "}
                 <span className="text-correct">green</span> matches,{" "}
                 <span className="text-partial">amber</span> close,{" "}
                 <span className="text-far">red</span> off. Use the

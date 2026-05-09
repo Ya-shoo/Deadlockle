@@ -7,6 +7,6 @@ export const SUPPORT_LINKS = {
 } as const;
 
 export const SHARE_TEXT =
-  "Playing Deadlockle — the daily Deadlock hero quiz. Six modes, one hero.";
+  "Playing Deadlockle, the daily Deadlock hero quiz. Six modes, one hero.";
 
 export const SUPPORT_SITE_URL = "https://deadlockle.com";
