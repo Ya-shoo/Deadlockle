@@ -119,6 +119,7 @@ const OVERLAY = {
   },
   "silver":       {
     gender: "female", nature: "beast", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
+    hero_type: "brawler",
     role: "A bounty hunter who answers the moon and unleashes her inner wolf",
     ability_overrides: {
       "Boot Kick": "Dash forward and kick the first enemy hit, dealing melee damage and marking them so your next shot detonates the mark for bonus spirit damage.",

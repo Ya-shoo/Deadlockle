@@ -1876,7 +1876,7 @@
     "id": 80,
     "class_name": "hero_werewolf",
     "name": "Silver",
-    "hero_type": "marksman",
+    "hero_type": "brawler",
     "gun_tag": "Long Range",
     "tags": [
       "Feral",
