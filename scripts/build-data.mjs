@@ -53,7 +53,7 @@ const OVERLAY = {
   "bebop":        { gender: "neutral",    nature: "robot",     damage_style: "hybrid",     sub_role: "bruiser",    damage_source: "hybrid"  },
   "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "weapon"  },
-  "mo-krill":     { gender: "neutral",    nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "spirit"  },
+  "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "spirit"  },
   "shiv":         {
     gender: "male", nature: "human", damage_style: "hitscan", sub_role: "diver", damage_source: "hybrid",
     ability_overrides: {

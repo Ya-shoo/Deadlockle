@@ -797,7 +797,7 @@
     "stamina": 3,
     "lore": "Mo and Krill are members of The Tunnel Rats, a group that help facilitate illicit trade and commerce between the boroughs thanks to a network of underground tunnels.  But while most denizens of the New York underworld respect the work The Rats do, every once in a while a gang tries to exploit the tunnel system for personal vendettas...that's when Mo and Krill step in and remind the city what happens to those who disrespect their hospitality.",
     "role": "Burrows underneath his enemies",
-    "gender": "neutral",
+    "gender": "male",
     "nature": "beast",
     "damage_style": "hitscan",
     "sub_role": "bruiser",
