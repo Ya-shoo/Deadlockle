@@ -46,12 +46,12 @@ export function GuessRow({
             {guess.name}
           </div>
           <div className="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-            {guess.hero_type ?? "—"} · {guess.gun_tag ?? "—"}
+            {guess.sub_role ?? "—"} · {guess.gun_tag ?? "—"}
           </div>
         </div>
       </div>
 
-      <div className="grid flex-1 grid-cols-4 gap-1.5 sm:grid-cols-8 sm:gap-2">
+      <div className="grid flex-1 grid-cols-4 gap-1.5 sm:grid-cols-7 sm:gap-2">
         {results.map((result, idx) => (
           <AttributeTile key={result.attr} result={result} index={idx} />
         ))}

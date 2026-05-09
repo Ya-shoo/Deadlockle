@@ -475,7 +475,7 @@ function ConversationGuessRow({
             {guess.name}
           </div>
           <div className="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-            {guess.hero_type ?? "—"} · {guess.gun_tag ?? "—"}
+            {guess.sub_role ?? "—"} · {guess.gun_tag ?? "—"}
           </div>
         </div>
         <span
@@ -490,7 +490,7 @@ function ConversationGuessRow({
         </span>
       </div>
 
-      <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-8 sm:gap-2">
+      <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-7 sm:gap-2">
         {results.map((r, i) => (
           <AttributeTile key={r.attr} result={r} index={i} />
         ))}

@@ -39,7 +39,7 @@ const FAQ: Array<{ q: string; a: string }> = [
   },
   {
     q: "How is Deadlockle different from other daily Deadlock guessing games?",
-    a: "Deadlockle is its own game at deadlockle.com — separate from Deadlockdle, Lockle, DLDE, and other Deadlock -dle variants. Deadlockle's Classic mode uses an eight attribute comparison grid (class, role, gun, damage, nature, gender, HP, move speed) and pairs it with four image and dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
+    a: "Deadlockle is its own game at deadlockle.com — separate from Deadlockdle, Lockle, DLDE, and other Deadlock -dle variants. Deadlockle's Classic mode uses a seven attribute comparison grid (role, gun, damage, nature, gender, HP, move speed) and pairs it with four image and dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
   },
   {
     q: "Is Deadlockle official?",
@@ -92,7 +92,7 @@ export default function HowToPlayPage() {
         >
           <p>
             Type any Deadlock hero into the search box. The grid lights up
-            with eight attribute tiles per guess: <em>class, role, gun, damage, nature, gender, HP, move speed</em>. Green means a match, amber means close (numerical within range), red means off. Use the comparisons to triangulate the daily hero.
+            with seven attribute tiles per guess: <em>role, gun, damage, nature, gender, HP, move speed</em>. Green means a match, amber means close (numerical within range), red means off. Use the comparisons to triangulate the daily hero.
           </p>
           <p className="mt-3">
             <strong className="text-ink">Strategy:</strong> open with a hero

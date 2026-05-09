@@ -18,19 +18,19 @@ export const GUIDES: GuideEntry[] = [
     label: "Classic",
     index: "01",
     pitch:
-      "A guide to the eight attribute grid: what each tile reports, how the ↑/↓ arrows work, and when to spend a hint.",
+      "A guide to the seven attribute grid: what each tile reports, how the ↑/↓ arrows work, and when to spend a hint.",
     preview: [
-      "What each of the eight tiles compares",
+      "What each of the seven tiles compares",
       "How the HP and Speed arrows actually behave",
       "The opt-in hint mechanic at 5 and 10 guesses",
     ],
     difficulty: "Strategic",
     intro:
-      "Type any Deadlock hero into the search box. The grid lights up with eight attribute tiles: Class, Role, Gun, Damage, Nature, Gender, HP, and Speed. Six are exact green-or-red matches; HP and Speed return amber when within range and red when outside it. There is no guess limit.",
+      "Type any Deadlock hero into the search box. The grid lights up with seven attribute tiles: Role, Gun, Damage, Nature, Gender, HP, and Speed. Five are exact green-or-red matches; HP and Speed return amber when within range and red when outside it. There is no guess limit.",
     strategy: [
       {
         title: "Open with a hero you know well",
-        body: "Six of the eight tiles (Class, Role, Gun, Damage, Nature, Gender) come back as exact green/red. The first guess is mostly an elimination probe. Pick a hero whose attributes you can recall confidently.",
+        body: "Five of the seven tiles (Role, Gun, Damage, Nature, Gender) come back as exact green/red. The first guess is mostly an elimination probe. Pick a hero whose attributes you can recall confidently.",
       },
       {
         title: "Pivot on what's still red",
@@ -44,7 +44,7 @@ export const GUIDES: GuideEntry[] = [
     tips: [
       "No guess limit and no time limit. This is a daily, not a sprint.",
       "Comparisons persist across the day. Refresh, come back later, the board is intact.",
-      "On mobile the eight tiles wrap into two rows of four.",
+      "On mobile the seven tiles wrap onto two rows.",
     ],
   },
   {
@@ -85,7 +85,7 @@ export const GUIDES: GuideEntry[] = [
       "A guide to the cropped portrait: using both the camera pullback and the Classic style attribute row each wrong guess hands you.",
     preview: [
       "How the zoom decays from 10× to 1× across nine guesses",
-      "The full eight attribute row that drops with every miss",
+      "The full seven attribute row that drops with every miss",
       "When to wait for the next zoom step instead of guessing",
     ],
     difficulty: "Quick read",
@@ -94,7 +94,7 @@ export const GUIDES: GuideEntry[] = [
     strategy: [
       {
         title: "Every wrong guess hands you a Classic row",
-        body: "Class, Role, Gun, Damage, Nature, Gender, HP, Speed: all eight tiles compare your guess to the answer. The tiles often resolve the puzzle before the picture does.",
+        body: "Role, Gun, Damage, Nature, Gender, HP, Speed: all seven tiles compare your guess to the answer. The tiles often resolve the puzzle before the picture does.",
       },
       {
         title: "Miss intentionally over coin flipping",
@@ -128,7 +128,7 @@ export const GUIDES: GuideEntry[] = [
       },
       {
         title: "Wrong guesses produce a Classic row too",
-        body: "When you guess against Speaker A or B, an eight attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice recognition.",
+        body: "When you guess against Speaker A or B, a seven attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice recognition.",
       },
       {
         title: "Audio is the late game crutch",

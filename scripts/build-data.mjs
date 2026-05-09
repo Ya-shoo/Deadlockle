@@ -31,7 +31,10 @@ const SPLASH_QUALITY = 80;
 //   gender:         "male" | "female" | "non-binary" | "neutral"
 //   nature:         "human" | "undead" | "spirit" | "beast" | "robot" | "mystical" | "ixian"
 //   damage_style:   "hitscan" | "projectile" | "hybrid" | "melee"  -- delivery
-//   sub_role:       "sniper" | "carry" | "skirmisher" | "diver" | "bruiser" | "tank" | "mage" | "support"
+//   sub_role:       "sniper" | "carry" | "skirmisher" | "diver" | "bruiser" | "tank" | "mage" | "support" | "assassin"
+//                   "assassin" carries over Valve's hero_type bucket of the
+//                   same name; used when the diver/skirmisher labels don't
+//                   capture the hero's identity well enough.
 //                   our refinement of Valve's 4-bucket hero_type
 //   damage_source:  "weapon" | "spirit" | "hybrid"  -- where damage comes from in team fights
 //   role:                fallback for the API tagline (`description.role`)
@@ -70,7 +73,7 @@ const OVERLAY = {
   "vyper":        { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "sinclair":     { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "mina":         {
-    gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "sniper", damage_source: "weapon",
+    gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "assassin", damage_source: "weapon",
     role: "Drains life at mid-range and slips away as a swarm of bats",
   },
   "drifter":      {

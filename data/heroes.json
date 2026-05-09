@@ -1372,7 +1372,7 @@
     "gender": "female",
     "nature": "undead",
     "damage_style": "hitscan",
-    "sub_role": "sniper",
+    "sub_role": "assassin",
     "damage_source": "weapon",
     "abilities": [
       {

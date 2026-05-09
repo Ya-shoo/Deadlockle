@@ -1,10 +1,12 @@
 import type { Hero } from "./heroes";
 
-// Eight attributes for Classic mode. Mix of API-derived (hero_type, gun_tag,
-// hp, move_speed) and overlay (sub_role, damage_source, gender, nature).
-// Calibrated to the Deadlock value distributions.
+// Seven attributes for Classic mode. Mix of API-derived (gun_tag, hp,
+// move_speed) and overlay (sub_role, damage_source, gender, nature).
+// Calibrated to the Deadlock value distributions. Valve's 4-bucket
+// hero_type ("class") was dropped: sub_role already absorbs its values
+// at finer granularity (e.g. "assassin" carries over from class), and
+// the class tile was redundant with role for most guesses.
 export type AttrKey =
-  | "hero_type"
   | "sub_role"
   | "gun_tag"
   | "damage_source"
@@ -26,7 +28,6 @@ export type AttrResult = {
 };
 
 export const ATTRIBUTES: { key: AttrKey; label: string }[] = [
-  { key: "hero_type", label: "Class" },
   { key: "sub_role", label: "Role" },
   { key: "gun_tag", label: "Gun" },
   { key: "damage_source", label: "Damage" },
@@ -42,8 +43,7 @@ const NEAR_THRESHOLDS: Record<"hp" | "move_speed", number> = {
 };
 
 const TOOLTIPS: Partial<Record<AttrKey, string>> = {
-  hero_type: "Valve's in-game hero classification",
-  sub_role: "Deadlockle's refinement of Valve's 4-class system",
+  sub_role: "Deadlockle's refinement of Valve's class taxonomy",
 };
 
 function fmtCategorical(v: string | null): string {
@@ -89,15 +89,6 @@ function numerical(
 
 export function compareHero(guess: Hero, answer: Hero): AttrResult[] {
   const out: AttrResult[] = [];
-
-  out.push({
-    attr: "hero_type",
-    label: "Class",
-    display: fmtCategorical(guess.hero_type),
-    status: categorical(guess.hero_type, answer.hero_type),
-    hint: null,
-    tooltip: TOOLTIPS.hero_type,
-  });
 
   out.push({
     attr: "sub_role",

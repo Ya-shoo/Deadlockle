@@ -175,7 +175,7 @@ export function HeroCombobox({
                     {hero.name}
                   </div>
                   <div className="truncate font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                    {hero.hero_type ?? "—"}
+                    {hero.sub_role ?? "—"}
                   </div>
                 </div>
               </li>

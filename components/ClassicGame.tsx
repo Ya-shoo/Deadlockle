@@ -135,7 +135,7 @@ export function ClassicGame() {
             Classic
           </h1>
           <p className="mt-3 max-w-md text-ink-soft">
-            Type a hero. Match the eight attributes. New puzzle daily.
+            Type a hero. Match the seven attributes. New puzzle daily.
           </p>
         </div>
         <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
