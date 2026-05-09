@@ -43,3 +43,6 @@ next-env.d.ts
 # claude code / wrangler local state
 /.claude/
 /.wrangler/
+
+# whisper model binaries (downloaded on demand by build-conversation-audio)
+/scripts/whisper-models/

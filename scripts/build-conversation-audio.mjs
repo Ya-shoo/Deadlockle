@@ -33,7 +33,11 @@ import {
   loadVoiceprintCache,
   saveVoiceprintCache,
 } from "./lib/diarize.mjs";
-import { alignLinesToWhisper, runWhisper } from "./lib/whisper-align.mjs";
+import {
+  alignLinesToWhisper,
+  runWhisper,
+  verifyClipsMatchTranscript,
+} from "./lib/whisper-align.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HEROES_IN = resolve(__dirname, "..", "data", "heroes.json");
@@ -359,16 +363,35 @@ async function computeLineRanges(audioPath, lines, voiceprints = null, speakers 
 
   // Strategy 0 — whisper.cpp forced alignment. Highest accuracy: we know
   // the transcript, Whisper tells us when each word is spoken, and
-  // Needleman-Wunsch sequence alignment tolerates small ASR errors. This
-  // is the primary strategy. Falls through to MFCC diarization if it
-  // fails (e.g., Whisper transcription too sparse to align reliably).
+  // Needleman-Wunsch sequence alignment tolerates small ASR errors.
+  // Whisper boundaries are then snapped to detected silences so the
+  // physical cut lands in actual quiet space — Whisper's word-time
+  // resolution alone (50-150ms jitter) isn't tight enough to land
+  // between speakers cleanly. This is the primary strategy. Falls
+  // through to MFCC diarization if alignment fails.
   try {
     const words = await runWhisper(audioPath);
-    const aligned = alignLinesToWhisper(words, lines);
+    const silenceData = await collectSilences(audioPath, duration);
+    const aligned = alignLinesToWhisper(words, lines, silenceData.internal);
     if (aligned.ok) {
-      const reason = validateRangesByText(aligned.ranges, lines);
-      if (!reason) {
-        return aligned.ranges;
+      const wpsReason = validateRangesByText(aligned.ranges, lines);
+      if (!wpsReason) {
+        // Per-clip verification: actually decode each computed clip and
+        // run Whisper on it. If a clip's audio doesn't transcribe to
+        // tokens that match its expected line text, the alignment
+        // drifted somewhere and the conversation is unsafe to ship.
+        // This is the strongest backstop — WPS validates duration
+        // plausibility, but content-mismatch (e.g., "Nevermind" plays
+        // inside the "What's that?" clip) only shows up here.
+        const verified = await verifyClipsMatchTranscript(
+          audioPath,
+          aligned.ranges,
+          lines,
+        );
+        if (verified.ok) {
+          return aligned.ranges;
+        }
+        return { _failed: true, reason: `verify_failed: ${verified.reason}` };
       }
       // WPS validator rejected — Whisper alignment produced something
       // implausible. Fall through to next strategy.

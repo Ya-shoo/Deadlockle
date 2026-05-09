@@ -18,6 +18,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import ffmpegPath from "ffmpeg-static";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -83,6 +84,55 @@ export async function runWhisper(audioPath, opts = {}) {
   } finally {
     await rm(dir, { recursive: true, force: true }).catch(() => {});
   }
+}
+
+// Whisper's tokenizer splits compound words and contractions ("Nevermind"
+// → "Never" + "mind"; "What's" → "What" + "'s") even when our transcript
+// keeps them as one token. Left unhandled, alignment matches one half
+// of the pair and treats the other as a deletion — and that dangling
+// half pushes the line-boundary calculation past the real silence and
+// into the next speaker's territory.
+//
+// This pre-pass walks the Whisper word stream and merges runs of 2-4
+// consecutive Whisper words if their concatenated tokenization equals
+// a known transcript token. The merged word inherits the start of the
+// first piece and the end of the last, so timing stays accurate.
+export function mergeCompoundWhisperWords(whisperWords, transcriptTokens) {
+  const targetSet = new Set(transcriptTokens);
+  const merged = [];
+  let i = 0;
+  while (i < whisperWords.length) {
+    const baseTok = tokenize(whisperWords[i].text)[0] ?? "";
+    if (!baseTok) {
+      merged.push(whisperWords[i]);
+      i++;
+      continue;
+    }
+    let bestEnd = i;
+    let bestTok = baseTok;
+    let combined = baseTok;
+    for (let j = i + 1; j < Math.min(i + 4, whisperWords.length); j++) {
+      const next = tokenize(whisperWords[j].text)[0] ?? "";
+      if (!next) break;
+      combined += next;
+      if (targetSet.has(combined)) {
+        bestEnd = j;
+        bestTok = combined;
+      }
+    }
+    if (bestEnd > i) {
+      merged.push({
+        text: bestTok,
+        start: whisperWords[i].start,
+        end: whisperWords[bestEnd].end,
+      });
+      i = bestEnd + 1;
+    } else {
+      merged.push(whisperWords[i]);
+      i++;
+    }
+  }
+  return merged;
 }
 
 // Lowercase, strip punctuation/quotes, split on whitespace. Used to
@@ -208,6 +258,9 @@ export function alignLinesToWhisper(whisperWords, lines, silences = null) {
   if (transcriptTokens.length === 0) {
     return { ok: false, reason: "no_transcript_tokens" };
   }
+  // Merge compound-word splits ("never" + "mind" → "nevermind") so the
+  // sequence aligner sees the same tokenization our transcript uses.
+  whisperWords = mergeCompoundWhisperWords(whisperWords, transcriptTokens);
   const whisperTokens = whisperWords.map((w) => tokenize(w.text)[0] ?? "");
   if (whisperTokens.length < Math.max(3, Math.floor(transcriptTokens.length * 0.5))) {
     return {
@@ -270,23 +323,168 @@ export function alignLinesToWhisper(whisperWords, lines, silences = null) {
     }
   }
 
-  // Tiny pad on each side so playback doesn't clip the leading consonant
-  // or the trailing release. 60ms is below perceptual threshold for
-  // "starts in silence" and well below the inter-line gap on normal
-  // dialogue.
-  const PAD = 0.06;
-  const padded = ranges.map((r, i) => {
-    let start = Math.max(0, r.start - PAD);
-    let end = r.end + PAD;
-    // Don't let padding overlap into the next line's start.
-    if (i + 1 < ranges.length) {
-      end = Math.min(end, ranges[i + 1].start - 0.01);
+  // Snap each internal line boundary to the nearest silence within
+  // ±SNAP_WINDOW. For boundary i (between line i and line i+1), we have
+  // two Whisper-predicted edges: ranges[i].end (last word's end) and
+  // ranges[i+1].start (first word's start of next line). The "ideal"
+  // boundary lies somewhere between those two times. Find the silence
+  // whose midpoint sits closest to that ideal point — line i's clip
+  // ends at silence.start and line i+1's clip begins at silence.end, so
+  // there's no shared audio between adjacent clips.
+  //
+  // When no nearby silence exists (speakers cut over each other with
+  // no perceptible gap), fall back to splitting the difference between
+  // the two Whisper edges. Better than letting Whisper's jitter pick
+  // a boundary INSIDE someone's speech.
+  const SNAP_WINDOW = 0.3;
+  const internal = ranges.length - 1;
+  const cuts = []; // physical {beforeEnd, afterStart} per boundary
+  for (let i = 0; i < internal; i++) {
+    const wEnd = ranges[i].end;
+    const wStart = ranges[i + 1].start;
+    const ideal = (wEnd + wStart) / 2;
+    let chosen = null;
+    let chosenDist = Infinity;
+    if (silences) {
+      for (const s of silences) {
+        const mid = (s.start + s.end) / 2;
+        if (Math.abs(mid - ideal) <= SNAP_WINDOW && Math.abs(mid - ideal) < chosenDist) {
+          chosen = s;
+          chosenDist = Math.abs(mid - ideal);
+        }
+      }
     }
-    return { start: round3(start), duration: round3(end - start) };
-  });
-  return { ok: true, ranges: padded };
+    if (chosen) {
+      cuts.push({ beforeEnd: chosen.start, afterStart: chosen.end });
+    } else {
+      cuts.push({ beforeEnd: ideal, afterStart: ideal });
+    }
+  }
+
+  // Build the final per-line spans. Outer edges (very first start,
+  // very last end) get a small lead-in / fade-out pad so the leading
+  // consonant or trailing breath isn't clipped — these don't risk
+  // overlapping with another line.
+  const OUTER_PAD = 0.05;
+  const out = [];
+  for (let i = 0; i < ranges.length; i++) {
+    const start =
+      i === 0
+        ? Math.max(0, ranges[0].start - OUTER_PAD)
+        : cuts[i - 1].afterStart;
+    const end =
+      i === ranges.length - 1
+        ? ranges[ranges.length - 1].end + OUTER_PAD
+        : cuts[i].beforeEnd;
+    if (end - start <= 0.05) {
+      return { ok: false, reason: `line_${i}_zero_length_after_snap` };
+    }
+    out.push({ start: round3(start), duration: round3(end - start) });
+  }
+  return { ok: true, ranges: out };
 }
 
 function round3(n) {
   return Math.round(n * 1000) / 1000;
+}
+
+// Slice a region out of an audio file with ffmpeg into a temp WAV. WAV
+// over MP3 to avoid re-encoding loss on a tiny clip; whisper-cli accepts
+// either. Returns the path to the temp file.
+async function sliceAudio(audioPath, start, duration) {
+  const dir = await mkdtemp(join(tmpdir(), "deadlockle-slice-"));
+  const out = join(dir, "slice.wav");
+  await new Promise((resolveFn, rejectFn) => {
+    const args = [
+      "-y",
+      "-loglevel", "error",
+      "-ss", String(start),
+      "-t", String(duration),
+      "-i", audioPath,
+      "-ac", "1",
+      "-ar", "16000",
+      out,
+    ];
+    const proc = spawn(ffmpegPath, args);
+    let stderr = "";
+    proc.stderr.on("data", (d) => (stderr += d.toString()));
+    proc.on("error", rejectFn);
+    proc.on("exit", (code) => {
+      if (code === 0) resolveFn();
+      else rejectFn(new Error(`ffmpeg slice exit ${code}: ${stderr.slice(0, 200)}`));
+    });
+  });
+  return { path: out, dir };
+}
+
+// Per-clip Whisper verification, drift-aware. Decode each line's audio
+// range and run Whisper on it. Then compare the transcribed tokens
+// against EVERY line's expected tokens, not just this one's, and check:
+//
+//   1. Does ANOTHER line's expected text match the clip better than
+//      this line's? If yes → drift (the clip's audio is actually from
+//      a different line, e.g., "Nevermind" leaking into the "What's
+//      that?" clip). Reject.
+//
+//   2. If no other line dominates and at least some signal matches,
+//      accept — even if absolute match rate is low. Whisper's ASR is
+//      unreliable on sub-1s clips, but those clips don't have time to
+//      contain content from ANOTHER line either, so absence of a
+//      strong drift signal is the right pass condition.
+//
+// Returns { ok, reason? }.
+export async function verifyClipsMatchTranscript(audioPath, ranges, lines, opts = {}) {
+  // Tokenize every line's expected text once for cross-comparison.
+  const lineTokenSets = lines.map((l) => new Set(tokenize(l.text)));
+  for (let i = 0; i < ranges.length; i++) {
+    const r = ranges[i];
+    const expected = lineTokenSets[i];
+    if (expected.size === 0) continue;
+    const slice = await sliceAudio(audioPath, r.start, r.duration);
+    let actual = [];
+    try {
+      const words = await runWhisper(slice.path, opts);
+      actual = words.flatMap((w) => tokenize(w.text));
+    } finally {
+      await rm(slice.dir, { recursive: true, force: true }).catch(() => {});
+    }
+    if (actual.length === 0 && expected.size > 0) {
+      return {
+        ok: false,
+        reason: `line_${i}_clip_silent (expected "${lines[i].text.slice(0, 30)}…")`,
+      };
+    }
+    const actualSet = new Set(actual);
+    // Score each line by how many of ITS expected tokens appear in the
+    // clip's transcription. The ratio (hits / expected.size) is each
+    // line's "match rate" against this clip.
+    const lineScores = lineTokenSets.map((expSet) => {
+      if (expSet.size === 0) return 0;
+      let hits = 0;
+      for (const t of expSet) if (actualSet.has(t)) hits++;
+      return hits / expSet.size;
+    });
+    const myScore = lineScores[i];
+    // Drift = some OTHER line scores meaningfully higher than this one.
+    // Threshold: other line must score at least 0.4 (substantive match)
+    // AND beat this line by 0.25+ (clear winner). That tolerates Whisper
+    // ASR fuzz where short clips transcribe poorly and no line scores
+    // high — those pass because no drift is detected.
+    let driftedTo = -1;
+    let driftScore = 0;
+    for (let j = 0; j < lineScores.length; j++) {
+      if (j === i) continue;
+      if (lineScores[j] >= 0.4 && lineScores[j] - myScore > 0.25 && lineScores[j] > driftScore) {
+        driftedTo = j;
+        driftScore = lineScores[j];
+      }
+    }
+    if (driftedTo >= 0) {
+      return {
+        ok: false,
+        reason: `line_${i}_drift_to_line_${driftedTo} (this=${myScore.toFixed(2)}, other=${driftScore.toFixed(2)}; heard "${actual.slice(0, 8).join(" ")}…")`,
+      };
+    }
+  }
+  return { ok: true };
 }
