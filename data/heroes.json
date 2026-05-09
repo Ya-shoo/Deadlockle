@@ -1473,7 +1473,7 @@
     "stamina": 3,
     "lore": "The Venators of St. Benedict are a Vatican-sanctioned order whose members are deployed to regions with a high concentration of supernatural predators.   Few in number, their modus operandi is to observe, identify, and exterminate. They are methodical, they are precise, and once they identify a threat to the flock they are relentless.\n\nBut even amongst those who are called The Sword Of St. Benedict, one stands apart from the others.  A man whose hardened heart has allowed him to pay terrible prices in the name of the greater good... and he has once again been dispatched to New York.",
     "role": "Hunts the supernatural with crossbow bolts and blessed traps",
-    "gender": "female",
+    "gender": "male",
     "nature": "human",
     "damage_style": "projectile",
     "sub_role": "sniper",
@@ -1789,7 +1789,7 @@
     "nature": "human",
     "damage_style": "hybrid",
     "sub_role": "skirmisher",
-    "damage_source": "weapon",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Disengaging Sigil",

@@ -81,7 +81,7 @@ const OVERLAY = {
     },
   },
   "venator":      {
-    gender: "female", nature: "human", damage_style: "projectile", sub_role: "sniper", damage_source: "weapon",
+    gender: "male", nature: "human", damage_style: "projectile", sub_role: "sniper", damage_source: "weapon",
     role: "Hunts the supernatural with crossbow bolts and blessed traps",
   },
   "victor":       {
@@ -108,7 +108,7 @@ const OVERLAY = {
     },
   },
   "apollo":       {
-    gender: "male", nature: "human", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "weapon",
+    gender: "male", nature: "human", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "spirit",
     role: "A dueling prince who parries every blow and ends fights in a flash",
   },
   "rem":          {
