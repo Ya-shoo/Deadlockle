@@ -73,7 +73,7 @@ const OVERLAY = {
   "vyper":        { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "sinclair":     { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "mina":         {
-    gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "assassin", damage_source: "weapon",
+    gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "assassin", damage_source: "spirit",
     role: "Drains life at mid-range and slips away as a swarm of bats",
   },
   "drifter":      {

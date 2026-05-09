@@ -1373,7 +1373,7 @@
     "nature": "undead",
     "damage_style": "hitscan",
     "sub_role": "assassin",
-    "damage_source": "weapon",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Rake",
