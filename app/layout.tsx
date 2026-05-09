@@ -68,18 +68,59 @@ export const metadata: Metadata = {
   },
 };
 
+// Two-node graph so Google reads "Deadlockle" as a distinct brand entity
+// (WebSite) AND a playable web app (WebApplication). The WebSite node is
+// the one Google's Knowledge Graph uses for entity recognition — without
+// it, brand-name searches risk being auto-corrected to similar competitor
+// brands like Deadlockdle. alternateName lists genuine alternate spellings
+// of THIS brand only; competitor names are deliberately excluded so we
+// don't tell Google the brands are interchangeable.
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: SITE_NAME,
-  alternateName: ["Deadlock dle", "Deadlockdle", "Daily Deadlock Quiz"],
-  url: SITE_URL,
-  description: DEFAULT_DESCRIPTION,
-  applicationCategory: "Game",
-  genre: "Puzzle",
-  operatingSystem: "Any",
-  inLanguage: "en",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      alternateName: [
+        "Deadlock dle",
+        "Deadlock Wordle",
+        "Daily Deadlock Quiz",
+      ],
+      url: SITE_URL,
+      description: DEFAULT_DESCRIPTION,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#publisher` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#publisher`,
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    {
+      "@type": "WebApplication",
+      "@id": `${SITE_URL}/#webapp`,
+      name: SITE_NAME,
+      alternateName: ["Deadlock dle", "Deadlock Wordle"],
+      url: SITE_URL,
+      description: DEFAULT_DESCRIPTION,
+      applicationCategory: "GameApplication",
+      genre: ["Puzzle", "Trivia", "Word Game"],
+      operatingSystem: "Web",
+      browserRequirements: "Requires JavaScript and HTML5.",
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: {
+        "@type": "VideoGame",
+        name: "Deadlock",
+        publisher: { "@type": "Organization", name: "Valve Corporation" },
+        gamePlatform: "PC",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -93,7 +134,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
         />
         <Header />
         {children}
