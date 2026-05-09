@@ -32,7 +32,7 @@ const ALL_MODES: ModeDef[] = [
   {
     slug: "classic",
     label: "Classic",
-    blurb: "Type a hero, get attribute-match tiles. Eight categories.",
+    blurb: "Type a hero, get attribute match tiles. Eight categories.",
     built: true,
   },
   {
@@ -58,7 +58,7 @@ const ALL_MODES: ModeDef[] = [
     slug: "sound",
     label: "Conversation",
     blurb:
-      "A two-speaker conversation. The actual voice clip unlocks late if you get stuck.",
+      "A conversation between two heroes. The actual voice clip unlocks late if you get stuck.",
     built: true,
   },
   {
