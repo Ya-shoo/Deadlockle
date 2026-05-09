@@ -31,6 +31,18 @@ const WIKI = "https://deadlock.wiki";
 const USER_AGENT =
   "Deadlockle/0.1 (daily Deadlock quiz; contact yashpa0326@gmail.com)";
 
+// Item names appear in the wiki HTML with HTML-entity-encoded
+// apostrophes ("Hunter&#39;s Aura"). Decode the small set of entities
+// MediaWiki actually emits in attribute text.
+function decodeEntities(s) {
+  return s
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(parseInt(n, 10)))
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
 function toKey(name) {
   return name
     .toLowerCase()
@@ -39,15 +51,16 @@ function toKey(name) {
     .replace(/^-+|-+$/g, "");
 }
 
-// Map a soul cost to a tier number. Items at 9999 are Street Brawl
-// legendaries; tiers 5+ are mode-specific so we filter them out by default.
-function costToTier(cost) {
-  if (cost === 800) return 1;
-  if (cost === 1600) return 2;
-  if (cost === 3200) return 3;
-  if (cost === 6400) return 4;
-  return null;
-}
+// Tier → soul cost. The wiki listing no longer surfaces per-item cost,
+// but tier pricing is stable across patches; if Valve ever shifts the
+// economy, update here in one place.
+const TIER_COST = { 1: 800, 2: 1600, 3: 3200, 4: 6400 };
+
+// In-game tab names. The wiki encodes slot in the card-frame filename
+// using the older internal label ("Armor" / "Tech") rather than the
+// shop tab name ("Vitality" / "Spirit"); translate to the tab name we
+// surface in the UI.
+const SLOT_MAP = { Weapon: "weapon", Armor: "vitality", Tech: "spirit" };
 
 async function fetchText(url) {
   const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
@@ -88,74 +101,50 @@ function findSection(html, anchorId) {
   return m.index;
 }
 
-// Slot icon clusters mark the start of each slot subsection.
-function findFirst(html, pattern, fromIndex = 0) {
-  const idx = html.indexOf(pattern, fromIndex);
-  if (idx < 0) throw new Error(`pattern not found after ${fromIndex}: ${pattern}`);
-  return idx;
-}
-
 function parseItems(html) {
   const start = findSection(html, "Complete_List_of_Items");
   const end = findSection(html, "Active_Items");
   const section = html.substring(start, end);
 
-  // Slot boundaries: find first occurrence of each slot icon AFTER the
-  // section start. Items within [weaponStart, vitalityStart) are weapons,
-  // etc. Offsets are page-relative (from `start`).
-  const weaponStart = findFirst(section, "Weapon_Icon.png");
-  const vitalityStart = findFirst(section, "Vitality_Icon.png");
-  const spiritStart = findFirst(section, "Spirit_icon.png");
-
-  function slotAt(offset) {
-    if (offset >= spiritStart) return "spirit";
-    if (offset >= vitalityStart) return "vitality";
-    if (offset >= weaponStart) return "weapon";
-    return null;
-  }
-
   // Each item card is a `<div class="HeroCard2">…</table></div>` block.
+  // The card encodes everything we need:
+  //   - data-item-name="…"          → display name
+  //   - <Weapon|Armor|Tech>_Card_T<n>.png → slot + tier (the card frame)
+  //   - <span class="item-card-icon">…<img src="/images/thumb/…/96px-…">
+  //                                 → item icon
   const cardRe = /<div class="HeroCard2"[\s\S]*?<\/table><\/div>/g;
+  const tierFrameRe = /(Weapon|Armor|Tech)_Card_T([1-4])\.png/;
+  const iconScopeRe = /<span class="item-card-icon"[\s\S]*?<\/span>/;
+  const iconSrcRe =
+    /src="(\/images\/thumb\/[a-f0-9]\/[a-f0-9]{2}\/[^/]+\.png)\/96px-[^"]+\.png"/;
+
   const items = [];
   const seen = new Set();
   let cardMatch;
   while ((cardMatch = cardRe.exec(section)) !== null) {
     const card = cardMatch[0];
-    const offset = cardMatch.index;
 
-    // Cost: first <b>NUMBER</b> inside the card. Skip legendaries (9999+).
-    const costM = card.match(/<b>([\d,]+)<\/b>/);
-    if (!costM) continue;
-    const cost = parseInt(costM[1].replace(/,/g, ""), 10);
-    const tier = costToTier(cost);
-    if (tier == null) continue;
+    const nameM = card.match(/data-item-name="([^"]+)"/);
+    if (!nameM) continue;
+    const name = decodeEntities(nameM[1]).trim();
+    const wikiTitle = name.replace(/ /g, "_");
 
-    // Item icon: the wiki renders item thumbnails at exactly 50px in this
-    // section. Source URL is `/images/thumb/<x>/<xx>/<File>.png/50px-<File>.png`
-    // — we extract <File> to derive the wiki page title (replace _ → space)
-    // and rebuild the URL at 100px so the download is crisp at 2x. Note we
-    // must NOT use the first title-attribute in the card, because that's the
-    // Souls icon link that prefixes every cost cell.
-    const iconM = card.match(
-      /src="(\/images\/thumb\/[a-f0-9]\/[a-f0-9]{2}\/([^/]+)\.png\/50px-[^"]+\.png)"/,
-    );
+    const tierM = card.match(tierFrameRe);
+    if (!tierM) continue;
+    const slot = SLOT_MAP[tierM[1]];
+    const tier = parseInt(tierM[2], 10);
+    const cost = TIER_COST[tier] ?? null;
+
+    // Scope icon search to the item-card-icon span so we don't pick up
+    // the card frame, paper textures, or paper-wear overlays. Then
+    // upgrade the captured 96px thumb to the 192px (2x) variant for a
+    // sharper local resize.
+    const iconBlock = card.match(iconScopeRe);
+    if (!iconBlock) continue;
+    const iconM = iconBlock[0].match(iconSrcRe);
     if (!iconM) continue;
-    const wikiTitle = iconM[2]; // e.g., "Close_Quarters"
-    // Skip non-item icons that somehow pass the size filter (Star.png etc.)
-    if (
-      wikiTitle === "Souls" ||
-      wikiTitle === "Star" ||
-      wikiTitle === "Weapon_Icon" ||
-      wikiTitle === "Vitality_Icon" ||
-      wikiTitle === "Spirit_icon"
-    ) {
-      continue;
-    }
-    const name = wikiTitle.replace(/_/g, " ");
-    const iconUrl = `${WIKI}${iconM[1].replace("/50px-", "/100px-")}`;
-
-    const slot = slotAt(offset);
-    if (!slot) continue;
+    const filename = iconM[1].split("/").pop();
+    const iconUrl = `${WIKI}${iconM[1]}/192px-${filename}`;
 
     const key = toKey(name);
     if (seen.has(key)) continue;
@@ -174,12 +163,14 @@ function parseItems(html) {
   return items;
 }
 
-// Batch-fetch intro extracts via MediaWiki API. Up to 50 titles per call.
+// Batch-fetch intro extracts via MediaWiki API. Cap batch size at 20 —
+// the TextExtracts extension caps `exlimit` at 20 per query, and any
+// titles past that limit silently come back without an `extract` field.
 async function fetchDescriptions(titles) {
   const out = new Map();
   const batches = [];
-  for (let i = 0; i < titles.length; i += 50) {
-    batches.push(titles.slice(i, i + 50));
+  for (let i = 0; i < titles.length; i += 20) {
+    batches.push(titles.slice(i, i + 20));
   }
   for (const batch of batches) {
     const url = new URL(`${WIKI}/api.php`);
@@ -187,6 +178,7 @@ async function fetchDescriptions(titles) {
     url.searchParams.set("prop", "extracts");
     url.searchParams.set("exintro", "true");
     url.searchParams.set("explaintext", "true");
+    url.searchParams.set("exlimit", "max");
     url.searchParams.set("titles", batch.join("|"));
     url.searchParams.set("format", "json");
     url.searchParams.set("formatversion", "2");
@@ -231,9 +223,14 @@ async function main() {
     if (path) dlOk++;
     it.icon = path;
     delete it.iconSrc;
-    const desc = descMap.get(decodeURIComponent(it.wikiTitle));
+    // descMap is keyed by the title we passed to the API (apostrophe
+    // intact, spaces left as-is in the URL we built).
+    const desc = descMap.get(it.name);
     it.description = desc ?? null;
-    it.wikiUrl = `${WIKI}/${it.wikiTitle}`;
+    // MediaWiki canonical URL form: spaces → underscores, apostrophes
+    // percent-encoded. Other punctuation is rare in item names and
+    // works without encoding in practice.
+    it.wikiUrl = `${WIKI}/${it.wikiTitle.replace(/'/g, "%27")}`;
     delete it.wikiTitle;
     console.log(path ? "ok" : "skip");
     await new Promise((r) => setTimeout(r, 60));

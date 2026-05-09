@@ -1,1572 +1,1722 @@
 [
   {
-    "key": "upgrade-clip-size",
-    "class_name": "upgrade_clip_size",
-    "name": "Extended Magazine",
-    "slot": "weapon",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-clip-size.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/clip_size.png"
-  },
-  {
-    "key": "upgrade-non-player-bonus",
-    "class_name": "upgrade_non_player_bonus",
-    "name": "Monster Rounds",
-    "slot": "weapon",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-non-player-bonus.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/reaper_rounds.png"
-  },
-  {
-    "key": "upgrade-chain-lightning",
-    "class_name": "upgrade_chain_lightning",
-    "name": "Tesla Bullets",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-chain-lightning.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/electrified_bullets.png"
-  },
-  {
-    "key": "upgrade-capacitor",
-    "class_name": "upgrade_capacitor",
-    "name": "Capacitor",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-capacitor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/electrified_bullets.png"
-  },
-  {
-    "key": "upgrade-hollow-point-rounds",
-    "class_name": "upgrade_hollow_point_rounds",
-    "name": "Hollow Point",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-hollow-point-rounds.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/hollow_point.png"
-  },
-  {
-    "key": "upgrade-pristine-emblem",
-    "class_name": "upgrade_pristine_emblem",
-    "name": "Opening Rounds",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-pristine-emblem.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/pristine_emblem.png"
-  },
-  {
-    "key": "upgrade-high-velocity-mag",
-    "class_name": "upgrade_high_velocity_mag",
-    "name": "High-Velocity Rounds",
-    "slot": "weapon",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-high-velocity-mag.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/high_velocity_mag.png"
-  },
-  {
-    "key": "upgrade-lifestrike-gauntlets",
-    "class_name": "upgrade_lifestrike_gauntlets",
-    "name": "Melee Lifesteal",
-    "slot": "vitality",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-lifestrike-gauntlets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/lifestrike_gauntlets.png"
-  },
-  {
-    "key": "upgrade-melee-rebuttal",
-    "class_name": "upgrade_melee_rebuttal",
-    "name": "Rebuttal",
-    "slot": "vitality",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-melee-rebuttal.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/icons/icon_parry.svg"
-  },
-  {
-    "key": "upgrade-counterspell",
-    "class_name": "upgrade_counterspell",
-    "name": "Counterspell",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-counterspell.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/icons/icon_parry.svg"
-  },
-  {
-    "key": "upgrade-weighted-shots",
-    "class_name": "upgrade_weighted_shots",
-    "name": "Weighted Shots",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-weighted-shots.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/close_range.png"
-  },
-  {
-    "key": "upgrade-close-range",
-    "class_name": "upgrade_close_range",
+    "key": "close-quarters",
     "name": "Close Quarters",
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-close-range.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/close_range.png"
+    "icon": "/items/close-quarters.webp",
+    "description": "Close Quarters is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Close_Quarters"
   },
   {
-    "key": "upgrade-long-range",
-    "class_name": "upgrade_long_range",
-    "name": "Long Range",
+    "key": "extended-magazine",
+    "name": "Extended Magazine",
     "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-long-range.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/long_range.png"
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extended-magazine.webp",
+    "description": "Extended Magazine is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extended_Magazine"
   },
   {
-    "key": "upgrade-slowing-bullets",
-    "class_name": "upgrade_slowing_bullets",
-    "name": "Slowing Bullets",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-slowing-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/slowing_bullets.png"
-  },
-  {
-    "key": "upgrade-inhibitor",
-    "class_name": "upgrade_inhibitor",
-    "name": "Inhibitor",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-inhibitor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/inhibitor.png"
-  },
-  {
-    "key": "upgrade-tech-defense-shredders",
-    "class_name": "upgrade_tech_defense_shredders",
-    "name": "Spirit Shredder Bullets",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-tech-defense-shredders.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/tech_resist_shredder.png"
-  },
-  {
-    "key": "upgrade-dps-aura",
-    "class_name": "upgrade_dps_aura",
-    "name": "Heroic Aura",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-dps-aura.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/bullet_damage_aura.png"
-  },
-  {
-    "key": "upgrade-targeted-silence",
-    "class_name": "upgrade_targeted_silence",
-    "name": "Silence Wave",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-targeted-silence.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/targeted_silence.png"
-  },
-  {
-    "key": "upgrade-proc-silence",
-    "class_name": "upgrade_proc_silence",
-    "name": "Silencer",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-proc-silence.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/emp_bullets.png"
-  },
-  {
-    "key": "upgrade-berserker",
-    "class_name": "upgrade_berserker",
-    "name": "Berserker",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-berserker.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/berserker.png"
-  },
-  {
-    "key": "upgrade-fervor",
-    "class_name": "upgrade_fervor",
-    "name": "Frenzy",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-fervor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fervor.png"
-  },
-  {
-    "key": "upgrade-siphon-bullets",
-    "class_name": "upgrade_siphon_bullets",
-    "name": "Siphon Bullets",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-siphon-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/siphon_bullets.png"
-  },
-  {
-    "key": "upgrade-headshot-booster",
-    "class_name": "upgrade_headshot_booster",
+    "key": "headshot-booster",
     "name": "Headshot Booster",
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-headshot-booster.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/headshot_booster.png"
+    "icon": "/items/headshot-booster.webp",
+    "description": "Headshot Booster is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Headshot_Booster"
   },
   {
-    "key": "upgrade-headshot-booster2",
-    "class_name": "upgrade_headshot_booster2",
-    "name": "Weakening Headshot",
+    "key": "high-velocity-rounds",
+    "name": "High-Velocity Rounds",
     "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-headshot-booster2.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/headshot_booster.png"
-  },
-  {
-    "key": "upgrade-sharpshooter",
-    "class_name": "upgrade_sharpshooter",
-    "name": "Sharpshooter",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-sharpshooter.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/longshot.png"
-  },
-  {
-    "key": "upgrade-headhunter",
-    "class_name": "upgrade_headhunter",
-    "name": "Headhunter",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-headhunter.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/headhunter.png"
-  },
-  {
-    "key": "upgrade-spellslinger-headshots",
-    "class_name": "upgrade_spellslinger_headshots",
-    "name": "Spirit Rend",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-spellslinger-headshots.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/spellslinger_headshots.png"
-  },
-  {
-    "key": "upgrade-banshee-slugs",
-    "class_name": "upgrade_banshee_slugs",
-    "name": "Crippling Headshot",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-banshee-slugs.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/banshee_slugs.png"
-  },
-  {
-    "key": "upgrade-crackshot",
-    "class_name": "upgrade_crackshot",
-    "name": "Mystic Shot",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-crackshot.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/explosive_bullets.png"
-  },
-  {
-    "key": "upgrade-critshot",
-    "class_name": "upgrade_critshot",
-    "name": "Lucky Shot",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-critshot.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/crit_damage.png"
-  },
-  {
-    "key": "upgrade-close-quarter-combat",
-    "class_name": "upgrade_close_quarter_combat",
-    "name": "Point Blank",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-close-quarter-combat.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/point_blank.png"
-  },
-  {
-    "key": "upgrade-toxic-bullets",
-    "class_name": "upgrade_toxic_bullets",
-    "name": "Toxic Bullets",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-toxic-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/toxic_bullets.png"
-  },
-  {
-    "key": "upgrade-ricochet",
-    "class_name": "upgrade_ricochet",
-    "name": "Ricochet",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-ricochet.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/ricochet.png"
-  },
-  {
-    "key": "upgrade-health",
-    "class_name": "upgrade_health",
-    "name": "Extra Health",
-    "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-health.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/health.png"
+    "icon": "/items/high-velocity-rounds.webp",
+    "description": "High-Velocity Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/High-Velocity_Rounds"
   },
   {
-    "key": "upgrade-vampire",
-    "class_name": "upgrade_vampire",
-    "name": "Bullet Lifesteal",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-vampire.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/health_stealing_bullets.png"
-  },
-  {
-    "key": "upgrade-debuff-reducer",
-    "class_name": "upgrade_debuff_reducer",
-    "name": "Debuff Reducer",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-debuff-reducer.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/debuff_reducer.png"
-  },
-  {
-    "key": "upgrade-reduce-debuff-duration",
-    "class_name": "upgrade_reduce_debuff_duration",
-    "name": "Dispel Magic",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-reduce-debuff-duration.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/debuff_remover.png"
-  },
-  {
-    "key": "upgrade-tech-purge",
-    "class_name": "upgrade_tech_purge",
-    "name": "Spirit Resilience",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-tech-purge.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/tech_purge.png"
-  },
-  {
-    "key": "upgrade-improved-bullet-armor",
-    "class_name": "upgrade_improved_bullet_armor",
-    "name": "Bullet Resilience",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-improved-bullet-armor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/improved_bullet_armor.png"
-  },
-  {
-    "key": "upgrade-metal-skin",
-    "class_name": "upgrade_metal_skin",
-    "name": "Metal Skin",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-metal-skin.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/metal_skin.png"
-  },
-  {
-    "key": "upgrade-healing-booster",
-    "class_name": "upgrade_healing_booster",
-    "name": "Healing Booster",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-healing-booster.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/healing_booster.png"
-  },
-  {
-    "key": "upgrade-chonky",
-    "class_name": "upgrade_chonky",
-    "name": "Fortitude",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-chonky.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/revitalizer.png"
-  },
-  {
-    "key": "upgrade-damage-recycler",
-    "class_name": "upgrade_damage_recycler",
-    "name": "Leech",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-damage-recycler.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/leech.png"
-  },
-  {
-    "key": "upgrade-sprint-booster",
-    "class_name": "upgrade_sprint_booster",
-    "name": "Sprint Boots",
-    "slot": "vitality",
+    "key": "monster-rounds",
+    "name": "Monster Rounds",
+    "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-sprint-booster.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/sprint_booster.png"
+    "icon": "/items/monster-rounds.webp",
+    "description": "Monster Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Monster_Rounds"
   },
   {
-    "key": "upgrade-trophy-collector",
-    "class_name": "upgrade_trophy_collector",
-    "name": "Trophy Collector",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-trophy-collector.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/sprint_booster.png"
-  },
-  {
-    "key": "upgrade-cardio-calibrator",
-    "class_name": "upgrade_cardio_calibrator",
-    "name": "Enduring Speed",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-cardio-calibrator.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/cardio_calibrator.png"
-  },
-  {
-    "key": "upgrade-superior-stamina",
-    "class_name": "upgrade_superior_stamina",
-    "name": "Stamina Mastery",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-superior-stamina.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/superior_stamina.png"
-  },
-  {
-    "key": "upgrade-rapid-rounds",
-    "class_name": "upgrade_rapid_rounds",
+    "key": "rapid-rounds",
     "name": "Rapid Rounds",
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-rapid-rounds.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/rapid_rounds.png"
+    "icon": "/items/rapid-rounds.webp",
+    "description": "Rapid Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Rapid_Rounds"
   },
   {
-    "key": "upgrade-improved-stamina",
-    "class_name": "upgrade_improved_stamina",
-    "name": "Extra Stamina",
-    "slot": "vitality",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-improved-stamina.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/improved_stamina.png"
-  },
-  {
-    "key": "upgrade-bullet-armor-reduction-aura",
-    "class_name": "upgrade_bullet_armor_reduction_aura",
-    "name": "Hunter's Aura",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-bullet-armor-reduction-aura.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_armor_reduction_aura.png"
-  },
-  {
-    "key": "upgrade-weapon-shielding",
-    "class_name": "upgrade_weapon_shielding",
-    "name": "Weapon Shielding",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-weapon-shielding.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_shield.png"
-  },
-  {
-    "key": "upgrade-spirit-bubble",
-    "class_name": "upgrade_spirit_bubble",
-    "name": "Spirit Shielding",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-spirit-bubble.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_shield.png"
-  },
-  {
-    "key": "upgrade-regenerating-bullet-shield",
-    "class_name": "upgrade_regenerating_bullet_shield",
-    "name": "Battle Vest",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-regenerating-bullet-shield.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_shield.png"
-  },
-  {
-    "key": "upgrade-magic-shield",
-    "class_name": "upgrade_magic_shield",
-    "name": "Enchanter's Emblem",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-magic-shield.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/tech_shield_pulse.png"
-  },
-  {
-    "key": "upgrade-improved-spirit",
-    "class_name": "upgrade_improved_spirit",
-    "name": "Extra Spirit",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-improved-spirit.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/tech_damage.png"
-  },
-  {
-    "key": "upgrade-mystic-regeneration",
-    "class_name": "upgrade_mystic_regeneration",
-    "name": "Mystic Regeneration",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-mystic-regeneration.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/endurance.png"
-  },
-  {
-    "key": "upgrade-soaring-spirit",
-    "class_name": "upgrade_soaring_spirit",
-    "name": "Improved Spirit",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-soaring-spirit.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/soaring_spirit.png"
-  },
-  {
-    "key": "upgrade-tech-overflow",
-    "class_name": "upgrade_tech_overflow",
-    "name": "Spiritual Overflow",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-tech-overflow.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/magic_overflow.png"
-  },
-  {
-    "key": "upgrade-return-fire",
-    "class_name": "upgrade_return_fire",
-    "name": "Return Fire",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-return-fire.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/return_fire.png"
-  },
-  {
-    "key": "upgrade-tech-range",
-    "class_name": "upgrade_tech_range",
-    "name": "Greater Expansion",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-tech-range.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/spiritual_dominion.png"
-  },
-  {
-    "key": "upgrade-magic-reach",
-    "class_name": "upgrade_magic_reach",
-    "name": "Mystic Expansion",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-magic-reach.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/tech_range.png"
-  },
-  {
-    "key": "upgrade-extra-charge",
-    "class_name": "upgrade_extra_charge",
-    "name": "Extra Charge",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-extra-charge.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/extra_charge.png"
-  },
-  {
-    "key": "upgrade-health-stealing-magic",
-    "class_name": "upgrade_health_stealing_magic",
-    "name": "Spirit Lifesteal",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-health-stealing-magic.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/health_stealing_tech.png"
-  },
-  {
-    "key": "upgrade-bullet-resist-shredder",
-    "class_name": "upgrade_bullet_resist_shredder",
-    "name": "Bullet Resist Shredder",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-bullet-resist-shredder.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/bullet_resist_shredder.png"
-  },
-  {
-    "key": "upgrade-mystic-reverb",
-    "class_name": "upgrade_mystic_reverb",
-    "name": "Mystic Reverb",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-mystic-reverb.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/magic_reverb.png"
-  },
-  {
-    "key": "upgrade-magic-burst",
-    "class_name": "upgrade_magic_burst",
-    "name": "Mystic Burst",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-magic-burst.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/magic_burst.png"
-  },
-  {
-    "key": "upgrade-magic-shock",
-    "class_name": "upgrade_magic_shock",
-    "name": "Tankbuster",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-magic-shock.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/magic_shock.png"
-  },
-  {
-    "key": "upgrade-magic-vulnerability",
-    "class_name": "upgrade_magic_vulnerability",
-    "name": "Mystic Vulnerability",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-magic-vulnerability.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/tech_vulnerability.png"
-  },
-  {
-    "key": "upgrade-healbane",
-    "class_name": "upgrade_healbane",
-    "name": "Healbane",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-healbane.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/healbane.png"
-  },
-  {
-    "key": "upgrade-magic-slow",
-    "class_name": "upgrade_magic_slow",
-    "name": "Mystic Slow",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-magic-slow.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/slowing_tech.png"
-  },
-  {
-    "key": "upgrade-escalating-exposure",
-    "class_name": "upgrade_escalating_exposure",
-    "name": "Escalating Exposure",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-escalating-exposure.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/escalating_exposure.png"
-  },
-  {
-    "key": "upgrade-rapid-recharge",
-    "class_name": "upgrade_rapid_recharge",
-    "name": "Rapid Recharge",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-rapid-recharge.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/rapid_recharge.png"
-  },
-  {
-    "key": "upgrade-omnicharge-pendant",
-    "class_name": "upgrade_omnicharge_pendant",
-    "name": "Omnicharge Signet",
-    "slot": "spirit",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-omnicharge-pendant.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/rapid_recharge.png"
-  },
-  {
-    "key": "upgrade-magic-tempo",
-    "class_name": "upgrade_magic_tempo",
-    "name": "Compress Cooldown",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-magic-tempo.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/advanced_recharge.png"
-  },
-  {
-    "key": "upgrade-cooldown-reduction",
-    "class_name": "upgrade_cooldown_reduction",
-    "name": "Superior Cooldown",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-cooldown-reduction.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/spiritual_flow.png"
-  },
-  {
-    "key": "upgrade-containment",
-    "class_name": "upgrade_containment",
-    "name": "Slowing Hex",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-containment.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/immobilize.png"
-  },
-  {
-    "key": "upgrade-spirit-sap",
-    "class_name": "upgrade_spirit_sap",
-    "name": "Spirit Sap",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-spirit-sap.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/focused_silence.png"
-  },
-  {
-    "key": "upgrade-focus-lens",
-    "class_name": "upgrade_focus_lens",
-    "name": "Focus Lens",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-focus-lens.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/focused_silence.png"
-  },
-  {
-    "key": "upgrade-withering-whip",
-    "class_name": "upgrade_withering_whip",
-    "name": "Rusted Barrel",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-withering-whip.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/slowing_tech.png"
-  },
-  {
-    "key": "upgrade-greater-withering-whip",
-    "class_name": "upgrade_greater_withering_whip",
-    "name": "Disarming Hex",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-greater-withering-whip.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/disarm.png"
-  },
-  {
-    "key": "upgrade-rescue-beam",
-    "class_name": "upgrade_rescue_beam",
-    "name": "Rescue Beam",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-rescue-beam.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/medic_beam.png"
-  },
-  {
-    "key": "upgrade-rupture",
-    "class_name": "upgrade_rupture",
-    "name": "Decay",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-rupture.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/rupture.png"
-  },
-  {
-    "key": "upgrade-discord",
-    "class_name": "upgrade_discord",
-    "name": "Scourge",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-discord.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/rupture.png"
-  },
-  {
-    "key": "upgrade-target-stun",
-    "class_name": "upgrade_target_stun",
-    "name": "Knockdown",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-target-stun.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/knockdown.png"
-  },
-  {
-    "key": "upgrade-phantom-strike",
-    "class_name": "upgrade_phantom_strike",
-    "name": "Phantom Strike",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-phantom-strike.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/phantom_strike.png"
-  },
-  {
-    "key": "upgrade-warp-stone",
-    "class_name": "upgrade_warp_stone",
-    "name": "Warp Stone",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-warp-stone.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/warp_stone.png"
-  },
-  {
-    "key": "upgrade-aoe-root",
-    "class_name": "upgrade_aoe_root",
-    "name": "Vortex Web",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-aoe-root.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/area_immobilize.png"
-  },
-  {
-    "key": "upgrade-ability-refresher",
-    "class_name": "upgrade_ability_refresher",
-    "name": "Refresher",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-ability-refresher.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/refresher_module.png"
-  },
-  {
-    "key": "upgrade-ability-power-shard",
-    "class_name": "upgrade_ability_power_shard",
-    "name": "Echo Shard",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-ability-power-shard.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/echo_shard.png"
-  },
-  {
-    "key": "upgrade-tech-damage-pulse",
-    "class_name": "upgrade_tech_damage_pulse",
-    "name": "Torment Pulse",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-tech-damage-pulse.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/torment_aura.png"
-  },
-  {
-    "key": "upgrade-cheat-death",
-    "class_name": "upgrade_cheat_death",
-    "name": "Cheat Death",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-cheat-death.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/torment_aura.png"
-  },
-  {
-    "key": "upgrade-cloaking-device-active",
-    "class_name": "upgrade_cloaking_device_active",
-    "name": "Shadow Weave",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-cloaking-device-active.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/cloaking_device.png"
-  },
-  {
-    "key": "upgrade-rocket-booster",
-    "class_name": "upgrade_rocket_booster",
-    "name": "Majestic Leap",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-rocket-booster.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_death_slam.png"
-  },
-  {
-    "key": "upgrade-health-nova",
-    "class_name": "upgrade_health_nova",
-    "name": "Healing Nova",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-health-nova.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/health_nova.png"
-  },
-  {
-    "key": "upgrade-restorative-locket",
-    "class_name": "upgrade_restorative_locket",
-    "name": "Restorative Locket",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-restorative-locket.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/restorative_locket.png"
-  },
-  {
-    "key": "upgrade-health-stimpak",
-    "class_name": "upgrade_health_stimpak",
-    "name": "Healing Rite",
-    "slot": "vitality",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-health-stimpak.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/stimpak.png"
-  },
-  {
-    "key": "upgrade-shrink-ray",
-    "class_name": "upgrade_shrink_ray",
-    "name": "Shrink Ray",
-    "slot": "spirit",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-shrink-ray.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/stimpak.png"
-  },
-  {
-    "key": "upgrade-infuser",
-    "class_name": "upgrade_infuser",
-    "name": "Infuser",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-infuser.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/infuser.png"
-  },
-  {
-    "key": "upgrade-guardian-ward",
-    "class_name": "upgrade_guardian_ward",
-    "name": "Guardian Ward",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-guardian-ward.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/savior.png"
-  },
-  {
-    "key": "upgrade-divine-barrier",
-    "class_name": "upgrade_divine_barrier",
-    "name": "Divine Barrier",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-divine-barrier.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/savior.png"
-  },
-  {
-    "key": "upgrade-thermal-detonator",
-    "class_name": "upgrade_thermal_detonator",
-    "name": "Alchemical Fire",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-thermal-detonator.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/thermal_detonator.png"
-  },
-  {
-    "key": "upgrade-fleetfoot-boots",
-    "class_name": "upgrade_fleetfoot_boots",
-    "name": "Fleetfoot",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-fleetfoot-boots.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fleetfoot_boots.png"
-  },
-  {
-    "key": "upgrade-kinetic-sash",
-    "class_name": "upgrade_kinetic_sash",
-    "name": "Kinetic Dash",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-kinetic-sash.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/kinetic_sash.png"
-  },
-  {
-    "key": "upgrade-arcane-surge",
-    "class_name": "upgrade_arcane_surge",
-    "name": "Arcane Surge",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-arcane-surge.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/arcane_surge.png"
-  },
-  {
-    "key": "upgrade-unstoppable",
-    "class_name": "upgrade_unstoppable",
-    "name": "Unstoppable",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-unstoppable.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/unstoppable.png"
-  },
-  {
-    "key": "upgrade-colossus",
-    "class_name": "upgrade_colossus",
-    "name": "Colossus",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-colossus.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/colossus.png"
-  },
-  {
-    "key": "upgrade-cold-front",
-    "class_name": "upgrade_cold_front",
-    "name": "Cold Front",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-cold-front.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/ice_blast.png"
-  },
-  {
-    "key": "upgrade-arctic-blast",
-    "class_name": "upgrade_arctic_blast",
-    "name": "Arctic Blast",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-arctic-blast.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/ice_blast.png"
-  },
-  {
-    "key": "upgrade-self-bubble",
-    "class_name": "upgrade_self_bubble",
-    "name": "Ethereal Shift",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-self-bubble.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/shifting_shroud.png"
-  },
-  {
-    "key": "upgrade-glitch",
-    "class_name": "upgrade_glitch",
-    "name": "Cursed Relic",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-glitch.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/glitch.png"
-  },
-  {
-    "key": "upgrade-arcane-extension",
-    "class_name": "upgrade_arcane_extension",
-    "name": "Duration Extender",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-arcane-extension.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/duration_extender.png"
-  },
-  {
-    "key": "upgrade-imbued-duration-extender",
-    "class_name": "upgrade_imbued_duration_extender",
-    "name": "Superior Duration",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-imbued-duration-extender.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/arcane_persistance.png"
-  },
-  {
-    "key": "upgrade-glass-cannon",
-    "class_name": "upgrade_glass_cannon",
-    "name": "Glass Cannon",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-glass-cannon.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/glass_cannon.png"
-  },
-  {
-    "key": "upgrade-fury-trance",
-    "class_name": "upgrade_fury_trance",
-    "name": "Fury Trance",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-fury-trance.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/vampiric_burst.png"
-  },
-  {
-    "key": "upgrade-surging-power",
-    "class_name": "upgrade_surging_power",
-    "name": "Vampiric Burst",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-surging-power.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/vampiric_burst.png"
-  },
-  {
-    "key": "upgrade-boxing-glove",
-    "class_name": "upgrade_boxing_glove",
-    "name": "Lifestrike",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-boxing-glove.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/boxing_glove.png"
-  },
-  {
-    "key": "upgrade-acolytes-glove",
-    "class_name": "upgrade_acolytes_glove",
-    "name": "Spirit Strike",
-    "slot": "spirit",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-acolytes-glove.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/acolytes_glove.png"
-  },
-  {
-    "key": "upgrade-spirit-snatch",
-    "class_name": "upgrade_spirit_snatch",
-    "name": "Spirit Snatch",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-spirit-snatch.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/spirit_snatch.png"
-  },
-  {
-    "key": "upgrade-melee-charge",
-    "class_name": "upgrade_melee_charge",
-    "name": "Melee Charge",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-melee-charge.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/melee_charge.png"
-  },
-  {
-    "key": "upgrade-crushing-fists",
-    "class_name": "upgrade_crushing_fists",
-    "name": "Crushing Fists",
-    "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-crushing-fists.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/melee_charge.png"
-  },
-  {
-    "key": "upgrade-diviners-kevlar",
-    "class_name": "upgrade_diviners_kevlar",
-    "name": "Diviner's Kevlar",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-diviners-kevlar.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_shield.png"
-  },
-  {
-    "key": "upgrade-resonant-healing",
-    "class_name": "upgrade_resonant_healing",
-    "name": "Radiant Regeneration",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-resonant-healing.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/boundless_spirit.png"
-  },
-  {
-    "key": "upgrade-boundless-spirit",
-    "class_name": "upgrade_boundless_spirit",
-    "name": "Boundless Spirit",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-boundless-spirit.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/boundless_spirit.png"
-  },
-  {
-    "key": "upgrade-burst-fire",
-    "class_name": "upgrade_burst_fire",
-    "name": "Burst Fire",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-burst-fire.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fire_rate_plus_plus.png"
-  },
-  {
-    "key": "upgrade-endurance",
-    "class_name": "upgrade_endurance",
-    "name": "Extra Regen",
-    "slot": "vitality",
-    "tier": 1,
-    "cost": 800,
-    "icon": "/items/upgrade-endurance.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/endurance.png"
-  },
-  {
-    "key": "upgrade-magic-storm",
-    "class_name": "upgrade_magic_storm",
-    "name": "Surge of Power",
-    "slot": "spirit",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-magic-storm.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/magic_storm.png"
-  },
-  {
-    "key": "upgrade-suppressor",
-    "class_name": "upgrade_suppressor",
-    "name": "Suppressor",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-suppressor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/weapon_jammer.png"
-  },
-  {
-    "key": "upgrade-quick-silver",
-    "class_name": "upgrade_quick_silver",
-    "name": "Quicksilver Reload",
-    "slot": "spirit",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-quick-silver.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fire_rate_plus.png"
-  },
-  {
-    "key": "upgrade-ethereal-bullets",
-    "class_name": "upgrade_ethereal_bullets",
-    "name": "Mercurial Magnum",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-ethereal-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fire_rate_plus.png"
-  },
-  {
-    "key": "upgrade-intensifying-clip",
-    "class_name": "upgrade_intensifying_clip",
-    "name": "Intensifying Magazine",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-intensifying-clip.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/auto_reloader.png"
-  },
-  {
-    "key": "upgrade-reinforcing-casings",
-    "class_name": "upgrade_reinforcing_casings",
-    "name": "Escalating Resilience",
-    "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-reinforcing-casings.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_armor_plus.png"
-  },
-  {
-    "key": "upgrade-blitz-bullets",
-    "class_name": "upgrade_blitz_bullets",
-    "name": "Swift Striker",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-blitz-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fire_rate_plus.png"
-  },
-  {
-    "key": "upgrade-veil-walker",
-    "class_name": "upgrade_veil_walker",
-    "name": "Veil Walker",
-    "slot": "vitality",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-veil-walker.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/veil_walker.png"
-  },
-  {
-    "key": "upgrade-vex-barrier",
-    "class_name": "upgrade_vex_barrier",
-    "name": "Reactive Barrier",
-    "slot": "vitality",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-vex-barrier.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/last_stand.png"
-  },
-  {
-    "key": "upgrade-auto-cleanse",
-    "class_name": "upgrade_auto_cleanse",
-    "name": "Indomitable",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-auto-cleanse.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/indomitable.png"
-  },
-  {
-    "key": "upgrade-medic-bullets",
-    "class_name": "upgrade_medic_bullets",
+    "key": "restorative-shot",
     "name": "Restorative Shot",
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-medic-bullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/medic_bullets.png"
+    "icon": "/items/restorative-shot.webp",
+    "description": "Restorative Shot is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Restorative_Shot"
   },
   {
-    "key": "upgrade-titan-round",
-    "class_name": "upgrade_titan_round",
-    "name": "Titanic Magazine",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-titan-round.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/titanic_magazine.png"
-  },
-  {
-    "key": "upgrade-split-shot",
-    "class_name": "upgrade_split_shot",
-    "name": "Split Shot",
-    "slot": "weapon",
-    "tier": 2,
-    "cost": 1600,
-    "icon": "/items/upgrade-split-shot.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/titanic_magazine.png"
-  },
-  {
-    "key": "upgrade-active-reload",
-    "class_name": "upgrade_active_reload",
+    "key": "active-reload",
     "name": "Active Reload",
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/upgrade-active-reload.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/deployable_bullet_shield.png"
+    "icon": "/items/active-reload.webp",
+    "description": "Active Reload is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Active_Reload"
   },
   {
-    "key": "upgrade-magic-carpet",
-    "class_name": "upgrade_magic_carpet",
-    "name": "Magic Carpet",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-magic-carpet.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_path.png"
-  },
-  {
-    "key": "upgrade-spirit-burn",
-    "class_name": "upgrade_spirit_burn",
-    "name": "Spirit Burn",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-spirit-burn.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/escalating_exposure.png"
-  },
-  {
-    "key": "upgrade-ultimate-burst",
-    "class_name": "upgrade_ultimate_burst",
-    "name": "Lightning Scroll",
-    "slot": "spirit",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-ultimate-burst.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/adrenaline_rush.png"
-  },
-  {
-    "key": "upgrade-absorbing-armor",
-    "class_name": "upgrade_absorbing_armor",
-    "name": "Witchmail",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-absorbing-armor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/arcane_medallion.png"
-  },
-  {
-    "key": "upgrade-healbuff",
-    "class_name": "upgrade_healbuff",
-    "name": "Healing Tempo",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-healbuff.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/aura_icon.png"
-  },
-  {
-    "key": "upgrade-aprounds",
-    "class_name": "upgrade_aprounds",
-    "name": "Armor Piercing Rounds",
+    "key": "fleetfoot",
+    "name": "Fleetfoot",
     "slot": "weapon",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-aprounds.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/armor_breaking_bullets.png"
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/fleetfoot.webp",
+    "description": "Fleetfoot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Fleetfoot"
   },
   {
-    "key": "upgrade-infinite-rounds",
-    "class_name": "upgrade_infinite_rounds",
-    "name": "Infinite Rounds",
+    "key": "intensifying-magazine",
+    "name": "Intensifying Magazine",
     "slot": "weapon",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-infinite-rounds.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/armor_breaking_bullets.png"
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/intensifying-magazine.webp",
+    "description": "Intensifying Magazine is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Intensifying_Magazine"
   },
   {
-    "key": "upgrade-deflecting-armor",
-    "class_name": "upgrade_deflecting_armor",
-    "name": "Plated Armor",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-deflecting-armor.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/arcane_medallion.png"
-  },
-  {
-    "key": "upgrade-juggernaut",
-    "class_name": "upgrade_juggernaut",
-    "name": "Juggernaut",
-    "slot": "vitality",
-    "tier": 4,
-    "cost": 6400,
-    "icon": "/items/upgrade-juggernaut.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/items/vitality/juggernaut.png"
-  },
-  {
-    "key": "upgrade-icarus-wings",
-    "class_name": "upgrade_icarus_wings",
-    "name": "Seraphim Wings",
-    "slot": "vitality",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-icarus-wings.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_utility/sprint_booster.png"
-  },
-  {
-    "key": "upgrade-mystical-piano",
-    "class_name": "upgrade_mystical_piano",
-    "name": "Mystical Piano",
-    "slot": "spirit",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-mystical-piano.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/knockdown.png"
-  },
-  {
-    "key": "upgrade-nullification-aura",
-    "class_name": "upgrade_nullification_aura",
-    "name": "Nullification Burst",
-    "slot": "vitality",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-nullification-aura.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/bullet_armor_reduction_aura.png"
-  },
-  {
-    "key": "upgrade-celestial-guidance",
-    "class_name": "upgrade_celestial_guidance",
-    "name": "Celestial Blessing",
-    "slot": "vitality",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-celestial-guidance.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_armor/debuff_reducer.png"
-  },
-  {
-    "key": "upgrade-eldritch-shot",
-    "class_name": "upgrade_eldritch_shot",
-    "name": "Haunting Shot",
+    "key": "kinetic-dash",
+    "name": "Kinetic Dash",
     "slot": "weapon",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-eldritch-shot.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/explosive_bullets.png"
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/kinetic-dash.webp",
+    "description": "Kinetic Dash is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Extra Stamina, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Kinetic_Dash"
   },
   {
-    "key": "upgrade-prism-blast",
-    "class_name": "upgrade_prism_blast",
-    "name": "Prism Blast",
-    "slot": "spirit",
-    "tier": 5,
-    "cost": 9999,
-    "icon": "/items/upgrade-prism-blast.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/shifting_shroud.png"
-  },
-  {
-    "key": "upgrade-bulletshredimbue",
-    "class_name": "upgrade_bulletshredimbue",
-    "name": "Ballistic Enchantment",
+    "key": "long-range",
+    "name": "Long Range",
     "slot": "weapon",
-    "tier": 3,
-    "cost": 3200,
-    "icon": "/items/upgrade-bulletshredimbue.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_weapon/fire_rate_plus.png"
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/long-range.webp",
+    "description": "Long Range is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Long_Range"
   },
   {
-    "key": "upgrade-rechargingbullets",
-    "class_name": "upgrade_rechargingbullets",
+    "key": "melee-charge",
+    "name": "Melee Charge",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/melee-charge.webp",
+    "description": "Melee Charge is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Melee_Charge"
+  },
+  {
+    "key": "mystic-shot",
+    "name": "Mystic Shot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-shot.webp",
+    "description": "Mystic Shot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Shot"
+  },
+  {
+    "key": "opening-rounds",
+    "name": "Opening Rounds",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/opening-rounds.webp",
+    "description": "Opening Rounds is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Opening_Rounds"
+  },
+  {
+    "key": "recharging-rush",
     "name": "Recharging Rush",
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/upgrade-rechargingbullets.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/arcane_medallion.png"
+    "icon": "/items/recharging-rush.webp",
+    "description": "Recharging Rush is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Recharging_Rush"
   },
   {
-    "key": "upgrade-goose-egg",
-    "class_name": "upgrade_goose_egg",
+    "key": "slowing-bullets",
+    "name": "Slowing Bullets",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/slowing-bullets.webp",
+    "description": "Slowing Bullets is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Slowing_Bullets"
+  },
+  {
+    "key": "spirit-shredder-bullets",
+    "name": "Spirit Shredder Bullets",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-shredder-bullets.webp",
+    "description": "Spirit Shredder Bullets is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Shredder_Bullets"
+  },
+  {
+    "key": "split-shot",
+    "name": "Split Shot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/split-shot.webp",
+    "description": "Split Shot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Split_Shot"
+  },
+  {
+    "key": "stalker",
+    "name": "Stalker",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/stalker.webp",
+    "description": "Stalker is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Stalker"
+  },
+  {
+    "key": "swift-striker",
+    "name": "Swift Striker",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/swift-striker.webp",
+    "description": "Swift Striker is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Rapid Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Swift_Striker"
+  },
+  {
+    "key": "titanic-magazine",
+    "name": "Titanic Magazine",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/titanic-magazine.webp",
+    "description": "Titanic Magazine is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Extended Magazine, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Titanic_Magazine"
+  },
+  {
+    "key": "weakening-headshot",
+    "name": "Weakening Headshot",
+    "slot": "weapon",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/weakening-headshot.webp",
+    "description": "Weakening Headshot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Weakening_Headshot"
+  },
+  {
+    "key": "alchemical-fire",
+    "name": "Alchemical Fire",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/alchemical-fire.webp",
+    "description": "Alchemical Fire is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Alchemical_Fire"
+  },
+  {
+    "key": "ballistic-enchantment",
+    "name": "Ballistic Enchantment",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/ballistic-enchantment.webp",
+    "description": "Ballistic Enchantment is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Ballistic_Enchantment"
+  },
+  {
+    "key": "berserker",
+    "name": "Berserker",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/berserker.webp",
+    "description": "Berserker is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Berserker"
+  },
+  {
+    "key": "blood-tribute",
+    "name": "Blood Tribute",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/blood-tribute.webp",
+    "description": "Blood Tribute is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Blood_Tribute"
+  },
+  {
+    "key": "burst-fire",
+    "name": "Burst Fire",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/burst-fire.webp",
+    "description": "Burst Fire is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Rapid Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Burst_Fire"
+  },
+  {
+    "key": "cultist-sacrifice",
+    "name": "Cultist Sacrifice",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/cultist-sacrifice.webp",
+    "description": "Cultist Sacrifice is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Monster Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Cultist_Sacrifice"
+  },
+  {
+    "key": "escalating-resilience",
+    "name": "Escalating Resilience",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/escalating-resilience.webp",
+    "description": "Escalating Resilience is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Extended Magazine, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Escalating_Resilience"
+  },
+  {
+    "key": "express-shot",
+    "name": "Express Shot",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/express-shot.webp",
+    "description": "Express Shot is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Express_Shot"
+  },
+  {
+    "key": "headhunter",
+    "name": "Headhunter",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/headhunter.webp",
+    "description": "Headhunter is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Headshot Booster, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Headhunter"
+  },
+  {
+    "key": "heroic-aura",
+    "name": "Heroic Aura",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/heroic-aura.webp",
+    "description": "Heroic Aura is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Heroic_Aura"
+  },
+  {
+    "key": "hollow-point",
+    "name": "Hollow Point",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/hollow-point.webp",
+    "description": "Hollow Point is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Hollow_Point"
+  },
+  {
+    "key": "hunters-aura",
+    "name": "Hunter's Aura",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/hunters-aura.webp",
+    "description": "Hunter's Aura is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Hunter%27s_Aura"
+  },
+  {
+    "key": "point-blank",
+    "name": "Point Blank",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/point-blank.webp",
+    "description": "Point Blank is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Close Quarters, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Point_Blank"
+  },
+  {
+    "key": "shadow-weave",
+    "name": "Shadow Weave",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/shadow-weave.webp",
+    "description": "Shadow Weave is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Shadow_Weave"
+  },
+  {
+    "key": "sharpshooter",
+    "name": "Sharpshooter",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/sharpshooter.webp",
+    "description": "Sharpshooter is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Long Range, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Sharpshooter"
+  },
+  {
+    "key": "spirit-rend",
+    "name": "Spirit Rend",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-rend.webp",
+    "description": "Spirit Rend is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Spirit Shredder Bullets, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Rend"
+  },
+  {
+    "key": "tesla-bullets",
+    "name": "Tesla Bullets",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/tesla-bullets.webp",
+    "description": "Tesla Bullets is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Tesla_Bullets"
+  },
+  {
+    "key": "toxic-bullets",
+    "name": "Toxic Bullets",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/toxic-bullets.webp",
+    "description": "Toxic Bullets is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Toxic_Bullets"
+  },
+  {
+    "key": "weighted-shots",
+    "name": "Weighted Shots",
+    "slot": "weapon",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/weighted-shots.webp",
+    "description": "Weighted Shots is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Slowing Bullets, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Weighted_Shots"
+  },
+  {
+    "key": "armor-piercing-rounds",
+    "name": "Armor Piercing Rounds",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/armor-piercing-rounds.webp",
+    "description": "Armor Piercing Rounds is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Armor_Piercing_Rounds"
+  },
+  {
+    "key": "capacitor",
+    "name": "Capacitor",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/capacitor.webp",
+    "description": "Capacitor is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Tesla Bullets, makes up  3,200 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Capacitor"
+  },
+  {
+    "key": "crippling-headshot",
+    "name": "Crippling Headshot",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/crippling-headshot.webp",
+    "description": "Crippling Headshot is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Weakening Headshot, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Crippling_Headshot"
+  },
+  {
+    "key": "crushing-fists",
+    "name": "Crushing Fists",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/crushing-fists.webp",
+    "description": "Crushing Fists is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Melee Charge, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Crushing_Fists"
+  },
+  {
+    "key": "frenzy",
+    "name": "Frenzy",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/frenzy.webp",
+    "description": "Frenzy is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Frenzy"
+  },
+  {
+    "key": "glass-cannon",
+    "name": "Glass Cannon",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/glass-cannon.webp",
+    "description": "Glass Cannon is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Glass_Cannon"
+  },
+  {
+    "key": "lucky-shot",
+    "name": "Lucky Shot",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/lucky-shot.webp",
+    "description": "Lucky Shot is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Lucky_Shot"
+  },
+  {
+    "key": "ricochet",
+    "name": "Ricochet",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/ricochet.webp",
+    "description": "Ricochet is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Ricochet"
+  },
+  {
+    "key": "silencer",
+    "name": "Silencer",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/silencer.webp",
+    "description": "Silencer is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Silencer"
+  },
+  {
+    "key": "spellslinger",
+    "name": "Spellslinger",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spellslinger.webp",
+    "description": "Spellslinger is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Spellslinger"
+  },
+  {
+    "key": "spiritual-overflow",
+    "name": "Spiritual Overflow",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spiritual-overflow.webp",
+    "description": "Spiritual Overflow is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Spiritual_Overflow"
+  },
+  {
+    "key": "haunting-shot",
+    "name": "Haunting Shot",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/haunting-shot.webp",
+    "description": "Haunting Shot is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Haunting_Shot"
+  },
+  {
+    "key": "infinite-rounds",
+    "name": "Infinite Rounds",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/infinite-rounds.webp",
+    "description": "Infinite Rounds is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Infinite_Rounds"
+  },
+  {
+    "key": "runed-gauntlets",
+    "name": "Runed Gauntlets",
+    "slot": "weapon",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/runed-gauntlets.webp",
+    "description": "Runed Gauntlets is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Runed_Gauntlets"
+  },
+  {
+    "key": "extra-health",
+    "name": "Extra Health",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-health.webp",
+    "description": "Extra Health is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extra_Health"
+  },
+  {
+    "key": "extra-regen",
+    "name": "Extra Regen",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-regen.webp",
+    "description": "Extra Regen is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extra_Regen"
+  },
+  {
+    "key": "extra-stamina",
+    "name": "Extra Stamina",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-stamina.webp",
+    "description": "Extra Stamina is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extra_Stamina"
+  },
+  {
+    "key": "healing-rite",
+    "name": "Healing Rite",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/healing-rite.webp",
+    "description": "Healing Rite is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Healing_Rite"
+  },
+  {
+    "key": "melee-lifesteal",
+    "name": "Melee Lifesteal",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/melee-lifesteal.webp",
+    "description": "Melee Lifesteal is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Melee_Lifesteal"
+  },
+  {
+    "key": "rebuttal",
+    "name": "Rebuttal",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/rebuttal.webp",
+    "description": "Rebuttal is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Rebuttal"
+  },
+  {
+    "key": "sprint-boots",
+    "name": "Sprint Boots",
+    "slot": "vitality",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/sprint-boots.webp",
+    "description": "Sprint Boots is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Sprint_Boots"
+  },
+  {
+    "key": "battle-vest",
+    "name": "Battle Vest",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/battle-vest.webp",
+    "description": "Battle Vest is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Battle_Vest"
+  },
+  {
+    "key": "bullet-lifesteal",
+    "name": "Bullet Lifesteal",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/bullet-lifesteal.webp",
+    "description": "Bullet Lifesteal may refer to:",
+    "wikiUrl": "https://deadlock.wiki/Bullet_Lifesteal"
+  },
+  {
+    "key": "debuff-reducer",
+    "name": "Debuff Reducer",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/debuff-reducer.webp",
+    "description": "Debuff Reducer is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Debuff_Reducer"
+  },
+  {
+    "key": "enchanters-emblem",
+    "name": "Enchanter's Emblem",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/enchanters-emblem.webp",
+    "description": "Enchanter's Emblem is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Enchanter%27s_Emblem"
+  },
+  {
+    "key": "enduring-speed",
+    "name": "Enduring Speed",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/enduring-speed.webp",
+    "description": "Enduring Speed is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Sprint Boots, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Enduring_Speed"
+  },
+  {
+    "key": "guardian-ward",
+    "name": "Guardian Ward",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/guardian-ward.webp",
+    "description": "Guardian Ward is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Guardian_Ward"
+  },
+  {
+    "key": "healbane",
+    "name": "Healbane",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/healbane.webp",
+    "description": "Healbane is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Healbane"
+  },
+  {
+    "key": "healing-booster",
+    "name": "Healing Booster",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/healing-booster.webp",
+    "description": "Healing Booster is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Extra Regen, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Healing_Booster"
+  },
+  {
+    "key": "reactive-barrier",
+    "name": "Reactive Barrier",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/reactive-barrier.webp",
+    "description": "Reactive Barrier is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Reactive_Barrier"
+  },
+  {
+    "key": "restorative-locket",
+    "name": "Restorative Locket",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/restorative-locket.webp",
+    "description": "Restorative Locket is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Restorative_Locket"
+  },
+  {
+    "key": "return-fire",
+    "name": "Return Fire",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/return-fire.webp",
+    "description": "Return Fire is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Return_Fire"
+  },
+  {
+    "key": "spirit-lifesteal",
+    "name": "Spirit Lifesteal",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-lifesteal.webp",
+    "description": "Spirit Lifesteal may refer to:",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Lifesteal"
+  },
+  {
+    "key": "spirit-shielding",
+    "name": "Spirit Shielding",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-shielding.webp",
+    "description": "Spirit Shielding is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Shielding"
+  },
+  {
+    "key": "trophy-collector",
+    "name": "Trophy Collector",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/trophy-collector.webp",
+    "description": "Trophy Collector is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Sprint Boots, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Trophy_Collector"
+  },
+  {
+    "key": "weapon-shielding",
+    "name": "Weapon Shielding",
+    "slot": "vitality",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/weapon-shielding.webp",
+    "description": "Weapon Shielding is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Weapon_Shielding"
+  },
+  {
+    "key": "bullet-resilience",
+    "name": "Bullet Resilience",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/bullet-resilience.webp",
+    "description": "Bullet Resilience is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Bullet_Resilience"
+  },
+  {
+    "key": "counterspell",
+    "name": "Counterspell",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/counterspell.webp",
+    "description": "Counterspell is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Counterspell"
+  },
+  {
+    "key": "dispel-magic",
+    "name": "Dispel Magic",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/dispel-magic.webp",
+    "description": "Dispel Magic is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Dispel_Magic"
+  },
+  {
+    "key": "fortitude",
+    "name": "Fortitude",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/fortitude.webp",
+    "description": "Fortitude is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Extra Health, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Fortitude"
+  },
+  {
+    "key": "fury-trance",
+    "name": "Fury Trance",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/fury-trance.webp",
+    "description": "Fury Trance is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Bullet Lifesteal, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Fury_Trance"
+  },
+  {
+    "key": "healing-nova",
+    "name": "Healing Nova",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/healing-nova.webp",
+    "description": "Healing Nova is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Healing Rite, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Healing_Nova"
+  },
+  {
+    "key": "lifestrike",
+    "name": "Lifestrike",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/lifestrike.webp",
+    "description": "Lifestrike is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Melee Lifesteal, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Lifestrike"
+  },
+  {
+    "key": "majestic-leap",
+    "name": "Majestic Leap",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/majestic-leap.webp",
+    "description": "Majestic Leap is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Majestic_Leap"
+  },
+  {
+    "key": "metal-skin",
+    "name": "Metal Skin",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/metal-skin.webp",
+    "description": "Metal Skin is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Metal_Skin"
+  },
+  {
+    "key": "rescue-beam",
+    "name": "Rescue Beam",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/rescue-beam.webp",
+    "description": "Rescue Beam is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Healing Rite, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Rescue_Beam"
+  },
+  {
+    "key": "spirit-resilience",
+    "name": "Spirit Resilience",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-resilience.webp",
+    "description": "Spirit Resilience is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Resilience"
+  },
+  {
+    "key": "stamina-mastery",
+    "name": "Stamina Mastery",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/stamina-mastery.webp",
+    "description": "Stamina Mastery is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Extra Stamina, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Stamina_Mastery"
+  },
+  {
+    "key": "veil-walker",
+    "name": "Veil Walker",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/veil-walker.webp",
+    "description": "Veil Walker is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Sprint Boots, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Veil_Walker"
+  },
+  {
+    "key": "warp-stone",
+    "name": "Warp Stone",
+    "slot": "vitality",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/warp-stone.webp",
+    "description": "Warp Stone is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Warp_Stone"
+  },
+  {
+    "key": "cheat-death",
+    "name": "Cheat Death",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/cheat-death.webp",
+    "description": "Cheat Death is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Cheat_Death"
+  },
+  {
+    "key": "colossus",
+    "name": "Colossus",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/colossus.webp",
+    "description": "Colossus is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Extra Health, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Colossus"
+  },
+  {
+    "key": "divine-barrier",
+    "name": "Divine Barrier",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/divine-barrier.webp",
+    "description": "Divine Barrier is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Guardian Ward, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Divine_Barrier"
+  },
+  {
+    "key": "diviners-kevlar",
+    "name": "Diviner's Kevlar",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/diviners-kevlar.webp",
+    "description": "Diviner's Kevlar is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Diviner%27s_Kevlar"
+  },
+  {
+    "key": "healing-tempo",
+    "name": "Healing Tempo",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/healing-tempo.webp",
+    "description": "Healing Tempo is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Healing Booster, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Healing_Tempo"
+  },
+  {
+    "key": "indomitable",
+    "name": "Indomitable",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/indomitable.webp",
+    "description": "Indomitable is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Reactive Barrier, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Indomitable"
+  },
+  {
+    "key": "infuser",
+    "name": "Infuser",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/infuser.webp",
+    "description": "Infuser is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Spirit Lifesteal, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Infuser"
+  },
+  {
+    "key": "inhibitor",
+    "name": "Inhibitor",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/inhibitor.webp",
+    "description": "Inhibitor is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Inhibitor"
+  },
+  {
+    "key": "juggernaut",
+    "name": "Juggernaut",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/juggernaut.webp",
+    "description": "Juggernaut is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Enduring Speed, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Juggernaut"
+  },
+  {
+    "key": "leech",
+    "name": "Leech",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/leech.webp",
+    "description": "Leech is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Purchasing one of its components,  Bullet Lifesteal or  Spirit Lifesteal, discounts the cost by  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Leech"
+  },
+  {
+    "key": "phantom-strike",
+    "name": "Phantom Strike",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/phantom-strike.webp",
+    "description": "Phantom Strike is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Phantom_Strike"
+  },
+  {
+    "key": "plated-armor",
+    "name": "Plated Armor",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/plated-armor.webp",
+    "description": "Plated Armor is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Plated_Armor"
+  },
+  {
+    "key": "siphon-bullets",
+    "name": "Siphon Bullets",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/siphon-bullets.webp",
+    "description": "Siphon Bullets is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Siphon_Bullets"
+  },
+  {
+    "key": "spellbreaker",
+    "name": "Spellbreaker",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spellbreaker.webp",
+    "description": "Spellbreaker is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Debuff Reducer, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Spellbreaker"
+  },
+  {
+    "key": "unstoppable",
+    "name": "Unstoppable",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/unstoppable.webp",
+    "description": "Unstoppable is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Debuff Reducer, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Unstoppable"
+  },
+  {
+    "key": "vampiric-burst",
+    "name": "Vampiric Burst",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/vampiric-burst.webp",
+    "description": "Vampiric Burst is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Bullet Lifesteal, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Vampiric_Burst"
+  },
+  {
+    "key": "witchmail",
+    "name": "Witchmail",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/witchmail.webp",
+    "description": "Witchmail is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Witchmail"
+  },
+  {
+    "key": "celestial-blessing",
+    "name": "Celestial Blessing",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/celestial-blessing.webp",
+    "description": "Celestial Blessing is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Celestial_Blessing"
+  },
+  {
+    "key": "cloak-of-opportunity",
+    "name": "Cloak of Opportunity",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/cloak-of-opportunity.webp",
+    "description": "Cloak of Opportunity is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Cloak_of_Opportunity"
+  },
+  {
+    "key": "electric-slippers",
+    "name": "Electric Slippers",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/electric-slippers.webp",
+    "description": "Electric Slippers is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Electric_Slippers"
+  },
+  {
+    "key": "eternal-gift",
+    "name": "Eternal Gift",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/eternal-gift.webp",
+    "description": "Eternal Gift is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Eternal_Gift"
+  },
+  {
+    "key": "nullification-burst",
+    "name": "Nullification Burst",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/nullification-burst.webp",
+    "description": "Nullification Burst is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Nullification_Burst"
+  },
+  {
+    "key": "seraphim-wings",
+    "name": "Seraphim Wings",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/seraphim-wings.webp",
+    "description": "Seraphim Wings is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Seraphim_Wings"
+  },
+  {
+    "key": "shadow-strike",
+    "name": "Shadow Strike",
+    "slot": "vitality",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/shadow-strike.webp",
+    "description": "Shadow Strike is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Shadow_Strike"
+  },
+  {
+    "key": "extra-charge",
+    "name": "Extra Charge",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-charge.webp",
+    "description": "Extra Charge is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extra_Charge"
+  },
+  {
+    "key": "extra-spirit",
+    "name": "Extra Spirit",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/extra-spirit.webp",
+    "description": "Extra Spirit is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Extra_Spirit"
+  },
+  {
+    "key": "golden-goose-egg",
     "name": "Golden Goose Egg",
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/upgrade-goose-egg.png",
-    "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/upgrades/mods_tech/tech_damage.png"
+    "icon": "/items/golden-goose-egg.webp",
+    "description": "Golden Goose Egg is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Golden_Goose_Egg"
+  },
+  {
+    "key": "mystic-burst",
+    "name": "Mystic Burst",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-burst.webp",
+    "description": "Mystic Burst is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Burst"
+  },
+  {
+    "key": "mystic-expansion",
+    "name": "Mystic Expansion",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-expansion.webp",
+    "description": "Mystic Expansion is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Expansion"
+  },
+  {
+    "key": "mystic-regeneration",
+    "name": "Mystic Regeneration",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/mystic-regeneration.webp",
+    "description": "Mystic Regeneration is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Regeneration"
+  },
+  {
+    "key": "rusted-barrel",
+    "name": "Rusted Barrel",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/rusted-barrel.webp",
+    "description": "Rusted Barrel is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Rusted_Barrel"
+  },
+  {
+    "key": "spirit-strike",
+    "name": "Spirit Strike",
+    "slot": "spirit",
+    "tier": 1,
+    "cost": 800,
+    "icon": "/items/spirit-strike.webp",
+    "description": "Spirit Strike is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Strike"
+  },
+  {
+    "key": "arcane-surge",
+    "name": "Arcane Surge",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/arcane-surge.webp",
+    "description": "Arcane Surge is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600. Its component,  Extra Stamina, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Arcane_Surge"
+  },
+  {
+    "key": "bullet-resist-shredder",
+    "name": "Bullet Resist Shredder",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/bullet-resist-shredder.webp",
+    "description": "Bullet Resist Shredder is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Bullet_Resist_Shredder"
+  },
+  {
+    "key": "cold-front",
+    "name": "Cold Front",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/cold-front.webp",
+    "description": "Cold Front is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Cold_Front"
+  },
+  {
+    "key": "compress-cooldown",
+    "name": "Compress Cooldown",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/compress-cooldown.webp",
+    "description": "Compress Cooldown is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Compress_Cooldown"
+  },
+  {
+    "key": "duration-extender",
+    "name": "Duration Extender",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/duration-extender.webp",
+    "description": "Duration Extender is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Duration_Extender"
+  },
+  {
+    "key": "improved-spirit",
+    "name": "Improved Spirit",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/improved-spirit.webp",
+    "description": "Improved Spirit is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600. Its component,  Extra Spirit, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Improved_Spirit"
+  },
+  {
+    "key": "mystic-slow",
+    "name": "Mystic Slow",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-slow.webp",
+    "description": "Mystic Slow is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Slow"
+  },
+  {
+    "key": "mystic-vulnerability",
+    "name": "Mystic Vulnerability",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/mystic-vulnerability.webp",
+    "description": "Mystic Vulnerability is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Vulnerability"
+  },
+  {
+    "key": "quicksilver-reload",
+    "name": "Quicksilver Reload",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/quicksilver-reload.webp",
+    "description": "Quicksilver Reload is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Quicksilver_Reload"
+  },
+  {
+    "key": "slowing-hex",
+    "name": "Slowing Hex",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/slowing-hex.webp",
+    "description": "Slowing Hex is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Slowing_Hex"
+  },
+  {
+    "key": "spirit-sap",
+    "name": "Spirit Sap",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/spirit-sap.webp",
+    "description": "Spirit Sap is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Sap"
+  },
+  {
+    "key": "suppressor",
+    "name": "Suppressor",
+    "slot": "spirit",
+    "tier": 2,
+    "cost": 1600,
+    "icon": "/items/suppressor.webp",
+    "description": "Suppressor is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
+    "wikiUrl": "https://deadlock.wiki/Suppressor"
+  },
+  {
+    "key": "decay",
+    "name": "Decay",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/decay.webp",
+    "description": "Decay is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Decay"
+  },
+  {
+    "key": "disarming-hex",
+    "name": "Disarming Hex",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/disarming-hex.webp",
+    "description": "Disarming Hex is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Rusted Barrel, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Disarming_Hex"
+  },
+  {
+    "key": "greater-expansion",
+    "name": "Greater Expansion",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/greater-expansion.webp",
+    "description": "Greater Expansion is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Expansion, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Greater_Expansion"
+  },
+  {
+    "key": "knockdown",
+    "name": "Knockdown",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/knockdown.webp",
+    "description": "Knockdown is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Knockdown"
+  },
+  {
+    "key": "radiant-regeneration",
+    "name": "Radiant Regeneration",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/radiant-regeneration.webp",
+    "description": "Radiant Regeneration is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Regeneration, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Radiant_Regeneration"
+  },
+  {
+    "key": "rapid-recharge",
+    "name": "Rapid Recharge",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/rapid-recharge.webp",
+    "description": "Rapid Recharge is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Extra Charge, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Rapid_Recharge"
+  },
+  {
+    "key": "silence-wave",
+    "name": "Silence Wave",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/silence-wave.webp",
+    "description": "Silence Wave is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Silence_Wave"
+  },
+  {
+    "key": "spirit-snatch",
+    "name": "Spirit Snatch",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/spirit-snatch.webp",
+    "description": "Spirit Snatch is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Spirit Strike, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Snatch"
+  },
+  {
+    "key": "superior-cooldown",
+    "name": "Superior Cooldown",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/superior-cooldown.webp",
+    "description": "Superior Cooldown is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Compress Cooldown, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Superior_Cooldown"
+  },
+  {
+    "key": "superior-duration",
+    "name": "Superior Duration",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/superior-duration.webp",
+    "description": "Superior Duration is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Duration Extender, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Superior_Duration"
+  },
+  {
+    "key": "surge-of-power",
+    "name": "Surge of Power",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/surge-of-power.webp",
+    "description": "Surge of Power is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Extra Spirit, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Surge_of_Power"
+  },
+  {
+    "key": "tankbuster",
+    "name": "Tankbuster",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/tankbuster.webp",
+    "description": "Tankbuster is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Burst, makes up  800 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Tankbuster"
+  },
+  {
+    "key": "torment-pulse",
+    "name": "Torment Pulse",
+    "slot": "spirit",
+    "tier": 3,
+    "cost": 3200,
+    "icon": "/items/torment-pulse.webp",
+    "description": "Torment Pulse is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
+    "wikiUrl": "https://deadlock.wiki/Torment_Pulse"
+  },
+  {
+    "key": "arctic-blast",
+    "name": "Arctic Blast",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/arctic-blast.webp",
+    "description": "Arctic Blast is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Cold Front, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Arctic_Blast"
+  },
+  {
+    "key": "boundless-spirit",
+    "name": "Boundless Spirit",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/boundless-spirit.webp",
+    "description": "Boundless Spirit is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Improved Spirit, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Boundless_Spirit"
+  },
+  {
+    "key": "cursed-relic",
+    "name": "Cursed Relic",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/cursed-relic.webp",
+    "description": "Cursed Relic is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Cursed_Relic"
+  },
+  {
+    "key": "echo-shard",
+    "name": "Echo Shard",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/echo-shard.webp",
+    "description": "Echo Shard is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Echo_Shard"
+  },
+  {
+    "key": "escalating-exposure",
+    "name": "Escalating Exposure",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/escalating-exposure.webp",
+    "description": "Escalating Exposure is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Mystic Vulnerability, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Escalating_Exposure"
+  },
+  {
+    "key": "ethereal-shift",
+    "name": "Ethereal Shift",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/ethereal-shift.webp",
+    "description": "Ethereal Shift is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Ethereal_Shift"
+  },
+  {
+    "key": "focus-lens",
+    "name": "Focus Lens",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/focus-lens.webp",
+    "description": "Focus Lens is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Spirit Sap, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Focus_Lens"
+  },
+  {
+    "key": "lightning-scroll",
+    "name": "Lightning Scroll",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/lightning-scroll.webp",
+    "description": "Lightning Scroll is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Mystic Slow, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Lightning_Scroll"
+  },
+  {
+    "key": "magic-carpet",
+    "name": "Magic Carpet",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/magic-carpet.webp",
+    "description": "Magic Carpet is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Magic_Carpet"
+  },
+  {
+    "key": "mercurial-magnum",
+    "name": "Mercurial Magnum",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mercurial-magnum.webp",
+    "description": "Mercurial Magnum is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Quicksilver Reload, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Mercurial_Magnum"
+  },
+  {
+    "key": "mystic-reverb",
+    "name": "Mystic Reverb",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mystic-reverb.webp",
+    "description": "Mystic Reverb is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Reverb"
+  },
+  {
+    "key": "refresher",
+    "name": "Refresher",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/refresher.webp",
+    "description": "Refresher is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Refresher"
+  },
+  {
+    "key": "scourge",
+    "name": "Scourge",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/scourge.webp",
+    "description": "Scourge is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Scourge"
+  },
+  {
+    "key": "spirit-burn",
+    "name": "Spirit Burn",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/spirit-burn.webp",
+    "description": "Spirit Burn is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
+    "wikiUrl": "https://deadlock.wiki/Spirit_Burn"
+  },
+  {
+    "key": "transcendent-cooldown",
+    "name": "Transcendent Cooldown",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/transcendent-cooldown.webp",
+    "description": "Transcendent Cooldown is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Superior Cooldown, makes up  3,200 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Transcendent_Cooldown"
+  },
+  {
+    "key": "vortex-web",
+    "name": "Vortex Web",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/vortex-web.webp",
+    "description": "Vortex Web is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Slowing Hex, makes up  1,600 of the cost.",
+    "wikiUrl": "https://deadlock.wiki/Vortex_Web"
+  },
+  {
+    "key": "frostbite-charm",
+    "name": "Frostbite Charm",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/frostbite-charm.webp",
+    "description": "Frostbite Charm is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Frostbite_Charm"
+  },
+  {
+    "key": "mystic-conduit",
+    "name": "Mystic Conduit",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mystic-conduit.webp",
+    "description": "Mystic Conduit is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Mystic_Conduit"
+  },
+  {
+    "key": "mystical-piano",
+    "name": "Mystical Piano",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/mystical-piano.webp",
+    "description": "Mystical Piano is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Mystical_Piano"
+  },
+  {
+    "key": "omnicharge-signet",
+    "name": "Omnicharge Signet",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/omnicharge-signet.webp",
+    "description": "Omnicharge Signet is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Omnicharge_Signet"
+  },
+  {
+    "key": "prism-blast",
+    "name": "Prism Blast",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/prism-blast.webp",
+    "description": "Prism Blast is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Prism_Blast"
+  },
+  {
+    "key": "shrink-ray",
+    "name": "Shrink Ray",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/shrink-ray.webp",
+    "description": "Shrink Ray is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Shrink_Ray"
+  },
+  {
+    "key": "unstable-concoction",
+    "name": "Unstable Concoction",
+    "slot": "spirit",
+    "tier": 4,
+    "cost": 6400,
+    "icon": "/items/unstable-concoction.webp",
+    "description": "Unstable Concoction is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
+    "wikiUrl": "https://deadlock.wiki/Unstable_Concoction"
   }
 ]
