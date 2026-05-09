@@ -53,7 +53,7 @@ const OVERLAY = {
   "bebop":        { gender: "neutral",    nature: "robot",     damage_style: "hybrid",     sub_role: "bruiser",    damage_source: "hybrid"  },
   "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "weapon"  },
-  "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "hybrid"  },
+  "mo-krill":     { gender: "neutral",    nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "spirit"  },
   "shiv":         {
     gender: "male", nature: "human", damage_style: "hitscan", sub_role: "diver", damage_source: "hybrid",
     ability_overrides: {
@@ -101,7 +101,7 @@ const OVERLAY = {
     role: "Charges headfirst into the mosh pit and refuses to back down",
   },
   "graves":       {
-    gender: "female", nature: "human", damage_style: "hitscan", sub_role: "carry", damage_source: "weapon",
+    gender: "female", nature: "human", damage_style: "hitscan", sub_role: "carry", damage_source: "spirit",
     hero_type: "brawler",
     role: "Raises the dead to overrun lanes and crush her foes' resolve",
     ability_overrides: {
@@ -121,6 +121,7 @@ const OVERLAY = {
   "silver":       {
     gender: "female", nature: "beast", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
     hero_type: "brawler",
+    gun_tag: "Spreadshot",
     role: "A bounty hunter who answers the moon and unleashes her inner wolf",
     ability_overrides: {
       "Boot Kick": "Dash forward and kick the first enemy hit, dealing melee damage and marking them so your next shot detonates the mark for bonus spirit damage.",

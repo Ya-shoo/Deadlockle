@@ -797,11 +797,11 @@
     "stamina": 3,
     "lore": "Mo and Krill are members of The Tunnel Rats, a group that help facilitate illicit trade and commerce between the boroughs thanks to a network of underground tunnels.  But while most denizens of the New York underworld respect the work The Rats do, every once in a while a gang tries to exploit the tunnel system for personal vendettas...that's when Mo and Krill step in and remind the city what happens to those who disrespect their hospitality.",
     "role": "Burrows underneath his enemies",
-    "gender": "male",
+    "gender": "neutral",
     "nature": "beast",
     "damage_style": "hitscan",
     "sub_role": "bruiser",
-    "damage_source": "hybrid",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Scorn",
@@ -1720,7 +1720,7 @@
     "id": 76,
     "class_name": "hero_necro",
     "name": "Graves",
-    "hero_type": "brawler",
+    "hero_type": "marksman",
     "gun_tag": "Pistol",
     "tags": [
       "Morbid",
@@ -1737,7 +1737,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "carry",
-    "damage_source": "weapon",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Jar of Dead",
@@ -1876,7 +1876,7 @@
     "id": 80,
     "class_name": "hero_werewolf",
     "name": "Silver",
-    "hero_type": "brawler",
+    "hero_type": "marksman",
     "gun_tag": "Long Range",
     "tags": [
       "Feral",
