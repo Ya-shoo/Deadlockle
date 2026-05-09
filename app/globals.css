@@ -440,24 +440,6 @@ select:focus-visible {
 /* small amber corner anchors that fade in on hover — different size +
    placement than .mode-card's, so they read as "bookmark anchors" rather
    than the play card's tactile corner ticks. */
-.guide-card__anchor {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity 220ms ease;
-  pointer-events: none;
-}
-.guide-card__anchor--tr {
-  top: -3px;
-  right: 14px;
-}
-.guide-card__anchor--bl {
-  bottom: -3px;
-  left: 14px;
-}
-
 .guide-card:hover,
 .guide-card:focus-visible {
   transform: translateY(-2px);
@@ -478,11 +460,6 @@ select:focus-visible {
 .guide-card:hover .guide-card__hairline,
 .guide-card:focus-visible .guide-card__hairline {
   border-color: rgba(214, 160, 92, 0.18);
-}
-
-.guide-card:hover .guide-card__anchor,
-.guide-card:focus-visible .guide-card__anchor {
-  opacity: 0.9;
 }
 
 /* open / expanded — locks the warm hover state and brightens the
@@ -509,10 +486,6 @@ select:focus-visible {
   border-color: rgba(214, 160, 92, 0.28);
 }
 
-.guide-card--open .guide-card__anchor {
-  opacity: 1;
-}
-
 /* internal divider rule used between sections (pitch / preview / CTA) */
 .guide-card__rule {
   height: 1px;
@@ -527,8 +500,7 @@ select:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .guide-card,
-  .guide-card__hairline,
-  .guide-card__anchor {
+  .guide-card__hairline {
     transition: none;
   }
   .guide-card:hover,

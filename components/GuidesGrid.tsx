@@ -15,8 +15,6 @@ function GuideCard({ guide }: { guide: GuideEntry }) {
   return (
     <li className="guide-card group relative flex h-full flex-col p-7 sm:p-9">
       <span aria-hidden className="guide-card__hairline" />
-      <span aria-hidden className="guide-card__anchor guide-card__anchor--tr" />
-      <span aria-hidden className="guide-card__anchor guide-card__anchor--bl" />
 
       <div className="relative flex h-full flex-col">
         <h2 className="font-display text-[26px] leading-[1.1] text-ink sm:text-[30px]">
