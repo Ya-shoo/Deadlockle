@@ -21,7 +21,7 @@
     "nature": "ixian",
     "damage_style": "hitscan",
     "sub_role": "skirmisher",
-    "damage_source": "hybrid",
+    "damage_source": "weapon",
     "abilities": [
       {
         "name": "Napalm",
@@ -905,7 +905,7 @@
     "nature": "mystical",
     "damage_style": "hitscan",
     "sub_role": "support",
-    "damage_source": "hybrid",
+    "damage_source": "weapon",
     "abilities": [
       {
         "name": "Entangling Thorns",
@@ -1269,7 +1269,7 @@
     "nature": "beast",
     "damage_style": "hitscan",
     "sub_role": "diver",
-    "damage_source": "hybrid",
+    "damage_source": "weapon",
     "abilities": [
       {
         "name": "Screwjab Dagger",

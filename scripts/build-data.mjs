@@ -41,7 +41,7 @@ const SPLASH_QUALITY = 80;
 //   hero_type, gun_tag:  fallback for Valve's 4-bucket archetype + weapon tag
 //   ability_overrides:   { [abilityName]: description } fallback for null ability text
 const OVERLAY = {
-  "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
+  "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "vindicta":     { gender: "female",     nature: "spirit",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
   "lady-geist":   { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
@@ -63,14 +63,14 @@ const OVERLAY = {
       "Killing Blow": "Leap forward, dealing spirit damage to the first enemy hero hit; if they are below the kill threshold, execute them outright.",
     },
   },
-  "ivy":          { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "support",    damage_source: "hybrid"  },
+  "ivy":          { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "support",    damage_source: "weapon"  },
   "warden":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "weapon"  },
   "yamato":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
   "lash":         { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "spirit"  },
   "viscous":      { gender: "neutral",    nature: "mystical",  damage_style: "projectile", sub_role: "bruiser",    damage_source: "spirit"  },
   "pocket":       { gender: "non-binary", nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "mirage":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
-  "vyper":        { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "hybrid"  },
+  "vyper":        { gender: "female",     nature: "beast",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "weapon"  },
   "sinclair":     { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "mina":         {
     gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "assassin", damage_source: "spirit",
