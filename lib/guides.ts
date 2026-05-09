@@ -18,7 +18,7 @@ export const GUIDES: GuideEntry[] = [
     label: "Classic",
     index: "01",
     pitch:
-      "A guide to the eight-attribute grid: what each tile reports, how the ↑/↓ arrows work, and when to spend a hint.",
+      "A guide to the eight attribute grid: what each tile reports, how the ↑/↓ arrows work, and when to spend a hint.",
     preview: [
       "What each of the eight tiles compares",
       "How the HP and Speed arrows actually behave",
@@ -64,7 +64,7 @@ export const GUIDES: GuideEntry[] = [
     strategy: [
       {
         title: "Compose what's emerging",
-        body: "Tiles uncover in a shuffled order. You'll see scattered fragments, not a center-out reveal. Track shape, silhouette, and recurring color across the visible tiles.",
+        body: "Tiles uncover in a shuffled order. You'll see scattered fragments rather than a tidy reveal from the centre. Track shape, silhouette, and recurring color across the visible tiles.",
       },
       {
         title: "Only the hero counts to win",
@@ -82,15 +82,15 @@ export const GUIDES: GuideEntry[] = [
     label: "Mugshot",
     index: "03",
     pitch:
-      "A guide to the cropped portrait: using both the camera pull-back and the Classic-style attribute row each wrong guess hands you.",
+      "A guide to the cropped portrait: using both the camera pullback and the Classic style attribute row each wrong guess hands you.",
     preview: [
       "How the zoom decays from 10× to 1× across nine guesses",
-      "The full eight-attribute row that drops with every miss",
+      "The full eight attribute row that drops with every miss",
       "When to wait for the next zoom step instead of guessing",
     ],
     difficulty: "Quick read",
     intro:
-      "A tight portrait crop appears, smartcropped to centre on the character. Each wrong guess zooms the camera out (10× down to 1× over nine misses), but every wrong guess also drops a full Classic-style attribute comparison row beneath it, so the puzzle doubles as a deduction grid.",
+      "A tight portrait crop appears, smartcropped to centre on the character. Each wrong guess zooms the camera out (10× down to 1× over nine misses), but every wrong guess also drops a full Classic style attribute comparison row beneath it, so the puzzle doubles as a deduction grid.",
     strategy: [
       {
         title: "Every wrong guess hands you a Classic row",
@@ -112,10 +112,10 @@ export const GUIDES: GuideEntry[] = [
     label: "Conversation",
     index: "04",
     pitch:
-      "A guide to the two-speaker round: when each new line drops, when the audio unlocks, and the attribute tiles each guess hands you.",
+      "A guide to the round with two speakers: when each new line drops, when the audio unlocks, and the attribute tiles each guess hands you.",
     preview: [
       "Why the dialogue advances only on guesses",
-      "The Classic-style attribute row each wrong guess produces",
+      "The Classic style attribute row each wrong guess produces",
       "The audio cadence: line one at guess 5, then every two more",
     ],
     difficulty: "Lore-aware",
@@ -128,7 +128,7 @@ export const GUIDES: GuideEntry[] = [
       },
       {
         title: "Wrong guesses produce a Classic row too",
-        body: "When you guess against Speaker A or B, an eight-attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice recognition.",
+        body: "When you guess against Speaker A or B, an eight attribute comparison drops below your guess just like Classic mode. The round is half deduction, half voice recognition.",
       },
       {
         title: "Audio is the late game crutch",

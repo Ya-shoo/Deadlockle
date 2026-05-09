@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const FAQ: Array<{ q: string; a: string }> = [
   {
     q: "What is Deadlockle?",
-    a: "Deadlockle is a free daily Wordle-style game for Valve's Deadlock. It's also commonly called Deadlock dle or Deadlockdle, the same idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations.",
+    a: "Deadlockle is a free daily Wordle-style game for Valve's Deadlock. The same daily-puzzle idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations. Five modes unlock every day at midnight UTC.",
   },
   {
     q: "When does the daily puzzle reset?",
@@ -38,8 +38,8 @@ const FAQ: Array<{ q: string; a: string }> = [
     a: "No. Deadlockle is free, has no ads, and requires no account. Your daily progress is stored in your browser's localStorage so you can close the tab and resume later in the day.",
   },
   {
-    q: "How is Deadlockle different from Deadlockdle, Lockle, or DLDE?",
-    a: "All are daily Deadlock guessing games inspired by Wordle. Deadlockle's Classic mode uses an eight-attribute comparison grid (class, role, gun, damage, nature, gender, HP, move speed) and pairs it with four image/dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
+    q: "How is Deadlockle different from other daily Deadlock guessing games?",
+    a: "Deadlockle is its own game at deadlockle.com — separate from Deadlockdle, Lockle, DLDE, and other Deadlock -dle variants. Deadlockle's Classic mode uses an eight attribute comparison grid (class, role, gun, damage, nature, gender, HP, move speed) and pairs it with four image and dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
   },
   {
     q: "Is Deadlockle official?",
@@ -62,7 +62,9 @@ export default function HowToPlayPage() {
     <main className="flex-1">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData).replace(/</g, "\\u003c"),
+        }}
       />
 
       <article className="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-20">
@@ -73,11 +75,10 @@ export default function HowToPlayPage() {
           How to play <Brand as="span" size="md" className="!text-4xl sm:!text-5xl !tracking-[0.04em]" />
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-          <strong className="text-ink">Deadlockle</strong> (also known as{" "}
-          <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a free daily
-          Wordle-style game for Valve's Deadlock. Each day at
-          midnight UTC, five new puzzles unlock, one for each mode. There's
-          no signup, no ads, and no gating. Your progress is saved in your
+          <strong className="text-ink">Deadlockle</strong> is a free daily
+          Wordle-style game for Valve's Deadlock. Each day at midnight UTC,
+          five new Deadlockle puzzles unlock, one for each mode. There's no
+          signup, no ads, and no gating. Your progress is saved in your
           browser, so you can solve a few, close the tab, and come back later
           in the day to finish.
         </p>
@@ -123,7 +124,7 @@ export default function HowToPlayPage() {
           href="/item/"
         >
           <p>
-            A blurred shop-item icon appears. Each wrong guess sharpens it.
+            A blurred shop item icon appears. Each wrong guess sharpens it.
             The pool covers the full Deadlock item shop. <strong className="text-ink">Hard
             mode</strong> rotates the icon by a deterministic 90°, 180°, or
             270° based on the daily seed, useful when normal mode feels too

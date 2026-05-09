@@ -136,20 +136,19 @@ export function HomeContent() {
             What is Deadlockle?
           </h3>
           <p className="mt-3 text-base leading-relaxed text-ink-soft">
-            <strong className="text-ink">Deadlockle</strong> (also known as{" "}
-            <em>Deadlock dle</em> or <em>Deadlockdle</em>) is a daily
-            Wordle-style puzzle for Valve's{" "}
+            <strong className="text-ink">Deadlockle</strong> is the daily
+            Wordle-style quiz for Valve's{" "}
             <a
               href="https://store.steampowered.com/app/1422450/Deadlock/"
               className="text-accent underline-offset-2 hover:underline"
             >
               Deadlock
             </a>
-            . Five modes, one hero per day. Classic is the eight-attribute
-            deduction grid; Ability, Item, Mugshot, and Conversation each
-            reveal the answer in their own way as you guess. New puzzles
-            arrive at midnight UTC, and your board waits where you left it.
-            Solve a few, come back later, take your time.
+            . Five modes, one hero per day — Deadlockle's Classic mode is the
+            eight attribute deduction grid, and Ability, Item, Mugshot, and
+            Conversation each reveal the answer in their own way as you guess.
+            New puzzles arrive at midnight UTC, and your board waits where you
+            left it. Solve a few, come back later, take your time.
           </p>
           <Link
             href="/guides/"
