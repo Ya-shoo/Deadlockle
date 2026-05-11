@@ -1,9 +1,15 @@
-// One-shot data pipeline: fetch Deadlock hero + item data from
+// One-shot HERO pipeline: fetch Deadlock hero data from
 // assets.deadlock-api.com, merge with hand-curated overlay
 // (gender / nature / damage_style), smartcrop hero card art into self-hosted
-// 1:1 JPEGs, and write data/heroes.json + data/items.json.
+// 1:1 JPEGs, and write data/heroes.json.
 //
-// Run once and commit the output. Re-run when the roster/item pool changes.
+// This script intentionally does NOT write data/items.json — the item
+// catalogue is owned by scripts/build-items-wiki.mjs, which sources from
+// deadlock.wiki (the assets.deadlock-api.com item list drifted out of sync
+// with live patches). It still fetches /v2/items, but only to resolve hero
+// ability metadata by class_name.
+//
+// Run once and commit the output. Re-run when the roster changes.
 
 import { writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -13,10 +19,8 @@ import smartcrop from "smartcrop-sharp";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HEROES_OUT = resolve(__dirname, "..", "data", "heroes.json");
-const ITEMS_OUT = resolve(__dirname, "..", "data", "items.json");
 const SPLASH_OUT = resolve(__dirname, "..", "public", "splash");
 const PORTRAIT_OUT = resolve(__dirname, "..", "public", "portraits");
-const ITEM_OUT = resolve(__dirname, "..", "public", "items");
 const ABILITY_OUT = resolve(__dirname, "..", "public", "abilities");
 
 const API = "https://assets.deadlock-api.com";
@@ -221,7 +225,6 @@ async function downloadIcon(srcUrl, outDir, key) {
 async function main() {
   await mkdir(SPLASH_OUT, { recursive: true });
   await mkdir(PORTRAIT_OUT, { recursive: true });
-  await mkdir(ITEM_OUT, { recursive: true });
   await mkdir(ABILITY_OUT, { recursive: true });
   await mkdir(resolve(__dirname, "..", "data"), { recursive: true });
 
@@ -361,45 +364,8 @@ async function main() {
     console.log("  " + missingOverlay.join(", "));
   }
 
-  // ---------- ITEMS ----------
-  console.log("\nProcessing items...");
-  const upgrades = allItems.filter(
-    (i) =>
-      i.type === "upgrade" &&
-      i.shopable !== false &&
-      i.image &&
-      i.name &&
-      !i.disabled,
-  );
-  console.log(`  ${upgrades.length} shopable upgrades with icons`);
-
-  const itemsOut = [];
-  for (const it of upgrades) {
-    const key = toKey(it.class_name);
-    process.stdout.write(`  ${key.padEnd(38)} `);
-
-    let iconUrl = null;
-    if (it.image) {
-      iconUrl = await downloadIcon(it.image, ITEM_OUT, key);
-    }
-
-    itemsOut.push({
-      key,
-      class_name: it.class_name,
-      name: it.name,
-      slot: it.item_slot_type, // "weapon" | "vitality" | "spirit"
-      tier: it.item_tier ?? null,
-      cost: it.cost ?? null,
-      icon: iconUrl,
-      sourceImage: it.image,
-    });
-
-    console.log("ok");
-  }
-
-  await writeFile(ITEMS_OUT, JSON.stringify(itemsOut, null, 2));
-  console.log(`\nWrote ${itemsOut.length} items → data/items.json`);
-  console.log(`  with icon: ${itemsOut.filter((i) => i.icon).length}`);
+  // Item catalogue is intentionally NOT written here — see header comment.
+  // Run `node scripts/build-items-wiki.mjs` to refresh data/items.json.
 }
 
 main().catch((err) => {
