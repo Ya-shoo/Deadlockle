@@ -22,7 +22,6 @@ import { writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import sharp from "sharp";
-import { cdn } from "./_cdn.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ITEMS_OUT = resolve(__dirname, "..", "data", "items.json");
@@ -86,7 +85,7 @@ async function downloadIcon(srcUrl, outDir, key) {
       .resize(256, 256, { fit: "inside" })
       .webp({ quality: 85, effort: 5 })
       .toFile(resolve(outDir, `${key}.webp`));
-    return cdn(`/items/${key}.webp`);
+    return `/items/${key}.webp`;
   } catch (e) {
     console.log(`[icon failed for ${key}: ${e.message}]`);
     return null;

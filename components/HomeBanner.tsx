@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { dayString } from "@/lib/daily";
 import { getDailyBanners, STATIC_BANNERS, type Banner } from "@/lib/banners";
+import { media } from "@/lib/media";
 
 const ROTATE_MS = 10000;
 const FADE_MS = 1400;
@@ -65,7 +66,7 @@ export function HomeBanner() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={current.file}
+                src={media(current.file)}
                 alt=""
                 className="block h-full w-full object-cover"
                 loading="eager"

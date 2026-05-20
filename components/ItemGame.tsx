@@ -10,6 +10,7 @@ import {
   shuffleOrder,
 } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
+import { media } from "@/lib/media";
 import { ItemCombobox } from "./ItemCombobox";
 import { Brand } from "./Brand";
 import { NextModeCTA } from "./NextModeCTA";
@@ -149,7 +150,7 @@ export function ItemGame() {
               {answer.icon && (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
-                  src={answer.icon}
+                  src={media(answer.icon)}
                   alt=""
                   className="h-16 w-16 rounded-(--radius-card) bg-muted object-contain p-2 sm:h-20 sm:w-20"
                 />
@@ -190,7 +191,7 @@ export function ItemGame() {
                 {it.icon && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={it.icon}
+                    src={media(it.icon)}
                     alt=""
                     className="h-10 w-10 shrink-0 rounded-sm bg-muted object-contain"
                   />

@@ -15,6 +15,7 @@ import {
   shuffleOrder,
 } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
+import { media } from "@/lib/media";
 import { HeroCombobox } from "./HeroCombobox";
 import { Brand } from "./Brand";
 import { NextModeCTA } from "./NextModeCTA";
@@ -138,7 +139,7 @@ export function AbilityGame() {
               {answer.portrait_url && (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
-                  src={answer.portrait_url}
+                  src={media(answer.portrait_url)}
                   alt=""
                   className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
                 />
@@ -211,7 +212,7 @@ function WrongGuessCard({ hero, isLatest }: { hero: Hero; isLatest: boolean }) {
       {hero.portrait_url && (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
-          src={hero.portrait_url}
+          src={media(hero.portrait_url)}
           alt={hero.name}
           width={112}
           height={112}
@@ -258,7 +259,7 @@ function AbilityArtCard({
           {ability.icon && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={ability.icon}
+              src={media(ability.icon)}
               alt={nameRevealed ? ability.name : "Mystery ability"}
               className="absolute inset-0 h-full w-full object-contain"
               loading="eager"

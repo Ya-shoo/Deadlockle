@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import clsx from "clsx";
 import { compareHero } from "@/lib/compare";
 import type { Hero } from "@/lib/heroes";
+import { media } from "@/lib/media";
 import { AttributeTile } from "./AttributeTile";
 
 export function GuessRow({
@@ -34,7 +35,7 @@ export function GuessRow({
         {guess.portrait_url && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
-            src={guess.portrait_url}
+            src={media(guess.portrait_url)}
             alt={guess.name}
             width={56}
             height={56}

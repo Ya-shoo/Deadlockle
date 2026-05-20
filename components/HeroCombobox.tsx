@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import type { Hero } from "@/lib/heroes";
+import { media } from "@/lib/media";
 
 type Props = {
   heroes: Hero[];
@@ -162,7 +163,7 @@ export function HeroCombobox({
                 {hero.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={hero.portrait_url}
+                    src={media(hero.portrait_url)}
                     alt=""
                     width={36}
                     height={36}

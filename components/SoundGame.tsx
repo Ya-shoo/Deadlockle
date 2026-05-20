@@ -31,6 +31,7 @@ import {
 import { HeroCombobox } from "./HeroCombobox";
 import { AttributeTile } from "./AttributeTile";
 import { Brand } from "./Brand";
+import { media } from "@/lib/media";
 import { NextModeCTA } from "./NextModeCTA";
 import { ScoreBadge } from "./ScoreBadge";
 import clsx from "clsx";
@@ -281,7 +282,7 @@ export function SoundGame() {
                 {speakerA.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={speakerA.portrait_url}
+                    src={media(speakerA.portrait_url)}
                     alt=""
                     className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
                   />
@@ -289,7 +290,7 @@ export function SoundGame() {
                 {speakerB.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={speakerB.portrait_url}
+                    src={media(speakerB.portrait_url)}
                     alt=""
                     className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
                   />
@@ -379,7 +380,7 @@ function SpeakerField({
           {speakerHero.portrait_url && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={speakerHero.portrait_url}
+              src={media(speakerHero.portrait_url)}
               alt=""
               className="h-10 w-10 rounded-(--radius-card) bg-muted object-cover"
             />
@@ -460,7 +461,7 @@ function ConversationCard({
     const line = conversation.lines[lineIdx];
     if (line.audioStart == null || line.audioDuration == null) return;
     stopPlayback();
-    if (!audioRef.current) audioRef.current = new Audio(audioUrl);
+    if (!audioRef.current) audioRef.current = new Audio(media(audioUrl));
     const audio = audioRef.current;
     const end = line.audioStart + line.audioDuration;
     const handler = () => {
@@ -697,7 +698,7 @@ function ConversationGuessRow({
         {guess.portrait_url && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
-            src={guess.portrait_url}
+            src={media(guess.portrait_url)}
             alt=""
             width={56}
             height={56}

@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import type { Item } from "@/lib/items";
+import { media } from "@/lib/media";
 
 const SLOT_TINT: Record<Item["slot"], string> = {
   weapon: "text-[#e07a4f]",
@@ -170,7 +171,7 @@ export function ItemCombobox({
                      identifying info. */
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={item.icon}
+                    src={media(item.icon)}
                     alt=""
                     width={32}
                     height={32}

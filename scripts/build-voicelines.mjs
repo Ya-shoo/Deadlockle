@@ -17,7 +17,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { cdn } from "./_cdn.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HEROES_IN = resolve(__dirname, "..", "data", "heroes.json");
@@ -262,7 +261,7 @@ async function main() {
         const bytes = await downloadClip(url, outPath);
         clips.push({
           file: outName,
-          url: cdn(`/voicelines/${h.key}/${outName}`),
+          url: `/voicelines/${h.key}/${outName}`,
           transcript,
           bytes,
         });

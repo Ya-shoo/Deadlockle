@@ -11,6 +11,7 @@ import {
   getUnsolvedAttrs,
 } from "@/lib/compare";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
+import { media } from "@/lib/media";
 import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
@@ -269,7 +270,7 @@ export function ClassicGame() {
               {answer.portrait_url && (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
-                  src={answer.portrait_url}
+                  src={media(answer.portrait_url)}
                   alt=""
                   className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
                 />

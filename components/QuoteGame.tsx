@@ -22,6 +22,7 @@ import {
 import { HeroCombobox } from "./HeroCombobox";
 import { AttributeTile } from "./AttributeTile";
 import { Brand } from "./Brand";
+import { media } from "@/lib/media";
 import { NextModeCTA } from "./NextModeCTA";
 import { ScoreBadge } from "./ScoreBadge";
 import clsx from "clsx";
@@ -203,7 +204,7 @@ export function QuoteGame() {
                 {speakerA.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={speakerA.portrait_url}
+                    src={media(speakerA.portrait_url)}
                     alt=""
                     className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
                   />
@@ -211,7 +212,7 @@ export function QuoteGame() {
                 {speakerB.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={speakerB.portrait_url}
+                    src={media(speakerB.portrait_url)}
                     alt=""
                     className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
                   />
@@ -354,7 +355,7 @@ function SpeakerSegment({
           {speaker.portrait_url && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={speaker.portrait_url}
+              src={media(speaker.portrait_url)}
               alt=""
               className="h-6 w-6 shrink-0 rounded-(--radius-pill) bg-muted object-cover"
             />
@@ -519,7 +520,7 @@ function ConversationGuessRow({
         {guess.portrait_url && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
-            src={guess.portrait_url}
+            src={media(guess.portrait_url)}
             alt=""
             width={56}
             height={56}
