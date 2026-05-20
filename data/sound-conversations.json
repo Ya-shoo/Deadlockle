@@ -4,7 +4,7 @@
       "abrams",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/atlas_inferno_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_inferno_2.mp3",
     "bytes": 46854,
     "lines": [
       {
@@ -38,7 +38,7 @@
       "infernus",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_inferno_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_inferno_3.mp3",
     "bytes": 72767,
     "lines": [
       {
@@ -72,7 +72,7 @@
       "apollo",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/apollo_infernus_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_infernus_conversation_02.mp3",
     "bytes": 114476,
     "lines": [
       {
@@ -106,7 +106,7 @@
       "infernus",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_infernus_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_infernus_conversation_02.mp3",
     "bytes": 28076,
     "lines": [
       {
@@ -128,7 +128,7 @@
       "infernus",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_infernus_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_infernus_conversation_03.mp3",
     "bytes": 60332,
     "lines": [
       {
@@ -162,7 +162,7 @@
       "infernus",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_infernus_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_infernus_conversation_01.mp3",
     "bytes": 28268,
     "lines": [
       {
@@ -184,7 +184,7 @@
       "dynamo",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/dynamo_infernus_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_infernus_conversation_03.mp3",
     "bytes": 47276,
     "lines": [
       {
@@ -212,7 +212,7 @@
       "haze",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/haze_infernus_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_infernus_conversation_01.mp3",
     "bytes": 43820,
     "lines": [
       {
@@ -234,7 +234,7 @@
       "holliday",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/astro_inferno_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_inferno_1.mp3",
     "bytes": 70051,
     "lines": [
       {
@@ -268,7 +268,7 @@
       "infernus",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_inferno_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_inferno_2.mp3",
     "bytes": 125430,
     "lines": [
       {
@@ -308,7 +308,7 @@
       "infernus",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_inferno_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_inferno_3.mp3",
     "bytes": 58348,
     "lines": [
       {
@@ -342,7 +342,7 @@
       "kelvin",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_kelvin_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_kelvin_conversation_03.mp3",
     "bytes": 118124,
     "lines": [
       {
@@ -388,7 +388,7 @@
       "lady-geist",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_lady_geist_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_lady_geist_conversation_01.mp3",
     "bytes": 35372,
     "lines": [
       {
@@ -410,7 +410,7 @@
       "lady-geist",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_lady_geist_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_lady_geist_conversation_02.mp3",
     "bytes": 78956,
     "lines": [
       {
@@ -444,7 +444,7 @@
       "infernus",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/infernus_lady_geist_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_lady_geist_conversation_03.mp3",
     "bytes": 68012,
     "lines": [
       {
@@ -478,7 +478,7 @@
       "infernus",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/infernus_mcginnis_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_mcginnis_conversation_01.mp3",
     "bytes": 58412,
     "lines": [
       {
@@ -512,7 +512,7 @@
       "mcginnis",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_mcginnis_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_mcginnis_conversation_02.mp3",
     "bytes": 24044,
     "lines": [
       {
@@ -534,7 +534,7 @@
       "infernus",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/infernus_krill_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_krill_conversation_02.mp3",
     "bytes": 146732,
     "lines": [
       {
@@ -568,7 +568,7 @@
       "infernus",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_inferno_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_inferno_3.mp3",
     "bytes": 90949,
     "lines": [
       {
@@ -602,7 +602,7 @@
       "silver",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_silver_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_silver_conversation_01.mp3",
     "bytes": 61100,
     "lines": [
       {
@@ -636,7 +636,7 @@
       "silver",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_silver_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_silver_conversation_02.mp3",
     "bytes": 49388,
     "lines": [
       {
@@ -670,7 +670,7 @@
       "infernus",
       "venator"
     ],
-    "audio": "/voicelines/conversations/infernus_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_venator_conversation_01.mp3",
     "bytes": 51500,
     "lines": [
       {
@@ -698,7 +698,7 @@
       "venator",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_venator_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_venator_conversation_02.mp3",
     "bytes": 87212,
     "lines": [
       {
@@ -744,7 +744,7 @@
       "venator",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_venator_conversation_03.mp3",
     "bytes": 185708,
     "lines": [
       {
@@ -796,7 +796,7 @@
       "victor",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_victor_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_victor_conversation_02.mp3",
     "bytes": 79148,
     "lines": [
       {
@@ -830,7 +830,7 @@
       "infernus",
       "victor"
     ],
-    "audio": "/voicelines/conversations/infernus_victor_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_victor_conversation_03.mp3",
     "bytes": 145772,
     "lines": [
       {
@@ -882,7 +882,7 @@
       "infernus",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/infernus_vindicta_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_vindicta_conversation_01.mp3",
     "bytes": 38636,
     "lines": [
       {
@@ -910,7 +910,7 @@
       "infernus",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/infernus_vindicta_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_vindicta_conversation_02.mp3",
     "bytes": 50540,
     "lines": [
       {
@@ -938,7 +938,7 @@
       "infernus",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/infernus_vindicta_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_vindicta_conversation_03.mp3",
     "bytes": 52844,
     "lines": [
       {
@@ -966,7 +966,7 @@
       "viscous",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_viscous_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_viscous_conversation_01.mp3",
     "bytes": 76738,
     "lines": [
       {
@@ -1000,7 +1000,7 @@
       "infernus",
       "viscous"
     ],
-    "audio": "/voicelines/conversations/infernus_viscous_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_viscous_conversation_02.mp3",
     "bytes": 133372,
     "lines": [
       {
@@ -1052,7 +1052,7 @@
       "wraith",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_wraith_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_wraith_conversation_01.mp3",
     "bytes": 35756,
     "lines": [
       {
@@ -1074,7 +1074,7 @@
       "wraith",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_wraith_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_wraith_conversation_02.mp3",
     "bytes": 81836,
     "lines": [
       {
@@ -1114,7 +1114,7 @@
       "wraith",
       "infernus"
     ],
-    "audio": "/voicelines/conversations/infernus_wraith_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/infernus_wraith_conversation_03.mp3",
     "bytes": 65900,
     "lines": [
       {
@@ -1154,7 +1154,7 @@
       "seven",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_gigawatt_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_gigawatt_2.mp3",
     "bytes": 119161,
     "lines": [
       {
@@ -1182,7 +1182,7 @@
       "apollo",
       "seven"
     ],
-    "audio": "/voicelines/conversations/apollo_seven_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_seven_conversation_01.mp3",
     "bytes": 99500,
     "lines": [
       {
@@ -1216,7 +1216,7 @@
       "apollo",
       "seven"
     ],
-    "audio": "/voicelines/conversations/apollo_seven_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_seven_conversation_02.mp3",
     "bytes": 109100,
     "lines": [
       {
@@ -1262,7 +1262,7 @@
       "seven",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_seven_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_seven_conversation_03.mp3",
     "bytes": 117932,
     "lines": [
       {
@@ -1290,7 +1290,7 @@
       "bebop",
       "seven"
     ],
-    "audio": "/voicelines/conversations/bebop_gigawatt_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_gigawatt_2.mp3",
     "bytes": 65662,
     "lines": [
       {
@@ -1312,7 +1312,7 @@
       "seven",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_gigawatt_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_gigawatt_1.mp3",
     "bytes": 114772,
     "lines": [
       {
@@ -1340,7 +1340,7 @@
       "seven",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_gigawatt_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_gigawatt_2.mp3",
     "bytes": 159285,
     "lines": [
       {
@@ -1374,7 +1374,7 @@
       "dynamo",
       "seven"
     ],
-    "audio": "/voicelines/conversations/dynamo_gigawatt_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_gigawatt_3.mp3",
     "bytes": 220725,
     "lines": [
       {
@@ -1420,7 +1420,7 @@
       "seven",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_seven_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_seven_conversation_1.mp3",
     "bytes": 130604,
     "lines": [
       {
@@ -1460,7 +1460,7 @@
       "seven",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_seven_conversation_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_seven_conversation_2.mp3",
     "bytes": 218348,
     "lines": [
       {
@@ -1512,7 +1512,7 @@
       "graves",
       "seven"
     ],
-    "audio": "/voicelines/conversations/graves_seven_conversation_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_seven_conversation_3.mp3",
     "bytes": 107948,
     "lines": [
       {
@@ -1546,7 +1546,7 @@
       "grey-talon",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_orion_1.mp3",
     "bytes": 95128,
     "lines": [
       {
@@ -1580,7 +1580,7 @@
       "seven",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/gigawatt_orion_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_orion_2.mp3",
     "bytes": 53750,
     "lines": [
       {
@@ -1602,7 +1602,7 @@
       "seven",
       "haze"
     ],
-    "audio": "/voicelines/conversations/gigawatt_haze_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_haze_1.mp3",
     "bytes": 95546,
     "lines": [
       {
@@ -1630,7 +1630,7 @@
       "seven",
       "haze"
     ],
-    "audio": "/voicelines/conversations/gigawatt_haze_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_haze_2.mp3",
     "bytes": 60438,
     "lines": [
       {
@@ -1658,7 +1658,7 @@
       "haze",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_haze_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_haze_3.mp3",
     "bytes": 113518,
     "lines": [
       {
@@ -1704,7 +1704,7 @@
       "holliday",
       "seven"
     ],
-    "audio": "/voicelines/conversations/astro_gigawatt_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_gigawatt_3.mp3",
     "bytes": 72349,
     "lines": [
       {
@@ -1726,7 +1726,7 @@
       "holliday",
       "seven"
     ],
-    "audio": "/voicelines/conversations/astro_gigawatt_troubadour_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_gigawatt_troubadour_1.mp3",
     "bytes": 63154,
     "lines": [
       {
@@ -1760,7 +1760,7 @@
       "holliday",
       "seven"
     ],
-    "audio": "/voicelines/conversations/astro_gigawatt_troubadour_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_gigawatt_troubadour_3.mp3",
     "bytes": 47690,
     "lines": [
       {
@@ -1782,7 +1782,7 @@
       "ivy",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_tengu_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_tengu_1.mp3",
     "bytes": 52078,
     "lines": [
       {
@@ -1804,7 +1804,7 @@
       "kelvin",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_kelvin_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_kelvin_1.mp3",
     "bytes": 68379,
     "lines": [
       {
@@ -1838,7 +1838,7 @@
       "seven",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_gigawatt_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_gigawatt_1.mp3",
     "bytes": 74439,
     "lines": [
       {
@@ -1866,7 +1866,7 @@
       "lady-geist",
       "seven"
     ],
-    "audio": "/voicelines/conversations/ghost_gigawatt_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_gigawatt_2.mp3",
     "bytes": 99517,
     "lines": [
       {
@@ -1894,7 +1894,7 @@
       "seven",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_gigawatt_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_gigawatt_3.mp3",
     "bytes": 69842,
     "lines": [
       {
@@ -1928,7 +1928,7 @@
       "seven",
       "lash"
     ],
-    "audio": "/voicelines/conversations/gigawatt_lash_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_lash_2.mp3",
     "bytes": 57721,
     "lines": [
       {
@@ -1956,7 +1956,7 @@
       "seven",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/forge_gigawatt_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_gigawatt_1.mp3",
     "bytes": 93456,
     "lines": [
       {
@@ -1996,7 +1996,7 @@
       "mcginnis",
       "seven"
     ],
-    "audio": "/voicelines/conversations/forge_gigawatt_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_gigawatt_2.mp3",
     "bytes": 89277,
     "lines": [
       {
@@ -2036,7 +2036,7 @@
       "seven",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/gigawatt_mirage_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_mirage_1.mp3",
     "bytes": 74648,
     "lines": [
       {
@@ -2064,7 +2064,7 @@
       "seven",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/gigawatt_mirage_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_mirage_2.mp3",
     "bytes": 51034,
     "lines": [
       {
@@ -2092,7 +2092,7 @@
       "seven",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/gigawatt_mirage_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_mirage_3.mp3",
     "bytes": 108294,
     "lines": [
       {
@@ -2132,7 +2132,7 @@
       "mo-krill",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_krill_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_krill_1.mp3",
     "bytes": 77783,
     "lines": [
       {
@@ -2166,7 +2166,7 @@
       "mo-krill",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_krill_3.mp3",
     "bytes": 56467,
     "lines": [
       {
@@ -2188,7 +2188,7 @@
       "seven",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/chrono_gigawatt_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_gigawatt_1.mp3",
     "bytes": 85097,
     "lines": [
       {
@@ -2216,7 +2216,7 @@
       "seven",
       "venator"
     ],
-    "audio": "/voicelines/conversations/seven_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/seven_venator_conversation_01.mp3",
     "bytes": 102956,
     "lines": [
       {
@@ -2250,7 +2250,7 @@
       "venator",
       "seven"
     ],
-    "audio": "/voicelines/conversations/seven_venator_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/seven_venator_conversation_02.mp3",
     "bytes": 74732,
     "lines": [
       {
@@ -2272,7 +2272,7 @@
       "seven",
       "venator"
     ],
-    "audio": "/voicelines/conversations/seven_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/seven_venator_conversation_03.mp3",
     "bytes": 75692,
     "lines": [
       {
@@ -2306,7 +2306,7 @@
       "seven",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/gigawatt_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_hornet_1.mp3",
     "bytes": 46436,
     "lines": [
       {
@@ -2328,7 +2328,7 @@
       "seven",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/gigawatt_hornet_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_hornet_2.mp3",
     "bytes": 72558,
     "lines": [
       {
@@ -2356,7 +2356,7 @@
       "viscous",
       "seven"
     ],
-    "audio": "/voicelines/conversations/gigawatt_viscous_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/gigawatt_viscous_2.mp3",
     "bytes": 94919,
     "lines": [
       {
@@ -2402,7 +2402,7 @@
       "abrams",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/atlas_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_hornet_1.mp3",
     "bytes": 58348,
     "lines": [
       {
@@ -2430,7 +2430,7 @@
       "abrams",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/atlas_hornet_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_hornet_2.mp3",
     "bytes": 42256,
     "lines": [
       {
@@ -2452,7 +2452,7 @@
       "abrams",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/atlas_hornet_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_hornet_3.mp3",
     "bytes": 66707,
     "lines": [
       {
@@ -2486,7 +2486,7 @@
       "bebop",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/bebop_vindicta_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_vindicta_2.mp3",
     "bytes": 128774,
     "lines": [
       {
@@ -2532,7 +2532,7 @@
       "bebop",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/bebop_vindicta_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_vindicta_3.mp3",
     "bytes": 53750,
     "lines": [
       {
@@ -2560,7 +2560,7 @@
       "drifter",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/drifter_vindicta_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_vindicta_conversation_01.mp3",
     "bytes": 78188,
     "lines": [
       {
@@ -2588,7 +2588,7 @@
       "drifter",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/drifter_vindicta_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_vindicta_conversation_02.mp3",
     "bytes": 68780,
     "lines": [
       {
@@ -2616,7 +2616,7 @@
       "drifter",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/drifter_vindicta_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_vindicta_conversation_03.mp3",
     "bytes": 98156,
     "lines": [
       {
@@ -2644,7 +2644,7 @@
       "vindicta",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_hornet_1.mp3",
     "bytes": 50407,
     "lines": [
       {
@@ -2666,7 +2666,7 @@
       "dynamo",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/dynamo_hornet_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_hornet_2.mp3",
     "bytes": 70887,
     "lines": [
       {
@@ -2694,7 +2694,7 @@
       "vindicta",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_hornet_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_hornet_3.mp3",
     "bytes": 95964,
     "lines": [
       {
@@ -2740,7 +2740,7 @@
       "vindicta",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_vindicta_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_vindicta_conversation_01.mp3",
     "bytes": 38828,
     "lines": [
       {
@@ -2762,7 +2762,7 @@
       "vindicta",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_vindicta_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_vindicta_conversation_02.mp3",
     "bytes": 51500,
     "lines": [
       {
@@ -2796,7 +2796,7 @@
       "vindicta",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_vindicta_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_vindicta_conversation_03.mp3",
     "bytes": 97004,
     "lines": [
       {
@@ -2824,7 +2824,7 @@
       "haze",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/haze_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_hornet_1.mp3",
     "bytes": 71932,
     "lines": [
       {
@@ -2858,7 +2858,7 @@
       "vindicta",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_hornet_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_hornet_2.mp3",
     "bytes": 125221,
     "lines": [
       {
@@ -2892,7 +2892,7 @@
       "holliday",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/astro_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_hornet_1.mp3",
     "bytes": 112474,
     "lines": [
       {
@@ -2938,7 +2938,7 @@
       "vindicta",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/hornet_tengu_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/hornet_tengu_2.mp3",
     "bytes": 91158,
     "lines": [
       {
@@ -2978,7 +2978,7 @@
       "vindicta",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_vindicta_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_vindicta_conversation_01.mp3",
     "bytes": 80492,
     "lines": [
       {
@@ -3006,7 +3006,7 @@
       "lady-geist",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/ghost_hornet_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_hornet_1.mp3",
     "bytes": 48944,
     "lines": [
       {
@@ -3034,7 +3034,7 @@
       "vindicta",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_hornet_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_hornet_2.mp3",
     "bytes": 101398,
     "lines": [
       {
@@ -3056,7 +3056,7 @@
       "lady-geist",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/ghost_hornet_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_hornet_3.mp3",
     "bytes": 85933,
     "lines": [
       {
@@ -3084,7 +3084,7 @@
       "vindicta",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/vindicta_wraith_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/vindicta_wraith_conversation_02.mp3",
     "bytes": 75884,
     "lines": [
       {
@@ -3112,7 +3112,7 @@
       "wraith",
       "vindicta"
     ],
-    "audio": "/voicelines/conversations/vindicta_wraith_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/vindicta_wraith_conversation_03.mp3",
     "bytes": 28460,
     "lines": [
       {
@@ -3140,7 +3140,7 @@
       "lady-geist",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_ghost_1.mp3",
     "bytes": 60647,
     "lines": [
       {
@@ -3168,7 +3168,7 @@
       "abrams",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/atlas_ghost_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_ghost_2.mp3",
     "bytes": 44973,
     "lines": [
       {
@@ -3196,7 +3196,7 @@
       "abrams",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/atlas_ghost_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_ghost_3.mp3",
     "bytes": 108921,
     "lines": [
       {
@@ -3230,7 +3230,7 @@
       "abrams",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/atlas_ghost_oathkeeper_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_ghost_oathkeeper_2.mp3",
     "bytes": 98472,
     "lines": [
       {
@@ -3264,7 +3264,7 @@
       "lady-geist",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_ghost_1.mp3",
     "bytes": 90113,
     "lines": [
       {
@@ -3292,7 +3292,7 @@
       "lady-geist",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_ghost_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_ghost_3.mp3",
     "bytes": 87187,
     "lines": [
       {
@@ -3320,7 +3320,7 @@
       "billy",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/billy_lady_geist_conversation_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_lady_geist_conversation_2.mp3",
     "bytes": 162860,
     "lines": [
       {
@@ -3354,7 +3354,7 @@
       "drifter",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/drifter_lady_geist_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_lady_geist_conversation_01.mp3",
     "bytes": 86252,
     "lines": [
       {
@@ -3394,7 +3394,7 @@
       "lady-geist",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_lady_geist_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_lady_geist_conversation_02.mp3",
     "bytes": 86252,
     "lines": [
       {
@@ -3428,7 +3428,7 @@
       "lady-geist",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ghost_1.mp3",
     "bytes": 90322,
     "lines": [
       {
@@ -3474,7 +3474,7 @@
       "dynamo",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/dynamo_ghost_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ghost_2.mp3",
     "bytes": 72558,
     "lines": [
       {
@@ -3508,7 +3508,7 @@
       "lady-geist",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_ghost_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ghost_3.mp3",
     "bytes": 97218,
     "lines": [
       {
@@ -3542,7 +3542,7 @@
       "lady-geist",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_ghost_oathkeeper_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ghost_oathkeeper_2.mp3",
     "bytes": 143820,
     "lines": [
       {
@@ -3564,7 +3564,7 @@
       "grey-talon",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/grey_talon_lady_geist_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_lady_geist_conversation_01.mp3",
     "bytes": 101804,
     "lines": [
       {
@@ -3610,7 +3610,7 @@
       "grey-talon",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/grey_talon_lady_geist_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_lady_geist_conversation_02.mp3",
     "bytes": 58988,
     "lines": [
       {
@@ -3638,7 +3638,7 @@
       "grey-talon",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/grey_talon_lady_geist_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_lady_geist_conversation_03.mp3",
     "bytes": 139436,
     "lines": [
       {
@@ -3666,7 +3666,7 @@
       "holliday",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/astro_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_ghost_1.mp3",
     "bytes": 59184,
     "lines": [
       {
@@ -3700,7 +3700,7 @@
       "lady-geist",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_ghost_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_ghost_2.mp3",
     "bytes": 61900,
     "lines": [
       {
@@ -3746,7 +3746,7 @@
       "lady-geist",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/ghost_kelvin_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_kelvin_3.mp3",
     "bytes": 177466,
     "lines": [
       {
@@ -3792,7 +3792,7 @@
       "lash",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/lady_geist_lash_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_lash_conversation_01.mp3",
     "bytes": 102572,
     "lines": [
       {
@@ -3832,7 +3832,7 @@
       "lady-geist",
       "lash"
     ],
-    "audio": "/voicelines/conversations/lady_geist_lash_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_lash_conversation_02.mp3",
     "bytes": 77612,
     "lines": [
       {
@@ -3866,7 +3866,7 @@
       "mcginnis",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/forge_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_ghost_1.mp3",
     "bytes": 166808,
     "lines": [
       {
@@ -3912,7 +3912,7 @@
       "lady-geist",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/forge_ghost_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_ghost_2.mp3",
     "bytes": 86978,
     "lines": [
       {
@@ -3946,7 +3946,7 @@
       "mcginnis",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/forge_ghost_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_ghost_3.mp3",
     "bytes": 81754,
     "lines": [
       {
@@ -3980,7 +3980,7 @@
       "lady-geist",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/ghost_mirage_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_mirage_2.mp3",
     "bytes": 156777,
     "lines": [
       {
@@ -4026,7 +4026,7 @@
       "lady-geist",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/ghost_mirage_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_mirage_3.mp3",
     "bytes": 64199,
     "lines": [
       {
@@ -4054,7 +4054,7 @@
       "mo-krill",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_krill_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_krill_2.mp3",
     "bytes": 80709,
     "lines": [
       {
@@ -4088,7 +4088,7 @@
       "lady-geist",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/chrono_ghost_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_ghost_1.mp3",
     "bytes": 186870,
     "lines": [
       {
@@ -4134,7 +4134,7 @@
       "lady-geist",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/chrono_ghost_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_ghost_3.mp3",
     "bytes": 102025,
     "lines": [
       {
@@ -4168,7 +4168,7 @@
       "lady-geist",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/ghost_synth_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_synth_1.mp3",
     "bytes": 86560,
     "lines": [
       {
@@ -4208,7 +4208,7 @@
       "lady-geist",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/ghost_synth_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_synth_2.mp3",
     "bytes": 33479,
     "lines": [
       {
@@ -4236,7 +4236,7 @@
       "lady-geist",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/ghost_synth_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_synth_3.mp3",
     "bytes": 90740,
     "lines": [
       {
@@ -4270,7 +4270,7 @@
       "lady-geist",
       "shiv"
     ],
-    "audio": "/voicelines/conversations/ghost_shiv_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_shiv_1.mp3",
     "bytes": 142358,
     "lines": [
       {
@@ -4322,7 +4322,7 @@
       "lady-geist",
       "shiv"
     ],
-    "audio": "/voicelines/conversations/ghost_shiv_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_shiv_3.mp3",
     "bytes": 84261,
     "lines": [
       {
@@ -4362,7 +4362,7 @@
       "lady-geist",
       "victor"
     ],
-    "audio": "/voicelines/conversations/lady_geist_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_victor_conversation_01.mp3",
     "bytes": 49196,
     "lines": [
       {
@@ -4390,7 +4390,7 @@
       "lady-geist",
       "victor"
     ],
-    "audio": "/voicelines/conversations/lady_geist_victor_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_victor_conversation_03.mp3",
     "bytes": 164780,
     "lines": [
       {
@@ -4430,7 +4430,7 @@
       "viscous",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_viscous_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_viscous_2.mp3",
     "bytes": 35569,
     "lines": [
       {
@@ -4464,7 +4464,7 @@
       "viscous",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_viscous_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_viscous_3.mp3",
     "bytes": 77783,
     "lines": [
       {
@@ -4492,7 +4492,7 @@
       "lady-geist",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/lady_geist_viper_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_viper_conversation_02.mp3",
     "bytes": 87788,
     "lines": [
       {
@@ -4520,7 +4520,7 @@
       "vyper",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/lady_geist_viper_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_viper_conversation_03.mp3",
     "bytes": 81068,
     "lines": [
       {
@@ -4548,7 +4548,7 @@
       "wraith",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_wraith_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_wraith_1.mp3",
     "bytes": 99935,
     "lines": [
       {
@@ -4582,7 +4582,7 @@
       "lady-geist",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/ghost_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_wraith_2.mp3",
     "bytes": 98054,
     "lines": [
       {
@@ -4634,7 +4634,7 @@
       "wraith",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/ghost_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ghost_wraith_3.mp3",
     "bytes": 68379,
     "lines": [
       {
@@ -4662,7 +4662,7 @@
       "yamato",
       "lady-geist"
     ],
-    "audio": "/voicelines/conversations/lady_geist_yamato_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lady_geist_yamato_conversation_03.mp3",
     "bytes": 42476,
     "lines": [
       {
@@ -4696,7 +4696,7 @@
       "bebop",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_bebop_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_bebop_2.mp3",
     "bytes": 75484,
     "lines": [
       {
@@ -4718,7 +4718,7 @@
       "abrams",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/atlas_bebop_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_bebop_3.mp3",
     "bytes": 49989,
     "lines": [
       {
@@ -4752,7 +4752,7 @@
       "abrams",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/atlas_dynamo_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_dynamo_2.mp3",
     "bytes": 50198,
     "lines": [
       {
@@ -4774,7 +4774,7 @@
       "dynamo",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_dynamo_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_dynamo_3.mp3",
     "bytes": 67125,
     "lines": [
       {
@@ -4796,7 +4796,7 @@
       "abrams",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/atlas_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_orion_1.mp3",
     "bytes": 49153,
     "lines": [
       {
@@ -4824,7 +4824,7 @@
       "grey-talon",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_orion_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_orion_2.mp3",
     "bytes": 102652,
     "lines": [
       {
@@ -4864,7 +4864,7 @@
       "haze",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_haze_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_haze_2.mp3",
     "bytes": 91158,
     "lines": [
       {
@@ -4892,7 +4892,7 @@
       "abrams",
       "haze"
     ],
-    "audio": "/voicelines/conversations/atlas_haze_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_haze_3.mp3",
     "bytes": 59811,
     "lines": [
       {
@@ -4914,7 +4914,7 @@
       "holliday",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/astro_atlas_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_atlas_2.mp3",
     "bytes": 52078,
     "lines": [
       {
@@ -4942,7 +4942,7 @@
       "abrams",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/atlas_tengu_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_tengu_1.mp3",
     "bytes": 93665,
     "lines": [
       {
@@ -4976,7 +4976,7 @@
       "abrams",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/atlas_tengu_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_tengu_2.mp3",
     "bytes": 72976,
     "lines": [
       {
@@ -5004,7 +5004,7 @@
       "ivy",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_tengu_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_tengu_3.mp3",
     "bytes": 113518,
     "lines": [
       {
@@ -5038,7 +5038,7 @@
       "kelvin",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_kelvin_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_kelvin_1.mp3",
     "bytes": 77574,
     "lines": [
       {
@@ -5066,7 +5066,7 @@
       "abrams",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/atlas_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_kelvin_2.mp3",
     "bytes": 37032,
     "lines": [
       {
@@ -5094,7 +5094,7 @@
       "abrams",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/atlas_kelvin_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_kelvin_3.mp3",
     "bytes": 116444,
     "lines": [
       {
@@ -5128,7 +5128,7 @@
       "lash",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_lash_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_lash_3.mp3",
     "bytes": 109757,
     "lines": [
       {
@@ -5174,7 +5174,7 @@
       "mcginnis",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_forge_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_forge_1.mp3",
     "bytes": 100562,
     "lines": [
       {
@@ -5208,7 +5208,7 @@
       "abrams",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/atlas_forge_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_forge_2.mp3",
     "bytes": 48317,
     "lines": [
       {
@@ -5230,7 +5230,7 @@
       "abrams",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/atlas_forge_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_forge_3.mp3",
     "bytes": 48526,
     "lines": [
       {
@@ -5252,7 +5252,7 @@
       "abrams",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/atlas_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_krill_3.mp3",
     "bytes": 75275,
     "lines": [
       {
@@ -5280,7 +5280,7 @@
       "abrams",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/atlas_synth_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_synth_1.mp3",
     "bytes": 54795,
     "lines": [
       {
@@ -5314,7 +5314,7 @@
       "abrams",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/atlas_synth_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_synth_2.mp3",
     "bytes": 46018,
     "lines": [
       {
@@ -5342,7 +5342,7 @@
       "abrams",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/atlas_synth_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_synth_3.mp3",
     "bytes": 42465,
     "lines": [
       {
@@ -5370,7 +5370,7 @@
       "abrams",
       "shiv"
     ],
-    "audio": "/voicelines/conversations/atlas_shiv_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_shiv_1.mp3",
     "bytes": 104950,
     "lines": [
       {
@@ -5404,7 +5404,7 @@
       "abrams",
       "shiv"
     ],
-    "audio": "/voicelines/conversations/atlas_shiv_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_shiv_2.mp3",
     "bytes": 45182,
     "lines": [
       {
@@ -5426,7 +5426,7 @@
       "shiv",
       "abrams"
     ],
-    "audio": "/voicelines/conversations/atlas_shiv_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/atlas_shiv_3.mp3",
     "bytes": 29509,
     "lines": [
       {
@@ -5448,7 +5448,7 @@
       "wraith",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_wraith_2.mp3",
     "bytes": 93665,
     "lines": [
       {
@@ -5488,7 +5488,7 @@
       "wraith",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_wraith_3.mp3",
     "bytes": 72767,
     "lines": [
       {
@@ -5516,7 +5516,7 @@
       "billy",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/billy_wraith_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_wraith_conversation_1.mp3",
     "bytes": 138092,
     "lines": [
       {
@@ -5562,7 +5562,7 @@
       "wraith",
       "billy"
     ],
-    "audio": "/voicelines/conversations/billy_wraith_conversation_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_wraith_conversation_3.mp3",
     "bytes": 174380,
     "lines": [
       {
@@ -5626,7 +5626,7 @@
       "wraith",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_wraith_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_wraith_conversation_02.mp3",
     "bytes": 46700,
     "lines": [
       {
@@ -5648,7 +5648,7 @@
       "wraith",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_wraith_2.mp3",
     "bytes": 80291,
     "lines": [
       {
@@ -5682,7 +5682,7 @@
       "wraith",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_wraith_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_wraith_conversation_01.mp3",
     "bytes": 35948,
     "lines": [
       {
@@ -5710,7 +5710,7 @@
       "wraith",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_wraith_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_wraith_conversation_02.mp3",
     "bytes": 82412,
     "lines": [
       {
@@ -5744,7 +5744,7 @@
       "grey-talon",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/grey_talon_wraith_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_wraith_conversation_03.mp3",
     "bytes": 36140,
     "lines": [
       {
@@ -5766,7 +5766,7 @@
       "haze",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/haze_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_wraith_2.mp3",
     "bytes": 106831,
     "lines": [
       {
@@ -5800,7 +5800,7 @@
       "haze",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/haze_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_wraith_3.mp3",
     "bytes": 40794,
     "lines": [
       {
@@ -5822,7 +5822,7 @@
       "wraith",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_wraith_2.mp3",
     "bytes": 34733,
     "lines": [
       {
@@ -5850,7 +5850,7 @@
       "holliday",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/astro_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_wraith_3.mp3",
     "bytes": 169107,
     "lines": [
       {
@@ -5908,7 +5908,7 @@
       "wraith",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/tengu_wraith_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/tengu_wraith_1.mp3",
     "bytes": 86978,
     "lines": [
       {
@@ -5936,7 +5936,7 @@
       "wraith",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/tengu_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/tengu_wraith_3.mp3",
     "bytes": 78619,
     "lines": [
       {
@@ -5976,7 +5976,7 @@
       "wraith",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_wraith_2.mp3",
     "bytes": 69006,
     "lines": [
       {
@@ -6010,7 +6010,7 @@
       "wraith",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_wraith_3.mp3",
     "bytes": 78619,
     "lines": [
       {
@@ -6044,7 +6044,7 @@
       "wraith",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/forge_wraith_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_wraith_1.mp3",
     "bytes": 84888,
     "lines": [
       {
@@ -6090,7 +6090,7 @@
       "wraith",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/forge_wraith_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_wraith_2.mp3",
     "bytes": 25956,
     "lines": [
       {
@@ -6112,7 +6112,7 @@
       "wraith",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/krill_wraith_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/krill_wraith_1.mp3",
     "bytes": 91367,
     "lines": [
       {
@@ -6140,7 +6140,7 @@
       "paradox",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/chrono_wraith_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_wraith_1.mp3",
     "bytes": 66707,
     "lines": [
       {
@@ -6162,7 +6162,7 @@
       "wraith",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/chrono_wraith_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_wraith_3.mp3",
     "bytes": 120428,
     "lines": [
       {
@@ -6208,7 +6208,7 @@
       "wraith",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/viper_wraith_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/viper_wraith_conversation_01.mp3",
     "bytes": 76268,
     "lines": [
       {
@@ -6242,7 +6242,7 @@
       "vyper",
       "wraith"
     ],
-    "audio": "/voicelines/conversations/viper_wraith_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/viper_wraith_conversation_02.mp3",
     "bytes": 118700,
     "lines": [
       {
@@ -6282,7 +6282,7 @@
       "mcginnis",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_mcginnis_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_mcginnis_3.mp3",
     "bytes": 148652,
     "lines": [
       {
@@ -6340,7 +6340,7 @@
       "mcginnis",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_forge_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_forge_3.mp3",
     "bytes": 50198,
     "lines": [
       {
@@ -6380,7 +6380,7 @@
       "mcginnis",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_mcginnis_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_mcginnis_conversation_01.mp3",
     "bytes": 98348,
     "lines": [
       {
@@ -6414,7 +6414,7 @@
       "mcginnis",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_mcginnis_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_mcginnis_conversation_02.mp3",
     "bytes": 114092,
     "lines": [
       {
@@ -6460,7 +6460,7 @@
       "mcginnis",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_mcginnis_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_mcginnis_conversation_03.mp3",
     "bytes": 51692,
     "lines": [
       {
@@ -6494,7 +6494,7 @@
       "mcginnis",
       "haze"
     ],
-    "audio": "/voicelines/conversations/forge_haze_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_haze_1.mp3",
     "bytes": 111847,
     "lines": [
       {
@@ -6528,7 +6528,7 @@
       "haze",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/forge_haze_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_haze_2.mp3",
     "bytes": 290733,
     "lines": [
       {
@@ -6574,7 +6574,7 @@
       "holliday",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/astro_forge_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_forge_1.mp3",
     "bytes": 85515,
     "lines": [
       {
@@ -6608,7 +6608,7 @@
       "holliday",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/astro_forge_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_forge_2.mp3",
     "bytes": 72767,
     "lines": [
       {
@@ -6648,7 +6648,7 @@
       "holliday",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/astro_forge_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_forge_3.mp3",
     "bytes": 83634,
     "lines": [
       {
@@ -6682,7 +6682,7 @@
       "ivy",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/ivy_mcginnis_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ivy_mcginnis_conversation_01.mp3",
     "bytes": 53228,
     "lines": [
       {
@@ -6704,7 +6704,7 @@
       "ivy",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/ivy_mcginnis_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ivy_mcginnis_conversation_02.mp3",
     "bytes": 113132,
     "lines": [
       {
@@ -6750,7 +6750,7 @@
       "mcginnis",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/ivy_mcginnis_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ivy_mcginnis_conversation_03.mp3",
     "bytes": 35180,
     "lines": [
       {
@@ -6772,7 +6772,7 @@
       "mcginnis",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/forge_kelvin_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/forge_kelvin_3.mp3",
     "bytes": 146746,
     "lines": [
       {
@@ -6824,7 +6824,7 @@
       "lash",
       "mcginnis"
     ],
-    "audio": "/voicelines/conversations/lash_mcginnis_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lash_mcginnis_conversation_02.mp3",
     "bytes": 26540,
     "lines": [
       {
@@ -6846,7 +6846,7 @@
       "drifter",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/drifter_paradox_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_paradox_conversation_01.mp3",
     "bytes": 41900,
     "lines": [
       {
@@ -6868,7 +6868,7 @@
       "paradox",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_paradox_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_paradox_conversation_03.mp3",
     "bytes": 47852,
     "lines": [
       {
@@ -6890,7 +6890,7 @@
       "dynamo",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/dynamo_paradox_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_paradox_conversation_01.mp3",
     "bytes": 75500,
     "lines": [
       {
@@ -6924,7 +6924,7 @@
       "dynamo",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/dynamo_paradox_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_paradox_conversation_03.mp3",
     "bytes": 72236,
     "lines": [
       {
@@ -6964,7 +6964,7 @@
       "paradox",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_paradox_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_paradox_conversation_01.mp3",
     "bytes": 60716,
     "lines": [
       {
@@ -6992,7 +6992,7 @@
       "paradox",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_paradox_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_paradox_conversation_03.mp3",
     "bytes": 51116,
     "lines": [
       {
@@ -7020,7 +7020,7 @@
       "holliday",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/astro_chrono_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_chrono_3.mp3",
     "bytes": 79455,
     "lines": [
       {
@@ -7048,7 +7048,7 @@
       "kelvin",
       "paradox"
     ],
-    "audio": "/voicelines/conversations/chrono_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/chrono_kelvin_2.mp3",
     "bytes": 92412,
     "lines": [
       {
@@ -7082,7 +7082,7 @@
       "bebop",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/bebop_dynamo_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_dynamo_1.mp3",
     "bytes": 117280,
     "lines": [
       {
@@ -7122,7 +7122,7 @@
       "dynamo",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/dynamo_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_orion_1.mp3",
     "bytes": 19896,
     "lines": [
       {
@@ -7144,7 +7144,7 @@
       "grey-talon",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_orion_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_orion_2.mp3",
     "bytes": 121042,
     "lines": [
       {
@@ -7184,7 +7184,7 @@
       "grey-talon",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_orion_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_orion_3.mp3",
     "bytes": 140895,
     "lines": [
       {
@@ -7224,7 +7224,7 @@
       "haze",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_haze_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_haze_1.mp3",
     "bytes": 105368,
     "lines": [
       {
@@ -7264,7 +7264,7 @@
       "dynamo",
       "haze"
     ],
-    "audio": "/voicelines/conversations/dynamo_haze_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_haze_3.mp3",
     "bytes": 153434,
     "lines": [
       {
@@ -7304,7 +7304,7 @@
       "dynamo",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_dynamo_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_dynamo_3.mp3",
     "bytes": 116235,
     "lines": [
       {
@@ -7338,7 +7338,7 @@
       "ivy",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_ivy_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ivy_conversation_01.mp3",
     "bytes": 56876,
     "lines": [
       {
@@ -7366,7 +7366,7 @@
       "dynamo",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/dynamo_ivy_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_ivy_conversation_02.mp3",
     "bytes": 163436,
     "lines": [
       {
@@ -7412,7 +7412,7 @@
       "kelvin",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_kelvin_2.mp3",
     "bytes": 75484,
     "lines": [
       {
@@ -7440,7 +7440,7 @@
       "lash",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_lash_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_lash_conversation_02.mp3",
     "bytes": 78188,
     "lines": [
       {
@@ -7474,7 +7474,7 @@
       "dynamo",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/dynamo_mirage_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_mirage_1.mp3",
     "bytes": 259386,
     "lines": [
       {
@@ -7532,7 +7532,7 @@
       "mirage",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_mirage_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_mirage_2.mp3",
     "bytes": 51034,
     "lines": [
       {
@@ -7560,7 +7560,7 @@
       "dynamo",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/dynamo_mirage_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_mirage_3.mp3",
     "bytes": 84679,
     "lines": [
       {
@@ -7594,7 +7594,7 @@
       "mo-krill",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_krill_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_krill_1.mp3",
     "bytes": 188542,
     "lines": [
       {
@@ -7646,7 +7646,7 @@
       "dynamo",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/dynamo_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_krill_3.mp3",
     "bytes": 269417,
     "lines": [
       {
@@ -7704,7 +7704,7 @@
       "dynamo",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/dynamo_synth_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_synth_1.mp3",
     "bytes": 69633,
     "lines": [
       {
@@ -7732,7 +7732,7 @@
       "pocket",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_synth_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_synth_2.mp3",
     "bytes": 113936,
     "lines": [
       {
@@ -7772,7 +7772,7 @@
       "dynamo",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/dynamo_synth_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_synth_3.mp3",
     "bytes": 84261,
     "lines": [
       {
@@ -7812,7 +7812,7 @@
       "shiv",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_shiv_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_shiv_1.mp3",
     "bytes": 34315,
     "lines": [
       {
@@ -7834,7 +7834,7 @@
       "shiv",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_shiv_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_shiv_2.mp3",
     "bytes": 57930,
     "lines": [
       {
@@ -7862,7 +7862,7 @@
       "dynamo",
       "viscous"
     ],
-    "audio": "/voicelines/conversations/dynamo_viscous_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_viscous_1.mp3",
     "bytes": 118116,
     "lines": [
       {
@@ -7908,7 +7908,7 @@
       "viscous",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_viscous_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_viscous_2.mp3",
     "bytes": 54795,
     "lines": [
       {
@@ -7942,7 +7942,7 @@
       "dynamo",
       "viscous"
     ],
-    "audio": "/voicelines/conversations/dynamo_viscous_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_viscous_3.mp3",
     "bytes": 63363,
     "lines": [
       {
@@ -7964,7 +7964,7 @@
       "yamato",
       "dynamo"
     ],
-    "audio": "/voicelines/conversations/dynamo_yamato_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/dynamo_yamato_2.mp3",
     "bytes": 41212,
     "lines": [
       {
@@ -7992,7 +7992,7 @@
       "kelvin",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_kelvin_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_kelvin_1.mp3",
     "bytes": 79037,
     "lines": [
       {
@@ -8020,7 +8020,7 @@
       "bebop",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/bebop_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_kelvin_2.mp3",
     "bytes": 213202,
     "lines": [
       {
@@ -8066,7 +8066,7 @@
       "kelvin",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_kelvin_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_kelvin_conversation_03.mp3",
     "bytes": 104108,
     "lines": [
       {
@@ -8088,7 +8088,7 @@
       "kelvin",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_kelvin_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_kelvin_conversation_01.mp3",
     "bytes": 118316,
     "lines": [
       {
@@ -8110,7 +8110,7 @@
       "kelvin",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_kelvin_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_kelvin_conversation_03.mp3",
     "bytes": 95852,
     "lines": [
       {
@@ -8144,7 +8144,7 @@
       "kelvin",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_kelvin_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_kelvin_1.mp3",
     "bytes": 163256,
     "lines": [
       {
@@ -8178,7 +8178,7 @@
       "haze",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/haze_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_kelvin_2.mp3",
     "bytes": 168898,
     "lines": [
       {
@@ -8224,7 +8224,7 @@
       "holliday",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/astro_kelvin_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_kelvin_1.mp3",
     "bytes": 43301,
     "lines": [
       {
@@ -8246,7 +8246,7 @@
       "holliday",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/astro_kelvin_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_kelvin_2.mp3",
     "bytes": 62318,
     "lines": [
       {
@@ -8274,7 +8274,7 @@
       "kelvin",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/kelvin_tengu_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_tengu_1.mp3",
     "bytes": 96173,
     "lines": [
       {
@@ -8302,7 +8302,7 @@
       "kelvin",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/kelvin_tengu_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_tengu_3.mp3",
     "bytes": 102234,
     "lines": [
       {
@@ -8348,7 +8348,7 @@
       "lash",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_lash_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_lash_conversation_01.mp3",
     "bytes": 40556,
     "lines": [
       {
@@ -8376,7 +8376,7 @@
       "lash",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_lash_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_lash_conversation_02.mp3",
     "bytes": 85484,
     "lines": [
       {
@@ -8410,7 +8410,7 @@
       "kelvin",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/kelvin_mirage_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_mirage_1.mp3",
     "bytes": 95128,
     "lines": [
       {
@@ -8444,7 +8444,7 @@
       "kelvin",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/kelvin_mirage_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_mirage_2.mp3",
     "bytes": 133163,
     "lines": [
       {
@@ -8484,7 +8484,7 @@
       "kelvin",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/kelvin_krill_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_krill_2.mp3",
     "bytes": 88441,
     "lines": [
       {
@@ -8512,7 +8512,7 @@
       "mo-krill",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_krill_3.mp3",
     "bytes": 86560,
     "lines": [
       {
@@ -8540,7 +8540,7 @@
       "kelvin",
       "victor"
     ],
-    "audio": "/voicelines/conversations/kelvin_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_victor_conversation_01.mp3",
     "bytes": 207596,
     "lines": [
       {
@@ -8586,7 +8586,7 @@
       "kelvin",
       "victor"
     ],
-    "audio": "/voicelines/conversations/kelvin_victor_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_victor_conversation_02.mp3",
     "bytes": 118316,
     "lines": [
       {
@@ -8620,7 +8620,7 @@
       "vyper",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_viper_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_viper_conversation_01.mp3",
     "bytes": 147500,
     "lines": [
       {
@@ -8666,7 +8666,7 @@
       "vyper",
       "kelvin"
     ],
-    "audio": "/voicelines/conversations/kelvin_viper_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/kelvin_viper_conversation_02.mp3",
     "bytes": 81836,
     "lines": [
       {
@@ -8706,7 +8706,7 @@
       "haze",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_haze_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_haze_conversation_01.mp3",
     "bytes": 73580,
     "lines": [
       {
@@ -8740,7 +8740,7 @@
       "haze",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_haze_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_haze_conversation_02.mp3",
     "bytes": 110060,
     "lines": [
       {
@@ -8780,7 +8780,7 @@
       "apollo",
       "haze"
     ],
-    "audio": "/voicelines/conversations/apollo_haze_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_haze_conversation_03.mp3",
     "bytes": 110636,
     "lines": [
       {
@@ -8808,7 +8808,7 @@
       "bebop",
       "haze"
     ],
-    "audio": "/voicelines/conversations/bebop_haze_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_haze_3.mp3",
     "bytes": 116396,
     "lines": [
       {
@@ -8842,7 +8842,7 @@
       "haze",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_haze_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_haze_conversation_1.mp3",
     "bytes": 88364,
     "lines": [
       {
@@ -8882,7 +8882,7 @@
       "graves",
       "haze"
     ],
-    "audio": "/voicelines/conversations/graves_haze_conversation_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_haze_conversation_3.mp3",
     "bytes": 90092,
     "lines": [
       {
@@ -8904,7 +8904,7 @@
       "haze",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_haze_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_haze_conversation_01.mp3",
     "bytes": 75116,
     "lines": [
       {
@@ -8938,7 +8938,7 @@
       "haze",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_haze_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_haze_conversation_03.mp3",
     "bytes": 60716,
     "lines": [
       {
@@ -8972,7 +8972,7 @@
       "holliday",
       "haze"
     ],
-    "audio": "/voicelines/conversations/astro_haze_troubadour_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_haze_troubadour_1.mp3",
     "bytes": 105368,
     "lines": [
       {
@@ -9006,7 +9006,7 @@
       "haze",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_haze_troubadour_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_haze_troubadour_2.mp3",
     "bytes": 79246,
     "lines": [
       {
@@ -9040,7 +9040,7 @@
       "holliday",
       "haze"
     ],
-    "audio": "/voicelines/conversations/astro_haze_troubadour_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_haze_troubadour_3.mp3",
     "bytes": 131909,
     "lines": [
       {
@@ -9074,7 +9074,7 @@
       "haze",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/haze_ivy_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_ivy_conversation_01.mp3",
     "bytes": 77228,
     "lines": [
       {
@@ -9102,7 +9102,7 @@
       "ivy",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_ivy_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_ivy_conversation_03.mp3",
     "bytes": 83756,
     "lines": [
       {
@@ -9130,7 +9130,7 @@
       "lash",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_lash_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_lash_conversation_01.mp3",
     "bytes": 98924,
     "lines": [
       {
@@ -9164,7 +9164,7 @@
       "haze",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/haze_mirage_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_mirage_conversation_02.mp3",
     "bytes": 41132,
     "lines": [
       {
@@ -9186,7 +9186,7 @@
       "mirage",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_mirage_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_mirage_conversation_03.mp3",
     "bytes": 96620,
     "lines": [
       {
@@ -9232,7 +9232,7 @@
       "mo-krill",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_krill_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_krill_1.mp3",
     "bytes": 111011,
     "lines": [
       {
@@ -9272,7 +9272,7 @@
       "mo-krill",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_krill_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_krill_2.mp3",
     "bytes": 95128,
     "lines": [
       {
@@ -9300,7 +9300,7 @@
       "mo-krill",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_krill_3.mp3",
     "bytes": 76947,
     "lines": [
       {
@@ -9334,7 +9334,7 @@
       "haze",
       "silver"
     ],
-    "audio": "/voicelines/conversations/haze_silver_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_silver_conversation_01.mp3",
     "bytes": 100652,
     "lines": [
       {
@@ -9368,7 +9368,7 @@
       "haze",
       "venator"
     ],
-    "audio": "/voicelines/conversations/haze_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_venator_conversation_01.mp3",
     "bytes": 83756,
     "lines": [
       {
@@ -9408,7 +9408,7 @@
       "venator",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_venator_conversation_03.mp3",
     "bytes": 44012,
     "lines": [
       {
@@ -9430,7 +9430,7 @@
       "viscous",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_viscous_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_viscous_conversation_02.mp3",
     "bytes": 92972,
     "lines": [
       {
@@ -9482,7 +9482,7 @@
       "vyper",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_viper_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_viper_conversation_03.mp3",
     "bytes": 70892,
     "lines": [
       {
@@ -9510,7 +9510,7 @@
       "yamato",
       "haze"
     ],
-    "audio": "/voicelines/conversations/haze_yamato_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/haze_yamato_conversation_01.mp3",
     "bytes": 48812,
     "lines": [
       {
@@ -9538,7 +9538,7 @@
       "holliday",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_holliday_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_holliday_conversation_02.mp3",
     "bytes": 58028,
     "lines": [
       {
@@ -9566,7 +9566,7 @@
       "holliday",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_holliday_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_holliday_conversation_03.mp3",
     "bytes": 29036,
     "lines": [
       {
@@ -9588,7 +9588,7 @@
       "holliday",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/astro_bebop_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_bebop_2.mp3",
     "bytes": 43719,
     "lines": [
       {
@@ -9616,7 +9616,7 @@
       "holliday",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/astro_bebop_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_bebop_3.mp3",
     "bytes": 140686,
     "lines": [
       {
@@ -9650,7 +9650,7 @@
       "holliday",
       "calico"
     ],
-    "audio": "/voicelines/conversations/astro_nano_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_nano_2.mp3",
     "bytes": 62736,
     "lines": [
       {
@@ -9684,7 +9684,7 @@
       "calico",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_nano_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_nano_3.mp3",
     "bytes": 45391,
     "lines": [
       {
@@ -9712,7 +9712,7 @@
       "grey-talon",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_orion_1.mp3",
     "bytes": 42883,
     "lines": [
       {
@@ -9740,7 +9740,7 @@
       "ivy",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_tengu_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_tengu_1.mp3",
     "bytes": 147791,
     "lines": [
       {
@@ -9780,7 +9780,7 @@
       "ivy",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_tengu_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_tengu_3.mp3",
     "bytes": 192513,
     "lines": [
       {
@@ -9820,7 +9820,7 @@
       "lash",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_lash_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_lash_2.mp3",
     "bytes": 107876,
     "lines": [
       {
@@ -9854,7 +9854,7 @@
       "holliday",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/astro_mirage_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_mirage_1.mp3",
     "bytes": 87187,
     "lines": [
       {
@@ -9876,7 +9876,7 @@
       "holliday",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/astro_mirage_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_mirage_3.mp3",
     "bytes": 130446,
     "lines": [
       {
@@ -9910,7 +9910,7 @@
       "mo-krill",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_krill_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_krill_1.mp3",
     "bytes": 102234,
     "lines": [
       {
@@ -9950,7 +9950,7 @@
       "holliday",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/astro_synth_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_synth_1.mp3",
     "bytes": 80291,
     "lines": [
       {
@@ -9984,7 +9984,7 @@
       "holliday",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/astro_synth_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_synth_2.mp3",
     "bytes": 57930,
     "lines": [
       {
@@ -10018,7 +10018,7 @@
       "holliday",
       "shiv"
     ],
-    "audio": "/voicelines/conversations/astro_shiv_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_shiv_1.mp3",
     "bytes": 73394,
     "lines": [
       {
@@ -10052,7 +10052,7 @@
       "shiv",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_shiv_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_shiv_3.mp3",
     "bytes": 85724,
     "lines": [
       {
@@ -10086,7 +10086,7 @@
       "venator",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/holliday_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/holliday_venator_conversation_01.mp3",
     "bytes": 182060,
     "lines": [
       {
@@ -10138,7 +10138,7 @@
       "viscous",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_viscous_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_viscous_1.mp3",
     "bytes": 71514,
     "lines": [
       {
@@ -10178,7 +10178,7 @@
       "holliday",
       "viscous"
     ],
-    "audio": "/voicelines/conversations/astro_viscous_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_viscous_2.mp3",
     "bytes": 85097,
     "lines": [
       {
@@ -10230,7 +10230,7 @@
       "vyper",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_viper_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_viper_1.mp3",
     "bytes": 104950,
     "lines": [
       {
@@ -10282,7 +10282,7 @@
       "holliday",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/astro_viper_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_viper_3.mp3",
     "bytes": 128356,
     "lines": [
       {
@@ -10328,7 +10328,7 @@
       "yamato",
       "holliday"
     ],
-    "audio": "/voicelines/conversations/astro_yamato_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_yamato_1.mp3",
     "bytes": 57303,
     "lines": [
       {
@@ -10356,7 +10356,7 @@
       "holliday",
       "yamato"
     ],
-    "audio": "/voicelines/conversations/astro_yamato_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/astro_yamato_3.mp3",
     "bytes": 52914,
     "lines": [
       {
@@ -10390,7 +10390,7 @@
       "billy",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_billy_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_billy_2.mp3",
     "bytes": 64748,
     "lines": [
       {
@@ -10430,7 +10430,7 @@
       "billy",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_billy_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_billy_3.mp3",
     "bytes": 70508,
     "lines": [
       {
@@ -10458,7 +10458,7 @@
       "bebop",
       "the-doorman"
     ],
-    "audio": "/voicelines/conversations/bebop_doorman_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_doorman_2.mp3",
     "bytes": 137900,
     "lines": [
       {
@@ -10504,7 +10504,7 @@
       "the-doorman",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_doorman_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_doorman_3.mp3",
     "bytes": 26348,
     "lines": [
       {
@@ -10526,7 +10526,7 @@
       "bebop",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/bebop_drifter_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_drifter_3.mp3",
     "bytes": 52460,
     "lines": [
       {
@@ -10554,7 +10554,7 @@
       "grey-talon",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_orion_1.mp3",
     "bytes": 83425,
     "lines": [
       {
@@ -10588,7 +10588,7 @@
       "bebop",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/bebop_orion_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_orion_2.mp3",
     "bytes": 63572,
     "lines": [
       {
@@ -10622,7 +10622,7 @@
       "bebop",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/bebop_orion_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_orion_3.mp3",
     "bytes": 86560,
     "lines": [
       {
@@ -10656,7 +10656,7 @@
       "ivy",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_ivy_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_ivy_1.mp3",
     "bytes": 67052,
     "lines": [
       {
@@ -10684,7 +10684,7 @@
       "ivy",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_ivy_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_ivy_2.mp3",
     "bytes": 68972,
     "lines": [
       {
@@ -10718,7 +10718,7 @@
       "mirage",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_mirage_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_mirage_1.mp3",
     "bytes": 101804,
     "lines": [
       {
@@ -10746,7 +10746,7 @@
       "bebop",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/bebop_mirage_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_mirage_3.mp3",
     "bytes": 65324,
     "lines": [
       {
@@ -10768,7 +10768,7 @@
       "mo-krill",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_krill_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_krill_3.mp3",
     "bytes": 75693,
     "lines": [
       {
@@ -10802,7 +10802,7 @@
       "pocket",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_pocket_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_pocket_1.mp3",
     "bytes": 51452,
     "lines": [
       {
@@ -10830,7 +10830,7 @@
       "victor",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_victor_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_victor_1.mp3",
     "bytes": 130028,
     "lines": [
       {
@@ -10882,7 +10882,7 @@
       "bebop",
       "victor"
     ],
-    "audio": "/voicelines/conversations/bebop_victor_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_victor_3.mp3",
     "bytes": 170570,
     "lines": [
       {
@@ -10916,7 +10916,7 @@
       "viscous",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_viscous_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_viscous_1.mp3",
     "bytes": 133868,
     "lines": [
       {
@@ -10968,7 +10968,7 @@
       "vyper",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_viper_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_viper_1.mp3",
     "bytes": 88023,
     "lines": [
       {
@@ -11008,7 +11008,7 @@
       "bebop",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/bebop_viper_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_viper_2.mp3",
     "bytes": 40585,
     "lines": [
       {
@@ -11030,7 +11030,7 @@
       "bebop",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/bebop_viper_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_viper_3.mp3",
     "bytes": 97218,
     "lines": [
       {
@@ -11064,7 +11064,7 @@
       "yamato",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_yamato_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_yamato_1.mp3",
     "bytes": 66498,
     "lines": [
       {
@@ -11098,7 +11098,7 @@
       "yamato",
       "bebop"
     ],
-    "audio": "/voicelines/conversations/bebop_yamato_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bebop_yamato_2.mp3",
     "bytes": 70469,
     "lines": [
       {
@@ -11132,7 +11132,7 @@
       "vyper",
       "calico"
     ],
-    "audio": "/voicelines/conversations/nano_viper_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/nano_viper_1.mp3",
     "bytes": 169734,
     "lines": [
       {
@@ -11178,7 +11178,7 @@
       "vyper",
       "calico"
     ],
-    "audio": "/voicelines/conversations/nano_viper_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/nano_viper_2.mp3",
     "bytes": 190841,
     "lines": [
       {
@@ -11230,7 +11230,7 @@
       "billy",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/billy_grey_talon_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_grey_talon_conversation_1.mp3",
     "bytes": 119084,
     "lines": [
       {
@@ -11264,7 +11264,7 @@
       "billy",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/billy_grey_talon_conversation_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_grey_talon_conversation_2.mp3",
     "bytes": 133292,
     "lines": [
       {
@@ -11298,7 +11298,7 @@
       "grey-talon",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_grey_talon_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_grey_talon_conversation_01.mp3",
     "bytes": 119468,
     "lines": [
       {
@@ -11332,7 +11332,7 @@
       "drifter",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/drifter_grey_talon_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_grey_talon_conversation_03.mp3",
     "bytes": 69932,
     "lines": [
       {
@@ -11360,7 +11360,7 @@
       "lash",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_lash_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_lash_conversation_01.mp3",
     "bytes": 117164,
     "lines": [
       {
@@ -11400,7 +11400,7 @@
       "lash",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_lash_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_lash_conversation_02.mp3",
     "bytes": 300524,
     "lines": [
       {
@@ -11446,7 +11446,7 @@
       "mo-krill",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/krill_orion_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/krill_orion_1.mp3",
     "bytes": 52287,
     "lines": [
       {
@@ -11474,7 +11474,7 @@
       "grey-talon",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/krill_orion_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/krill_orion_2.mp3",
     "bytes": 81545,
     "lines": [
       {
@@ -11496,7 +11496,7 @@
       "grey-talon",
       "paige"
     ],
-    "audio": "/voicelines/conversations/grey_talon_paige_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_paige_conversation_01.mp3",
     "bytes": 53996,
     "lines": [
       {
@@ -11524,7 +11524,7 @@
       "pocket",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_pocket_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_pocket_conversation_01.mp3",
     "bytes": 78572,
     "lines": [
       {
@@ -11558,7 +11558,7 @@
       "grey-talon",
       "pocket"
     ],
-    "audio": "/voicelines/conversations/grey_talon_pocket_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_pocket_conversation_02.mp3",
     "bytes": 23468,
     "lines": [
       {
@@ -11586,7 +11586,7 @@
       "pocket",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_pocket_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_pocket_conversation_03.mp3",
     "bytes": 63596,
     "lines": [
       {
@@ -11608,7 +11608,7 @@
       "victor",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_victor_conversation_01.mp3",
     "bytes": 48428,
     "lines": [
       {
@@ -11636,7 +11636,7 @@
       "grey-talon",
       "victor"
     ],
-    "audio": "/voicelines/conversations/grey_talon_victor_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_victor_conversation_02.mp3",
     "bytes": 93932,
     "lines": [
       {
@@ -11682,7 +11682,7 @@
       "victor",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_victor_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_victor_conversation_03.mp3",
     "bytes": 110060,
     "lines": [
       {
@@ -11740,7 +11740,7 @@
       "viscous",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_viscous_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_viscous_conversation_02.mp3",
     "bytes": 177260,
     "lines": [
       {
@@ -11792,7 +11792,7 @@
       "viscous",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_viscous_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_viscous_conversation_03.mp3",
     "bytes": 76076,
     "lines": [
       {
@@ -11820,7 +11820,7 @@
       "grey-talon",
       "vyper"
     ],
-    "audio": "/voicelines/conversations/grey_talon_viper_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_viper_conversation_02.mp3",
     "bytes": 71660,
     "lines": [
       {
@@ -11848,7 +11848,7 @@
       "vyper",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_viper_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_viper_conversation_03.mp3",
     "bytes": 47468,
     "lines": [
       {
@@ -11882,7 +11882,7 @@
       "grey-talon",
       "yamato"
     ],
-    "audio": "/voicelines/conversations/grey_talon_yamato_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_yamato_conversation_01.mp3",
     "bytes": 39212,
     "lines": [
       {
@@ -11910,7 +11910,7 @@
       "yamato",
       "grey-talon"
     ],
-    "audio": "/voicelines/conversations/grey_talon_yamato_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_yamato_conversation_02.mp3",
     "bytes": 48428,
     "lines": [
       {
@@ -11944,7 +11944,7 @@
       "grey-talon",
       "yamato"
     ],
-    "audio": "/voicelines/conversations/grey_talon_yamato_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/grey_talon_yamato_conversation_03.mp3",
     "bytes": 49772,
     "lines": [
       {
@@ -11966,7 +11966,7 @@
       "apollo",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/apollo_mo_krill_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_mo_krill_conversation_01.mp3",
     "bytes": 74156,
     "lines": [
       {
@@ -12000,7 +12000,7 @@
       "mo-krill",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_mo_krill_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_mo_krill_conversation_02.mp3",
     "bytes": 58988,
     "lines": [
       {
@@ -12028,7 +12028,7 @@
       "mo-krill",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_mo_krill_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_mo_krill_conversation_03.mp3",
     "bytes": 59564,
     "lines": [
       {
@@ -12062,7 +12062,7 @@
       "mo-krill",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/krill_tengu_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/krill_tengu_1.mp3",
     "bytes": 89904,
     "lines": [
       {
@@ -12102,7 +12102,7 @@
       "ivy",
       "mo-krill"
     ],
-    "audio": "/voicelines/conversations/krill_tengu_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/krill_tengu_3.mp3",
     "bytes": 92412,
     "lines": [
       {
@@ -12136,7 +12136,7 @@
       "billy",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/billy_ivy_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_ivy_conversation_1.mp3",
     "bytes": 150572,
     "lines": [
       {
@@ -12176,7 +12176,7 @@
       "ivy",
       "billy"
     ],
-    "audio": "/voicelines/conversations/billy_ivy_conversation_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_ivy_conversation_2.mp3",
     "bytes": 48428,
     "lines": [
       {
@@ -12198,7 +12198,7 @@
       "drifter",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/drifter_ivy_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_ivy_conversation_01.mp3",
     "bytes": 143084,
     "lines": [
       {
@@ -12238,7 +12238,7 @@
       "victor",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/ivy_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ivy_victor_conversation_01.mp3",
     "bytes": 157100,
     "lines": [
       {
@@ -12284,7 +12284,7 @@
       "vyper",
       "ivy"
     ],
-    "audio": "/voicelines/conversations/ivy_viper_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/ivy_viper_conversation_01.mp3",
     "bytes": 50924,
     "lines": [
       {
@@ -12312,7 +12312,7 @@
       "yamato",
       "venator"
     ],
-    "audio": "/voicelines/conversations/venator_yamato_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/venator_yamato_conversation_01.mp3",
     "bytes": 53804,
     "lines": [
       {
@@ -12340,7 +12340,7 @@
       "venator",
       "yamato"
     ],
-    "audio": "/voicelines/conversations/venator_yamato_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/venator_yamato_conversation_02.mp3",
     "bytes": 66860,
     "lines": [
       {
@@ -12368,7 +12368,7 @@
       "drifter",
       "lash"
     ],
-    "audio": "/voicelines/conversations/drifter_lash_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_lash_conversation_02.mp3",
     "bytes": 83948,
     "lines": [
       {
@@ -12396,7 +12396,7 @@
       "lash",
       "victor"
     ],
-    "audio": "/voicelines/conversations/lash_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lash_victor_conversation_01.mp3",
     "bytes": 107756,
     "lines": [
       {
@@ -12436,7 +12436,7 @@
       "lash",
       "victor"
     ],
-    "audio": "/voicelines/conversations/lash_victor_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/lash_victor_conversation_02.mp3",
     "bytes": 96620,
     "lines": [
       {
@@ -12476,7 +12476,7 @@
       "drifter",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/drifter_mirage_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_mirage_conversation_01.mp3",
     "bytes": 255020,
     "lines": [
       {
@@ -12540,7 +12540,7 @@
       "mirage",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_mirage_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_mirage_conversation_02.mp3",
     "bytes": 74156,
     "lines": [
       {
@@ -12574,7 +12574,7 @@
       "drifter",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/drifter_mirage_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_mirage_conversation_03.mp3",
     "bytes": 72428,
     "lines": [
       {
@@ -12608,7 +12608,7 @@
       "vyper",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/mirage_viper_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/mirage_viper_conversation_02.mp3",
     "bytes": 107372,
     "lines": [
       {
@@ -12648,7 +12648,7 @@
       "vyper",
       "mirage"
     ],
-    "audio": "/voicelines/conversations/mirage_viper_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/mirage_viper_conversation_03.mp3",
     "bytes": 125420,
     "lines": [
       {
@@ -12694,7 +12694,7 @@
       "vyper",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_viper_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_viper_conversation_01.mp3",
     "bytes": 186092,
     "lines": [
       {
@@ -12734,7 +12734,7 @@
       "vyper",
       "drifter"
     ],
-    "audio": "/voicelines/conversations/drifter_viper_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/drifter_viper_conversation_02.mp3",
     "bytes": 89516,
     "lines": [
       {
@@ -12762,7 +12762,7 @@
       "vyper",
       "paige"
     ],
-    "audio": "/voicelines/conversations/bookworm_viper_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/bookworm_viper_2.mp3",
     "bytes": 202604,
     "lines": [
       {
@@ -12826,7 +12826,7 @@
       "mina",
       "victor"
     ],
-    "audio": "/voicelines/conversations/mina_victor_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/mina_victor_conversation_01.mp3",
     "bytes": 61100,
     "lines": [
       {
@@ -12854,7 +12854,7 @@
       "mina",
       "victor"
     ],
-    "audio": "/voicelines/conversations/mina_victor_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/mina_victor_conversation_02.mp3",
     "bytes": 136364,
     "lines": [
       {
@@ -12924,7 +12924,7 @@
       "mina",
       "victor"
     ],
-    "audio": "/voicelines/conversations/mina_victor_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/mina_victor_conversation_03.mp3",
     "bytes": 41132,
     "lines": [
       {
@@ -12952,7 +12952,7 @@
       "venator",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_venator_conversation_01.mp3",
     "bytes": 60524,
     "lines": [
       {
@@ -12974,7 +12974,7 @@
       "venator",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_venator_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_venator_conversation_02.mp3",
     "bytes": 143660,
     "lines": [
       {
@@ -13008,7 +13008,7 @@
       "venator",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_venator_conversation_01.mp3",
     "bytes": 84332,
     "lines": [
       {
@@ -13054,7 +13054,7 @@
       "venator",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_venator_conversation_03.mp3",
     "bytes": 164204,
     "lines": [
       {
@@ -13112,7 +13112,7 @@
       "venator",
       "rem"
     ],
-    "audio": "/voicelines/conversations/rem_venator_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/rem_venator_conversation_01.mp3",
     "bytes": 42092,
     "lines": [
       {
@@ -13140,7 +13140,7 @@
       "rem",
       "venator"
     ],
-    "audio": "/voicelines/conversations/rem_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/rem_venator_conversation_03.mp3",
     "bytes": 68396,
     "lines": [
       {
@@ -13168,7 +13168,7 @@
       "silver",
       "venator"
     ],
-    "audio": "/voicelines/conversations/silver_venator_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/silver_venator_conversation_02.mp3",
     "bytes": 71084,
     "lines": [
       {
@@ -13202,7 +13202,7 @@
       "silver",
       "venator"
     ],
-    "audio": "/voicelines/conversations/silver_venator_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/silver_venator_conversation_03.mp3",
     "bytes": 67436,
     "lines": [
       {
@@ -13236,7 +13236,7 @@
       "billy",
       "paige"
     ],
-    "audio": "/voicelines/conversations/billy_paige_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_paige_conversation_1.mp3",
     "bytes": 188204,
     "lines": [
       {
@@ -13270,7 +13270,7 @@
       "paige",
       "billy"
     ],
-    "audio": "/voicelines/conversations/billy_paige_conversation_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/billy_paige_conversation_3.mp3",
     "bytes": 119276,
     "lines": [
       {
@@ -13304,7 +13304,7 @@
       "graves",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_graves_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_graves_conversation_01.mp3",
     "bytes": 77804,
     "lines": [
       {
@@ -13338,7 +13338,7 @@
       "apollo",
       "graves"
     ],
-    "audio": "/voicelines/conversations/apollo_graves_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_graves_conversation_02.mp3",
     "bytes": 132332,
     "lines": [
       {
@@ -13396,7 +13396,7 @@
       "graves",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_graves_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_graves_conversation_03.mp3",
     "bytes": 135980,
     "lines": [
       {
@@ -13442,7 +13442,7 @@
       "graves",
       "silver"
     ],
-    "audio": "/voicelines/conversations/graves_silver_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_silver_conversation_02.mp3",
     "bytes": 135404,
     "lines": [
       {
@@ -13482,7 +13482,7 @@
       "graves",
       "silver"
     ],
-    "audio": "/voicelines/conversations/graves_silver_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_silver_conversation_03.mp3",
     "bytes": 71660,
     "lines": [
       {
@@ -13522,7 +13522,7 @@
       "celeste",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_celeste_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_celeste_conversation_02.mp3",
     "bytes": 66860,
     "lines": [
       {
@@ -13550,7 +13550,7 @@
       "celeste",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_celeste_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_celeste_conversation_03.mp3",
     "bytes": 141548,
     "lines": [
       {
@@ -13596,7 +13596,7 @@
       "apollo",
       "rem"
     ],
-    "audio": "/voicelines/conversations/apollo_rem_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_rem_conversation_01.mp3",
     "bytes": 48428,
     "lines": [
       {
@@ -13624,7 +13624,7 @@
       "apollo",
       "rem"
     ],
-    "audio": "/voicelines/conversations/apollo_rem_conversation_02.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_rem_conversation_02.mp3",
     "bytes": 121004,
     "lines": [
       {
@@ -13670,7 +13670,7 @@
       "rem",
       "apollo"
     ],
-    "audio": "/voicelines/conversations/apollo_rem_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_rem_conversation_03.mp3",
     "bytes": 106220,
     "lines": [
       {
@@ -13716,7 +13716,7 @@
       "apollo",
       "silver"
     ],
-    "audio": "/voicelines/conversations/apollo_silver_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_silver_conversation_01.mp3",
     "bytes": 100460,
     "lines": [
       {
@@ -13774,7 +13774,7 @@
       "apollo",
       "silver"
     ],
-    "audio": "/voicelines/conversations/apollo_silver_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/apollo_silver_conversation_03.mp3",
     "bytes": 80300,
     "lines": [
       {
@@ -13820,7 +13820,7 @@
       "graves",
       "rem"
     ],
-    "audio": "/voicelines/conversations/graves_rem_conversation_1.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_rem_conversation_1.mp3",
     "bytes": 40172,
     "lines": [
       {
@@ -13848,7 +13848,7 @@
       "rem",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_rem_conversation_2.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_rem_conversation_2.mp3",
     "bytes": 161324,
     "lines": [
       {
@@ -13900,7 +13900,7 @@
       "rem",
       "graves"
     ],
-    "audio": "/voicelines/conversations/graves_rem_conversation_3.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/graves_rem_conversation_3.mp3",
     "bytes": 75308,
     "lines": [
       {
@@ -13940,7 +13940,7 @@
       "rem",
       "silver"
     ],
-    "audio": "/voicelines/conversations/rem_silver_conversation_01.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/rem_silver_conversation_01.mp3",
     "bytes": 142892,
     "lines": [
       {
@@ -14010,7 +14010,7 @@
       "silver",
       "rem"
     ],
-    "audio": "/voicelines/conversations/rem_silver_conversation_03.mp3",
+    "audio": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/voicelines/conversations/rem_silver_conversation_03.mp3",
     "bytes": 56876,
     "lines": [
       {

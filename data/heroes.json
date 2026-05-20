@@ -26,30 +26,30 @@
       {
         "name": "Napalm",
         "description": "Spew an incendiary mixture, dealing spirit damage, applying slow, and coating targets in napalm.",
-        "icon": "/abilities/infernus-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/infernus-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_molotov.png"
       },
       {
         "name": "Flame Dash",
         "description": "Dash forward, gaining slow resistance while leaving a flaming trail that deals spirit damage over time. Hold [W] while active to dash farther.",
-        "icon": "/abilities/infernus-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/infernus-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_dash.png"
       },
       {
         "name": "Afterburn",
         "description": "Weapon hits build up a burning effect, dealing spirit damage over time. Abilities refresh the base burn duration.",
-        "icon": "/abilities/infernus-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/infernus-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_deflect.png"
       },
       {
         "name": "Concussive Combustion",
         "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay.Once cast, Concussive Combustion cannot be interrupted.",
-        "icon": "/abilities/infernus-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/infernus-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_bomb.png"
       }
     ],
-    "portrait_url": "/portraits/infernus.png",
-    "splash_url": "/splash/infernus.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/infernus.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/infernus.jpg"
   },
   {
     "key": "seven",
@@ -78,30 +78,30 @@
       {
         "name": "Lightning Ball",
         "description": "Shoot a ball of lightning that travels in a straight line. Does damage to all targets in its radius.",
-        "icon": "/abilities/seven-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/seven-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_ball.png"
       },
       {
         "name": "Static Charge",
         "description": "Apply a charge to a target enemy hero. After a short duration, the static charge stuns and damages enemies within the radius.",
-        "icon": "/abilities/seven-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/seven-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_static.png"
       },
       {
         "name": "Power Surge",
         "description": "Power up your weapon with a shock effect, making your bullets proc shock damage on your target. This shock damage bounces to enemies near your target.",
-        "icon": "/abilities/seven-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/seven-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_chain.png"
       },
       {
         "name": "Storm Cloud",
         "description": "Channel an expanding storm cloud around you that damages all enemies within its radius. Enemies do not take damage when they are out of line-of-sight.",
-        "icon": "/abilities/seven-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/seven-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/giga_storm.png"
       }
     ],
-    "portrait_url": "/portraits/seven.png",
-    "splash_url": "/splash/seven.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/seven.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/seven.jpg"
   },
   {
     "key": "vindicta",
@@ -130,30 +130,30 @@
       {
         "name": "Stake",
         "description": "Throw a stake that tethers enemies to the location where the stake lands. Enemy movement is restricted to the length of the tether.",
-        "icon": "/abilities/vindicta-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vindicta-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_stake.png"
       },
       {
         "name": "Flight",
         "description": "Leap into the air and fly. While in flight your weapon deals bonus spirit damage and your items have increased range.",
-        "icon": "/abilities/vindicta-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vindicta-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/vindicta_flight.png"
       },
       {
         "name": "Crow Familiar",
         "description": "Your crow familiar deals impact damage, reduces their bullet resist and applies a bleed that deals damage based on the target's current health.",
-        "icon": "/abilities/vindicta-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vindicta-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_crow.png"
       },
       {
         "name": "Assassinate",
         "description": "Use your scoped rifle to fire a powerful shot over long distances. 0s of being scoped.",
-        "icon": "/abilities/vindicta-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vindicta-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_assassinate.png"
       }
     ],
-    "portrait_url": "/portraits/vindicta.png",
-    "splash_url": "/splash/vindicta.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/vindicta.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/vindicta.jpg"
   },
   {
     "key": "lady-geist",
@@ -182,30 +182,30 @@
       {
         "name": "Essence Bomb",
         "description": "Sacrifice some of your health to launch a bomb that deals damage after a brief arm time.Self damage type is Spirit and can be mitigated.",
-        "icon": "/abilities/lady-geist-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lady-geist-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_bomb.png"
       },
       {
         "name": "Life Drain",
         "description": "Create a tether that drains enemy health over time and heals you. Target must be in line of sight and within max range to drain.",
-        "icon": "/abilities/lady-geist-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lady-geist-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/life_drain.png"
       },
       {
         "name": "Malice",
         "description": "Sacrifice some of your health to launch blood shards that apply a stack of Malice. Each stack slows the victim and increases the damage they take from you.",
-        "icon": "/abilities/lady-geist-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lady-geist-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/geist_dagger.png"
       },
       {
         "name": "Soul Exchange",
         "description": "Swaps health levels with an enemy target. There is a minimum health percentage that enemies can be brought down to and a minimum amount of health received based on victims current health.",
-        "icon": "/abilities/lady-geist-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lady-geist-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_exchange.png"
       }
     ],
-    "portrait_url": "/portraits/lady-geist.png",
-    "splash_url": "/splash/lady-geist.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/lady-geist.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/lady-geist.jpg"
   },
   {
     "key": "abrams",
@@ -234,30 +234,30 @@
       {
         "name": "Siphon Life",
         "description": "Drain health from nearby enemies, dealing spirit damage over time and healing for a portion of the damage dealt.",
-        "icon": "/abilities/abrams-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/abrams-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_drain.png"
       },
       {
         "name": "Shoulder Charge",
         "description": "Charge forward, pulling enemies you hit. Pushing a hero into a wall applies stun.If you collide with a hero you move faster during your charge.",
-        "icon": "/abilities/abrams-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/abrams-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_charge.png"
       },
       {
         "name": "Infernal Resilience",
         "description": "Gain bonus defensive attributes. Taking damage grants temporary regeneration for a portion of the damage taken.",
-        "icon": "/abilities/abrams-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/abrams-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_beef.png"
       },
       {
         "name": "Seismic Impact",
         "description": "Leap high into the air before crashing into the ground, dealing spirit damage and applying stun.",
-        "icon": "/abilities/abrams-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/abrams-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_jump.png"
       }
     ],
-    "portrait_url": "/portraits/abrams.png",
-    "splash_url": "/splash/abrams.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/abrams.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/abrams.jpg"
   },
   {
     "key": "wraith",
@@ -286,30 +286,30 @@
       {
         "name": "Card Trick",
         "description": "Deal weapon damage to summon cards of a random suit. Each card can be thrown, dealing damage and applying a different effect depending of its suit.",
-        "icon": "/abilities/wraith-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/wraith-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_card_trick.png"
       },
       {
         "name": "Project Mind",
         "description": "Teleport to the targeted location.",
-        "icon": "/abilities/wraith-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/wraith-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_teleport.png"
       },
       {
         "name": "Full Auto",
         "description": "Temporarily boosts your fire rate and deal bonus spirit damage",
-        "icon": "/abilities/wraith-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/wraith-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_aura.png"
       },
       {
         "name": "Telekinesis",
         "description": "Lift an enemy hero into the air and then slam them towards the target location.",
-        "icon": "/abilities/wraith-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/wraith-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/wraith_lift.png"
       }
     ],
-    "portrait_url": "/portraits/wraith.png",
-    "splash_url": "/splash/wraith.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/wraith.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/wraith.jpg"
   },
   {
     "key": "mcginnis",
@@ -338,30 +338,30 @@
       {
         "name": "Mini Turret",
         "description": "Deploy a turret that shoots enemies, dealing spirit damage over time. The turret expires after a limited lifetime.Turrets deal reduced damage to troopers and objectives.",
-        "icon": "/abilities/mcginnis-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mcginnis-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_turret.png"
       },
       {
         "name": "Medicinal Specter",
         "description": "Deploy a spirit that provides healing to nearby allies.",
-        "icon": "/abilities/mcginnis-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mcginnis-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_resupply.png"
       },
       {
         "name": "Spectral Wall",
         "description": "Cast a wall that applies slow on enemies it passes through. Erupt the wall to divide the terrain in half and damage nearby enemies.",
-        "icon": "/abilities/mcginnis-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mcginnis-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_fissure_2.png"
       },
       {
         "name": "Heavy Barrage",
         "description": "Unleashes a volley of rockets that home in on a targeted location. McGinnis is slowed and is still able to use stamina.",
-        "icon": "/abilities/mcginnis-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mcginnis-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_rockets.png"
       }
     ],
-    "portrait_url": "/portraits/mcginnis.png",
-    "splash_url": "/splash/mcginnis.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/mcginnis.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/mcginnis.jpg"
   },
   {
     "key": "paradox",
@@ -390,30 +390,30 @@
       {
         "name": "Pulse Grenade",
         "description": "Throw a grenade that begins pulsing when it lands. Each pulse expands the radius and applies spirit damage, time slow, and stacking increased damage for Paradox against the victim.",
-        "icon": "/abilities/paradox-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paradox-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_bomb.png"
       },
       {
         "name": "Time Wall",
         "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. Enemies that touch the wall will be briefly slowed and silenced .",
-        "icon": "/abilities/paradox-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paradox-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_wall.png"
       },
       {
         "name": "Kinetic Carbine",
         "description": "Charge up a powerful shot of time energy, dealing spirit damage and applying a Time-Stop to enemies hit. The damage dealt increases with weapon damage.",
-        "icon": "/abilities/paradox-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paradox-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/duo/duo_attack.png"
       },
       {
         "name": "Paradoxical Swap",
         "description": "Fire a projectile that swaps your position with the target enemy hero.",
-        "icon": "/abilities/paradox-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paradox-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_swap.png"
       }
     ],
-    "portrait_url": "/portraits/paradox.png",
-    "splash_url": "/splash/paradox.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/paradox.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/paradox.jpg"
   },
   {
     "key": "dynamo",
@@ -442,30 +442,30 @@
       {
         "name": "Kinetic Pulse",
         "description": "Release an energy pulse that travels along the ground, dealing spirit damage and applying knockup.",
-        "icon": "/abilities/dynamo-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/dynamo-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_stomp.png"
       },
       {
         "name": "Quantum Entanglement",
         "description": "Briefly become untargetable while teleporting to the target location. Restores stamina upon use.",
-        "icon": "/abilities/dynamo-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/dynamo-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_quantum.png"
       },
       {
         "name": "Rejuvenating Aurora",
         "description": "While channeling, restore health over time to you and any allies nearby.You can dash and melee without breaking the channel.",
-        "icon": "/abilities/dynamo-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/dynamo-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_pork_bun.png"
       },
       {
         "name": "Singularity",
         "description": "Create a singularity in your hands, dealing spirit damage over time, applying stun, and pulling in nearby enemies.",
-        "icon": "/abilities/dynamo-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/dynamo-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_vacuum.png"
       }
     ],
-    "portrait_url": "/portraits/dynamo.png",
-    "splash_url": "/splash/dynamo.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/dynamo.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/dynamo.jpg"
   },
   {
     "key": "kelvin",
@@ -494,30 +494,30 @@
       {
         "name": "Frost Grenade",
         "description": "Throw a grenade that explodes in a cloud of freezing ice that heals allies and applies spirit damage and move speed reduction to enemies.",
-        "icon": "/abilities/kelvin-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/kelvin-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/freezing_grenade.png"
       },
       {
         "name": "Ice Path",
         "description": "Kelvin creates a floating trail of ice and snow that gives movement bonuses to him and his allies. Kelvin gains 60% slow resistance for the duration.",
-        "icon": "/abilities/kelvin-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/kelvin-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_path.png"
       },
       {
         "name": "Arctic Beam",
         "description": "Shoot freezing cold energy out in front of you, damaging targets and progressively reducing their movement and fire rate the longer you sustain the beam on them. You have reduced move speed while using Arctic Beam.",
-        "icon": "/abilities/kelvin-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/kelvin-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/ice_beam.png"
       },
       {
         "name": "Frozen Shelter",
         "description": "Target yourself or a Hero to freeze the air and create an impenetrable dome around them. While in the dome, allies gain rapid regeneration and enemies are slowed. Objectives becomes Invulnerable and Frozen under Frozen Shelter",
-        "icon": "/abilities/kelvin-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/kelvin-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/kelvin/frozen_shelter.png"
       }
     ],
-    "portrait_url": "/portraits/kelvin.png",
-    "splash_url": "/splash/kelvin.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/kelvin.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/kelvin.jpg"
   },
   {
     "key": "haze",
@@ -546,30 +546,30 @@
       {
         "name": "Sleep Dagger",
         "description": "Throw a dagger that damages and sleeps the target. Sleeping targets wake up shortly after being damaged.",
-        "icon": "/abilities/haze-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/haze-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_sleep_dagger.png"
       },
       {
         "name": "Smoke Bomb",
         "description": "Fade out of sight, becoming invisible and gaining sprint speed. Attacking removes invisibility, but using items does not.",
-        "icon": "/abilities/haze-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/haze-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_smoke_bomb.png"
       },
       {
         "name": "Fixation",
         "description": "Shooting a target increases your bullet damage on that target. Gain one stack per bullet hit, two if the hit is a headshot.",
-        "icon": "/abilities/haze-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/haze-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_fixation.png"
       },
       {
         "name": "Bullet Dance",
         "description": "Enter a flurry, firing your weapon at nearby enemies with perfect accuracy and added Bullet Damage.",
-        "icon": "/abilities/haze-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/haze-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/haze/haze_bullet_flurry.png"
       }
     ],
-    "portrait_url": "/portraits/haze.png",
-    "splash_url": "/splash/haze.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/haze.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/haze.jpg"
   },
   {
     "key": "holliday",
@@ -598,30 +598,30 @@
       {
         "name": "Powder Keg",
         "description": "Throw a barrel that explodes after a delay, dealing spirit damage and applying knockup. The barrel can be detonated early by being shot, melee'd, or detonated by another barrel.",
-        "icon": "/abilities/holliday-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/holliday-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_powder_keg.png"
       },
       {
         "name": "Bounce Pad",
         "description": "Drop a bounce pad in the world that launches any hero. You explode on landing, dealing Damage to any nearby enemies.",
-        "icon": "/abilities/holliday-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/holliday-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_bounce_pad.png"
       },
       {
         "name": "Crackshot",
         "description": "Headshots deal bonus Damage and applies a Fading Move Speed penalty. This effect can only occur when off cooldown.",
-        "icon": "/abilities/holliday-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/holliday-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_crackshot.png"
       },
       {
         "name": "Spirit Lasso",
         "description": "Throw out your lasso, dealing spirit damage, pulling, and applying stun.Using a Bounce Pad extends the duration of Spirit Lasso.",
-        "icon": "/abilities/holliday-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/holliday-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_spirit_lasso.png"
       }
     ],
-    "portrait_url": "/portraits/holliday.png",
-    "splash_url": "/splash/holliday.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/holliday.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/holliday.jpg"
   },
   {
     "key": "bebop",
@@ -650,30 +650,30 @@
       {
         "name": "Exploding Uppercut",
         "description": "Deal melee damage to nearby enemies and apply knockback. When they land, they deal spirit damage and apply reduced fire rate to other nearby enemies.",
-        "icon": "/abilities/bebop-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/bebop-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_uppercut.png"
       },
       {
         "name": "Sticky Bomb",
         "description": "Attach a bomb that explodes after a delay, dealing spirit damage to nearby enemies. If the bomb hits or kills a hero, you gain permanent bonus damage on Sticky Bomb. Stacks diminish by half after 60 hits and 7 kills",
-        "icon": "/abilities/bebop-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/bebop-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_sticky_bomb.png"
       },
       {
         "name": "Grapple Arm",
         "description": "Launch out a mechanical hand that pulls the first character it hits, reeling them in. Grapple Arm can be used on allies.",
-        "icon": "/abilities/bebop-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/bebop-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hook.png"
       },
       {
         "name": "Hyper Beam",
         "description": "Channel a powerful torrent of energy that deals spirit damage and applies slow.",
-        "icon": "/abilities/bebop-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/bebop-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bebop/bebop_hyper_beam.png"
       }
     ],
-    "portrait_url": "/portraits/bebop.png",
-    "splash_url": "/splash/bebop.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/bebop.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/bebop.jpg"
   },
   {
     "key": "calico",
@@ -702,30 +702,30 @@
       {
         "name": "Gloom Bombs",
         "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage.Enemies hit by multiple bombs take 65% damage.",
-        "icon": "/abilities/calico-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/calico-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_clustergrenade.png"
       },
       {
         "name": "Leaping Slash",
         "description": "Dash forward before slashing all enemies in a circle, dealing melee damage. If the ability hits at least one hero, heal a small amount of health.",
-        "icon": "/abilities/calico-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/calico-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_dash.png"
       },
       {
         "name": "Ava",
         "description": "Turn to shadows and possess Ava. You gain bonus move speed that increases over time, and become hidden on the minimap.",
-        "icon": "/abilities/calico-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/calico-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_catform.png"
       },
       {
         "name": "Return to Shadows",
         "description": "Instantly turn to shadows, becoming untargetable, gaining bonus move speed, and dealing spirit damage. After a delay, return from the shadows, dealing spirit damage again.",
-        "icon": "/abilities/calico-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/calico-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_shadow_pulse.png"
       }
     ],
-    "portrait_url": "/portraits/calico.png",
-    "splash_url": "/splash/calico.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/calico.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/calico.jpg"
   },
   {
     "key": "grey-talon",
@@ -754,30 +754,30 @@
       {
         "name": "Charged Shot",
         "description": "Charge up a powerful shot that pierces through enemies. Hold Ability 1 or to hold the shot.",
-        "icon": "/abilities/grey-talon-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/grey-talon-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_charged_shot.png"
       },
       {
         "name": "Rain of Arrows",
         "description": "Launches you high in the air, allowing you to glide slowly. While airborne, you gain Weapon Damage and multishot on your weapon.",
-        "icon": "/abilities/grey-talon-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/grey-talon-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_power_jump.png"
       },
       {
         "name": "Spirit Snare",
         "description": "Throw out a trap that begins to arm itself. Once armed, the trap will trigger when an enemy enters its radius, applying Curse and Movement Slow that interrupts, Silences, Disarms, and prevents item usage.Hit the trap with a Charged Shot to detonate early with increased radius.",
-        "icon": "/abilities/grey-talon-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/grey-talon-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/imobolize_trap.png"
       },
       {
         "name": "Guided Owl",
         "description": "5s cast time, launch a spirit owl that you control and which explodes on impact, damaging and stunning enemies. Press Jump / mantle to release control.",
-        "icon": "/abilities/grey-talon-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/grey-talon-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_guided_arrow.png"
       }
     ],
-    "portrait_url": "/portraits/grey-talon.png",
-    "splash_url": "/splash/grey-talon.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/grey-talon.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/grey-talon.jpg"
   },
   {
     "key": "mo-krill",
@@ -806,30 +806,30 @@
       {
         "name": "Scorn",
         "description": "Deal damage to nearby enemies and heal yourself based on the damage done. Heal is stronger against enemy heroes.",
-        "icon": "/abilities/mo-krill-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mo-krill-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_regen.png"
       },
       {
         "name": "Burrow",
         "description": "Burrow underground, moving faster, and gaining spirit and bullet armor. Damage from enemy heroes will reduce the speed bonus.",
-        "icon": "/abilities/mo-krill-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mo-krill-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_spin.png"
       },
       {
         "name": "Sand Blast",
         "description": "Spray sand that disarms enemies in front of you and deals damage.",
-        "icon": "/abilities/mo-krill-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mo-krill-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_throw_sand.png"
       },
       {
         "name": "Combo",
         "description": "Hold the target in place, stunning them and dealing damage during the channel. If they die during, or within 3 seconds of Combo ending, you permanently gain max health.",
-        "icon": "/abilities/mo-krill-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mo-krill-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/grappler/grappler_combo.png"
       }
     ],
-    "portrait_url": "/portraits/mo-krill.png",
-    "splash_url": "/splash/mo-krill.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/mo-krill.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/mo-krill.jpg"
   },
   {
     "key": "shiv",
@@ -858,30 +858,30 @@
       {
         "name": "Serrated Knives",
         "description": "Throw a knife that bleeds an enemy. Each additional hit adds a stack and refreshes the bleed duration, causing the bleed to increase per stack.",
-        "icon": "/abilities/shiv-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/shiv-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_toss.png"
       },
       {
         "name": "Slice and Dice",
         "description": "Perform a dash forward, damaging enemies along the path. Hit Enemies have their spirit resist reduced.",
-        "icon": "/abilities/shiv-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/shiv-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_flash.png"
       },
       {
         "name": "Bloodletting",
         "description": "Take only a portion of incoming damage immediately and defer the rest to be taken over time. Activate to clear a portion of the deferred damage.",
-        "icon": "/abilities/shiv-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/shiv-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_bloodletting.png"
       },
       {
         "name": "Killing Blow",
         "description": "Leap forward, dealing spirit damage to the first enemy hero hit; if they are below the kill threshold, execute them outright.",
-        "icon": "/abilities/shiv-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/shiv-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/shiv/shiv_killing_blow.png"
       }
     ],
-    "portrait_url": "/portraits/shiv.png",
-    "splash_url": "/splash/shiv.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/shiv.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/shiv.jpg"
   },
   {
     "key": "ivy",
@@ -910,30 +910,30 @@
       {
         "name": "Entangling Thorns",
         "description": "Summon a patch of choking thorns that damage and slows enemies in its radius.",
-        "icon": "/abilities/ivy-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/ivy-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_storm_flask.png"
       },
       {
         "name": "Kudzu Connection",
         "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting.Receive 50% of Bonuses with no connectionConnection requires line of sight.",
-        "icon": "/abilities/ivy-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/ivy-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_tether.png"
       },
       {
         "name": "Stone Form",
         "description": "Turn yourself into impervious stone and smash into the ground, stunning and damaging enemies nearby. Heals you for a percentage of your max health.",
-        "icon": "/abilities/ivy-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/ivy-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_stone_form.png"
       },
       {
         "name": "Air Drop",
         "description": "Grab an ally and take flight with them. Drop your ally to cause an explosion, dealing spirit damage.",
-        "icon": "/abilities/ivy-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/ivy-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_lightning_crash.png"
       }
     ],
-    "portrait_url": "/portraits/ivy.png",
-    "splash_url": "/splash/ivy.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/ivy.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/ivy.jpg"
   },
   {
     "key": "warden",
@@ -962,30 +962,30 @@
       {
         "name": "Alchemical Flask",
         "description": "Throw a flask that damages and reduces the weapon damage and move speed of enemies it hits.",
-        "icon": "/abilities/warden-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/warden-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_crowd_control.png"
       },
       {
         "name": "Willpower",
         "description": "Gain a Barrier and bonus move speed.",
-        "icon": "/abilities/warden-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/warden-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_high_alert.png"
       },
       {
         "name": "Binding Word",
         "description": "Curse an enemy hero. If they don't move away from their initial position within the escape time, they will be damaged and immobilized.",
-        "icon": "/abilities/warden-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/warden-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_lock_down.png"
       },
       {
         "name": "Last Stand",
         "description": "After charging for 2s, release pulses that damage enemies and heal you based on the damage done. While channeling Last Stand you have greatly increased bullet and spirit resist.",
-        "icon": "/abilities/warden-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/warden-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/warden/warden_riot_protocol.png"
       }
     ],
-    "portrait_url": "/portraits/warden.png",
-    "splash_url": "/splash/warden.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/warden.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/warden.jpg"
   },
   {
     "key": "yamato",
@@ -1014,30 +1014,30 @@
       {
         "name": "Power Slash",
         "description": "Channel to increase damage over 1.4 seconds, then release a fully-charged sword strike.Press Ability 1 or to trigger the strike early, dealing partial damage.",
-        "icon": "/abilities/yamato-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/yamato-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_power_slash.png"
       },
       {
         "name": "Flying Slash",
         "description": "Throw a grappling hook to reel yourself towards an enemy, dealing Light melee damage and slowing the target when you arrive.",
-        "icon": "/abilities/yamato-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/yamato-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_flying_strike.png"
       },
       {
         "name": "Crimson Slash",
         "description": "Slash enemies in front of you, damaging them and slowing their fire rate. If any enemy heroes are hit, you heal.",
-        "icon": "/abilities/yamato-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/yamato-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_crimson_slash.png"
       },
       {
         "name": "Shadow Transformation",
         "description": "Become infused with Yamato's shadow soul. After an initial invincible transformation your abilities are refreshed and are 60% faster.",
-        "icon": "/abilities/yamato-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/yamato-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_blinding_steel.png"
       }
     ],
-    "portrait_url": "/portraits/yamato.png",
-    "splash_url": "/splash/yamato.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/yamato.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/yamato.jpg"
   },
   {
     "key": "lash",
@@ -1066,30 +1066,30 @@
       {
         "name": "Ground Strike",
         "description": "Stomp the ground beneath you, damaging enemies in front of you. If you perform Ground Strike while airborne, you quickly dive towards the ground.",
-        "icon": "/abilities/lash-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lash-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_death_slam.png"
       },
       {
         "name": "Grapple",
         "description": "Pull yourself through the air toward a target. Using Grapple also resets your limit of air jumps and dashes.",
-        "icon": "/abilities/lash-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lash-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_lash.png"
       },
       {
         "name": "Flog",
         "description": "Strike enemies in front of you with your whip, healing for a portion of the damage dealt.",
-        "icon": "/abilities/lash-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lash-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_flog.png"
       },
       {
         "name": "Death Slam",
         "description": "Focus on enemies to connect whips to them. After channeling, connected enemies are lifted and stunned then slammed into the ground.",
-        "icon": "/abilities/lash-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/lash-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/lash/lash_counter_lash.png"
       }
     ],
-    "portrait_url": "/portraits/lash.png",
-    "splash_url": "/splash/lash.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/lash.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/lash.jpg"
   },
   {
     "key": "viscous",
@@ -1118,30 +1118,30 @@
       {
         "name": "Splatter",
         "description": "Throw a ball of goo that deals damage and leaves puddles of goo behind that apply movement slow to enemies in the radius.",
-        "icon": "/abilities/viscous-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/viscous-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_ball.png"
       },
       {
         "name": "The Cube",
         "description": "Encase the target in a cube of restorative goo that protects from damage, and increases health regen. Target is unable to take any new actions while cubed.",
-        "icon": "/abilities/viscous-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/viscous-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_restorative_goo.png"
       },
       {
         "name": "Puddle Punch",
         "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. Punching an enemy deals melee damage and applies slow.You and your allies have increased Air Control.",
-        "icon": "/abilities/viscous-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/viscous-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_punch.png"
       },
       {
         "name": "Goo Ball",
         "description": "Morph into a large goo ball that deals damage and stuns enemies on impact. The ball grants large amounts of Bullet and Spirit resist, bounces off walls and can double jump.",
-        "icon": "/abilities/viscous-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/viscous-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_sphere.png"
       }
     ],
-    "portrait_url": "/portraits/viscous.png",
-    "splash_url": "/splash/viscous.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/viscous.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/viscous.jpg"
   },
   {
     "key": "pocket",
@@ -1170,30 +1170,30 @@
       {
         "name": "Barrage",
         "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks.Casting while airborne will cause Pocket to float.Casting AirDash or Flying Cloaking will not cancel Barrage.",
-        "icon": "/abilities/pocket-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/pocket-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_barrage.png"
       },
       {
         "name": "Flying Cloak",
         "description": "Launch a sentient cloak that travels forward and damages enemies. You can press Ability 2 to teleport to its location.",
-        "icon": "/abilities/pocket-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/pocket-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_plasma_flux.png"
       },
       {
         "name": "Enchanter's Satchel",
         "description": "Escape into your suitcase. When the duration ends, deal spirit damage to nearby enemies.",
-        "icon": "/abilities/pocket-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/pocket-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_pulse.png"
       },
       {
         "name": "Affliction",
         "description": "Applies damage over time to enemies nearby.Affliction's damage is non-lethal and does not apply item procs.",
-        "icon": "/abilities/pocket-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/pocket-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_affliction.png"
       }
     ],
-    "portrait_url": "/portraits/pocket.png",
-    "splash_url": "/splash/pocket.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/pocket.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/pocket.jpg"
   },
   {
     "key": "mirage",
@@ -1222,30 +1222,30 @@
       {
         "name": "Fire Scarabs",
         "description": "Infest an enemy with fire scarabs, stealing life from them and causing them to deal reduced damage.",
-        "icon": "/abilities/mirage-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mirage-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_fire_beetles.png"
       },
       {
         "name": "Dust Devil",
         "description": "Transform yourself into a whirlwind that travels forward, damaging enemies, slowing their move speed and lifting them up in the air. After emerging from the tornado you gain bullet evasion.",
-        "icon": "/abilities/mirage-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mirage-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_tornado.png"
       },
       {
         "name": "Djinn's Mark",
         "description": "Active: Consume all Djinn Mark's to deal its damage now.",
-        "icon": "/abilities/mirage-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mirage-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_sand_phantom.png"
       },
       {
         "name": "Traveler",
         "description": "Target a location on the minimap. After a brief wait, teleport to that location.",
-        "icon": "/abilities/mirage-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mirage-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/mirage/mirage_teleport.png"
       }
     ],
-    "portrait_url": "/portraits/mirage.png",
-    "splash_url": "/splash/mirage.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/mirage.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/mirage.jpg"
   },
   {
     "key": "vyper",
@@ -1274,30 +1274,30 @@
       {
         "name": "Screwjab Dagger",
         "description": "Throw a dagger, dealing spirit damage and applying slow. Every subsequent dagger against the same target stacks in spirit damage and slow.",
-        "icon": "/abilities/vyper-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vyper-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_debuffdagger.png"
       },
       {
         "name": "Lethal Venom",
         "description": "Inject a target with lethal venom. After a delay the venom triggers, dealing Spirit Damage.",
-        "icon": "/abilities/vyper-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vyper-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_venom.png"
       },
       {
         "name": "Slither",
         "description": "You have increased Slide Distance, can Slide up hills, and can turn faster while Sliding.",
-        "icon": "/abilities/vyper-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vyper-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_snakedash.png"
       },
       {
         "name": "Petrifying Bola",
         "description": "Throw an explosive bola. On exploding, the bola Slows and Damages all enemies in the area.",
-        "icon": "/abilities/vyper-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/vyper-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viper/viper_petrifybola.png"
       }
     ],
-    "portrait_url": "/portraits/vyper.png",
-    "splash_url": "/splash/vyper.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/vyper.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/vyper.jpg"
   },
   {
     "key": "sinclair",
@@ -1326,30 +1326,30 @@
       {
         "name": "Vexing Bolt",
         "description": "Fire a bolt of magic that deals Damage, increasing as it travels. If you have an Assistant, they also cast Vexing Bolt at reduced damage.",
-        "icon": "/abilities/sinclair-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/sinclair-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_magicbolt.png"
       },
       {
         "name": "Spectral Assistant",
         "description": "Summon an Assistant at the targeted location. The Assistant attacks whenever you fire your weapon, dealing Damage.",
-        "icon": "/abilities/sinclair-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/sinclair-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_cloneturret.png"
       },
       {
         "name": "Rabbit Hex",
         "description": "Hex a target area and transforming all enemies into a Rabbit for a limited duration. Rabbits are small and move faster, but take increased Damage and are unable to perform most actions.Hex does not interrupt abilities.",
-        "icon": "/abilities/sinclair-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/sinclair-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_animalcurse.png"
       },
       {
         "name": "Audience Participation",
         "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead.Copies will inherit this ability's upgrade points.Audience Participation will also copy the cooldown.",
-        "icon": "/abilities/sinclair-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/sinclair-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_copyult.png"
       }
     ],
-    "portrait_url": "/portraits/sinclair.png",
-    "splash_url": "/splash/sinclair.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/sinclair.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/sinclair.jpg"
   },
   {
     "key": "mina",
@@ -1378,30 +1378,30 @@
       {
         "name": "Rake",
         "description": "Active: Slash with your umbrella, dealing spirit damage, increasing with their missing health. Receive a heal for every target killed.Passive: Holding causes you to briefly float.Rake executes non-heroes below 60 health.",
-        "icon": "/abilities/mina-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mina-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_rake.png"
       },
       {
         "name": "Sanguine Retreat",
         "description": "Briefly disperse, becoming untargetable and flying to a target location. Can be recast within a brief window.",
-        "icon": "/abilities/mina-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mina-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_sanguine_retreat.png"
       },
       {
         "name": "Love Bites",
         "description": "Bullets and abilities apply spirit damage, building up to a burst of bonus spirit damage. Love Bites has a unique cooldown per target.",
-        "icon": "/abilities/mina-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mina-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_love_bites.png"
       },
       {
         "name": "Nox Nostra",
         "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence.Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
-        "icon": "/abilities/mina-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/mina-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_nox_nostra.png"
       }
     ],
-    "portrait_url": "/portraits/mina.png",
-    "splash_url": "/splash/mina.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/mina.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/mina.jpg"
   },
   {
     "key": "drifter",
@@ -1430,30 +1430,30 @@
       {
         "name": "Rend",
         "description": "Swipe at enemies in a cone ahead of you, dealing spirit damage. If the enemy is in close range, deal bonus melee damage.",
-        "icon": "/abilities/drifter-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/drifter-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_claw.png"
       },
       {
         "name": "Stalker's Mark",
         "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time.While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
-        "icon": "/abilities/drifter-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/drifter-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_stalkersmark.png"
       },
       {
         "name": "Bloodscent",
         "description": "Isolated heroes leave a blood trail and emit an audible heartbeat, letting you deal amplified damage to them and gain permanent weapon damage when they die nearby.",
-        "icon": "/abilities/drifter-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/drifter-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_thehunger.png"
       },
       {
         "name": "Eternal Night",
         "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration.You gain bonus sprint speed.",
-        "icon": "/abilities/drifter-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/drifter-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/darkness.png"
       }
     ],
-    "portrait_url": "/portraits/drifter.png",
-    "splash_url": "/splash/drifter.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/drifter.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/drifter.jpg"
   },
   {
     "key": "venator",
@@ -1482,30 +1482,30 @@
       {
         "name": "Consecrating Grenade",
         "description": "Fire a grenade that bounces before exploding, dealing weapon damage and setting enemies on fire. Burning targets deal pure damage to enemies in the area and suffer from reduced healing.",
-        "icon": "/abilities/venator-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/venator-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_grenade.png"
       },
       {
         "name": "Gutshot",
         "description": "Fire a blast with your shotgun, dealing weapon damage and pushing enemies back. Enemies near a wall receive stun and take bonus weapon damage.",
-        "icon": "/abilities/venator-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/venator-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_shotgun.png"
       },
       {
         "name": "Hex-Lined Snap Trap",
         "description": "Kick a trap that arms after a brief delay. The trap springs on the first enemy it touches, dealing spirit damage, applying immobilize, and revealing enemies for a duration afterwards.",
-        "icon": "/abilities/venator-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/venator-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_trap.png"
       },
       {
         "name": "Ira Domini",
         "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage.The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
-        "icon": "/abilities/venator-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/venator-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_crossbow.png"
       }
     ],
-    "portrait_url": "/portraits/venator.png",
-    "splash_url": "/splash/venator.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/venator.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/venator.jpg"
   },
   {
     "key": "victor",
@@ -1534,30 +1534,30 @@
       {
         "name": "Pain Battery",
         "description": "Taking any damage passively charges up your Pain Battery. Once full, activating the ability fires multiple shocking bolts, dealing spirit damage once per target.",
-        "icon": "/abilities/victor-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/victor-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_pain_battery.png"
       },
       {
         "name": "Jumpstart",
         "description": "Deal spirit damage to yourself. Then, gain bonus regeneration and bonus move speed, decaying over time.",
-        "icon": "/abilities/victor-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/victor-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_jump_start.png"
       },
       {
         "name": "Aura of Suffering",
         "description": "Unleash pain, dealing spirit damage over time to both enemies and yourself. The damage continues to increase the longer the ability is channeled, up to a maximum amount.",
-        "icon": "/abilities/victor-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/victor-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_aura_of_suffering.png"
       },
       {
         "name": "Shocking Reanimation",
         "description": "Release a wave after taking lethal damage, applying a diminishing slow. After a brief channel you reanimate, dealing spirit damage and applying stun to nearby enemies.",
-        "icon": "/abilities/victor-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/victor-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/frank/frank_shocking_reanimation.png"
       }
     ],
-    "portrait_url": "/portraits/victor.png",
-    "splash_url": "/splash/victor.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/victor.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/victor.jpg"
   },
   {
     "key": "paige",
@@ -1586,30 +1586,30 @@
       {
         "name": "Bookwyrm",
         "description": "Conjure a dragon that appears at the target location before flying forward, dealing spirit damage and leaving a burning path in its trail.",
-        "icon": "/abilities/paige-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paige-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_dragon.png"
       },
       {
         "name": "Plot Armor",
         "description": "Grant an ally a barrier. While the barrier holds, they gain bonus weapon damage.",
-        "icon": "/abilities/paige-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paige-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_defendandfight.png"
       },
       {
         "name": "Captivating Read",
         "description": "Target an area with latent magic, applying slow. The magic detonates after a delay, dealing spirit damage and applying immobilize.",
-        "icon": "/abilities/paige-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paige-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_blindinglight.png"
       },
       {
         "name": "Rallying Charge",
         "description": "Release a wave of spectral knights and steeds that charge across the entire city, healing allies and dealing spirit damage to enemies. The strength of the heal and spirit damage is amplified as the knights travel further.",
-        "icon": "/abilities/paige-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/paige-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bookworm/bookworm_charge.png"
       }
     ],
-    "portrait_url": "/portraits/paige.png",
-    "splash_url": "/splash/paige.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/paige.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/paige.jpg"
   },
   {
     "key": "the-doorman",
@@ -1638,30 +1638,30 @@
       {
         "name": "Call Bell",
         "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow.Can be shot to detonate early.",
-        "icon": "/abilities/the-doorman-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/the-doorman-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_bell.png"
       },
       {
         "name": "Doorway",
         "description": "Place two connected doors in the world. Players and most projectiles entering one door will exit out through the other.",
-        "icon": "/abilities/the-doorman-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/the-doorman-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_doorway.png"
       },
       {
         "name": "Luggage Cart",
         "description": "Send out a luggage Cart that deals spirit damage and pulls enemy heroes along its path. Can be alt cast with to target friendly heroes instead.",
-        "icon": "/abilities/the-doorman-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/the-doorman-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_luggagetrolley.png"
       },
       {
         "name": "Hotel Guest",
         "description": "Send the target's physical body to be a guest at the Baroness Hotel. The guest is to promptly make their way to the exit elevator, where they'll be sent back to their original position.",
-        "icon": "/abilities/the-doorman-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/the-doorman-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_elevator.png"
       }
     ],
-    "portrait_url": "/portraits/the-doorman.png",
-    "splash_url": "/splash/the-doorman.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/the-doorman.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/the-doorman.jpg"
   },
   {
     "key": "billy",
@@ -1690,30 +1690,30 @@
       {
         "name": "Bashdown",
         "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage.The slam creates a shockwave that deals spirit damage and applies knockup.",
-        "icon": "/abilities/billy-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/billy-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_sigilslam.png"
       },
       {
         "name": "Rising Ram",
         "description": "Charge head-first into an enemy and send them into the air along with Billy.Cooldown reduced by 50% on impact.",
-        "icon": "/abilities/billy-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/billy-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_risingram.png"
       },
       {
         "name": "Blasted",
         "description": "Passive: Melee hits restore ammo and inflict wrecked on the victim for 7.0s.",
-        "icon": "/abilities/billy-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/billy-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_blasted.png"
       },
       {
         "name": "Chain Gang",
         "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain.After a delay, yank everyone towards Billy and deal spirit damage.The chain breaks if you lose line of sight for a short while.",
-        "icon": "/abilities/billy-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/billy-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_chaingang.png"
       }
     ],
-    "portrait_url": "/portraits/billy.png",
-    "splash_url": "/splash/billy.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/billy.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/billy.jpg"
   },
   {
     "key": "graves",
@@ -1742,30 +1742,30 @@
       {
         "name": "Jar of Dead",
         "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead.Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
-        "icon": "/abilities/graves-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/graves-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_skull.png"
       },
       {
         "name": "Grasping Hands",
         "description": "Unearth a line of grasping hands, dealing spirit damage and applying immobilize to enemies when they pass through. Alt-Cast rotates the orientation of the wall.",
-        "icon": "/abilities/graves-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/graves-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_hands.png"
       },
       {
         "name": "Essence Theft",
         "description": "Your weapon steals weapon damage and spirit resist over time, up to a maximum amount per target.",
-        "icon": "/abilities/graves-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/graves-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_siphon.png"
       },
       {
         "name": "Borrowed Decree",
         "description": "Place a gravestone that summons shambling ghouls; they march toward enemies and explode for spirit damage, slowing any hero or objective they reach.",
-        "icon": "/abilities/graves-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/graves-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_gravestone.png"
       }
     ],
-    "portrait_url": "/portraits/graves.png",
-    "splash_url": "/splash/graves.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/graves.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/graves.jpg"
   },
   {
     "key": "apollo",
@@ -1794,30 +1794,30 @@
       {
         "name": "Disengaging Sigil",
         "description": "Draw a sigil sphere in front of you and then leap backwards as it explodes, damaging and slowing enemies caught in it.",
-        "icon": "/abilities/apollo-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/apollo-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_sigil.png"
       },
       {
         "name": "Riposte",
         "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable, before performing a dash forward that stuns an enemy and reduces their Melee Resist.Does not trigger against trooper or neutral damage.",
-        "icon": "/abilities/apollo-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/apollo-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_riposte.png"
       },
       {
         "name": "Flawless Advance",
         "description": "Perform a series of lunges in any direction, delivering piercing stabs ahead of you. Hold your ability key to time your attacks, dealing more damage the longer it's held.",
-        "icon": "/abilities/apollo-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/apollo-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_lungingstab.png"
       },
       {
         "name": "Itani Lo Sahn",
         "description": "Charge up and perform a long range slash. Struck enemies cannot take action or heal and are stuck in slow motion.",
-        "icon": "/abilities/apollo-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/apollo-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_ult.png"
       }
     ],
-    "portrait_url": "/portraits/apollo.png",
-    "splash_url": "/splash/apollo.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/apollo.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/apollo.jpg"
   },
   {
     "key": "rem",
@@ -1846,30 +1846,30 @@
       {
         "name": "Pillow Toss",
         "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback.Landing hits reduces the cooldown of your other abilities.",
-        "icon": "/abilities/rem-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/rem-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_pillow.png"
       },
       {
         "name": "Tag Along",
         "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration.Hop between allies with Ability 2 to refresh the duration, once per ally.You are knocked off if stunned by an ultimate ability.You can use items and all self-casts target your ally instead.",
-        "icon": "/abilities/rem-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/rem-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_tag_along.png"
       },
       {
         "name": "Lil Helpers",
         "description": "Signal a Helper to lend a hand. Follow a trooper: Provides healing, damage, resists, and allows tagging along.",
-        "icon": "/abilities/rem-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/rem-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_helpers.png"
       },
       {
         "name": "Naptime",
         "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities.When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
-        "icon": "/abilities/rem-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/rem-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_sleep.png"
       }
     ],
-    "portrait_url": "/portraits/rem.png",
-    "splash_url": "/splash/rem.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/rem.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/rem.jpg"
   },
   {
     "key": "silver",
@@ -1898,30 +1898,30 @@
       {
         "name": "Slam Fire",
         "description": "Instantly reload your gun. You gain bonus fire rate and deal bonus weapon damage based on the target's health for a limited number of shots, but suffer from reduced accuracy.",
-        "icon": "/abilities/silver-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/silver-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_slamfire.png"
       },
       {
         "name": "Boot Kick",
         "description": "Dash forward and kick the first enemy hit, dealing melee damage and marking them so your next shot detonates the mark for bonus spirit damage.",
-        "icon": "/abilities/silver-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/silver-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_jumpback.png"
       },
       {
         "name": "Entangling Bola",
         "description": "Throw a bola, dealing spirit damage, applying slow and preventing movement abilities, stamina, or jumping.",
-        "icon": "/abilities/silver-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/silver-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_bola.png"
       },
       {
         "name": "Lycan Curse",
         "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse.Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
-        "icon": "/abilities/silver-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/silver-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_lycancurse.png"
       }
     ],
-    "portrait_url": "/portraits/silver.png",
-    "splash_url": "/splash/silver.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/silver.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/silver.jpg"
   },
   {
     "key": "celeste",
@@ -1950,29 +1950,29 @@
       {
         "name": "Light Eater",
         "description": "Blast enemies in a cone in front of you with a flare of light. Blasted enemies take spirit damage when attacked by Celeste and provides her spirit lifesteal.",
-        "icon": "/abilities/celeste-signature1.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/celeste-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_flare.png"
       },
       {
         "name": "Dazzling Trick",
         "description": "Surround yourself in a protective prism. If the barrier is destroyed, it silences nearby enemies and deals a portion of the barrier as damage.",
-        "icon": "/abilities/celeste-signature2.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/celeste-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_shield.png"
       },
       {
         "name": "Radiant Daggers",
         "description": "Call down a beam of light from the sky. After a short duration, the beam will fully form, causing an explosion that deals spirit damage to all targets in the area.",
-        "icon": "/abilities/celeste-signature3.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/celeste-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_luminousflux.png"
       },
       {
         "name": "Shining Wonder",
         "description": "Launch a deadly orb of light that deals spirit damage and applies slow and reduces Dash Distance on impact. The orb then bounces to the enemies within range.",
-        "icon": "/abilities/celeste-signature4.png",
+        "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/abilities/celeste-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/unicorn/unicorn_orb.png"
       }
     ],
-    "portrait_url": "/portraits/celeste.png",
-    "splash_url": "/splash/celeste.jpg"
+    "portrait_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/portraits/celeste.png",
+    "splash_url": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/splash/celeste.jpg"
   }
 ]

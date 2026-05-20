@@ -13,6 +13,7 @@ import { writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import sharp from "sharp";
+import { cdn } from "./_cdn.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const BANNERS_OUT = resolve(__dirname, "..", "public", "banners");
@@ -100,7 +101,7 @@ async function main() {
         key,
         label: h.name,
         sublabel: "Hero scene",
-        file: `/banners/heroes/${key}.jpg`,
+        file: cdn(`/banners/heroes/${key}.jpg`),
       });
       console.log("ok");
     } catch (e) {

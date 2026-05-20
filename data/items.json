@@ -5,7 +5,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/close-quarters.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/close-quarters.webp",
     "description": "Close Quarters is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Close_Quarters"
   },
@@ -15,7 +15,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extended-magazine.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extended-magazine.webp",
     "description": "Extended Magazine is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extended_Magazine"
   },
@@ -25,7 +25,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/headshot-booster.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/headshot-booster.webp",
     "description": "Headshot Booster is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Headshot_Booster"
   },
@@ -35,7 +35,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/high-velocity-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/high-velocity-rounds.webp",
     "description": "High-Velocity Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/High-Velocity_Rounds"
   },
@@ -45,7 +45,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/monster-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/monster-rounds.webp",
     "description": "Monster Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Monster_Rounds"
   },
@@ -55,7 +55,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/rapid-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/rapid-rounds.webp",
     "description": "Rapid Rounds is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Rapid_Rounds"
   },
@@ -65,7 +65,7 @@
     "slot": "weapon",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/restorative-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/restorative-shot.webp",
     "description": "Restorative Shot is a Tier 1  Weapon Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Restorative_Shot"
   },
@@ -75,7 +75,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/active-reload.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/active-reload.webp",
     "description": "Active Reload is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Active_Reload"
   },
@@ -85,7 +85,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/fleetfoot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/fleetfoot.webp",
     "description": "Fleetfoot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Fleetfoot"
   },
@@ -95,7 +95,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/intensifying-magazine.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/intensifying-magazine.webp",
     "description": "Intensifying Magazine is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Intensifying_Magazine"
   },
@@ -105,7 +105,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/kinetic-dash.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/kinetic-dash.webp",
     "description": "Kinetic Dash is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Extra Stamina, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Kinetic_Dash"
   },
@@ -115,7 +115,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/long-range.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/long-range.webp",
     "description": "Long Range is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Long_Range"
   },
@@ -125,7 +125,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/melee-charge.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/melee-charge.webp",
     "description": "Melee Charge is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Melee_Charge"
   },
@@ -135,7 +135,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/mystic-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-shot.webp",
     "description": "Mystic Shot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Shot"
   },
@@ -145,7 +145,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/opening-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/opening-rounds.webp",
     "description": "Opening Rounds is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Opening_Rounds"
   },
@@ -155,7 +155,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/recharging-rush.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/recharging-rush.webp",
     "description": "Recharging Rush is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Recharging_Rush"
   },
@@ -165,7 +165,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/slowing-bullets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/slowing-bullets.webp",
     "description": "Slowing Bullets is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Slowing_Bullets"
   },
@@ -175,7 +175,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/spirit-shredder-bullets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-shredder-bullets.webp",
     "description": "Spirit Shredder Bullets is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Shredder_Bullets"
   },
@@ -185,7 +185,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/split-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/split-shot.webp",
     "description": "Split Shot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Split_Shot"
   },
@@ -195,7 +195,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/stalker.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/stalker.webp",
     "description": "Stalker is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Stalker"
   },
@@ -205,7 +205,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/swift-striker.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/swift-striker.webp",
     "description": "Swift Striker is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Rapid Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Swift_Striker"
   },
@@ -215,7 +215,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/titanic-magazine.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/titanic-magazine.webp",
     "description": "Titanic Magazine is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600. Its component,  Extended Magazine, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Titanic_Magazine"
   },
@@ -225,7 +225,7 @@
     "slot": "weapon",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/weakening-headshot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/weakening-headshot.webp",
     "description": "Weakening Headshot is a Tier 2  Weapon Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Weakening_Headshot"
   },
@@ -235,7 +235,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/alchemical-fire.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/alchemical-fire.webp",
     "description": "Alchemical Fire is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Alchemical_Fire"
   },
@@ -245,7 +245,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/ballistic-enchantment.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/ballistic-enchantment.webp",
     "description": "Ballistic Enchantment is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Ballistic_Enchantment"
   },
@@ -255,7 +255,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/berserker.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/berserker.webp",
     "description": "Berserker is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Berserker"
   },
@@ -265,7 +265,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/blood-tribute.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/blood-tribute.webp",
     "description": "Blood Tribute is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Blood_Tribute"
   },
@@ -275,7 +275,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/burst-fire.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/burst-fire.webp",
     "description": "Burst Fire is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Rapid Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Burst_Fire"
   },
@@ -285,7 +285,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/cultist-sacrifice.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/cultist-sacrifice.webp",
     "description": "Cultist Sacrifice is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Monster Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Cultist_Sacrifice"
   },
@@ -295,7 +295,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/escalating-resilience.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/escalating-resilience.webp",
     "description": "Escalating Resilience is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Extended Magazine, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Escalating_Resilience"
   },
@@ -305,7 +305,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/express-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/express-shot.webp",
     "description": "Express Shot is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Express_Shot"
   },
@@ -315,7 +315,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/headhunter.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/headhunter.webp",
     "description": "Headhunter is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Headshot Booster, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Headhunter"
   },
@@ -325,7 +325,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/heroic-aura.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/heroic-aura.webp",
     "description": "Heroic Aura is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Heroic_Aura"
   },
@@ -335,7 +335,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/hollow-point.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/hollow-point.webp",
     "description": "Hollow Point is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Hollow_Point"
   },
@@ -345,7 +345,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/hunters-aura.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/hunters-aura.webp",
     "description": "Hunter's Aura is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Hunter%27s_Aura"
   },
@@ -355,7 +355,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/point-blank.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/point-blank.webp",
     "description": "Point Blank is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Close Quarters, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Point_Blank"
   },
@@ -365,7 +365,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/shadow-weave.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/shadow-weave.webp",
     "description": "Shadow Weave is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Shadow_Weave"
   },
@@ -375,7 +375,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/sharpshooter.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/sharpshooter.webp",
     "description": "Sharpshooter is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Long Range, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Sharpshooter"
   },
@@ -385,7 +385,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/spirit-rend.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-rend.webp",
     "description": "Spirit Rend is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Spirit Shredder Bullets, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Rend"
   },
@@ -395,7 +395,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/tesla-bullets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/tesla-bullets.webp",
     "description": "Tesla Bullets is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Tesla_Bullets"
   },
@@ -405,7 +405,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/toxic-bullets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/toxic-bullets.webp",
     "description": "Toxic Bullets is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Toxic_Bullets"
   },
@@ -415,7 +415,7 @@
     "slot": "weapon",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/weighted-shots.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/weighted-shots.webp",
     "description": "Weighted Shots is a Tier 3  Weapon Item that can be purchased from the Shop for  3,200. Its component,  Slowing Bullets, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Weighted_Shots"
   },
@@ -425,7 +425,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/armor-piercing-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/armor-piercing-rounds.webp",
     "description": "Armor Piercing Rounds is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  High-Velocity Rounds, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Armor_Piercing_Rounds"
   },
@@ -435,7 +435,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/capacitor.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/capacitor.webp",
     "description": "Capacitor is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Tesla Bullets, makes up  3,200 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Capacitor"
   },
@@ -445,7 +445,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/crippling-headshot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/crippling-headshot.webp",
     "description": "Crippling Headshot is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Weakening Headshot, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Crippling_Headshot"
   },
@@ -455,7 +455,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/crushing-fists.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/crushing-fists.webp",
     "description": "Crushing Fists is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400. Its component,  Melee Charge, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Crushing_Fists"
   },
@@ -465,7 +465,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/frenzy.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/frenzy.webp",
     "description": "Frenzy is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Frenzy"
   },
@@ -475,7 +475,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/glass-cannon.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/glass-cannon.webp",
     "description": "Glass Cannon is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Glass_Cannon"
   },
@@ -485,7 +485,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/lucky-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/lucky-shot.webp",
     "description": "Lucky Shot is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Lucky_Shot"
   },
@@ -495,7 +495,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/ricochet.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/ricochet.webp",
     "description": "Ricochet is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Ricochet"
   },
@@ -505,7 +505,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/silencer.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/silencer.webp",
     "description": "Silencer is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Silencer"
   },
@@ -515,7 +515,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/spellslinger.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spellslinger.webp",
     "description": "Spellslinger is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Spellslinger"
   },
@@ -525,7 +525,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/spiritual-overflow.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spiritual-overflow.webp",
     "description": "Spiritual Overflow is a Tier 4  Weapon Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Spiritual_Overflow"
   },
@@ -535,7 +535,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/haunting-shot.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/haunting-shot.webp",
     "description": "Haunting Shot is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Haunting_Shot"
   },
@@ -545,7 +545,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/infinite-rounds.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/infinite-rounds.webp",
     "description": "Infinite Rounds is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Infinite_Rounds"
   },
@@ -555,7 +555,7 @@
     "slot": "weapon",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/runed-gauntlets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/runed-gauntlets.webp",
     "description": "Runed Gauntlets is a Legendary  Weapon Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Runed_Gauntlets"
   },
@@ -565,7 +565,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extra-health.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extra-health.webp",
     "description": "Extra Health is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extra_Health"
   },
@@ -575,7 +575,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extra-regen.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extra-regen.webp",
     "description": "Extra Regen is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extra_Regen"
   },
@@ -585,7 +585,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extra-stamina.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extra-stamina.webp",
     "description": "Extra Stamina is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extra_Stamina"
   },
@@ -595,7 +595,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/healing-rite.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/healing-rite.webp",
     "description": "Healing Rite is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Healing_Rite"
   },
@@ -605,7 +605,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/melee-lifesteal.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/melee-lifesteal.webp",
     "description": "Melee Lifesteal is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Melee_Lifesteal"
   },
@@ -615,7 +615,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/rebuttal.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/rebuttal.webp",
     "description": "Rebuttal is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Rebuttal"
   },
@@ -625,7 +625,7 @@
     "slot": "vitality",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/sprint-boots.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/sprint-boots.webp",
     "description": "Sprint Boots is a Tier 1  Vitality Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Sprint_Boots"
   },
@@ -635,7 +635,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/battle-vest.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/battle-vest.webp",
     "description": "Battle Vest is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Battle_Vest"
   },
@@ -645,7 +645,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/bullet-lifesteal.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/bullet-lifesteal.webp",
     "description": "Bullet Lifesteal may refer to:",
     "wikiUrl": "https://deadlock.wiki/Bullet_Lifesteal"
   },
@@ -655,7 +655,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/debuff-reducer.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/debuff-reducer.webp",
     "description": "Debuff Reducer is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Debuff_Reducer"
   },
@@ -665,7 +665,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/enchanters-emblem.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/enchanters-emblem.webp",
     "description": "Enchanter's Emblem is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Enchanter%27s_Emblem"
   },
@@ -675,7 +675,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/enduring-speed.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/enduring-speed.webp",
     "description": "Enduring Speed is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Sprint Boots, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Enduring_Speed"
   },
@@ -685,7 +685,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/guardian-ward.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/guardian-ward.webp",
     "description": "Guardian Ward is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Guardian_Ward"
   },
@@ -695,7 +695,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/healbane.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/healbane.webp",
     "description": "Healbane is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Healbane"
   },
@@ -705,7 +705,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/healing-booster.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/healing-booster.webp",
     "description": "Healing Booster is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Extra Regen, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Healing_Booster"
   },
@@ -715,7 +715,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/reactive-barrier.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/reactive-barrier.webp",
     "description": "Reactive Barrier is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Reactive_Barrier"
   },
@@ -725,7 +725,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/restorative-locket.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/restorative-locket.webp",
     "description": "Restorative Locket is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Restorative_Locket"
   },
@@ -735,7 +735,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/return-fire.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/return-fire.webp",
     "description": "Return Fire is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Return_Fire"
   },
@@ -745,7 +745,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/spirit-lifesteal.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-lifesteal.webp",
     "description": "Spirit Lifesteal may refer to:",
     "wikiUrl": "https://deadlock.wiki/Spirit_Lifesteal"
   },
@@ -755,7 +755,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/spirit-shielding.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-shielding.webp",
     "description": "Spirit Shielding is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Shielding"
   },
@@ -765,7 +765,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/trophy-collector.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/trophy-collector.webp",
     "description": "Trophy Collector is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600. Its component,  Sprint Boots, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Trophy_Collector"
   },
@@ -775,7 +775,7 @@
     "slot": "vitality",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/weapon-shielding.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/weapon-shielding.webp",
     "description": "Weapon Shielding is a Tier 2  Vitality Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Weapon_Shielding"
   },
@@ -785,7 +785,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/bullet-resilience.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/bullet-resilience.webp",
     "description": "Bullet Resilience is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Bullet_Resilience"
   },
@@ -795,7 +795,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/counterspell.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/counterspell.webp",
     "description": "Counterspell is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Counterspell"
   },
@@ -805,7 +805,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/dispel-magic.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/dispel-magic.webp",
     "description": "Dispel Magic is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Dispel_Magic"
   },
@@ -815,7 +815,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/fortitude.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/fortitude.webp",
     "description": "Fortitude is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Extra Health, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Fortitude"
   },
@@ -825,7 +825,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/fury-trance.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/fury-trance.webp",
     "description": "Fury Trance is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Bullet Lifesteal, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Fury_Trance"
   },
@@ -835,7 +835,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/healing-nova.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/healing-nova.webp",
     "description": "Healing Nova is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Healing Rite, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Healing_Nova"
   },
@@ -845,7 +845,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/lifestrike.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/lifestrike.webp",
     "description": "Lifestrike is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Melee Lifesteal, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Lifestrike"
   },
@@ -855,7 +855,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/majestic-leap.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/majestic-leap.webp",
     "description": "Majestic Leap is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Majestic_Leap"
   },
@@ -865,7 +865,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/metal-skin.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/metal-skin.webp",
     "description": "Metal Skin is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Metal_Skin"
   },
@@ -875,7 +875,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/rescue-beam.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/rescue-beam.webp",
     "description": "Rescue Beam is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Healing Rite, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Rescue_Beam"
   },
@@ -885,7 +885,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/spirit-resilience.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-resilience.webp",
     "description": "Spirit Resilience is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Resilience"
   },
@@ -895,7 +895,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/stamina-mastery.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/stamina-mastery.webp",
     "description": "Stamina Mastery is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Extra Stamina, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Stamina_Mastery"
   },
@@ -905,7 +905,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/veil-walker.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/veil-walker.webp",
     "description": "Veil Walker is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200. Its component,  Sprint Boots, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Veil_Walker"
   },
@@ -915,7 +915,7 @@
     "slot": "vitality",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/warp-stone.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/warp-stone.webp",
     "description": "Warp Stone is a Tier 3  Vitality Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Warp_Stone"
   },
@@ -925,7 +925,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/cheat-death.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/cheat-death.webp",
     "description": "Cheat Death is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Cheat_Death"
   },
@@ -935,7 +935,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/colossus.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/colossus.webp",
     "description": "Colossus is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Extra Health, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Colossus"
   },
@@ -945,7 +945,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/divine-barrier.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/divine-barrier.webp",
     "description": "Divine Barrier is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Guardian Ward, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Divine_Barrier"
   },
@@ -955,7 +955,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/diviners-kevlar.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/diviners-kevlar.webp",
     "description": "Diviner's Kevlar is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Diviner%27s_Kevlar"
   },
@@ -965,7 +965,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/healing-tempo.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/healing-tempo.webp",
     "description": "Healing Tempo is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Healing Booster, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Healing_Tempo"
   },
@@ -975,7 +975,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/indomitable.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/indomitable.webp",
     "description": "Indomitable is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Reactive Barrier, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Indomitable"
   },
@@ -985,7 +985,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/infuser.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/infuser.webp",
     "description": "Infuser is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Spirit Lifesteal, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Infuser"
   },
@@ -995,7 +995,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/inhibitor.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/inhibitor.webp",
     "description": "Inhibitor is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Inhibitor"
   },
@@ -1005,7 +1005,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/juggernaut.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/juggernaut.webp",
     "description": "Juggernaut is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Enduring Speed, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Juggernaut"
   },
@@ -1015,7 +1015,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/leech.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/leech.webp",
     "description": "Leech is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Purchasing one of its components,  Bullet Lifesteal or  Spirit Lifesteal, discounts the cost by  1,600.",
     "wikiUrl": "https://deadlock.wiki/Leech"
   },
@@ -1025,7 +1025,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/phantom-strike.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/phantom-strike.webp",
     "description": "Phantom Strike is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Phantom_Strike"
   },
@@ -1035,7 +1035,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/plated-armor.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/plated-armor.webp",
     "description": "Plated Armor is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Plated_Armor"
   },
@@ -1045,7 +1045,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/siphon-bullets.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/siphon-bullets.webp",
     "description": "Siphon Bullets is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Siphon_Bullets"
   },
@@ -1055,7 +1055,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/spellbreaker.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spellbreaker.webp",
     "description": "Spellbreaker is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Debuff Reducer, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Spellbreaker"
   },
@@ -1065,7 +1065,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/unstoppable.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/unstoppable.webp",
     "description": "Unstoppable is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Debuff Reducer, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Unstoppable"
   },
@@ -1075,7 +1075,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/vampiric-burst.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/vampiric-burst.webp",
     "description": "Vampiric Burst is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400. Its component,  Bullet Lifesteal, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Vampiric_Burst"
   },
@@ -1085,7 +1085,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/witchmail.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/witchmail.webp",
     "description": "Witchmail is a Tier 4  Vitality Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Witchmail"
   },
@@ -1095,7 +1095,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/celestial-blessing.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/celestial-blessing.webp",
     "description": "Celestial Blessing is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Celestial_Blessing"
   },
@@ -1105,7 +1105,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/cloak-of-opportunity.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/cloak-of-opportunity.webp",
     "description": "Cloak of Opportunity is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Cloak_of_Opportunity"
   },
@@ -1115,7 +1115,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/electric-slippers.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/electric-slippers.webp",
     "description": "Electric Slippers is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Electric_Slippers"
   },
@@ -1125,7 +1125,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/eternal-gift.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/eternal-gift.webp",
     "description": "Eternal Gift is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Eternal_Gift"
   },
@@ -1135,7 +1135,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/nullification-burst.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/nullification-burst.webp",
     "description": "Nullification Burst is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Nullification_Burst"
   },
@@ -1145,7 +1145,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/seraphim-wings.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/seraphim-wings.webp",
     "description": "Seraphim Wings is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Seraphim_Wings"
   },
@@ -1155,7 +1155,7 @@
     "slot": "vitality",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/shadow-strike.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/shadow-strike.webp",
     "description": "Shadow Strike is a Legendary  Vitality Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Shadow_Strike"
   },
@@ -1165,7 +1165,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extra-charge.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extra-charge.webp",
     "description": "Extra Charge is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extra_Charge"
   },
@@ -1175,7 +1175,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/extra-spirit.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/extra-spirit.webp",
     "description": "Extra Spirit is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Extra_Spirit"
   },
@@ -1185,7 +1185,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/golden-goose-egg.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/golden-goose-egg.webp",
     "description": "Golden Goose Egg is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Golden_Goose_Egg"
   },
@@ -1195,7 +1195,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/mystic-burst.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-burst.webp",
     "description": "Mystic Burst is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Burst"
   },
@@ -1205,7 +1205,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/mystic-expansion.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-expansion.webp",
     "description": "Mystic Expansion is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Expansion"
   },
@@ -1215,7 +1215,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/mystic-regeneration.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-regeneration.webp",
     "description": "Mystic Regeneration is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Regeneration"
   },
@@ -1225,7 +1225,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/rusted-barrel.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/rusted-barrel.webp",
     "description": "Rusted Barrel is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Rusted_Barrel"
   },
@@ -1235,7 +1235,7 @@
     "slot": "spirit",
     "tier": 1,
     "cost": 800,
-    "icon": "/items/spirit-strike.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-strike.webp",
     "description": "Spirit Strike is a Tier 1  Spirit Item that can be purchased from the Shop for  800.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Strike"
   },
@@ -1245,7 +1245,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/arcane-surge.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/arcane-surge.webp",
     "description": "Arcane Surge is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600. Its component,  Extra Stamina, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Arcane_Surge"
   },
@@ -1255,7 +1255,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/bullet-resist-shredder.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/bullet-resist-shredder.webp",
     "description": "Bullet Resist Shredder is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Bullet_Resist_Shredder"
   },
@@ -1265,7 +1265,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/cold-front.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/cold-front.webp",
     "description": "Cold Front is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Cold_Front"
   },
@@ -1275,7 +1275,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/compress-cooldown.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/compress-cooldown.webp",
     "description": "Compress Cooldown is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Compress_Cooldown"
   },
@@ -1285,7 +1285,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/duration-extender.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/duration-extender.webp",
     "description": "Duration Extender is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Duration_Extender"
   },
@@ -1295,7 +1295,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/improved-spirit.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/improved-spirit.webp",
     "description": "Improved Spirit is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600. Its component,  Extra Spirit, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Improved_Spirit"
   },
@@ -1305,7 +1305,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/mystic-slow.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-slow.webp",
     "description": "Mystic Slow is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Slow"
   },
@@ -1315,7 +1315,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/mystic-vulnerability.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-vulnerability.webp",
     "description": "Mystic Vulnerability is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Vulnerability"
   },
@@ -1325,7 +1325,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/quicksilver-reload.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/quicksilver-reload.webp",
     "description": "Quicksilver Reload is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Quicksilver_Reload"
   },
@@ -1335,7 +1335,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/slowing-hex.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/slowing-hex.webp",
     "description": "Slowing Hex is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Slowing_Hex"
   },
@@ -1345,7 +1345,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/spirit-sap.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-sap.webp",
     "description": "Spirit Sap is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Sap"
   },
@@ -1355,7 +1355,7 @@
     "slot": "spirit",
     "tier": 2,
     "cost": 1600,
-    "icon": "/items/suppressor.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/suppressor.webp",
     "description": "Suppressor is a Tier 2  Spirit Item that can be purchased from the Shop for  1,600.",
     "wikiUrl": "https://deadlock.wiki/Suppressor"
   },
@@ -1365,7 +1365,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/decay.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/decay.webp",
     "description": "Decay is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Decay"
   },
@@ -1375,7 +1375,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/disarming-hex.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/disarming-hex.webp",
     "description": "Disarming Hex is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Rusted Barrel, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Disarming_Hex"
   },
@@ -1385,7 +1385,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/greater-expansion.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/greater-expansion.webp",
     "description": "Greater Expansion is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Expansion, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Greater_Expansion"
   },
@@ -1395,7 +1395,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/knockdown.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/knockdown.webp",
     "description": "Knockdown is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Knockdown"
   },
@@ -1405,7 +1405,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/radiant-regeneration.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/radiant-regeneration.webp",
     "description": "Radiant Regeneration is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Regeneration, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Radiant_Regeneration"
   },
@@ -1415,7 +1415,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/rapid-recharge.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/rapid-recharge.webp",
     "description": "Rapid Recharge is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Extra Charge, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Rapid_Recharge"
   },
@@ -1425,7 +1425,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/silence-wave.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/silence-wave.webp",
     "description": "Silence Wave is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Silence_Wave"
   },
@@ -1435,7 +1435,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/spirit-snatch.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-snatch.webp",
     "description": "Spirit Snatch is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Spirit Strike, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Snatch"
   },
@@ -1445,7 +1445,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/superior-cooldown.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/superior-cooldown.webp",
     "description": "Superior Cooldown is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Compress Cooldown, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Superior_Cooldown"
   },
@@ -1455,7 +1455,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/superior-duration.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/superior-duration.webp",
     "description": "Superior Duration is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Duration Extender, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Superior_Duration"
   },
@@ -1465,7 +1465,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/surge-of-power.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/surge-of-power.webp",
     "description": "Surge of Power is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Extra Spirit, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Surge_of_Power"
   },
@@ -1475,7 +1475,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/tankbuster.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/tankbuster.webp",
     "description": "Tankbuster is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200. Its component,  Mystic Burst, makes up  800 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Tankbuster"
   },
@@ -1485,7 +1485,7 @@
     "slot": "spirit",
     "tier": 3,
     "cost": 3200,
-    "icon": "/items/torment-pulse.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/torment-pulse.webp",
     "description": "Torment Pulse is a Tier 3  Spirit Item that can be purchased from the Shop for  3,200.",
     "wikiUrl": "https://deadlock.wiki/Torment_Pulse"
   },
@@ -1495,7 +1495,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/arctic-blast.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/arctic-blast.webp",
     "description": "Arctic Blast is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Cold Front, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Arctic_Blast"
   },
@@ -1505,7 +1505,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/boundless-spirit.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/boundless-spirit.webp",
     "description": "Boundless Spirit is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Improved Spirit, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Boundless_Spirit"
   },
@@ -1515,7 +1515,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/cursed-relic.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/cursed-relic.webp",
     "description": "Cursed Relic is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Cursed_Relic"
   },
@@ -1525,7 +1525,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/echo-shard.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/echo-shard.webp",
     "description": "Echo Shard is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Echo_Shard"
   },
@@ -1535,7 +1535,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/escalating-exposure.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/escalating-exposure.webp",
     "description": "Escalating Exposure is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Mystic Vulnerability, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Escalating_Exposure"
   },
@@ -1545,7 +1545,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/ethereal-shift.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/ethereal-shift.webp",
     "description": "Ethereal Shift is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Ethereal_Shift"
   },
@@ -1555,7 +1555,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/focus-lens.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/focus-lens.webp",
     "description": "Focus Lens is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Spirit Sap, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Focus_Lens"
   },
@@ -1565,7 +1565,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/lightning-scroll.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/lightning-scroll.webp",
     "description": "Lightning Scroll is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Mystic Slow, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Lightning_Scroll"
   },
@@ -1575,7 +1575,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/magic-carpet.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/magic-carpet.webp",
     "description": "Magic Carpet is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Magic_Carpet"
   },
@@ -1585,7 +1585,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/mercurial-magnum.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mercurial-magnum.webp",
     "description": "Mercurial Magnum is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Quicksilver Reload, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Mercurial_Magnum"
   },
@@ -1595,7 +1595,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/mystic-reverb.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-reverb.webp",
     "description": "Mystic Reverb is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Reverb"
   },
@@ -1605,7 +1605,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/refresher.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/refresher.webp",
     "description": "Refresher is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Refresher"
   },
@@ -1615,7 +1615,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/scourge.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/scourge.webp",
     "description": "Scourge is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Scourge"
   },
@@ -1625,7 +1625,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/spirit-burn.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/spirit-burn.webp",
     "description": "Spirit Burn is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400.",
     "wikiUrl": "https://deadlock.wiki/Spirit_Burn"
   },
@@ -1635,7 +1635,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/transcendent-cooldown.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/transcendent-cooldown.webp",
     "description": "Transcendent Cooldown is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Superior Cooldown, makes up  3,200 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Transcendent_Cooldown"
   },
@@ -1645,7 +1645,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/vortex-web.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/vortex-web.webp",
     "description": "Vortex Web is a Tier 4  Spirit Item that can be purchased from the Shop for  6,400. Its component,  Slowing Hex, makes up  1,600 of the cost.",
     "wikiUrl": "https://deadlock.wiki/Vortex_Web"
   },
@@ -1655,7 +1655,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/frostbite-charm.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/frostbite-charm.webp",
     "description": "Frostbite Charm is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Frostbite_Charm"
   },
@@ -1665,7 +1665,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/mystic-conduit.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystic-conduit.webp",
     "description": "Mystic Conduit is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Mystic_Conduit"
   },
@@ -1675,7 +1675,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/mystical-piano.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/mystical-piano.webp",
     "description": "Mystical Piano is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Mystical_Piano"
   },
@@ -1685,7 +1685,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/omnicharge-signet.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/omnicharge-signet.webp",
     "description": "Omnicharge Signet is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Omnicharge_Signet"
   },
@@ -1695,7 +1695,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/prism-blast.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/prism-blast.webp",
     "description": "Prism Blast is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Prism_Blast"
   },
@@ -1705,7 +1705,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/shrink-ray.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/shrink-ray.webp",
     "description": "Shrink Ray is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Shrink_Ray"
   },
@@ -1715,7 +1715,7 @@
     "slot": "spirit",
     "tier": 4,
     "cost": 6400,
-    "icon": "/items/unstable-concoction.webp",
+    "icon": "https://pub-12c86ce9cfb04c0e8fdd49b26ef4daaa.r2.dev/items/unstable-concoction.webp",
     "description": "Unstable Concoction is a Legendary  Spirit Item that can only be obtained in Street Brawl.",
     "wikiUrl": "https://deadlock.wiki/Unstable_Concoction"
   }

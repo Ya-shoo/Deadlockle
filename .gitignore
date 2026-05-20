@@ -46,3 +46,15 @@ next-env.d.ts
 
 # whisper model binaries (downloaded on demand by build-conversation-audio)
 /scripts/whisper-models/
+
+# R2-hosted asset trees. Source of truth lives in the dailydles bucket
+# (shared with OWdle, disjoint key prefixes); local copies are scratch
+# space for the build scripts that generate / probe them. Re-upload with
+# `npm run r2:upload` whenever the local files change.
+/public/voicelines/
+/public/banners/
+/public/portraits/
+/public/splash/
+/public/abilities/
+/public/items/
+/public/mugshots/

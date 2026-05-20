@@ -25,6 +25,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { spawn } from "node:child_process";
 import ffmpegPath from "ffmpeg-static";
+import { cdn } from "./_cdn.mjs";
 import {
   buildStandardizedCentroid,
   computeStandardization,
@@ -954,7 +955,7 @@ async function main() {
       }));
       manifest.push({
         speakers: c.speakers,
-        audio: `/voicelines/conversations/${localName}`,
+        audio: cdn(`/voicelines/conversations/${localName}`),
         bytes: finalSize,
         lines: linesWithAudio,
       });

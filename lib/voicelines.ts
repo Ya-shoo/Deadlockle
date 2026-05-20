@@ -7,7 +7,7 @@ import data from "@/data/voicelines.json";
 
 export type VoiceClip = {
   file: string;       // basename, e.g. "select-01.mp3"
-  url: string;        // path under /public, e.g. "/voicelines/infernus/select-01.mp3"
+  url: string;        // absolute R2 pub URL, e.g. "https://pub-…r2.dev/voicelines/infernus/select-01.mp3"
   transcript: string; // what the hero says in the clip — used for a11y label only
   bytes: number;
 };

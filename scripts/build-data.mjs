@@ -16,6 +16,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import sharp from "sharp";
 import smartcrop from "smartcrop-sharp";
+import { cdn } from "./_cdn.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HEROES_OUT = resolve(__dirname, "..", "data", "heroes.json");
@@ -197,7 +198,7 @@ async function smartcropToJpg(srcUrl, outDir, key, size = SPLASH_SIZE) {
       .resize(size, size, { fit: "cover" })
       .jpeg({ quality: SPLASH_QUALITY })
       .toFile(resolve(outDir, `${key}.jpg`));
-    return `/${outDir.split("/").slice(-1)[0]}/${key}.jpg`;
+    return cdn(`/${outDir.split("/").slice(-1)[0]}/${key}.jpg`);
   } catch (e) {
     console.log(`[crop failed for ${key}: ${e.message}]`);
     return null;
@@ -215,7 +216,7 @@ async function downloadIcon(srcUrl, outDir, key) {
       .resize(256, 256, { fit: "inside" })
       .png({ compressionLevel: 9 })
       .toFile(resolve(outDir, `${key}.png`));
-    return `/${outDir.split("/").slice(-1)[0]}/${key}.png`;
+    return cdn(`/${outDir.split("/").slice(-1)[0]}/${key}.png`);
   } catch (e) {
     console.log(`[icon failed for ${key}: ${e.message}]`);
     return null;
