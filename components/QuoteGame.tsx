@@ -1,10 +1,11 @@
 "use client";
 
 // Quote mode plays as a "Conversation" puzzle: a multi-turn pre-match
-// exchange between two heroes, with each speaker guessed in their OWN
-// dedicated combobox. Guesses go into a unified history at the bottom,
-// each tagged with which speaker they were targeting and showing
-// attribute tiles vs that speaker.
+// exchange between two heroes. The player picks which speaker to guess via
+// a segmented toggle, then enters a hero in a single combobox. The toggle
+// auto-jumps to the unsolved speaker after a correct guess. Guesses go
+// into a unified history at the bottom, each tagged with which speaker
+// they were targeting and showing attribute tiles vs that speaker.
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -28,6 +29,9 @@ import clsx from "clsx";
 export function QuoteGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ConversationState | null>(null);
+  // Which speaker the toggle is pointed at when *both* are still unsolved.
+  // Once one is solved, `activeTarget` is forced to the unsolved one.
+  const [chosenTarget, setChosenTarget] = useState<0 | 1>(0);
 
   useEffect(() => {
     const d = dayString();
@@ -80,6 +84,8 @@ export function QuoteGame() {
     state.guesses.filter((g) => g.target === 1).map((g) => g.heroKey),
   );
 
+  const activeTarget: 0 | 1 = aRevealed ? 1 : bRevealed ? 0 : chosenTarget;
+
   // Reveal one line at a time. Start with line 1 visible plus two
   // redacted-preview lines (so the player can see there's more dialogue
   // coming). Each guess unlocks the next line and pushes the preview
@@ -128,8 +134,9 @@ export function QuoteGame() {
             Quote
           </h1>
           <p className="mt-3 max-w-md text-ink-soft">
-            A pre-match exchange between two heroes. Guess each speaker in
-            their own field. More dialogue reveals as you go.
+            A pre-match exchange between two heroes. Pick which speaker
+            you&apos;re guessing, then enter a hero. More dialogue reveals as
+            you go.
           </p>
         </div>
         <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
@@ -150,22 +157,24 @@ export function QuoteGame() {
       </div>
 
       {!won && (
-        <div className="mb-6 grid gap-4 md:grid-cols-2">
-          <SpeakerField
-            label="Speaker A"
-            tone="info"
-            revealed={aRevealed}
-            speakerHero={speakerA}
-            excluded={excludedA}
-            onGuess={(hero) => handleGuess(hero, 0)}
+        <div className="mb-6 space-y-3">
+          <SpeakerToggle
+            activeTarget={activeTarget}
+            aRevealed={aRevealed}
+            bRevealed={bRevealed}
+            speakerA={speakerA}
+            speakerB={speakerB}
+            onSelect={setChosenTarget}
           />
-          <SpeakerField
-            label="Speaker B"
-            tone="accent-soft"
-            revealed={bRevealed}
-            speakerHero={speakerB}
-            excluded={excludedB}
-            onGuess={(hero) => handleGuess(hero, 1)}
+          <HeroCombobox
+            heroes={HEROES}
+            excludeKeys={activeTarget === 0 ? excludedA : excludedB}
+            onSelect={(hero) => handleGuess(hero, activeTarget)}
+            placeholder={
+              activeTarget === 0
+                ? "Guess Speaker A — enter a hero…"
+                : "Guess Speaker B — enter a hero…"
+            }
           />
         </div>
       )}
@@ -250,8 +259,8 @@ export function QuoteGame() {
       {state.guesses.length === 0 && (
         <div className="mt-10 rounded-(--radius-card) border border-dashed border-line bg-inset/40 p-8 text-center">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink-faint">
-            Pick a hero in either field to start. Each guess reveals more
-            dialogue.
+            Pick which speaker you&apos;re guessing, then enter a hero. Each
+            guess reveals more dialogue.
           </p>
         </div>
       )}
@@ -259,56 +268,103 @@ export function QuoteGame() {
   );
 }
 
-function SpeakerField({
-  label,
-  tone,
-  revealed,
-  speakerHero,
-  excluded,
-  onGuess,
+function SpeakerToggle({
+  activeTarget,
+  aRevealed,
+  bRevealed,
+  speakerA,
+  speakerB,
+  onSelect,
 }: {
-  label: string;
-  tone: "info" | "accent-soft";
-  revealed: boolean;
-  speakerHero: Hero;
-  excluded: Set<string>;
-  onGuess: (hero: Hero) => void;
+  activeTarget: 0 | 1;
+  aRevealed: boolean;
+  bRevealed: boolean;
+  speakerA: Hero;
+  speakerB: Hero;
+  onSelect: (target: 0 | 1) => void;
 }) {
-  const toneClass = tone === "info" ? "text-info" : "text-accent-soft";
+  return (
+    <div
+      role="tablist"
+      aria-label="Choose which speaker to guess"
+      className="grid grid-cols-2 gap-1 rounded-(--radius-card) border border-line bg-inset/60 p-1"
+    >
+      <SpeakerSegment
+        target={0}
+        active={activeTarget === 0}
+        revealed={aRevealed}
+        speaker={speakerA}
+        fallbackLabel="Speaker A"
+        tone="info"
+        onClick={() => onSelect(0)}
+      />
+      <SpeakerSegment
+        target={1}
+        active={activeTarget === 1}
+        revealed={bRevealed}
+        speaker={speakerB}
+        fallbackLabel="Speaker B"
+        tone="accent-soft"
+        onClick={() => onSelect(1)}
+      />
+    </div>
+  );
+}
+
+function SpeakerSegment({
+  active,
+  revealed,
+  speaker,
+  fallbackLabel,
+  tone,
+  onClick,
+}: {
+  target: 0 | 1;
+  active: boolean;
+  revealed: boolean;
+  speaker: Hero;
+  fallbackLabel: string;
+  tone: "info" | "accent-soft";
+  onClick: () => void;
+}) {
+  const baseTone = tone === "info" ? "text-info" : "text-accent-soft";
+  const activeBg =
+    tone === "info"
+      ? "bg-info/15 ring-1 ring-info/40"
+      : "bg-accent-soft/15 ring-1 ring-accent-soft/40";
 
   return (
-    <div>
-      <div className="mb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em]">
-        <span className={revealed ? "text-correct" : toneClass}>
-          {revealed ? `✓ ${speakerHero.name}` : label}
-        </span>
-        <span className="text-ink-faint">
-          {revealed ? "Solved" : "Guessing"}
-        </span>
-      </div>
+    <button
+      type="button"
+      role="tab"
+      aria-selected={active}
+      disabled={revealed}
+      onClick={onClick}
+      className={clsx(
+        "flex min-h-[44px] items-center justify-center gap-2 rounded-(--radius-card) px-3 py-2 text-center font-mono text-[11px] uppercase tracking-[0.22em] transition-colors",
+        revealed
+          ? "bg-correct/15 text-correct ring-1 ring-correct/40 cursor-default"
+          : active
+            ? clsx(activeBg, baseTone)
+            : clsx("bg-transparent text-ink-soft hover:bg-muted/40", baseTone),
+      )}
+    >
       {revealed ? (
-        <div className="flex items-center gap-3 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-3">
-          {speakerHero.portrait_url && (
+        <>
+          {speaker.portrait_url && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={speakerHero.portrait_url}
+              src={speaker.portrait_url}
               alt=""
-              className="h-10 w-10 rounded-(--radius-card) bg-muted object-cover"
+              className="h-6 w-6 shrink-0 rounded-(--radius-pill) bg-muted object-cover"
             />
           )}
-          <div className="font-display text-base text-ink">
-            {speakerHero.name}
-          </div>
-        </div>
+          <span className="truncate">✓ {speaker.name}</span>
+        </>
       ) : (
-        <HeroCombobox
-          heroes={HEROES}
-          excludeKeys={excluded}
-          onSelect={onGuess}
-          placeholder="Enter a hero…"
-        />
+        <span className="truncate">{fallbackLabel}</span>
       )}
-    </div>
+    </button>
   );
 }
 
