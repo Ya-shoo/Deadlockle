@@ -247,7 +247,7 @@ function ItemBlurCard({
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={iconUrl}
+          src={media(iconUrl)}
           alt={revealed ? item.name : "Mystery item"}
           className="h-full w-full object-contain p-6 transition-[filter,transform] duration-700 ease-out"
           style={{
