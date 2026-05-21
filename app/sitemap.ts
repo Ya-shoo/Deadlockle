@@ -11,7 +11,7 @@ type Route = { path: string; priority: number; changeFrequency: ChangeFreq };
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const routes: Route[] = [
-    // Daily-rotating play loop — fresh content every UTC midnight.
+    // Daily-rotating play loop — fresh content every 2:15am Pacific.
     { path: "/", priority: 1.0, changeFrequency: "daily" },
     { path: "/classic/", priority: 0.9, changeFrequency: "daily" },
     { path: "/ability/", priority: 0.9, changeFrequency: "daily" },

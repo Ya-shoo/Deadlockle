@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 const FAQ: Array<{ q: string; a: string }> = [
   {
     q: "What is Deadlockle?",
-    a: "Deadlockle is a free daily Wordle-style game for Valve's Deadlock. The same daily-puzzle idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations. Five modes unlock every day at midnight UTC.",
+    a: "Deadlockle is a free daily Wordle-style game for Valve's Deadlock. The same daily-puzzle idea as LOLdle for League of Legends, but built around Deadlock heroes, abilities, items, and conversations. Five modes unlock every day at 2:15am Pacific Time.",
   },
   {
     q: "When does the daily puzzle reset?",
-    a: "Every day at midnight UTC. The home page shows a countdown to the next reset. Once you finish all five modes, the home page switches to a Daily Complete state showing your total guesses.",
+    a: "Every day at 2:15am Pacific Time. The home page shows a countdown to the next reset. Once you finish all five modes, the home page switches to a Daily Complete state showing your total guesses.",
   },
   {
     q: "Do I need to sign up or pay?",
@@ -76,7 +76,7 @@ export default function HowToPlayPage() {
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-soft">
           <strong className="text-ink">Deadlockle</strong> is a free daily
-          Wordle-style game for Valve's Deadlock. Each day at midnight UTC,
+          Wordle-style game for Valve's Deadlock. Each day at 2:15am Pacific Time,
           five new Deadlockle puzzles unlock, one for each mode. There's no
           signup, no ads, and no gating. Your progress is saved in your
           browser, so you can solve a few, close the tab, and come back later

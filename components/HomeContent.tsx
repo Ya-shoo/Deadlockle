@@ -147,7 +147,7 @@ export function HomeContent() {
             . Five modes, one hero per day — Deadlockle's Classic mode is the
             seven attribute deduction grid, and Ability, Item, Mugshot, and
             Conversation each reveal the answer in their own way as you guess.
-            New puzzles arrive at midnight UTC, and your board waits where you
+            New puzzles arrive at 2:15am Pacific, and your board waits where you
             left it. Solve a few, come back later, take your time.
           </p>
           <Link
@@ -340,7 +340,7 @@ function DailyCompleteHero({
           You finished all <span className="text-ink">{count}</span> available
           modes today in{" "}
           <span className="text-ink">{totalGuesses}</span> total guesses. New
-          puzzles arrive at <span className="text-ink">midnight UTC</span>.
+          puzzles arrive at <span className="text-ink">2:15am Pacific</span>.
         </p>
       </div>
     </motion.div>

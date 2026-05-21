@@ -36,7 +36,7 @@ export function TryOWdleCard() {
           </p>
           <p className="mt-3 max-w-lg text-sm text-ink-soft">
             Same daily puzzle format, different roster. Five game modes,
-            dozens of heroes. Resets at midnight UTC.
+            dozens of heroes. Resets at 2:15am Pacific.
           </p>
         </div>
 

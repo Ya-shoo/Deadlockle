@@ -130,8 +130,8 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
 // Shown when this was the last unfinished mode of the day. The same panel
 // renders inside every mode's win banner, so the daily-complete screen
 // looks identical regardless of which mode the player finished on. The
-// countdown to UTC midnight is the visual focal point — players don't need
-// to navigate home to find out when puzzles refresh.
+// countdown to the 2:15am Pacific reset is the visual focal point —
+// players don't need to navigate home to find out when puzzles refresh.
 function DailyCompletePanel({
   modeCount,
   totalGuesses,
@@ -187,7 +187,7 @@ function DailyCompletePanel({
             />
           </div>
           <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink-faint">
-            Refreshes at midnight UTC
+            Refreshes at 2:15am Pacific
           </span>
         </div>
 

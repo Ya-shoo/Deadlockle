@@ -128,7 +128,7 @@ export function WelcomeModal() {
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               A daily Wordle-style quiz for Valve&apos;s Deadlock. Five
-              modes, one hero. New puzzles arrive at midnight UTC.
+              modes, one hero. New puzzles arrive at 2:15am Pacific.
             </p>
 
             <div className="mt-6 border-t border-line pt-5">
