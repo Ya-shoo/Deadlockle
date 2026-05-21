@@ -36,7 +36,7 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
     let roundGuesses = 0;
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, day);
-      if (st.won) done.add(slug);
+      if (st.won || st.gaveUp) done.add(slug);
       // ConversationState (Quote/Sound) shares the same on-disk shape: its
       // `guesses` is an array of objects, but `.length` still gives the
       // count we want for a total.

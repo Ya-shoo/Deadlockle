@@ -24,6 +24,13 @@ const MODE = "item";
 // is large enough that being unfair on guess #1 isn't satisfying.
 const BLUR_BY_GUESS = [20, 16, 12, 8, 5, 3, 1.5, 0.5, 0];
 
+// Hard ceiling. After this many wrong guesses, expose a "Show answer"
+// button so the player can move on without permanently stalling their
+// daily run. Tuned generous — by guess 9 the blur is already 0, so the
+// icon is fully visible; the cap mostly mercy-kills hard-mode rotation
+// puzzles where the player can see the icon but can't name it.
+const MAX_GUESSES = 10;
+
 // Hard mode rotates the icon by a deterministic per-day amount. Toggle is
 // session-only — flipping it doesn't affect saved state, just the visual.
 const HARD_MODE_ROTATIONS = [90, 180, 270];
@@ -64,25 +71,35 @@ export function ItemGame() {
     .filter(Boolean);
   const excludeKeys = new Set(state.guesses);
 
-  const wrongCount = state.won
+  const ended = state.won || state.gaveUp === true;
+  const canReveal = state.guesses.length >= MAX_GUESSES && !ended;
+
+  const wrongCount = ended
     ? BLUR_BY_GUESS.length - 1
     : state.guesses.length;
   const blurIdx = Math.min(wrongCount, BLUR_BY_GUESS.length - 1);
-  const blur = state.won ? 0 : BLUR_BY_GUESS[blurIdx];
+  const blur = ended ? 0 : BLUR_BY_GUESS[blurIdx];
 
   // Per-day rotation seed — same item, same day always rotates the same way
   // when hard mode is on, so the share text is comparable across players.
   const rotationIdx = shuffleOrder(`deadlockle:item:rotate:${day}`, 3)[0];
   const rotationDeg =
-    hardMode && !state.won ? HARD_MODE_ROTATIONS[rotationIdx] : 0;
+    hardMode && !ended ? HARD_MODE_ROTATIONS[rotationIdx] : 0;
 
   const handleGuess = (item: Item) => {
-    if (state.won) return;
+    if (ended) return;
     const next: ModeState = {
       ...state,
       guesses: [...state.guesses, item.key],
       won: item.key === answer.key,
     };
+    setState(next);
+    saveModeState(MODE, next);
+  };
+
+  const handleReveal = () => {
+    if (ended) return;
+    const next: ModeState = { ...state, gaveUp: true };
     setState(next);
     saveModeState(MODE, next);
   };
@@ -112,15 +129,15 @@ export function ItemGame() {
           iconUrl={iconUrl}
           blur={blur}
           rotation={rotationDeg}
-          revealed={state.won}
+          revealed={ended}
           item={answer}
         />
-        {!state.won && (
+        {!ended && (
           <HardModeToggle on={hardMode} onChange={setHardMode} />
         )}
       </div>
 
-      {!state.won && (
+      {!ended && (
         <div className="mb-6">
           <ItemCombobox
             items={ITEMS}
@@ -134,17 +151,31 @@ export function ItemGame() {
               · blur {blur.toFixed(0)}px
             </span>
           </p>
+          {canReveal && (
+            <button
+              type="button"
+              onClick={handleReveal}
+              className="mt-4 inline-flex items-center gap-2 border border-line bg-canvas px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft transition-colors hover:border-edge hover:text-ink"
+            >
+              <span aria-hidden>↓</span>
+              Show answer
+            </button>
+          )}
         </div>
       )}
 
       <AnimatePresence>
-        {state.won && (
+        {ended && (
           <motion.div
-            key="win"
+            key={state.won ? "win" : "revealed"}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className={
+              state.won
+                ? "mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+                : "mb-8 rounded-(--radius-card) border border-line bg-muted/40 p-5 sm:p-6"
+            }
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               {answer.icon && (
@@ -157,7 +188,7 @@ export function ItemGame() {
               )}
               <div className="flex-1">
                 <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  Solved
+                  {state.won ? "Solved" : "Revealed"}
                 </div>
                 <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
                   {answer.name}
@@ -166,7 +197,7 @@ export function ItemGame() {
                   <NextModeCTA current="item" />
                 </div>
               </div>
-              <ScoreBadge count={state.guesses.length} />
+              {state.won && <ScoreBadge count={state.guesses.length} />}
             </div>
           </motion.div>
         )}

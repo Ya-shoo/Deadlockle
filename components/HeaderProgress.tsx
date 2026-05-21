@@ -12,7 +12,12 @@ export function HeaderProgress() {
 
   useEffect(() => {
     const day = dayString();
-    setStatuses(BUILT_MODE_SLUGS.map((slug) => loadModeState(slug, day).won));
+    setStatuses(
+      BUILT_MODE_SLUGS.map((slug) => {
+        const st = loadModeState(slug, day);
+        return st.won || st.gaveUp === true;
+      }),
+    );
   }, []);
 
   if (!statuses) {

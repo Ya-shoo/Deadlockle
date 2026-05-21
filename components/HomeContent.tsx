@@ -40,7 +40,10 @@ export function HomeContent() {
     const map: StatusMap = {};
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, d);
-      map[slug] = { won: st.won, guesses: st.guesses.length };
+      map[slug] = {
+        won: st.won || st.gaveUp === true,
+        guesses: st.guesses.length,
+      };
     }
     setStatuses(map);
   }, []);

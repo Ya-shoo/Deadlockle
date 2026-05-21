@@ -35,7 +35,7 @@ function readAllDone(): boolean {
   const day = dayString();
   for (const slug of BUILT_MODE_SLUGS) {
     const st = loadModeState(slug, day);
-    if (!st.won) return false;
+    if (!st.won && !st.gaveUp) return false;
   }
   return true;
 }

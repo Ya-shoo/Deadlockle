@@ -5,6 +5,10 @@ export type ModeState = {
   day: string;
   guesses: string[]; // hero keys (or item keys for Item mode), in order
   won: boolean;
+  // Set when the player tapped "Show answer" after exhausting their
+  // guesses. Treated as "done" by NextModeCTA so the player still gets
+  // pushed forward, but distinguished from a real win for badging.
+  gaveUp?: boolean;
   // Classic-mode hint system: attribute keys whose answer values have been
   // revealed. Capped at 2 by the UI; persisted so reveals survive reloads.
   hintsUsed?: string[];
