@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Brand } from "./Brand";
-import { HeaderGuideLink } from "./HeaderGuideLink";
 import { HeaderProgress } from "./HeaderProgress";
+import { NextResetCountdown } from "./NextResetCountdown";
 
 export function Header() {
   return (
@@ -11,7 +11,10 @@ export function Header() {
           <Brand size="sm" />
         </Link>
         <div className="flex items-center gap-5 sm:gap-7">
-          <HeaderGuideLink />
+          <NextResetCountdown
+            label="next "
+            className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-info sm:inline"
+          />
           <HeaderProgress />
         </div>
       </div>
