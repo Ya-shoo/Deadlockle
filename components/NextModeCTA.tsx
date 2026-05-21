@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BUILT_MODE_SLUGS,
   nextUnfinishedMode,
@@ -11,6 +11,7 @@ import {
 import { dayString } from "@/lib/daily";
 import { loadModeState } from "@/lib/storage";
 import { NextResetCountdown } from "./NextResetCountdown";
+import { TryOWdleCard } from "./TryOWdleCard";
 
 // Renders inline in a game's win state. Walks canonical play order, skips
 // modes the player has already won, and recommends the first remaining one
@@ -27,17 +28,21 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
   const [data] = useState<{
     next: ModeDef | null;
     totalGuesses: number;
+    roundGuesses: number;
   }>(() => {
     const day = dayString();
     const done = new Set<ModeSlug>();
     let totalGuesses = 0;
+    let roundGuesses = 0;
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, day);
       if (st.won) done.add(slug);
-      // ConversationState (Quote/Sound) shares the same on-disk shape — its
+      // ConversationState (Quote/Sound) shares the same on-disk shape: its
       // `guesses` is an array of objects, but `.length` still gives the
       // count we want for a total.
-      totalGuesses += Array.isArray(st.guesses) ? st.guesses.length : 0;
+      const count = Array.isArray(st.guesses) ? st.guesses.length : 0;
+      totalGuesses += count;
+      if (slug === current) roundGuesses = count;
     }
     // Defensive: ensure the just-won mode is treated as done even if its
     // localStorage write hasn't been observed yet by this read.
@@ -45,14 +50,26 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
     return {
       next: nextUnfinishedMode(current, done),
       totalGuesses,
+      roundGuesses,
     };
   });
+
+  // Notify the floating FeedbackButton that this is the player's last
+  // mode for the day so it can amplify its visual state. Same-tab writes
+  // don't fire the native `storage` event, so we dispatch an explicit
+  // signal alongside the panel render.
+  useEffect(() => {
+    if (data.next === null && typeof window !== "undefined") {
+      window.dispatchEvent(new Event("feedback:refresh"));
+    }
+  }, [data.next]);
 
   if (data.next === null) {
     return (
       <DailyCompletePanel
         modeCount={BUILT_MODE_SLUGS.length}
         totalGuesses={data.totalGuesses}
+        roundGuesses={data.roundGuesses}
       />
     );
   }
@@ -118,63 +135,99 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
 function DailyCompletePanel({
   modeCount,
   totalGuesses,
+  roundGuesses,
 }: {
   modeCount: number;
   totalGuesses: number;
+  roundGuesses: number;
 }) {
   return (
-    <div className="relative flex w-full max-w-xl flex-col border border-correct/55 bg-canvas/50 p-5 shadow-lg shadow-black/40 sm:p-6">
-      {/* Inner deco hairline echoes the parlour-room frame style used by
-          the in-app deco cards. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-1 border border-correct/15"
-      />
+    <div className="flex w-full max-w-xl flex-col gap-5">
+      <div className="relative flex flex-col border border-correct/55 bg-canvas/50 p-5 shadow-lg shadow-black/40 sm:p-6">
+        {/* Inner deco hairline echoes the parlour-room frame style used by
+            the in-app deco cards. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-1 border border-correct/15"
+        />
 
-      {/* Header row: completion tag on the left, summary stats on the right
-          so the countdown below isn't competing with prose. */}
-      <div className="relative flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-correct">
+        <div className="relative flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-correct">
           <span aria-hidden>✓</span>
           Daily Complete
         </div>
-        <div className="text-right font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-          <span className="text-ink">{modeCount}</span> modes ·{" "}
-          <span className="text-ink">{totalGuesses}</span>{" "}
-          {totalGuesses === 1 ? "guess" : "guesses"}
-        </div>
-      </div>
 
-      {/* Countdown is the hero — top/bottom hairlines isolate it as a
-          dedicated band, the live pulse dot signals the timer is ticking,
-          and the display itself reads at a glance even from a phone tab
-          preview. tabular-nums prevents digit jitter as seconds tick. */}
-      <div className="relative mt-5 flex flex-col items-center gap-2 border-y border-correct/20 py-5">
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-info">
-          Next puzzle in
-        </span>
-        <div className="flex items-center gap-3">
-          <LiveDot />
-          <NextResetCountdown
-            label=""
-            className="font-display text-4xl tabular-nums leading-none text-accent-soft sm:text-5xl"
+        {/* Score band: two big numbers side-by-side. Round = this puzzle.
+            Total = all modes combined. Tabular nums so cross-game scores
+            visually line up without digit jitter. */}
+        <div className="relative mt-4 grid grid-cols-2 gap-4 border-y border-correct/20 py-5">
+          <Stat
+            label="This round"
+            value={roundGuesses}
+            unit={roundGuesses === 1 ? "guess" : "guesses"}
+          />
+          <Stat
+            label={`Total across ${modeCount} ${modeCount === 1 ? "mode" : "modes"}`}
+            value={totalGuesses}
+            unit={totalGuesses === 1 ? "guess" : "guesses"}
           />
         </div>
-        <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink-faint">
-          Refreshes at midnight UTC
-        </span>
+
+        {/* Countdown band. The live pulse dot signals the timer is ticking,
+            and the display itself reads at a glance even from a phone tab
+            preview. */}
+        <div className="relative mt-5 flex flex-col items-center gap-2 border-y border-correct/20 py-5">
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-info">
+            Next puzzle in
+          </span>
+          <div className="flex items-center gap-3">
+            <LiveDot />
+            <NextResetCountdown
+              label=""
+              className="font-display text-4xl tabular-nums leading-none text-accent-soft sm:text-5xl"
+            />
+          </div>
+          <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink-faint">
+            Refreshes at midnight UTC
+          </span>
+        </div>
+
+        <div className="relative mt-4 flex justify-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-info underline-offset-4 hover:underline"
+          >
+            ← Back to home
+          </Link>
+        </div>
       </div>
 
-      {/* Back to home centered so it reads as a deliberate next action,
-          not a throwaway link tucked into a corner. */}
-      <div className="relative mt-4 flex justify-center">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-info underline-offset-4 hover:underline"
-        >
-          ← Back to home
-        </Link>
-      </div>
+      {/* Cross-promo: the player just finished every mode for the day, so
+          surfacing the sister site is the natural next-action prompt. */}
+      <TryOWdleCard />
+    </div>
+  );
+}
+
+function Stat({
+  label,
+  value,
+  unit,
+}: {
+  label: string;
+  value: number;
+  unit: string;
+}) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-ink-faint">
+        {label}
+      </span>
+      <span className="mt-1 font-display text-3xl tabular-nums leading-none text-accent-soft sm:text-4xl">
+        {value}
+      </span>
+      <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.24em] text-ink-faint">
+        {unit}
+      </span>
     </div>
   );
 }

@@ -1,28 +1,67 @@
 "use client";
 
 // Floating bottom-right feedback pill that opens a native <dialog> with a
-// short (150 char) free-form textarea. Posts to /api/feedback, which lives
-// on the shared owdle-votes D1 — the `source` column tags each row with
+// short (150 char) free-form textarea. Posts to /api/feedback on the
+// shared owdle-votes D1; the `source` column tags each row with
 // 'deadlockle' so the inbox can be filtered per site.
 //
-// Why a dialog instead of inline form: keeps the pill small and avoids
-// committing layout space on every page for a low-frequency action. The
-// dialog is only mounted to the DOM after first open so initial paint is
-// untouched.
+// The pill has two visual states: a discoverable but contained default,
+// and an amplified state once the player has cleared every mode for the
+// day. The amplified state is the moment they're most likely to have an
+// opinion worth typing, so we make the ask a bit louder then.
 
 import { useEffect, useRef, useState } from "react";
+import { BUILT_MODE_SLUGS } from "@/lib/modes";
+import { loadModeState } from "@/lib/storage";
+import { dayString } from "@/lib/daily";
 
 const MAX_LEN = 150;
 
 type Status = "idle" | "sending" | "sent" | "error" | "rate_limited";
+
+// Custom event the in-game daily-complete panel dispatches when it
+// renders, so this floating button can switch to its amplified state
+// instantly without waiting for a focus/visibility change.
+const REFRESH_EVENT = "feedback:refresh";
+
+function readAllDone(): boolean {
+  if (typeof window === "undefined") return false;
+  const day = dayString();
+  for (const slug of BUILT_MODE_SLUGS) {
+    const st = loadModeState(slug, day);
+    if (!st.won) return false;
+  }
+  return true;
+}
 
 export function FeedbackButton() {
   const [open, setOpen] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
   const [text, setText] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const [allDone, setAllDone] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Re-scan localStorage on mount, on tab visibility return, and when a
+  // game-side component fires the refresh event. Same-tab in-app writes
+  // don't trigger the native `storage` event, so we rely on the custom
+  // event for instant in-session transitions.
+  useEffect(() => {
+    const refresh = () => setAllDone(readAllDone());
+    refresh();
+    const onVis = () => {
+      if (document.visibilityState === "visible") refresh();
+    };
+    window.addEventListener(REFRESH_EVENT, refresh);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", onVis);
+    return () => {
+      window.removeEventListener(REFRESH_EVENT, refresh);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, []);
 
   useEffect(() => {
     const dlg = dialogRef.current;
@@ -48,9 +87,9 @@ export function FeedbackButton() {
 
   const close = () => {
     setOpen(false);
-    // Reset to idle on close so reopening doesn't show stale success/error.
-    // Body text is preserved deliberately — if a user closes by accident
-    // mid-typing, they get their draft back on reopen.
+    // Reset to idle on close so reopening doesn't show stale success or
+    // error. Body text is preserved deliberately: if a user closes by
+    // accident mid-typing, they get their draft back on reopen.
     setStatus("idle");
   };
 
@@ -73,8 +112,6 @@ export function FeedbackButton() {
       if (res.ok) {
         setStatus("sent");
         setText("");
-        // Auto-close after a short beat so the user sees the confirmation
-        // without having to click away.
         setTimeout(() => {
           setOpen(false);
           setStatus("idle");
@@ -90,24 +127,34 @@ export function FeedbackButton() {
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Cmd/Ctrl+Enter as a power-user submit shortcut. Plain Enter inserts
-    // a newline so users can structure short multi-line notes naturally.
     if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
       e.preventDefault();
       void submit();
     }
   };
 
+  const triggerClass = allDone
+    ? "fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 border border-correct bg-correct/15 px-5 py-3 font-mono text-xs uppercase tracking-[0.22em] text-correct shadow-[0_0_24px_-6px_rgba(120,210,150,0.45)] backdrop-blur-sm transition-all hover:bg-correct/25 hover:text-correct sm:bottom-5 sm:right-5"
+    : "fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 border border-edge bg-surface/95 px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-ink shadow-[0_4px_12px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-all hover:border-info hover:text-info sm:bottom-5 sm:right-5";
+
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Send feedback"
-        className="fixed bottom-4 right-4 z-40 inline-flex items-center gap-1.5 border border-line bg-surface/95 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft shadow-[0_2px_8px_rgba(0,0,0,0.25)] backdrop-blur-sm transition-colors hover:border-info hover:text-info sm:bottom-5 sm:right-5"
+        aria-label={allDone ? "Send feedback. You finished every mode today" : "Send feedback"}
+        className={triggerClass}
       >
+        {/* Ping ring on the amplified state to draw the eye. Doesn't loop
+            forever; the CSS keeps it gentle so it doesn't read as urgent. */}
+        {allDone ? (
+          <span aria-hidden className="relative inline-flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-correct opacity-70" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-correct" />
+          </span>
+        ) : null}
         <SpeechMark />
-        Feedback
+        {allDone ? "Got feedback?" : "Feedback"}
       </button>
 
       <dialog
@@ -185,7 +232,7 @@ export function FeedbackButton() {
 
 function SpeechMark() {
   return (
-    <svg width="10" height="10" viewBox="0 0 24 24" aria-hidden>
+    <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden>
       <path
         d="M4 4h16v12H7l-3 3z"
         fill="none"

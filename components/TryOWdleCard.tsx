@@ -29,10 +29,12 @@ export function TryOWdleCard() {
             Sister site · Deadlockle recommends
           </p>
           <h3 className="mt-2 font-display text-2xl text-ink sm:text-3xl">
-            Play <span style={{ color: "#ff8847" }}>OWdle</span>{" "}
-            <span className="text-ink-soft">— the daily Overwatch quiz</span>
+            Play <span style={{ color: "#ff8847" }}>OWdle</span>
           </h3>
-          <p className="mt-2 max-w-lg text-sm text-ink-soft">
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+            The daily Overwatch quiz
+          </p>
+          <p className="mt-3 max-w-lg text-sm text-ink-soft">
             Same daily puzzle format, different roster. Five game modes,
             dozens of heroes. Resets at midnight UTC.
           </p>
