@@ -133,8 +133,8 @@ export function FeedbackButton() {
         {hasOpened ? (
           <div className="flex flex-col gap-3 p-4">
             <p className="text-sm text-ink-soft">
-              Bug, idea, complaint, kind word — whatever&apos;s on your mind. 150
-              characters, no signup.
+              Bug, idea, complaint, kind word. Whatever&apos;s on your mind, in
+              150 characters or fewer.
             </p>
 
             <textarea
@@ -160,11 +160,11 @@ export function FeedbackButton() {
                 }`}
               >
                 {status === "sent"
-                  ? "Thanks — sent"
+                  ? "Sent, thanks"
                   : status === "rate_limited"
-                    ? "Too many — try tomorrow"
+                    ? "Too many. Try tomorrow"
                     : status === "error"
-                      ? "Send failed — try again"
+                      ? "Send failed. Try again"
                       : `${trimmed.length}/${MAX_LEN}`}
               </span>
               <button
