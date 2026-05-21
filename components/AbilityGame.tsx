@@ -126,6 +126,24 @@ export function AbilityGame() {
         </div>
       )}
 
+      {/* Bonus round is rendered FIRST in the post-win stack — above both
+          the result/Next-mode card and the wrong-guess list — so a player
+          conditioned to click "Next mode" the instant a puzzle resolves
+          hits the bonus tiles before they ever reach the Next button. The
+          ability NAME at the top of AbilityArtCard is still gated on bonus
+          completion so the bonus stays a real puzzle: you see the icon and
+          four named options, you pick which one matched. */}
+      {state.won && (
+        <div className="mb-6">
+          <BonusRound
+            hero={answer}
+            correctIndex={abilityIndex}
+            saved={state.bonus}
+            onSelect={handleBonus}
+          />
+        </div>
+      )}
+
       <AnimatePresence>
         {state.won && (
           <motion.div
@@ -133,7 +151,7 @@ export function AbilityGame() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               {answer.portrait_url && (
@@ -160,22 +178,6 @@ export function AbilityGame() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Bonus round — only after the main hero guess resolves. The four
-          ability options show keybind 1-4 + name. The ability NAME at the
-          top of AbilityArtCard is gated on bonus completion so the bonus
-          stays a real puzzle: you see the icon and four named options, you
-          pick which one matched. */}
-      {state.won && (
-        <div className="mb-8">
-          <BonusRound
-            hero={answer}
-            correctIndex={abilityIndex}
-            saved={state.bonus}
-            onSelect={handleBonus}
-          />
-        </div>
-      )}
 
       <div className="space-y-2.5">
         <AnimatePresence initial={false}>
