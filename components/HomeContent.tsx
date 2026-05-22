@@ -17,9 +17,9 @@ import { Brand } from "./Brand";
 import { HomeBanner } from "./HomeBanner";
 import { NextResetCountdown } from "./NextResetCountdown";
 import { RequestNextGame } from "./RequestNextGame";
+import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
-import { WelcomeModal } from "./WelcomeModal";
 
 type Status = { won: boolean; guesses: number };
 type StatusMap = Partial<Record<ModeSlug, Status>>;
@@ -235,9 +235,6 @@ function DefaultHero({ day }: { day: string | null }) {
       <div className="mt-8">
         <BeginButton />
       </div>
-      <div className="mt-5">
-        <WelcomeModal />
-      </div>
     </div>
   );
 }
@@ -345,6 +342,7 @@ function DailyCompleteHero({
           <span className="text-ink">{totalGuesses}</span> total guesses. New
           puzzles arrive at <span className="text-ink">2:15am Pacific</span>.
         </p>
+        <StreakBadge variant="hero" />
       </div>
     </motion.div>
   );

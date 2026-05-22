@@ -11,6 +11,7 @@ import {
 import { dayString } from "@/lib/daily";
 import { loadModeState } from "@/lib/storage";
 import { NextResetCountdown } from "./NextResetCountdown";
+import { StreakBadge } from "./StreakBadge";
 import { TryOWdleCard } from "./TryOWdleCard";
 
 // Renders inline in a game's win state. Walks canonical play order, skips
@@ -192,6 +193,10 @@ function DailyCompletePanel({
           <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink-faint">
             Refreshes at 2:15am Pacific
           </span>
+        </div>
+
+        <div className="relative mt-5">
+          <StreakBadge variant="band" />
         </div>
 
         <div className="relative mt-4 flex justify-center">

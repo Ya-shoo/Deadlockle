@@ -27,17 +27,56 @@ import { dayString } from "@/lib/daily";
 const MAX_LEN = 150;
 const POPUP_MS = 10000;
 const REFRESH_EVENT = "feedback:refresh";
+const POPUP_FIRST_KEY_PREFIX = "deadlockle.feedback.popup.first.";
+const POPUP_FINAL_KEY_PREFIX = "deadlockle.feedback.popup.final.";
 
 type Status = "idle" | "sending" | "sent" | "error" | "rate_limited";
 
-function readAllDone(): boolean {
-  if (typeof window === "undefined") return false;
+function readDailyProgress(): { wonCount: number; allDone: boolean } {
+  if (typeof window === "undefined") return { wonCount: 0, allDone: false };
   const day = dayString();
+  let wonCount = 0;
   for (const slug of BUILT_MODE_SLUGS) {
     const st = loadModeState(slug, day);
-    if (!st.won && !st.gaveUp) return false;
+    if (st.won || st.gaveUp) wonCount++;
   }
-  return true;
+  return {
+    wonCount,
+    allDone: wonCount === BUILT_MODE_SLUGS.length,
+  };
+}
+
+// The mobile sticky popup is only worth surfacing twice a day: after the
+// first win (when the player has just seen the format work) and after the
+// final win (when they have the most-informed opinion). The middle wins
+// are noise — we read per-day localStorage flags to make sure each trigger
+// fires once per Pacific puzzle day even if the user wins, closes, and
+// re-wins across multiple sessions.
+function markAndCheckPopup(): boolean {
+  if (typeof window === "undefined") return false;
+  const day = dayString();
+  const { wonCount, allDone } = readDailyProgress();
+  if (allDone) {
+    const k = POPUP_FINAL_KEY_PREFIX + day;
+    if (window.localStorage.getItem(k) === "1") return false;
+    try {
+      window.localStorage.setItem(k, "1");
+    } catch {
+      /* quota — still let the popup fire once this session */
+    }
+    return true;
+  }
+  if (wonCount === 1) {
+    const k = POPUP_FIRST_KEY_PREFIX + day;
+    if (window.localStorage.getItem(k) === "1") return false;
+    try {
+      window.localStorage.setItem(k, "1");
+    } catch {
+      /* quota — same as above */
+    }
+    return true;
+  }
+  return false;
 }
 
 export function FeedbackButton() {
@@ -51,15 +90,14 @@ export function FeedbackButton() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Idle re-scans (focus, visibility) only refresh the allDone flag.
-  // Completion events also flip the popup on, since the player has just
-  // finished engaging with a mode and is the most receptive to giving
-  // feedback at that moment.
+  // Completion events fire the popup, but only on the first-win and the
+  // all-done transitions per day — middle wins skip via markAndCheckPopup.
   useEffect(() => {
-    const refresh = () => setAllDone(readAllDone());
+    const refresh = () => setAllDone(readDailyProgress().allDone);
     refresh();
     const onCompletion = () => {
-      setAllDone(readAllDone());
-      setPopupActive(true);
+      setAllDone(readDailyProgress().allDone);
+      if (markAndCheckPopup()) setPopupActive(true);
     };
     const onVis = () => {
       if (document.visibilityState === "visible") refresh();
