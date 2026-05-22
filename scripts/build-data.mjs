@@ -68,7 +68,7 @@ const OVERLAY = {
     },
   },
   "ivy":          { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "support",    damage_source: "weapon"  },
-  "warden":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "weapon"  },
+  "warden":       { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "carry",      damage_source: "weapon"  },
   "yamato":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "spirit"  },
   "lash":         { gender: "male",       nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "spirit"  },
   "viscous":      { gender: "neutral",    nature: "mystical",  damage_style: "projectile", sub_role: "bruiser",    damage_source: "spirit"  },
