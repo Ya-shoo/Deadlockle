@@ -956,7 +956,7 @@
     "gender": "male",
     "nature": "human",
     "damage_style": "hitscan",
-    "sub_role": "bruiser",
+    "sub_role": "carry",
     "damage_source": "weapon",
     "abilities": [
       {
