@@ -33,6 +33,9 @@ function useStreak(): StreakState | null {
   return state;
 }
 
+// Streak-specific: fill is hardcoded fire-red rather than currentColor so
+// the flame keeps its identity even when the surrounding text color shifts
+// between accent (active streak) and ink-faint (zero state).
 function FlameIcon({ size = 14 }: { size?: number }) {
   return (
     <svg
@@ -41,7 +44,7 @@ function FlameIcon({ size = 14 }: { size?: number }) {
       height={size}
       aria-hidden
       className="shrink-0"
-      fill="currentColor"
+      fill="#ef4444"
     >
       <path d="M13.5 1.5c0 3 1.5 4 3 6s2 4 2 6c0 4-3 7-6.5 7s-6.5-3-6.5-7c0-2 1-3.5 2-4.5 0 2 1 2.5 2 1.5 0-1.5 0-3 1-4.5 1-1.5 2-2.5 3-5z" />
     </svg>
@@ -61,7 +64,9 @@ export function StreakBadge({ variant }: { variant: Variant }) {
 
   // Header treatment: bare flame + count, no chrome. Faded ink for the
   // pre-streak state so new visitors see what they're aiming at without it
-  // dominating; accent amber once they're on a run.
+  // dominating; accent amber once they're on a run. Digit is font-sans
+  // bold rather than display (Cinzel) — Cinzel's "1" renders as a thin
+  // vertical that's easily confused with a pipe.
   if (variant === "header") {
     if (!streak) {
       // Hold layout space during hydration so the header doesn't jump.
@@ -71,7 +76,7 @@ export function StreakBadge({ variant }: { variant: Variant }) {
           className="inline-flex items-center gap-1.5 leading-none opacity-0"
         >
           <FlameIcon size={20} />
-          <span className="font-display text-xl tabular-nums">0</span>
+          <span className="font-sans text-xl font-bold tabular-nums">0</span>
         </span>
       );
     }
@@ -83,7 +88,7 @@ export function StreakBadge({ variant }: { variant: Variant }) {
           aria-label="No active streak. Complete every mode today to start one."
         >
           <FlameIcon size={20} />
-          <span className="font-display text-xl tabular-nums">0</span>
+          <span className="font-sans text-xl font-bold tabular-nums">0</span>
         </span>
       );
     }
@@ -97,7 +102,7 @@ export function StreakBadge({ variant }: { variant: Variant }) {
         aria-label={title}
       >
         <FlameIcon size={20} />
-        <span className="font-display text-xl tabular-nums">
+        <span className="font-sans text-xl font-bold tabular-nums">
           {streak.current}
         </span>
       </span>
@@ -118,7 +123,7 @@ export function StreakBadge({ variant }: { variant: Variant }) {
       >
         <FlameIcon size={20} />
         <div className="text-left leading-none">
-          <div className="font-display text-lg">
+          <div className="font-sans text-lg font-semibold">
             <span className="tabular-nums">{streak.current}</span>-day streak
           </div>
           {streak.longest > streak.current && (
@@ -142,7 +147,7 @@ export function StreakBadge({ variant }: { variant: Variant }) {
       </span>
       <div className="flex items-baseline gap-3 text-accent">
         <FlameIcon size={26} />
-        <span className="font-display text-4xl tabular-nums leading-none">
+        <span className="font-sans text-4xl font-bold tabular-nums leading-none">
           {streak.current}
         </span>
         <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint">
