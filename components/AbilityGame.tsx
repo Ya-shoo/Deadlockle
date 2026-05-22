@@ -185,7 +185,12 @@ export function AbilityGame() {
             const originalIdx = guessedHeroes.length - 1 - revIdx;
             const isLatest = originalIdx === guessedHeroes.length - 1;
             return (
-              <WrongGuessCard key={hero.key} hero={hero} isLatest={isLatest} />
+              <GuessCard
+                key={hero.key}
+                hero={hero}
+                isLatest={isLatest}
+                isCorrect={hero.key === answer.key}
+              />
             );
           })}
         </AnimatePresence>
@@ -202,14 +207,26 @@ export function AbilityGame() {
   );
 }
 
-function WrongGuessCard({ hero, isLatest }: { hero: Hero; isLatest: boolean }) {
+function GuessCard({
+  hero,
+  isLatest,
+  isCorrect,
+}: {
+  hero: Hero;
+  isLatest: boolean;
+  isCorrect: boolean;
+}) {
   return (
     <motion.div
       layout
       initial={isLatest ? { opacity: 0, y: -10 } : false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="tile-shape mx-auto flex w-full max-w-xs flex-col items-center justify-center gap-3 border border-far/40 bg-far/15 px-5 py-6"
+      className={`tile-shape mx-auto flex w-full max-w-xs flex-col items-center justify-center gap-3 border px-5 py-6 ${
+        isCorrect
+          ? "border-correct/40 bg-correct/15"
+          : "border-far/40 bg-far/15"
+      }`}
     >
       {hero.portrait_url && (
         /* eslint-disable-next-line @next/next/no-img-element */
