@@ -59,30 +59,31 @@ export function StreakBadge({ variant }: { variant: Variant }) {
   if (!streak && variant !== "header") return null;
   if (streak && streak.current === 0 && variant !== "header") return null;
 
-  // Header treatment: render a faded "0" when there's no active streak so
-  // new visitors discover the mechanic before they've earned the first one.
+  // Header treatment: bare flame + count, no chrome. Faded ink for the
+  // pre-streak state so new visitors see what they're aiming at without it
+  // dominating; accent amber once they're on a run.
   if (variant === "header") {
     if (!streak) {
       // Hold layout space during hydration so the header doesn't jump.
       return (
         <span
           aria-hidden
-          className="inline-flex items-center gap-1 px-1.5 py-0.5 opacity-0"
+          className="inline-flex items-center gap-1.5 leading-none opacity-0"
         >
-          <FlameIcon size={10} />
-          <span className="font-mono text-[10px] tabular-nums">0</span>
+          <FlameIcon size={20} />
+          <span className="font-display text-xl tabular-nums">0</span>
         </span>
       );
     }
     if (streak.current === 0) {
       return (
         <span
-          className="inline-flex items-center gap-1 border border-dashed border-line bg-transparent px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint opacity-80 transition-opacity hover:opacity-100"
+          className="inline-flex items-center gap-1.5 leading-none text-ink-faint opacity-70 transition-opacity hover:opacity-100"
           title="Complete every mode today to start a streak"
           aria-label="No active streak. Complete every mode today to start one."
         >
-          <FlameIcon size={10} />
-          <span className="tabular-nums">0</span>
+          <FlameIcon size={20} />
+          <span className="font-display text-xl tabular-nums">0</span>
         </span>
       );
     }
@@ -91,12 +92,14 @@ export function StreakBadge({ variant }: { variant: Variant }) {
     }`;
     return (
       <span
-        className="inline-flex items-center gap-1 border border-accent/40 bg-accent/5 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-accent"
+        className="inline-flex items-center gap-1.5 leading-none text-accent"
         title={title}
         aria-label={title}
       >
-        <FlameIcon size={10} />
-        <span className="tabular-nums">{streak.current}</span>
+        <FlameIcon size={20} />
+        <span className="font-display text-xl tabular-nums">
+          {streak.current}
+        </span>
       </span>
     );
   }
