@@ -44,6 +44,11 @@ next-env.d.ts
 /.claude/
 /.wrangler/
 
+# Working-doc handoff briefing for the lives/streaks feature. Not bundled
+# into the static export; kept locally so a fresh session can pick up
+# context without committing the doc to public git history.
+/LIVES_PLAN.md
+
 # whisper model binaries (downloaded on demand by build-conversation-audio)
 /scripts/whisper-models/
 

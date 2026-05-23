@@ -4,10 +4,11 @@
 // mode. Same two-speaker exchange puzzle: each guess reveals the next line
 // of dialogue. After FIRST_HINT_AT wrong guesses, the Play button on line 1
 // unlocks; every HINT_INTERVAL guesses past that, the next line's button
-// unlocks (5 → line 1, 7 → line 2, 9 → line 3, …). Every clip is a slice
-// of the actual wiki recording — players hear the heroes saying that exact
-// line. The slices come from build-conversation-audio.mjs (silence-detected
-// per-line ranges within a single MP3 per conversation).
+// unlocks (4 → line 1, 7 → line 2, 10 → line 3 (never fires under cap)).
+// Every clip is a slice of the actual wiki recording — players hear the
+// heroes saying that exact line. The slices come from
+// build-conversation-audio.mjs (silence-detected per-line ranges within a
+// single MP3 per conversation).
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -32,17 +33,30 @@ import { HeroCombobox } from "./HeroCombobox";
 import { AttributeTile } from "./AttributeTile";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
+import {
+  trackGuessSubmitted,
+  trackModeCompleted,
+  trackModeStarted,
+} from "@/lib/tracking";
 import { NextModeCTA } from "./NextModeCTA";
-import { ScoreBadge } from "./ScoreBadge";
+import { GuessesLeftBadge } from "./GuessesLeftBadge";
+import { LossReveal } from "./LossReveal";
+import { ModeStatsLine } from "./ModeStatsLine";
 import clsx from "clsx";
 
 const MODE = "sound";
 
+// Hard ceiling. Eight wrong guesses across both speakers and the puzzle
+// auto-fails. Two-target mode (each guess is for a specific speaker), so
+// the cap is shared across both A and B picks.
+const MAX_GUESSES = 8;
+
 // Hint cadence: line 1's audio unlocks after FIRST_HINT_AT wrong guesses;
-// each subsequent line unlocks every HINT_INTERVAL more (5 → line 1,
-// 7 → line 2, 9 → line 3, …).
-const FIRST_HINT_AT = 5;
-const HINT_INTERVAL = 2;
+// each subsequent line unlocks every HINT_INTERVAL more (4 → line 1,
+// 7 → line 2, 10 → line 3, …). The 10+ thresholds never fire under
+// MAX_GUESSES=8, but the formula keeps working if the cap is raised.
+const FIRST_HINT_AT = 4;
+const HINT_INTERVAL = 3;
 
 function hintsUnlockedAt(guessCount: number, totalLines: number): number {
   if (guessCount < FIRST_HINT_AT) return 0;
@@ -101,9 +115,70 @@ export function SoundGame() {
       // daily progress. Real flow keeps the original save behaviour.
       if (convIdx == null) saveConversationState(MODE, fresh);
     } else {
-      setState({ ...loaded, speakers: todayPair });
+      let next: ConversationState = { ...loaded, speakers: todayPair };
+      // Self-heal: if a stale save passed the new cap without finishing,
+      // commit the failed flag so streak / header / next-mode all read
+      // this day as done.
+      if (
+        !next.won &&
+        !next.failed &&
+        next.guesses.length >= MAX_GUESSES &&
+        convIdx == null
+      ) {
+        next = { ...next, failed: true };
+        saveConversationState(MODE, next);
+      }
+      setState(next);
     }
   }, []);
+
+  // mode_started — fires once per day on first mount. Skips dev
+  // overrides (?conv=N) so QA runs don't pollute prod analytics.
+  useEffect(() => {
+    if (!day) return;
+    if (devConvIdx != null) return;
+    const { speakers: today } = getSoundForDay(day);
+    trackModeStarted({
+      mode: "sound",
+      dailyId: day,
+      answerId: `${today[0].key}_${today[1].key}`,
+    });
+  }, [day, devConvIdx]);
+
+  // mode_completed — kept above the loading guard so the hook order is
+  // stable across renders (React breaks if hooks are conditional). All
+  // state derivation is null-safe so the effect can be a no-op until
+  // the day + speakers + state hydrate.
+  const todaySpeakers = day && devConvIdx == null
+    ? getSoundForDay(day).speakers
+    : null;
+  const completionWon = !!(
+    todaySpeakers &&
+    state &&
+    state.guesses.some(
+      (g) => g.target === 0 && g.heroKey === todaySpeakers[0].key,
+    ) &&
+    state.guesses.some(
+      (g) => g.target === 1 && g.heroKey === todaySpeakers[1].key,
+    )
+  );
+  const completionFailed = !!state?.failed;
+  useEffect(() => {
+    if (!day || devConvIdx != null) return;
+    if (!completionWon && !completionFailed) return;
+    if (!state || !todaySpeakers) return;
+    const conversation = getSoundForDay(day).conversation;
+    trackModeCompleted({
+      mode: "sound",
+      dailyId: day,
+      outcome: completionWon ? "won" : "lost",
+      totalGuesses: state.guesses.length,
+      cap: MAX_GUESSES,
+      answerId: `${todaySpeakers[0].key}_${todaySpeakers[1].key}`,
+      conversationId: conversation.audio,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [day, devConvIdx, completionWon, completionFailed, state?.guesses.length]);
 
   if (!day || !state) {
     return (
@@ -126,6 +201,8 @@ export function SoundGame() {
     (g) => g.target === 1 && g.heroKey === speakerB.key,
   );
   const won = aRevealed && bRevealed;
+  const failed = state.failed === true;
+  const ended = won || failed;
 
   const excludedA = new Set(
     state.guesses.filter((g) => g.target === 0).map((g) => g.heroKey),
@@ -149,23 +226,21 @@ export function SoundGame() {
     ? conversation.lines.length
     : Math.min(visibleLines + PREVIEW_AHEAD, conversation.lines.length);
 
-  // Per-line audio unlocks. Once won, all line buttons are playable so
-  // the player can replay any line. In dev builds, every line unlocks
-  // immediately — this turns Conversation mode into a manual QA console
-  // for the diarization splits without forcing the tester to grind
-  // through five wrong guesses on every conversation they want to
-  // audition.
-  const audioUnlockedCount =
-    won || IS_DEV_BUILD
-      ? conversation.lines.length
-      : hintsUnlockedAt(state.guesses.length, conversation.lines.length);
+  // Per-line audio unlocks. Once the puzzle ends (win or fail), every
+  // line is playable so the player can replay any line — for fails this
+  // also doubles as the "what did I miss?" review. Mid-game, lines
+  // unlock per the FIRST_HINT_AT / HINT_INTERVAL cadence so testers
+  // see the same gating live players do.
+  const audioUnlockedCount = ended
+    ? conversation.lines.length
+    : hintsUnlockedAt(state.guesses.length, conversation.lines.length);
   const allAudioUnlocked = audioUnlockedCount >= conversation.lines.length;
   const guessesUntilNextAudio = allAudioUnlocked
     ? null
     : nextHintAtGuess(audioUnlockedCount) - state.guesses.length;
 
   const handleGuess = (hero: Hero, target: 0 | 1) => {
-    if (won) return;
+    if (ended) return;
     const newGuess: ConversationGuess = { heroKey: hero.key, target };
     const newGuesses = [...state.guesses, newGuess];
     const newARevealed = newGuesses.some(
@@ -174,11 +249,25 @@ export function SoundGame() {
     const newBRevealed = newGuesses.some(
       (g) => g.target === 1 && g.heroKey === speakerB.key,
     );
+    const newWon = newARevealed && newBRevealed;
+    const justFailed = !newWon && newGuesses.length >= MAX_GUESSES;
+    if (devConvIdx == null) {
+      const speakerHero = target === 0 ? speakerA : speakerB;
+      trackGuessSubmitted({
+        mode: "sound",
+        dailyId: day,
+        guessNumber: newGuesses.length,
+        isCorrect: hero.key === speakerHero.key,
+        guessId: `${hero.key}@${target}`,
+        answerId: `${speakerA.key}_${speakerB.key}`,
+      });
+    }
     const next: ConversationState = {
       day,
       speakers: [speakerA.key, speakerB.key],
       guesses: newGuesses,
-      won: newARevealed && newBRevealed,
+      won: newWon,
+      failed: justFailed ? true : state.failed,
     };
     setState(next);
     saveConversationState(MODE, next);
@@ -217,8 +306,8 @@ export function SoundGame() {
         <ConversationCard
           conversation={conversation}
           speakers={[speakerA, speakerB]}
-          aRevealed={aRevealed}
-          bRevealed={bRevealed}
+          aRevealed={aRevealed || ended}
+          bRevealed={bRevealed || ended}
           visibleLines={visibleLines}
           renderedLines={renderedLines}
           audioUrl={conversation.audio}
@@ -226,7 +315,7 @@ export function SoundGame() {
         />
       </div>
 
-      {!won && (
+      {!ended && (
         <div className="mb-6 grid gap-4 md:grid-cols-2">
           <SpeakerField
             label="Speaker A"
@@ -247,25 +336,24 @@ export function SoundGame() {
         </div>
       )}
 
-      {!won && (
-        <p className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-[0.18em] text-info">
-          <span>
-            {state.guesses.length}{" "}
-            {state.guesses.length === 1 ? "guess" : "guesses"}
-          </span>
-          <span className="text-ink-faint">
-            · {(aRevealed ? 1 : 0) + (bRevealed ? 1 : 0)} / 2 found
+      {!ended && (
+        <div className="mb-2 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <GuessesLeftBadge used={state.guesses.length} cap={MAX_GUESSES} />
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            {(aRevealed ? 1 : 0) + (bRevealed ? 1 : 0)} / 2 found
           </span>
           {!allAudioUnlocked && guessesUntilNextAudio != null && (
-            <span className="text-accent-soft">
-              · audio hint in {guessesUntilNextAudio}{" "}
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent-soft">
+              audio hint in {guessesUntilNextAudio}{" "}
               {guessesUntilNextAudio === 1 ? "guess" : "guesses"}
             </span>
           )}
-          {allAudioUnlocked && audioUnlockedCount > 0 && !won && (
-            <span className="text-accent-soft">· all audio unlocked</span>
+          {allAudioUnlocked && audioUnlockedCount > 0 && (
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent-soft">
+              all audio unlocked
+            </span>
           )}
-        </p>
+        </div>
       )}
 
       <AnimatePresence>
@@ -275,43 +363,91 @@ export function SoundGame() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="flex shrink-0 -space-x-3">
-                {speakerA.portrait_url && (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={media(speakerA.portrait_url)}
-                    alt=""
-                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
-                  />
-                )}
-                {speakerB.portrait_url && (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={media(speakerB.portrait_url)}
-                    alt=""
-                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
-                  />
-                )}
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                <div className="flex shrink-0 -space-x-3">
+                  {speakerA.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerA.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                  {speakerB.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerB.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    Solved
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {speakerA.name} & {speakerB.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  <ModeStatsLine mode="sound" />
+                </div>
               </div>
-              <div className="flex-1">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  Solved
-                </div>
-                <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                  {speakerA.name} & {speakerB.name}
-                </div>
-                <div className="mt-3">
-                  <NextModeCTA current="sound" />
-                </div>
+              <div className="flex justify-center sm:justify-start">
+                <NextModeCTA current="sound" />
               </div>
-              <ScoreBadge count={state.guesses.length} />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {failed && !won && (
+        <LossReveal current="sound">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="flex shrink-0 -space-x-3">
+              {speakerA.portrait_url && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={media(speakerA.portrait_url)}
+                  alt=""
+                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                />
+              )}
+              {speakerB.portrait_url && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={media(speakerB.portrait_url)}
+                  alt=""
+                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                />
+              )}
+            </div>
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                Speakers
+              </div>
+              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                {speakerA.name} & {speakerB.name}
+              </div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                {aRevealed
+                  ? bRevealed
+                    ? ""
+                    : "Caught A · missed B"
+                  : bRevealed
+                    ? "Caught B · missed A"
+                    : "Missed both"}
+              </div>
+              <ModeStatsLine mode="sound" />
+            </div>
+          </div>
+        </LossReveal>
+      )}
 
       <div className="space-y-4">
         <AnimatePresence initial={false}>

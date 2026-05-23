@@ -11,25 +11,32 @@ import {
 } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { media } from "@/lib/media";
+import {
+  trackGuessSubmitted,
+  trackModeCompleted,
+  trackModeStarted,
+} from "@/lib/tracking";
 import { ItemCombobox } from "./ItemCombobox";
 import { Brand } from "./Brand";
 import { NextModeCTA } from "./NextModeCTA";
-import { ScoreBadge } from "./ScoreBadge";
+import { GuessesLeftBadge } from "./GuessesLeftBadge";
+import { LossReveal } from "./LossReveal";
+import { ModeStatsLine } from "./ModeStatsLine";
 
 const MODE = "item";
+
+// Hard ceiling on guesses. Eighth wrong guess auto-fails the puzzle and
+// reveals the answer in a muted red card. Curve below is calibrated so the
+// final available guess (index 7) lands on blur=0 — the player always has
+// a fully crisp icon for their last shot, so a miss never feels like the
+// blur cheated them.
+const MAX_GUESSES = 8;
 
 // Blur reveal: each guess sharpens the icon. Index 0 = before any guess.
 // A win locks the final crisp state. Starting blur is moderate so the
 // silhouette and palette of the icon are partially readable — the icon set
 // is large enough that being unfair on guess #1 isn't satisfying.
-const BLUR_BY_GUESS = [20, 16, 12, 8, 5, 3, 1.5, 0.5, 0];
-
-// Hard ceiling. After this many wrong guesses, expose a "Show answer"
-// button so the player can move on without permanently stalling their
-// daily run. Tuned generous — by guess 9 the blur is already 0, so the
-// icon is fully visible; the cap mostly mercy-kills hard-mode rotation
-// puzzles where the player can see the icon but can't name it.
-const MAX_GUESSES = 10;
+const BLUR_BY_GUESS = [20, 16, 12, 8, 5, 3, 1.5, 0];
 
 // Hard mode rotates the icon by a deterministic per-day amount. Toggle is
 // session-only — flipping it doesn't affect saved state, just the visual.
@@ -52,8 +59,44 @@ export function ItemGame() {
   useEffect(() => {
     const d = dayString();
     setDay(d);
-    setState(loadModeState(MODE, d));
+    let st = loadModeState(MODE, d);
+    // Self-heal stale saves from before the cap shipped (or shrank). If
+    // the player has already passed the current cap without winning,
+    // commit the failed flag so downstream consumers see it.
+    if (
+      !st.won &&
+      !st.failed &&
+      !st.gaveUp &&
+      st.guesses.length >= MAX_GUESSES
+    ) {
+      st = { ...st, failed: true };
+      saveModeState(MODE, st);
+    }
+    setState(st);
   }, []);
+
+  // mode_started — once per day. Tracker dedupes via localStorage.
+  useEffect(() => {
+    if (!day) return;
+    const { item } = getItemForDay(day);
+    trackModeStarted({ mode: "item", dailyId: day, answerId: item.key });
+  }, [day]);
+
+  const stateWon = state?.won === true;
+  const stateFailed = state?.failed === true || state?.gaveUp === true;
+  useEffect(() => {
+    if (!day) return;
+    if (!stateWon && !stateFailed) return;
+    const { item } = getItemForDay(day);
+    trackModeCompleted({
+      mode: "item",
+      dailyId: day,
+      outcome: stateWon ? "won" : state?.gaveUp === true ? "gaveUp" : "lost",
+      totalGuesses: state?.guesses.length ?? 0,
+      cap: MAX_GUESSES,
+      answerId: item.key,
+    });
+  }, [day, stateWon, stateFailed, state?.guesses.length, state?.gaveUp]);
 
   if (!day || !state) {
     return (
@@ -71,12 +114,10 @@ export function ItemGame() {
     .filter(Boolean);
   const excludeKeys = new Set(state.guesses);
 
-  const ended = state.won || state.gaveUp === true;
-  const canReveal = state.guesses.length >= MAX_GUESSES && !ended;
+  const failed = state.failed === true || state.gaveUp === true;
+  const ended = state.won || failed;
 
-  const wrongCount = ended
-    ? BLUR_BY_GUESS.length - 1
-    : state.guesses.length;
+  const wrongCount = ended ? BLUR_BY_GUESS.length - 1 : state.guesses.length;
   const blurIdx = Math.min(wrongCount, BLUR_BY_GUESS.length - 1);
   const blur = ended ? 0 : BLUR_BY_GUESS[blurIdx];
 
@@ -88,18 +129,23 @@ export function ItemGame() {
 
   const handleGuess = (item: Item) => {
     if (ended) return;
+    const newGuesses = [...state.guesses, item.key];
+    const won = item.key === answer.key;
+    const justFailed = !won && newGuesses.length >= MAX_GUESSES;
+    trackGuessSubmitted({
+      mode: "item",
+      dailyId: day,
+      guessNumber: newGuesses.length,
+      isCorrect: won,
+      guessId: item.key,
+      answerId: answer.key,
+    });
     const next: ModeState = {
       ...state,
-      guesses: [...state.guesses, item.key],
-      won: item.key === answer.key,
+      guesses: newGuesses,
+      won,
+      failed: justFailed ? true : state.failed,
     };
-    setState(next);
-    saveModeState(MODE, next);
-  };
-
-  const handleReveal = () => {
-    if (ended) return;
-    const next: ModeState = { ...state, gaveUp: true };
     setState(next);
     saveModeState(MODE, next);
   };
@@ -144,64 +190,85 @@ export function ItemGame() {
             excludeKeys={excludeKeys}
             onSelect={handleGuess}
           />
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-info">
-            {state.guesses.length}{" "}
-            {state.guesses.length === 1 ? "guess" : "guesses"}
-            <span className="ml-2 text-ink-faint">
-              · blur {blur.toFixed(0)}px
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <GuessesLeftBadge
+              used={state.guesses.length}
+              cap={MAX_GUESSES}
+            />
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+              blur {blur.toFixed(1)}px
             </span>
-          </p>
-          {canReveal && (
-            <button
-              type="button"
-              onClick={handleReveal}
-              className="mt-4 inline-flex items-center gap-2 border border-line bg-canvas px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft transition-colors hover:border-edge hover:text-ink"
-            >
-              <span aria-hidden>↓</span>
-              Show answer
-            </button>
-          )}
+          </div>
         </div>
       )}
 
       <AnimatePresence>
-        {ended && (
+        {state.won && (
           <motion.div
-            key={state.won ? "win" : "revealed"}
+            key="win"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className={
-              state.won
-                ? "mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
-                : "mb-8 rounded-(--radius-card) border border-line bg-muted/40 p-5 sm:p-6"
-            }
+            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              {answer.icon && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(answer.icon)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-contain p-2 sm:h-20 sm:w-20"
-                />
-              )}
-              <div className="flex-1">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  {state.won ? "Solved" : "Revealed"}
-                </div>
-                <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                  {answer.name}
-                </div>
-                <div className="mt-3">
-                  <NextModeCTA current="item" />
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                {answer.icon && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.icon)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-contain p-2 sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    Solved
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  <ModeStatsLine mode="item" />
                 </div>
               </div>
-              {state.won && <ScoreBadge count={state.guesses.length} />}
+              <div className="flex justify-center sm:justify-start">
+                <NextModeCTA current="item" />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {failed && !state.won && (
+        <LossReveal current="item">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            {answer.icon && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={media(answer.icon)}
+                alt=""
+                className="h-16 w-16 rounded-(--radius-card) bg-muted object-contain p-2 sm:h-20 sm:w-20"
+              />
+            )}
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                Answer
+              </div>
+              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                {answer.name}
+              </div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                T{answer.tier ?? "?"} · {answer.slot}
+                {answer.cost != null && ` · ${answer.cost.toLocaleString()} souls`}
+              </div>
+              <ModeStatsLine mode="item" />
+            </div>
+          </div>
+        </LossReveal>
+      )}
 
       {/* Guess history — items only, since item attribute comparison would
           give away the slot/tier on the first guess. Just stack the guessed

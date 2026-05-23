@@ -16,17 +16,30 @@ import {
 } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { media } from "@/lib/media";
+import {
+  trackGuessSubmitted,
+  trackModeCompleted,
+  trackModeStarted,
+} from "@/lib/tracking";
 import { HeroCombobox } from "./HeroCombobox";
 import { Brand } from "./Brand";
 import { NextModeCTA } from "./NextModeCTA";
-import { ScoreBadge } from "./ScoreBadge";
 import { BonusRound } from "./BonusRound";
+import { GuessesLeftBadge } from "./GuessesLeftBadge";
+import { LossReveal } from "./LossReveal";
+import { ModeStatsLine } from "./ModeStatsLine";
 
 const MODE = "ability";
 
 const GRID_DIM = 4;
 const TOTAL_CELLS = GRID_DIM * GRID_DIM;
 const INITIAL_REVEALS = 1;
+
+// Hard ceiling. Twelve wrong guesses and the puzzle auto-fails. Loose by
+// design — the 4×4 reveal grid keeps the icon ambiguous enough that 12
+// still feels tight. Tune downward if analytics show too many wins are
+// landing near the cap.
+const MAX_GUESSES = 12;
 
 export function AbilityGame() {
   const [day, setDay] = useState<string | null>(null);
@@ -35,8 +48,48 @@ export function AbilityGame() {
   useEffect(() => {
     const d = dayString();
     setDay(d);
-    setState(loadModeState(MODE, d));
+    let st = loadModeState(MODE, d);
+    if (
+      !st.won &&
+      !st.failed &&
+      !st.gaveUp &&
+      st.guesses.length >= MAX_GUESSES
+    ) {
+      st = { ...st, failed: true };
+      saveModeState(MODE, st);
+    }
+    setState(st);
   }, []);
+
+  // mode_started — fires once per day on first mount.
+  useEffect(() => {
+    if (!day) return;
+    const { hero, abilityIndex } = getAbilityForDay(day);
+    trackModeStarted({ mode: "ability", dailyId: day, answerId: hero.key });
+    // ESLint won't notice abilityIndex usage from inside this callback;
+    // referencing it here makes the intent explicit and silences any
+    // future linter that demands the dependency be listed.
+    void abilityIndex;
+  }, [day]);
+
+  // mode_completed — fires when the puzzle transitions to a terminal
+  // state. Dedup via tracker's localStorage marker.
+  const stateWon = state?.won === true;
+  const stateFailed = state?.failed === true || state?.gaveUp === true;
+  useEffect(() => {
+    if (!day) return;
+    if (!stateWon && !stateFailed) return;
+    const { hero, abilityIndex } = getAbilityForDay(day);
+    trackModeCompleted({
+      mode: "ability",
+      dailyId: day,
+      outcome: stateWon ? "won" : state?.gaveUp === true ? "gaveUp" : "lost",
+      totalGuesses: state?.guesses.length ?? 0,
+      cap: MAX_GUESSES,
+      answerId: hero.key,
+      abilityIndex,
+    });
+  }, [day, stateWon, stateFailed, state?.guesses.length, state?.gaveUp]);
 
   if (!day || !state) {
     return (
@@ -54,12 +107,27 @@ export function AbilityGame() {
     .filter(Boolean);
   const excludeKeys = new Set(state.guesses);
 
+  const failed = state.failed === true || state.gaveUp === true;
+  const ended = state.won || failed;
+
   const handleGuess = (hero: Hero) => {
-    if (state.won) return;
+    if (ended) return;
+    const newGuesses = [...state.guesses, hero.key];
+    const won = hero.key === answer.key;
+    const justFailed = !won && newGuesses.length >= MAX_GUESSES;
+    trackGuessSubmitted({
+      mode: "ability",
+      dailyId: day,
+      guessNumber: newGuesses.length,
+      isCorrect: won,
+      guessId: hero.key,
+      answerId: answer.key,
+    });
     const next: ModeState = {
       ...state,
-      guesses: [...state.guesses, hero.key],
-      won: hero.key === answer.key,
+      guesses: newGuesses,
+      won,
+      failed: justFailed ? true : state.failed,
     };
     setState(next);
     saveModeState(MODE, next);
@@ -75,7 +143,10 @@ export function AbilityGame() {
     saveModeState(MODE, next);
   };
 
-  const cellsRevealed = state.won
+  // Once the puzzle ends — win or fail — reveal the entire icon so the
+  // player can see what they were looking at. Mid-game the grid uncovers
+  // one tile per wrong guess on top of the initial freebie.
+  const cellsRevealed = ended
     ? TOTAL_CELLS
     : Math.min(INITIAL_REVEALS + state.guesses.length, TOTAL_CELLS);
 
@@ -102,27 +173,29 @@ export function AbilityGame() {
       <div className="mb-8 flex flex-col items-center">
         <AbilityArtCard
           ability={ability}
-          revealedHero={state.won ? answer : null}
-          nameRevealed={state.won && state.bonus != null}
+          revealedHero={ended ? answer : null}
+          nameRevealed={(state.won && state.bonus != null) || failed}
           day={day}
           cellsRevealed={cellsRevealed}
         />
       </div>
 
-      {!state.won && (
+      {!ended && (
         <div className="mb-6">
           <HeroCombobox
             heroes={HEROES}
             excludeKeys={excludeKeys}
             onSelect={handleGuess}
           />
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-info">
-            {state.guesses.length}{" "}
-            {state.guesses.length === 1 ? "guess" : "guesses"}
-            <span className="ml-2 text-ink-faint">
-              · {cellsRevealed} / {TOTAL_CELLS} tiles
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <GuessesLeftBadge
+              used={state.guesses.length}
+              cap={MAX_GUESSES}
+            />
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+              {cellsRevealed} / {TOTAL_CELLS} tiles
             </span>
-          </p>
+          </div>
         </div>
       )}
 
@@ -151,33 +224,65 @@ export function AbilityGame() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              {answer.portrait_url && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(answer.portrait_url)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
-                />
-              )}
-              <div className="flex-1">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  Solved · Hero
-                </div>
-                <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                  {answer.name}
-                </div>
-                <div className="mt-3">
-                  <NextModeCTA current="ability" />
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    Solved · Hero
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  <ModeStatsLine mode="ability" />
                 </div>
               </div>
-              <ScoreBadge count={state.guesses.length} />
+              <div className="flex justify-center sm:justify-start">
+                <NextModeCTA current="ability" />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {failed && !state.won && (
+        <LossReveal current="ability">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            {answer.portrait_url && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={media(answer.portrait_url)}
+                alt=""
+                className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+              />
+            )}
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                Answer
+              </div>
+              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                {answer.name}
+              </div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                {ability.name}
+              </div>
+              <ModeStatsLine mode="ability" />
+            </div>
+          </div>
+        </LossReveal>
+      )}
 
       <div className="space-y-2.5">
         <AnimatePresence initial={false}>

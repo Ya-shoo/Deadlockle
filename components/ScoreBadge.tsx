@@ -2,11 +2,28 @@
 
 import { motion } from "motion/react";
 
-// Compact hex score badge for inline use in per-mode win panels.
-// Mirrors the home-page CompleteBadge's deco hex frame at a smaller scale
-// so the visual language stays consistent across the all-modes-done state
-// and individual wins.
-export function ScoreBadge({ count }: { count: number }) {
+// Compact hex score badge. Two render modes:
+//   - per-puzzle (default): a checkmark + guess count for the mode the
+//     player just won. Used by the dev-only Quote mode.
+//   - aggregate (`total` prop set): a wins / total ratio for the
+//     daily-complete surface. The hex frame stays correct-green so the
+//     visual reads as "completion" regardless of the win ratio; the
+//     ratio digits themselves carry the score story.
+//
+// The hex frame mirrors the home-page CompleteBadge at a smaller scale
+// so the visual language stays consistent across surfaces.
+export function ScoreBadge({
+  count,
+  total,
+}: {
+  count: number;
+  total?: number;
+}) {
+  const isRatio = total != null;
+  const ariaLabel = isRatio
+    ? `${count} of ${total} modes won today`
+    : `Solved in ${count} ${count === 1 ? "guess" : "guesses"}`;
+
   return (
     <motion.div
       initial={{ scale: 0.6, opacity: 0, rotate: -8 }}
@@ -14,7 +31,7 @@ export function ScoreBadge({ count }: { count: number }) {
       transition={{ duration: 0.5, delay: 0.15, ease: [0.34, 1.56, 0.64, 1] }}
       className="relative shrink-0"
       style={{ width: 84, height: 96 }}
-      aria-label={`Solved in ${count} ${count === 1 ? "guess" : "guesses"}`}
+      aria-label={ariaLabel}
     >
       <div
         aria-hidden
@@ -59,28 +76,43 @@ export function ScoreBadge({ count }: { count: number }) {
       </svg>
 
       <div className="relative flex h-full flex-col items-center justify-center px-2 text-center">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 56 56"
-          className="text-correct"
-          aria-hidden
-        >
-          <path
-            d="M10 28 L24 42 L46 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="6"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
-          />
-        </svg>
-        <div className="mt-1 font-display text-2xl leading-none text-correct">
-          {count}
-        </div>
-        <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.22em] text-info">
-          {count === 1 ? "guess" : "guesses"}
-        </div>
+        {isRatio ? (
+          <>
+            <div className="font-display text-3xl leading-none text-correct tabular-nums">
+              {count}
+              <span className="text-ink-soft">/</span>
+              {total}
+            </div>
+            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.22em] text-info">
+              modes won
+            </div>
+          </>
+        ) : (
+          <>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 56 56"
+              className="text-correct"
+              aria-hidden
+            >
+              <path
+                d="M10 28 L24 42 L46 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="6"
+                strokeLinecap="square"
+                strokeLinejoin="miter"
+              />
+            </svg>
+            <div className="mt-1 font-display text-2xl leading-none text-correct">
+              {count}
+            </div>
+            <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.22em] text-info">
+              {count === 1 ? "guess" : "guesses"}
+            </div>
+          </>
+        )}
       </div>
     </motion.div>
   );

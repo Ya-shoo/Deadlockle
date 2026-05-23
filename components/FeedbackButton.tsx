@@ -32,17 +32,17 @@ const POPUP_FINAL_KEY_PREFIX = "deadlockle.feedback.popup.final.";
 
 type Status = "idle" | "sending" | "sent" | "error" | "rate_limited";
 
-function readDailyProgress(): { wonCount: number; allDone: boolean } {
-  if (typeof window === "undefined") return { wonCount: 0, allDone: false };
+function readDailyProgress(): { doneCount: number; allDone: boolean } {
+  if (typeof window === "undefined") return { doneCount: 0, allDone: false };
   const day = dayString();
-  let wonCount = 0;
+  let doneCount = 0;
   for (const slug of BUILT_MODE_SLUGS) {
     const st = loadModeState(slug, day);
-    if (st.won || st.gaveUp) wonCount++;
+    if (st.won || st.failed || st.gaveUp) doneCount++;
   }
   return {
-    wonCount,
-    allDone: wonCount === BUILT_MODE_SLUGS.length,
+    doneCount,
+    allDone: doneCount === BUILT_MODE_SLUGS.length,
   };
 }
 
@@ -55,7 +55,7 @@ function readDailyProgress(): { wonCount: number; allDone: boolean } {
 function markAndCheckPopup(): boolean {
   if (typeof window === "undefined") return false;
   const day = dayString();
-  const { wonCount, allDone } = readDailyProgress();
+  const { doneCount, allDone } = readDailyProgress();
   if (allDone) {
     const k = POPUP_FINAL_KEY_PREFIX + day;
     if (window.localStorage.getItem(k) === "1") return false;
@@ -66,7 +66,7 @@ function markAndCheckPopup(): boolean {
     }
     return true;
   }
-  if (wonCount === 1) {
+  if (doneCount === 1) {
     const k = POPUP_FIRST_KEY_PREFIX + day;
     if (window.localStorage.getItem(k) === "1") return false;
     try {

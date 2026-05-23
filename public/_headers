@@ -1,5 +1,32 @@
 # Cloudflare Pages headers — applied at the CDN edge, not by Next.
 
+# Next.js content-hashed assets — filename changes whenever content changes,
+# so they're safe to cache forever. Without this, Cloudflare Pages defaults
+# to max-age=14400 + must-revalidate, which forces a revalidation roundtrip
+# every 4h on every chunk for every visitor.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Per-route OG images (app/<route>/opengraph-image.png and the root
+# app/opengraph-image.png). Pre-rendered PNGs that only change when we
+# rebuild, so a day of edge caching is safe — must-revalidate keeps the
+# CDN honest after a deploy.
+/opengraph-image.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/*/opengraph-image.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Pages serves these as octet-stream by default; explicit Content-Type
+# keeps crawlers / browser dev tools happy.
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
 # All game-asset directories (voicelines, banners, portraits, splash,
 # abilities, items, mugshots) moved to the dailydles R2 bucket and are
 # served from pub-<hash>.r2.dev directly. Rules in this file do NOT
@@ -7,3 +34,9 @@
 # would have to be set via R2 bucket settings or a Worker proxy if we
 # want them back. Currently relying on Pages-served HTML being the only
 # legitimate entry point.
+
+# Ko-fi tip-jar avatar lives in /public (small, ships with the static
+# export). Long fresh window + stale-while-revalidate so the homepage's
+# support strip doesn't pay a network roundtrip every visit.
+/kofi-avatar.jpg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=31536000

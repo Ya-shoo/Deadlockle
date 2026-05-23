@@ -4,15 +4,28 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   BUILT_MODE_SLUGS,
+  MODES,
   nextUnfinishedMode,
   type ModeDef,
   type ModeSlug,
 } from "@/lib/modes";
 import { dayString } from "@/lib/daily";
 import { loadModeState } from "@/lib/storage";
+import { DailyStatsBand } from "./DailyStatsBand";
 import { NextResetCountdown } from "./NextResetCountdown";
+import { ScoreBadge } from "./ScoreBadge";
 import { StreakBadge } from "./StreakBadge";
 import { TryOWdleCard } from "./TryOWdleCard";
+
+// Per-mode breakdown row shown as supporting info in DailyCompletePanel.
+// Each entry is one of the built modes the player engaged with today; status
+// reflects how it ended (win or fail), `count` is the guess count.
+type ModeBreakdown = {
+  slug: ModeSlug;
+  label: string;
+  count: number;
+  status: "won" | "failed";
+};
 
 // Renders inline in a game's win state. Walks canonical play order, skips
 // modes the player has already won, and recommends the first remaining one
@@ -28,30 +41,40 @@ import { TryOWdleCard } from "./TryOWdleCard";
 export function NextModeCTA({ current }: { current: ModeSlug }) {
   const [data] = useState<{
     next: ModeDef | null;
-    totalGuesses: number;
-    roundGuesses: number;
+    wonCount: number;
+    breakdown: ModeBreakdown[];
   }>(() => {
     const day = dayString();
     const done = new Set<ModeSlug>();
-    let totalGuesses = 0;
-    let roundGuesses = 0;
+    let wonCount = 0;
+    const breakdown: ModeBreakdown[] = [];
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, day);
-      if (st.won || st.gaveUp) done.add(slug);
+      const isWon = st.won === true;
+      const isFailed = st.failed === true || st.gaveUp === true;
+      if (isWon || isFailed) done.add(slug);
+      if (isWon) wonCount++;
       // ConversationState (Quote/Sound) shares the same on-disk shape: its
       // `guesses` is an array of objects, but `.length` still gives the
-      // count we want for a total.
+      // count we want.
       const count = Array.isArray(st.guesses) ? st.guesses.length : 0;
-      totalGuesses += count;
-      if (slug === current) roundGuesses = count;
+      if (isWon || isFailed) {
+        const mode = MODES.find((m) => m.slug === slug);
+        breakdown.push({
+          slug,
+          label: mode?.label ?? slug,
+          count,
+          status: isWon ? "won" : "failed",
+        });
+      }
     }
-    // Defensive: ensure the just-won mode is treated as done even if its
-    // localStorage write hasn't been observed yet by this read.
+    // Defensive: ensure the just-completed mode is treated as done even if
+    // its localStorage write hasn't been observed yet by this read.
     done.add(current);
     return {
       next: nextUnfinishedMode(current, done),
-      totalGuesses,
-      roundGuesses,
+      wonCount,
+      breakdown,
     };
   });
 
@@ -72,8 +95,8 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
     return (
       <DailyCompletePanel
         modeCount={BUILT_MODE_SLUGS.length}
-        totalGuesses={data.totalGuesses}
-        roundGuesses={data.roundGuesses}
+        wonCount={data.wonCount}
+        breakdown={data.breakdown}
       />
     );
   }
@@ -138,56 +161,61 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
 // players don't need to navigate home to find out when puzzles refresh.
 function DailyCompletePanel({
   modeCount,
-  totalGuesses,
-  roundGuesses,
+  wonCount,
+  breakdown,
 }: {
   modeCount: number;
-  totalGuesses: number;
-  roundGuesses: number;
+  wonCount: number;
+  breakdown: ModeBreakdown[];
 }) {
+  const sweep = wonCount === modeCount;
+  // This panel always renders nested inside a green win card (or red
+  // LossReveal), so it doesn't need its own border/background — that
+  // would double up the parent's tinted frame. The wins/N hex is the
+  // score focal point; per-mode pills are supporting info underneath.
   return (
-    <div className="flex w-full max-w-xl flex-col gap-5">
-      <div className="relative flex flex-col border border-correct/55 bg-canvas/50 p-5 shadow-lg shadow-black/40 sm:p-6">
-        {/* Inner deco hairline echoes the parlour-room frame style used by
-            the in-app deco cards. */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-1 border border-correct/15"
-        />
-
-        <div className="relative flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-correct">
+    <div className="flex w-full flex-col gap-4">
+      <div className="relative flex flex-col">
+        <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-correct">
           <span aria-hidden>✓</span>
           Daily Complete
         </div>
 
-        {/* Score band: two big numbers side-by-side. Round = this puzzle.
-            Total = all modes combined. Tabular nums so cross-game scores
-            visually line up without digit jitter. */}
-        <div className="relative mt-4 grid grid-cols-2 gap-4 border-y border-correct/20 py-5">
-          <Stat
-            label="This round"
-            value={roundGuesses}
-            unit={roundGuesses === 1 ? "guess" : "guesses"}
-          />
-          <Stat
-            label={`Total across ${modeCount} ${modeCount === 1 ? "mode" : "modes"}`}
-            value={totalGuesses}
-            unit={totalGuesses === 1 ? "guess" : "guesses"}
-          />
+        {/* Score focal point: hex badge with wins / total. Sweep gets a
+            short subtitle so a perfect day feels distinct from a mixed
+            one without needing a separate visual treatment. */}
+        <div className="mt-3 flex flex-col items-center gap-2 border-y border-correct/25 py-4">
+          <ScoreBadge count={wonCount} total={modeCount} />
+          <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-ink-faint">
+            {sweep ? "Sweep" : `${modeCount - wonCount} missed`}
+          </span>
         </div>
 
+        {/* Per-mode pills: label + status glyph + guess count. Lets the
+            player see the round-by-round shape of their day without
+            another visual heavyweight. */}
+        {breakdown.length > 0 && (
+          <div className="mt-3">
+            <ModePillRow stats={breakdown} />
+          </div>
+        )}
+
+        {/* Live PostHog-backed stats — hides cleanly when sample size
+            is below threshold (cold start, low DAU day) or when the
+            stats endpoint serves an empty payload (secrets missing). */}
+        <DailyStatsBand />
+
         {/* Countdown band. The live pulse dot signals the timer is ticking,
-            and the display itself reads at a glance even from a phone tab
-            preview. */}
-        <div className="relative mt-5 flex flex-col items-center gap-2 border-y border-correct/20 py-5">
+            and the display itself reads at a glance from a phone tab. */}
+        <div className="mt-3 flex flex-col items-center gap-1.5 border-y border-correct/25 py-3">
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-info">
             Next puzzle in
           </span>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <LiveDot />
             <NextResetCountdown
               label=""
-              className="font-display text-4xl font-semibold tabular-nums leading-none text-accent-soft sm:text-5xl"
+              className="font-display text-3xl font-semibold tabular-nums leading-none text-accent-soft sm:text-4xl"
             />
           </div>
           <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink-faint">
@@ -195,11 +223,11 @@ function DailyCompletePanel({
           </span>
         </div>
 
-        <div className="relative mt-5">
+        <div className="mt-3">
           <StreakBadge variant="band" />
         </div>
 
-        <div className="relative mt-4 flex justify-center">
+        <div className="mt-3 flex justify-center">
           <Link
             href="/"
             className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-info underline-offset-4 hover:underline"
@@ -210,32 +238,39 @@ function DailyCompletePanel({
       </div>
 
       {/* Cross-promo: the player just finished every mode for the day, so
-          surfacing the sister site is the natural next-action prompt. */}
-      <TryOWdleCard />
+          surfacing the sister site is the natural next-action prompt.
+          Compact variant since this lives inside the max-w-md win card. */}
+      <TryOWdleCard compact />
     </div>
   );
 }
 
-function Stat({
-  label,
-  value,
-  unit,
-}: {
-  label: string;
-  value: number;
-  unit: string;
-}) {
+// Per-mode breakdown pills. Won pills use the correct (green) token;
+// failed pills use far (red). Compact layout so all five fit inside the
+// max-w-md card; wraps to a second row on the narrowest phones.
+function ModePillRow({ stats }: { stats: ModeBreakdown[] }) {
   return (
-    <div className="flex flex-col items-center text-center">
-      <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-ink-faint">
-        {label}
-      </span>
-      <span className="mt-1 font-display text-3xl tabular-nums leading-none text-accent-soft sm:text-4xl">
-        {value}
-      </span>
-      <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.24em] text-ink-faint">
-        {unit}
-      </span>
+    <div className="flex flex-wrap items-center justify-center gap-1.5">
+      {stats.map((s) => {
+        const cls =
+          s.status === "won"
+            ? "border-correct/40 bg-correct/10 text-correct"
+            : "border-far/40 bg-far/10 text-far";
+        return (
+          <span
+            key={s.slug}
+            className={
+              "inline-flex items-center gap-1.5 rounded-(--radius-pill) border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] " +
+              cls
+            }
+            aria-label={`${s.label}: ${s.status === "won" ? "won in" : "missed after"} ${s.count} ${s.count === 1 ? "guess" : "guesses"}`}
+          >
+            <span>{s.label}</span>
+            <span aria-hidden>{s.status === "won" ? "✓" : "✕"}</span>
+            <span className="tabular-nums text-ink-soft">{s.count}</span>
+          </span>
+        );
+      })}
     </div>
   );
 }

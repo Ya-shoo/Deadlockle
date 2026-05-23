@@ -5,9 +5,15 @@ export type ModeState = {
   day: string;
   guesses: string[]; // hero keys (or item keys for Item mode), in order
   won: boolean;
-  // Set when the player tapped "Show answer" after exhausting their
-  // guesses. Treated as "done" by NextModeCTA so the player still gets
-  // pushed forward, but distinguished from a real win for badging.
+  // Set when the player hit the per-mode guess cap without solving. The UI
+  // auto-reveals the answer in a muted red card. Treated as "done" by every
+  // consumer that walks the daily progress (streak, header dots, NextModeCTA,
+  // feedback popup, home-page mode grid), so a failed mode still advances the
+  // player.
+  failed?: boolean;
+  // Legacy. Set when the player tapped the Item-mode "Show answer" mercy-kill
+  // (removed in the lives PR). Still honored on read for back-compat with
+  // existing localStorage; new failures write `failed` instead.
   gaveUp?: boolean;
   // Classic-mode hint system: attribute keys whose answer values have been
   // revealed. Capped at 2 by the UI; persisted so reveals survive reloads.
@@ -59,6 +65,7 @@ export type ConversationState = {
   speakers?: [string, string];
   guesses: ConversationGuess[];
   won: boolean;
+  failed?: boolean;
 };
 
 function isValidConversationGuess(g: unknown): g is ConversationGuess {

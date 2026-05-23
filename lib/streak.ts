@@ -9,6 +9,7 @@
 
 import { dayString } from "./daily";
 import { BUILT_MODE_SLUGS } from "./modes";
+import { trackDailyCompleted } from "./tracking";
 
 const STREAK_KEY = "deadlockle.streak";
 const MODE_KEY_RE = /^deadlockle\.[a-z]+\.(\d{4}-\d{2}-\d{2})$/;
@@ -58,9 +59,10 @@ function prevDay(day: string): string {
   return date.toISOString().slice(0, 10);
 }
 
-// A day counts as complete if every built mode's stored state has won=true
-// or gaveUp=true. Mirrors HomeContent's allDone derivation so the streak
-// stays in lockstep with what the UI already calls a finished day.
+// A day counts as complete if every built mode's stored state has won=true,
+// failed=true (new lives system), or gaveUp=true (legacy Item mode mercy
+// kill). Engagement-based: losing modes doesn't break the streak — only
+// missing days does.
 function isDayComplete(day: string): boolean {
   if (typeof window === "undefined") return false;
   for (const slug of BUILT_MODE_SLUGS) {
@@ -68,7 +70,11 @@ function isDayComplete(day: string): boolean {
       const raw = window.localStorage.getItem(`deadlockle.${slug}.${day}`);
       if (!raw) return false;
       const parsed = JSON.parse(raw);
-      if (!(parsed?.won === true || parsed?.gaveUp === true)) return false;
+      const done =
+        parsed?.won === true ||
+        parsed?.failed === true ||
+        parsed?.gaveUp === true;
+      if (!done) return false;
     } catch {
       return false;
     }
@@ -114,6 +120,44 @@ function longestRunInHistory(): number {
   return longest;
 }
 
+// Summary of the day's per-mode outcomes used to flesh out the
+// `daily_completed` PostHog event payload. Walks the same localStorage
+// keys `isDayComplete` does so the counts stay in lockstep with what
+// the rest of the UI calls a finished day. `lostCount` includes both
+// the new `failed` flag and the legacy `gaveUp` flag — the dashboard
+// vocabulary collapses both into "lost" for parity with OWdle.
+function summarizeDay(day: string): {
+  wonCount: number;
+  lostCount: number;
+  totalGuesses: number;
+} {
+  if (typeof window === "undefined") {
+    return { wonCount: 0, lostCount: 0, totalGuesses: 0 };
+  }
+  let wonCount = 0;
+  let lostCount = 0;
+  let totalGuesses = 0;
+  for (const slug of BUILT_MODE_SLUGS) {
+    try {
+      const raw = window.localStorage.getItem(`deadlockle.${slug}.${day}`);
+      if (!raw) continue;
+      const parsed = JSON.parse(raw);
+      if (parsed?.won === true) {
+        wonCount++;
+      } else if (parsed?.failed === true || parsed?.gaveUp === true) {
+        lostCount++;
+      }
+      if (Array.isArray(parsed?.guesses)) {
+        totalGuesses += parsed.guesses.length;
+      }
+    } catch {
+      // ignore malformed entries — they just won't contribute to the
+      // event payload, which is fine.
+    }
+  }
+  return { wonCount, lostCount, totalGuesses };
+}
+
 // Seed initial state from history. If today is complete the streak ends at
 // today; otherwise it ends at the most recent complete day, which is
 // usually yesterday for a returning daily player.
@@ -148,5 +192,17 @@ export function bumpStreakIfNeeded(): StreakState {
   const longest = Math.max(state.longest, current);
   const next: StreakState = { current, longest, lastCompletedDay: today };
   writeRaw(next);
+  // daily_completed — exactly-once: writeRaw above just flipped
+  // lastCompletedDay to today, so we'll never re-enter this branch for
+  // today. The tracker also dedupes via localStorage as belt + braces.
+  const summary = summarizeDay(today);
+  trackDailyCompleted({
+    dailyId: today,
+    wonCount: summary.wonCount,
+    lostCount: summary.lostCount,
+    totalGuesses: summary.totalGuesses,
+    streakCurrent: current,
+    streakLongest: longest,
+  });
   return next;
 }

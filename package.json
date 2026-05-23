@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently -n next -c cyan --kill-others-on-fail \"next dev -p 3001\"",
+    "dev:next": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "eslint",
     "build:deploy": "node scripts/build-for-deploy.mjs",
     "deploy:live": "npm run sync-to-r2 && npm run build:deploy && wrangler pages deploy --branch=main && git push",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "concurrently": "^9.2.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

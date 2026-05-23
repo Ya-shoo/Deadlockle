@@ -9,16 +9,31 @@ import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
+import {
+  trackGuessSubmitted,
+  trackModeCompleted,
+  trackModeStarted,
+} from "@/lib/tracking";
 import { NextModeCTA } from "./NextModeCTA";
-import { ScoreBadge } from "./ScoreBadge";
+import { GuessesLeftBadge } from "./GuessesLeftBadge";
+import { LossReveal } from "./LossReveal";
+import { ModeStatsLine } from "./ModeStatsLine";
 
 const MODE = "mugshot";
 
-// Crop window zoom level by guess count. Higher = more zoomed in. Index 0 is
-// before any guess; each wrong guess advances the index. Starting zoom kept
-// modest — the smartcrop already centres on the character so a 10× crop is
-// already quite tight without being unfair.
-const ZOOM_BY_GUESS = [10, 7.5, 5.5, 4, 3, 2.2, 1.7, 1.3, 1.1, 1];
+// Hard ceiling. Five wrong guesses and the camera locks. Tightest cap of
+// the lineup — the curve below is deliberately steep so the cropped
+// portrait still feels like a real challenge under the cap.
+const MAX_GUESSES = 5;
+
+// Crop window zoom level by guess count. Higher = more zoomed in. Index 0
+// is before any guess; each wrong guess advances the index. The curve
+// extends past the player-visible window (indices 5–7) so the math stays
+// well-defined if the cap is ever raised, but under MAX_GUESSES=5 the
+// player only ever sees indices 0–4. The plateau at index 7 (zoom=1)
+// reserves a fully-revealed frame for the future loss card without a
+// cliff-edge jump.
+const ZOOM_BY_GUESS = [10, 7.5, 5.5, 4, 3, 2.2, 1.5, 1];
 
 export function MugshotGame() {
   const [day, setDay] = useState<string | null>(null);
@@ -27,8 +42,41 @@ export function MugshotGame() {
   useEffect(() => {
     const d = dayString();
     setDay(d);
-    setState(loadModeState(MODE, d));
+    let st = loadModeState(MODE, d);
+    if (
+      !st.won &&
+      !st.failed &&
+      !st.gaveUp &&
+      st.guesses.length >= MAX_GUESSES
+    ) {
+      st = { ...st, failed: true };
+      saveModeState(MODE, st);
+    }
+    setState(st);
   }, []);
+
+  // mode_started — once per day. Tracker dedupes via localStorage.
+  useEffect(() => {
+    if (!day) return;
+    const { hero } = getMugshotForDay(day);
+    trackModeStarted({ mode: "mugshot", dailyId: day, answerId: hero.key });
+  }, [day]);
+
+  const stateWon = state?.won === true;
+  const stateFailed = state?.failed === true || state?.gaveUp === true;
+  useEffect(() => {
+    if (!day) return;
+    if (!stateWon && !stateFailed) return;
+    const { hero } = getMugshotForDay(day);
+    trackModeCompleted({
+      mode: "mugshot",
+      dailyId: day,
+      outcome: stateWon ? "won" : state?.gaveUp === true ? "gaveUp" : "lost",
+      totalGuesses: state?.guesses.length ?? 0,
+      cap: MAX_GUESSES,
+      answerId: hero.key,
+    });
+  }, [day, stateWon, stateFailed, state?.guesses.length, state?.gaveUp]);
 
   if (!day || !state) {
     return (
@@ -46,18 +94,31 @@ export function MugshotGame() {
     .filter(Boolean);
   const excludeKeys = new Set(state.guesses);
 
-  const wrongCount = state.won
-    ? ZOOM_BY_GUESS.length - 1
-    : state.guesses.length;
+  const failed = state.failed === true || state.gaveUp === true;
+  const ended = state.won || failed;
+
+  const wrongCount = ended ? ZOOM_BY_GUESS.length - 1 : state.guesses.length;
   const zoomIdx = Math.min(wrongCount, ZOOM_BY_GUESS.length - 1);
-  const zoom = state.won ? 1 : ZOOM_BY_GUESS[zoomIdx];
+  const zoom = ended ? 1 : ZOOM_BY_GUESS[zoomIdx];
 
   const handleGuess = (hero: Hero) => {
-    if (state.won) return;
+    if (ended) return;
+    const newGuesses = [...state.guesses, hero.key];
+    const won = hero.key === answer.key;
+    const justFailed = !won && newGuesses.length >= MAX_GUESSES;
+    trackGuessSubmitted({
+      mode: "mugshot",
+      dailyId: day,
+      guessNumber: newGuesses.length,
+      isCorrect: won,
+      guessId: hero.key,
+      answerId: answer.key,
+    });
     const next: ModeState = {
       ...state,
-      guesses: [...state.guesses, hero.key],
-      won: hero.key === answer.key,
+      guesses: newGuesses,
+      won,
+      failed: justFailed ? true : state.failed,
     };
     setState(next);
     saveModeState(MODE, next);
@@ -88,25 +149,27 @@ export function MugshotGame() {
         <MugshotFrame
           imageUrl={imageUrl}
           zoom={zoom}
-          revealed={state.won}
+          revealed={ended}
           heroName={answer.name}
         />
       </div>
 
-      {!state.won && (
+      {!ended && (
         <div className="mb-6">
           <HeroCombobox
             heroes={HEROES}
             excludeKeys={excludeKeys}
             onSelect={handleGuess}
           />
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-info">
-            {state.guesses.length}{" "}
-            {state.guesses.length === 1 ? "guess" : "guesses"}
-            <span className="ml-2 text-ink-faint">
-              · zoom {zoom.toFixed(zoom < 2 ? 2 : 1)}×
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <GuessesLeftBadge
+              used={state.guesses.length}
+              cap={MAX_GUESSES}
+            />
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+              zoom {zoom.toFixed(zoom < 2 ? 2 : 1)}×
             </span>
-          </p>
+          </div>
         </div>
       )}
 
@@ -117,33 +180,62 @@ export function MugshotGame() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              {answer.portrait_url && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(answer.portrait_url)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
-                />
-              )}
-              <div className="flex-1">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  Solved
-                </div>
-                <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                  {answer.name}
-                </div>
-                <div className="mt-3">
-                  <NextModeCTA current="mugshot" />
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    Solved
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  <ModeStatsLine mode="mugshot" />
                 </div>
               </div>
-              <ScoreBadge count={state.guesses.length} />
+              <div className="flex justify-center sm:justify-start">
+                <NextModeCTA current="mugshot" />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {failed && !state.won && (
+        <LossReveal current="mugshot">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            {answer.portrait_url && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={media(answer.portrait_url)}
+                alt=""
+                className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+              />
+            )}
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                Answer
+              </div>
+              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                {answer.name}
+              </div>
+              <ModeStatsLine mode="mugshot" />
+            </div>
+          </div>
+        </LossReveal>
+      )}
 
       <div className="space-y-4">
         <AnimatePresence initial={false}>

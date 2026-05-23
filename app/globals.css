@@ -157,11 +157,19 @@ body::after {
   mix-blend-mode: overlay;
 }
 
-main,
-header,
-footer {
-  position: relative;
-  z-index: 2;
+/* Lift content above the body::before / body::after wash + grain (z=0, z=1).
+   Declared inside @layer base so that Tailwind utility classes (which live
+   in @layer utilities, a later layer) can override `position` / `z-index`
+   on individual elements — e.g., `sticky z-50` on the global Header.
+   Unlayered CSS beats every layered rule regardless of specificity, so
+   keeping this in `base` is what unblocks utility overrides. */
+@layer base {
+  main,
+  header,
+  footer {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 /* ---------- typography helpers ---------- */
@@ -369,7 +377,9 @@ select:focus-visible {
 }
 
 /* state nuance — won mode gets a faint green left edge so the
-   board reads at a glance once you've cleared a few. */
+   board reads at a glance once you've cleared a few. Failed mode
+   gets a matching muted red edge so a missed run reads as distinct
+   from both a clean win and an unstarted card. */
 .mode-card--won {
   border-left-color: rgba(127, 184, 108, 0.55);
 }
@@ -377,6 +387,15 @@ select:focus-visible {
 .mode-card--won:hover,
 .mode-card--won:focus-visible {
   border-left-color: rgba(127, 184, 108, 0.9);
+}
+
+.mode-card--failed {
+  border-left-color: rgba(199, 90, 74, 0.45);
+}
+
+.mode-card--failed:hover,
+.mode-card--failed:focus-visible {
+  border-left-color: rgba(199, 90, 74, 0.8);
 }
 
 .mode-card--disabled {

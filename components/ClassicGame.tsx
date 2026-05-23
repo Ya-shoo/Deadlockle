@@ -12,14 +12,31 @@ import {
 } from "@/lib/compare";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { media } from "@/lib/media";
+import {
+  trackGuessSubmitted,
+  trackHintUsed,
+  trackModeCompleted,
+  trackModeStarted,
+} from "@/lib/tracking";
 import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
 import { NextModeCTA } from "./NextModeCTA";
-import { ScoreBadge } from "./ScoreBadge";
+import { GuessesLeftBadge } from "./GuessesLeftBadge";
+import { LossReveal } from "./LossReveal";
+import { ModeStatsLine } from "./ModeStatsLine";
 
-const HINT_THRESHOLDS = [5, 10] as const;
-const MAX_HINTS = HINT_THRESHOLDS.length;
+// Hard ceiling on slots. Hints count toward this — `effectiveUsed` is
+// `guesses.length + hintsUsed.length`. Tenth slot hit without a correct
+// guess auto-fails the puzzle.
+const MAX_GUESSES = 10;
+
+// Hint unlock thresholds, in wrong-guess count. The Nth hint becomes
+// available once the player has made HINT_UNLOCK_AT[N-1] wrong guesses.
+// Each hint also consumes one slot from the pool, so a player who burns
+// both hints has 8 actual guesses to find the hero.
+const HINT_UNLOCK_AT = [4, 7] as const;
+const MAX_HINTS = HINT_UNLOCK_AT.length;
 
 const ATTR_KEY_SET = new Set<AttrKey>(ATTRIBUTES.map((a) => a.key));
 
@@ -35,10 +52,59 @@ export function ClassicGame() {
   useEffect(() => {
     const d = dayString();
     setDay(d);
-    setState(loadModeState("classic", d));
+    let st = loadModeState("classic", d);
+    const hintsLen = (st.hintsUsed ?? []).length;
+    if (
+      !st.won &&
+      !st.failed &&
+      !st.gaveUp &&
+      st.guesses.length + hintsLen >= MAX_GUESSES
+    ) {
+      st = { ...st, failed: true };
+      saveModeState("classic", st);
+    }
+    setState(st);
   }, []);
 
   const answer = useMemo(() => (day ? getHeroForDay(day) : null), [day]);
+
+  // mode_started — fires once per day on first mount (the tracker
+  // dedupes via localStorage marker, so this is safe to re-run across
+  // remounts).
+  useEffect(() => {
+    if (!day || !answer) return;
+    trackModeStarted({ mode: "classic", dailyId: day, answerId: answer.key });
+  }, [day, answer]);
+
+  // mode_completed — fires once when the puzzle transitions to a
+  // terminal state (won or failed). Tracker dedupes; the effect just
+  // re-runs cheaply when the terminal flags or counts change.
+  const stateWon = state?.won === true;
+  const stateFailed =
+    state?.failed === true || state?.gaveUp === true;
+  useEffect(() => {
+    if (!day || !answer) return;
+    if (!stateWon && !stateFailed) return;
+    const guessesLen = state?.guesses.length ?? 0;
+    const hintsLen = state?.hintsUsed?.length ?? 0;
+    trackModeCompleted({
+      mode: "classic",
+      dailyId: day,
+      outcome: stateWon ? "won" : state?.gaveUp === true ? "gaveUp" : "lost",
+      totalGuesses: guessesLen,
+      cap: MAX_GUESSES,
+      hintsUsed: hintsLen,
+      answerId: answer.key,
+    });
+  }, [
+    day,
+    answer,
+    stateWon,
+    stateFailed,
+    state?.guesses.length,
+    state?.hintsUsed?.length,
+    state?.gaveUp,
+  ]);
 
   const guessedHeroes = useMemo(
     () =>
@@ -84,29 +150,67 @@ export function ClassicGame() {
 
   const excludeKeys = new Set(state.guesses);
 
+  const failed = state.failed === true || state.gaveUp === true;
+  const ended = state.won || failed;
+  const effectiveUsed = state.guesses.length + hintsUsed.length;
+  const effectiveRemaining = Math.max(0, MAX_GUESSES - effectiveUsed);
+
   const handleGuess = (hero: Hero) => {
-    if (state.won) return;
+    if (ended) return;
     const newGuesses = [...state.guesses, hero.key];
     const won = hero.key === answer.key;
-    const next: ModeState = { ...state, guesses: newGuesses, won };
+    const newEffective = newGuesses.length + hintsUsed.length;
+    const justFailed = !won && newEffective >= MAX_GUESSES;
+    trackGuessSubmitted({
+      mode: "classic",
+      dailyId: day,
+      guessNumber: newGuesses.length,
+      isCorrect: won,
+      guessId: hero.key,
+      answerId: answer.key,
+    });
+    const next: ModeState = {
+      ...state,
+      guesses: newGuesses,
+      won,
+      failed: justFailed ? true : state.failed,
+    };
     setState(next);
     saveModeState("classic", next);
   };
 
-  const guessCount = state.guesses.length;
-  const hintsUnlocked = HINT_THRESHOLDS.filter((t) => guessCount >= t).length;
-  const hintsRemaining = Math.max(0, hintsUnlocked - hintsUsed.length);
+  // Hint gates:
+  //   (1) hints remain (under MAX_HINTS)
+  //   (2) at least 2 effective slots remain — burning a hint with only
+  //       1 slot left would auto-fail the puzzle without giving the player
+  //       a chance to act on the reveal, so we hard-lock there.
+  //   (3) the natural threshold is hit OR the player is on their
+  //       2nd-to-last slot (safety rescue rule — keeps the next hint
+  //       available even if the threshold hasn't been met yet).
+  const nextHintIndex = hintsUsed.length;
+  const hintsRemaining = MAX_HINTS - nextHintIndex;
+  const tooFewSlots = effectiveRemaining <= 1;
+  const thresholdMet =
+    nextHintIndex < MAX_HINTS &&
+    state.guesses.length >= HINT_UNLOCK_AT[nextHintIndex];
+  const safetyMet = effectiveRemaining === 2;
 
   const eligibleForHint = Array.from(unsolvedAttrs).filter(
     (k) => !hintsUsed.includes(k),
   );
   const canUseHint =
-    !state.won && hintsRemaining > 0 && eligibleForHint.length > 0;
+    !ended &&
+    hintsRemaining > 0 &&
+    !tooFewSlots &&
+    (thresholdMet || safetyMet) &&
+    eligibleForHint.length > 0;
 
-  const nextThreshold = HINT_THRESHOLDS.find((t) => guessCount < t) ?? null;
+  const nextThreshold = HINT_UNLOCK_AT.find(
+    (t) => state.guesses.length < t,
+  ) ?? null;
   const guessesUntilNext =
-    nextThreshold != null && hintsUsed.length < MAX_HINTS
-      ? nextThreshold - guessCount
+    nextThreshold != null && hintsUsed.length < MAX_HINTS && !safetyMet
+      ? nextThreshold - state.guesses.length
       : null;
 
   const confirmHint = () => {
@@ -116,9 +220,20 @@ export function ClassicGame() {
     }
     const pick =
       eligibleForHint[Math.floor(Math.random() * eligibleForHint.length)];
+    const newHints = [...hintsUsed, pick];
+    const newEffective = state.guesses.length + newHints.length;
+    const justFailed = !state.won && newEffective >= MAX_GUESSES;
+    trackHintUsed({
+      mode: "classic",
+      dailyId: day,
+      hintIndex: hintsUsed.length,
+      atGuessNumber: state.guesses.length,
+      attributeRevealed: pick,
+    });
     const next: ModeState = {
       ...state,
-      hintsUsed: [...hintsUsed, pick],
+      hintsUsed: newHints,
+      failed: justFailed ? true : state.failed,
     };
     setState(next);
     saveModeState("classic", next);
@@ -145,36 +260,24 @@ export function ClassicGame() {
         </div>
       </header>
 
-      {!state.won && (
-        <div className="mb-6">
+      {!ended && (
+        <div className="mb-6 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <GuessesLeftBadge used={effectiveUsed} cap={MAX_GUESSES} />
+            <HintControls
+              canUseHint={canUseHint}
+              hintsRemaining={hintsRemaining}
+              hintsUsed={hintsUsed.length}
+              tooFewSlots={tooFewSlots}
+              guessesUntilNext={guessesUntilNext}
+              onOpen={() => setConfirmOpen(true)}
+            />
+          </div>
           <HeroCombobox
             heroes={HEROES}
             excludeKeys={excludeKeys}
             onSelect={handleGuess}
           />
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span className="font-mono text-xs uppercase tracking-[0.18em] text-info">
-              {guessCount} {guessCount === 1 ? "guess" : "guesses"}
-            </span>
-            {canUseHint && (
-              <button
-                type="button"
-                onClick={() => setConfirmOpen(true)}
-                className="rounded-(--radius-pill) border border-accent/60 bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-accent transition hover:bg-accent/20"
-              >
-                Use hint
-                {hintsRemaining > 1 ? ` (${hintsRemaining} left)` : ""}
-              </button>
-            )}
-            {!canUseHint &&
-              guessesUntilNext != null &&
-              hintsUsed.length < MAX_HINTS && (
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                  Unlock a hint in {guessesUntilNext}{" "}
-                  {guessesUntilNext === 1 ? "guess" : "guesses"}
-                </span>
-              )}
-          </div>
         </div>
       )}
 
@@ -232,8 +335,8 @@ export function ClassicGame() {
                 Are you sure you want to use a hint?
               </div>
               <p className="mt-2 text-sm text-ink-soft">
-                A random unsolved attribute will be revealed. You have a maximum
-                of {MAX_HINTS} hints per puzzle.
+                A random unsolved attribute will be revealed. Each hint costs
+                one of your remaining guesses (max {MAX_HINTS} per puzzle).
               </p>
               <div className="mt-5 flex justify-end gap-2">
                 <button
@@ -264,33 +367,68 @@ export function ClassicGame() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-5 sm:p-6"
+            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
           >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              {answer.portrait_url && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(answer.portrait_url)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
-                />
-              )}
-              <div className="flex-1">
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                  Solved
-                </div>
-                <div className="mt-1 font-display text-3xl text-ink">
-                  {answer.name}
-                </div>
-                <div className="mt-3">
-                  <NextModeCTA current="classic" />
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    Solved
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  <ModeStatsLine mode="classic" />
                 </div>
               </div>
-              <ScoreBadge count={state.guesses.length} />
+              <div className="flex justify-center sm:justify-start">
+                <NextModeCTA current="classic" />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {failed && !state.won && (
+        <LossReveal current="classic">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            {answer.portrait_url && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={media(answer.portrait_url)}
+                alt=""
+                className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+              />
+            )}
+            <div className="flex-1">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                Answer
+              </div>
+              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                {answer.name}
+              </div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                {state.guesses.length}{" "}
+                {state.guesses.length === 1 ? "guess" : "guesses"}
+                {hintsUsed.length > 0 &&
+                  ` · ${hintsUsed.length} hint${hintsUsed.length === 1 ? "" : "s"}`}
+              </div>
+              <ModeStatsLine mode="classic" />
+            </div>
+          </div>
+        </LossReveal>
+      )}
 
       <div className="space-y-4">
         <AnimatePresence initial={false}>
@@ -318,4 +456,65 @@ export function ClassicGame() {
       )}
     </main>
   );
+}
+
+// Hint button + supporting microcopy. Three visible states:
+//   - Available: amber pill, opens the confirm modal on click. Tagline
+//     `Hint ×N · costs a guess` so the player knows the trade-off without
+//     having to read the modal.
+//   - Locked (too few slots): muted pill, non-interactive. Surfaces a
+//     short "1 guess left — use it" line so the player understands why
+//     the button stopped responding.
+//   - Locked (threshold not met): countdown microcopy showing how many
+//     more wrong guesses unlock the next hint.
+function HintControls({
+  canUseHint,
+  hintsRemaining,
+  hintsUsed,
+  tooFewSlots,
+  guessesUntilNext,
+  onOpen,
+}: {
+  canUseHint: boolean;
+  hintsRemaining: number;
+  hintsUsed: number;
+  tooFewSlots: boolean;
+  guessesUntilNext: number | null;
+  onOpen: () => void;
+}) {
+  if (canUseHint) {
+    return (
+      <button
+        type="button"
+        onClick={onOpen}
+        className="inline-flex items-center gap-2 rounded-(--radius-pill) border border-accent/60 bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-accent transition hover:bg-accent/20"
+      >
+        <span>Hint ×{hintsRemaining}</span>
+        <span className="text-ink-faint">· costs a guess</span>
+      </button>
+    );
+  }
+  if (tooFewSlots && hintsRemaining > 0) {
+    return (
+      <span className="inline-flex items-center gap-2 rounded-(--radius-pill) border border-line bg-muted/40 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+        Hint locked · 1 guess left
+      </span>
+    );
+  }
+  if (hintsRemaining > 0 && guessesUntilNext != null) {
+    return (
+      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+        Next hint in {guessesUntilNext}{" "}
+        {guessesUntilNext === 1 ? "guess" : "guesses"}
+      </span>
+    );
+  }
+  if (hintsUsed >= MAX_HINTS) {
+    return (
+      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+        Hints used
+      </span>
+    );
+  }
+  return null;
 }

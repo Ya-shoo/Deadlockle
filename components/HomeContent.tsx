@@ -21,7 +21,7 @@ import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
 
-type Status = { won: boolean; guesses: number };
+type Status = { won: boolean; failed: boolean; guesses: number };
 type StatusMap = Partial<Record<ModeSlug, Status>>;
 
 export function HomeContent() {
@@ -41,17 +41,19 @@ export function HomeContent() {
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, d);
       map[slug] = {
-        won: st.won || st.gaveUp === true,
+        won: st.won === true,
+        failed: st.failed === true || st.gaveUp === true,
         guesses: st.guesses.length,
       };
     }
     setStatuses(map);
   }, []);
 
-  const allDone =
-    day != null && BUILT_MODE_SLUGS.every((s) => statuses[s]?.won);
-  const completedCount = BUILT_MODE_SLUGS.filter((s) => statuses[s]?.won)
-    .length;
+  const isDone = (s: ModeSlug) =>
+    statuses[s] != null && (statuses[s]!.won || statuses[s]!.failed);
+  const allDone = day != null && BUILT_MODE_SLUGS.every(isDone);
+  const doneCount = BUILT_MODE_SLUGS.filter(isDone).length;
+  const wonCount = BUILT_MODE_SLUGS.filter((s) => statuses[s]?.won).length;
   const totalGuesses = BUILT_MODE_SLUGS.reduce(
     (sum, s) => sum + (statuses[s]?.guesses ?? 0),
     0,
@@ -65,7 +67,8 @@ export function HomeContent() {
           {allDone ? (
             <DailyCompleteHero
               day={day}
-              count={BUILT_MODE_SLUGS.length}
+              modeCount={BUILT_MODE_SLUGS.length}
+              wonCount={wonCount}
               totalGuesses={totalGuesses}
             />
           ) : (
@@ -81,7 +84,7 @@ export function HomeContent() {
           </h2>
           <span className="font-mono text-xs text-ink-faint">
             {day
-              ? `${completedCount} / ${BUILT_MODE_SLUGS.length} done`
+              ? `${doneCount} / ${BUILT_MODE_SLUGS.length} done`
               : `${BUILT_MODE_SLUGS.length} live`}
           </span>
         </div>
@@ -308,13 +311,16 @@ function BeginButton() {
 
 function DailyCompleteHero({
   day,
-  count,
+  modeCount,
+  wonCount,
   totalGuesses,
 }: {
   day: string;
-  count: number;
+  modeCount: number;
+  wonCount: number;
   totalGuesses: number;
 }) {
+  const sweep = wonCount === modeCount;
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -322,7 +328,11 @@ function DailyCompleteHero({
       transition={{ duration: 0.4 }}
       className="flex flex-col items-center gap-10 sm:flex-row sm:items-center sm:gap-14"
     >
-      <CompleteBadge count={count} totalGuesses={totalGuesses} />
+      <CompleteBadge
+        modeCount={modeCount}
+        wonCount={wonCount}
+        totalGuesses={totalGuesses}
+      />
       <div className="flex-1 text-center sm:text-left">
         <p
           className="font-mono text-xs uppercase tracking-[0.2em] text-correct"
@@ -337,10 +347,21 @@ function DailyCompleteHero({
         </p>
         <Brand as="h1" size="2xl" className="mt-4 leading-[0.95]" />
         <p className="mt-6 max-w-md text-lg text-ink-soft">
-          You finished all <span className="text-ink">{count}</span> available
-          modes today in{" "}
-          <span className="text-ink">{totalGuesses}</span> total guesses. New
-          puzzles arrive at <span className="text-ink">2:15am Pacific</span>.
+          {sweep ? (
+            <>
+              You swept all{" "}
+              <span className="text-ink">{modeCount}</span> modes today in{" "}
+              <span className="text-ink">{totalGuesses}</span> total guesses.
+            </>
+          ) : (
+            <>
+              You won <span className="text-ink">{wonCount}</span> of{" "}
+              <span className="text-ink">{modeCount}</span> modes today in{" "}
+              <span className="text-ink">{totalGuesses}</span> total guesses.
+            </>
+          )}{" "}
+          New puzzles arrive at{" "}
+          <span className="text-ink">2:15am Pacific</span>.
         </p>
         <StreakBadge variant="hero" />
       </div>
@@ -349,10 +370,12 @@ function DailyCompleteHero({
 }
 
 function CompleteBadge({
-  count,
+  modeCount,
+  wonCount,
   totalGuesses,
 }: {
-  count: number;
+  modeCount: number;
+  wonCount: number;
   totalGuesses: number;
 }) {
   return (
@@ -448,11 +471,11 @@ function CompleteBadge({
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.78 }}
-          className="mt-3 font-display text-4xl leading-none text-correct"
+          className="mt-3 font-display text-4xl leading-none text-correct tabular-nums"
         >
-          {count}
+          {wonCount}
           <span className="text-ink-soft">/</span>
-          {count}
+          {modeCount}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 4 }}
@@ -498,17 +521,25 @@ function ModeCard({
     );
   }
 
-  const state: "won" | "resume" | "fresh" = status?.won
+  const state: "won" | "failed" | "resume" | "fresh" = status?.won
     ? "won"
-    : status && status.guesses > 0
-      ? "resume"
-      : "fresh";
+    : status?.failed
+      ? "failed"
+      : status && status.guesses > 0
+        ? "resume"
+        : "fresh";
 
   let tag: React.ReactNode;
   if (state === "won") {
     tag = (
       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-correct">
         <span aria-hidden>✓</span> in {status!.guesses}
+      </span>
+    );
+  } else if (state === "failed") {
+    tag = (
+      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-far">
+        <span aria-hidden>✕</span> Missed
       </span>
     );
   } else if (state === "resume") {
