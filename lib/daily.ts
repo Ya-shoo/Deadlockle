@@ -5,6 +5,14 @@ import {
   SOUND_CONVERSATIONS,
   type SoundConversation,
 } from "./sound-conversations";
+import {
+  usesBag,
+  bagClassicHero,
+  bagAbilityPick,
+  bagMugshotHero,
+  bagItemPick,
+  bagSoundConversation,
+} from "./dailyBag";
 
 // Daily puzzles roll over at 2:15am Pacific Time (America/Los_Angeles).
 // DST-aware: the actual UTC moment shifts between 10:15 UTC in winter (PST,
@@ -69,10 +77,19 @@ function salt(day: string): string {
   return r > 0 ? `:r${r}` : "";
 }
 
+// Bag path is taken when both:
+//   - day is at or after BAG_CUTOVER_DAY (handled by usesBag)
+//   - no manual DAY_ROTATION entry for this day (rotation > 0 means a
+//     human-intervened re-roll, so fall back to the salted legacy hash)
+function shouldUseBag(day: string): boolean {
+  return usesBag(day) && !(DAY_ROTATION[day] ?? 0);
+}
+
 export function getHeroForDay(day: string): Hero {
   if (ANSWER_POOL.length === 0) {
     throw new Error("ANSWER_POOL is empty — check data/heroes.json");
   }
+  if (shouldUseBag(day)) return bagClassicHero(day);
   const idx = fnv1a(`deadlockle:classic:${day}${salt(day)}`) % ANSWER_POOL.length;
   return ANSWER_POOL[idx];
 }
@@ -97,6 +114,10 @@ export function getAbilityForDay(day: string): {
   if (ABILITY_POOL.length === 0) {
     throw new Error("ABILITY_POOL is empty");
   }
+  if (shouldUseBag(day)) {
+    const { hero, abilityIndex } = bagAbilityPick(day);
+    return { hero, ability: hero.abilities[abilityIndex], abilityIndex };
+  }
   const heroIdx = fnv1a(`deadlockle:ability:${day}${salt(day)}`) % ABILITY_POOL.length;
   const hero = ABILITY_POOL[heroIdx];
   const eligible = hero.abilities.filter((a) => a.icon);
@@ -116,6 +137,10 @@ export function getMugshotForDay(day: string): {
   if (MUGSHOT_POOL.length === 0) {
     throw new Error("MUGSHOT_POOL is empty");
   }
+  if (shouldUseBag(day)) {
+    const hero = bagMugshotHero(day);
+    return { hero, imageUrl: hero.splash_url! };
+  }
   const heroIdx = fnv1a(`deadlockle:mugshot:${day}${salt(day)}`) % MUGSHOT_POOL.length;
   const hero = MUGSHOT_POOL[heroIdx];
   return { hero, imageUrl: hero.splash_url! };
@@ -124,6 +149,10 @@ export function getMugshotForDay(day: string): {
 export function getItemForDay(day: string): { item: Item; iconUrl: string } {
   if (ITEM_ANSWER_POOL.length === 0) {
     throw new Error("ITEM_ANSWER_POOL is empty");
+  }
+  if (shouldUseBag(day)) {
+    const item = bagItemPick(day);
+    return { item, iconUrl: item.icon! };
   }
   const idx = fnv1a(`deadlockle:item:${day}${salt(day)}`) % ITEM_ANSWER_POOL.length;
   const item = ITEM_ANSWER_POOL[idx];
@@ -173,6 +202,16 @@ export function getSoundForDay(day: string): {
 } {
   if (SOUND_CONVERSATION_POOL.length === 0) {
     throw new Error("SOUND_CONVERSATION_POOL is empty");
+  }
+  if (shouldUseBag(day)) {
+    const conv = bagSoundConversation(day);
+    return {
+      conversation: conv,
+      speakers: [
+        HEROES_BY_KEY[conv.speakers[0]]!,
+        HEROES_BY_KEY[conv.speakers[1]]!,
+      ],
+    };
   }
 
   const idx = fnv1a(`deadlockle:sound:${day}${salt(day)}`) % SOUND_CONVERSATION_POOL.length;
