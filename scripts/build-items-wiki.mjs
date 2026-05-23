@@ -62,6 +62,31 @@ const TIER_COST = { 1: 800, 2: 1600, 3: 3200, 4: 6400 };
 // surface in the UI.
 const SLOT_MAP = { Weapon: "weapon", Armor: "vitality", Tech: "spirit" };
 
+// Legendary items exclusive to Street Brawl mode. The wiki lists them
+// inside the standard catalogue (sometimes with T4 card frames), so the
+// generic parser pulls them in — but they're not available in normal
+// play and shouldn't show up in a daily quiz. Hardcoded skip list keeps
+// re-runs clean; drop a name if Valve ever promotes one to standard.
+const STREET_BRAWL_EXCLUSIVE = new Set([
+  "Haunting Shot",
+  "Infinite Rounds",
+  "Runed Gauntlets",
+  "Celestial Blessing",
+  "Cloak of Opportunity",
+  "Electric Slippers",
+  "Eternal Gift",
+  "Nullification Burst",
+  "Seraphim Wings",
+  "Shadow Strike",
+  "Frostbite Charm",
+  "Mystic Conduit",
+  "Mystical Piano",
+  "Omnicharge Signet",
+  "Prism Blast",
+  "Shrink Ray",
+  "Unstable Concoction",
+]);
+
 async function fetchText(url) {
   const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
   if (!res.ok) throw new Error(`HTTP ${res.status} on ${url}`);
@@ -127,6 +152,7 @@ function parseItems(html) {
     const nameM = card.match(/data-item-name="([^"]+)"/);
     if (!nameM) continue;
     const name = decodeEntities(nameM[1]).trim();
+    if (STREET_BRAWL_EXCLUSIVE.has(name)) continue;
     const wikiTitle = name.replace(/ /g, "_");
 
     const tierM = card.match(tierFrameRe);
