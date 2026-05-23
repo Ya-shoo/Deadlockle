@@ -58,7 +58,7 @@ const ALL_MODES: ModeDef[] = [
     slug: "sound",
     label: "Conversation",
     blurb:
-      "A conversation between two heroes. The actual voice clip unlocks late if you get stuck.",
+      "Try to guess which two characters are having a conversation :D More dialogue is revealed as you go.",
     built: true,
   },
   {

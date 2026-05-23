@@ -284,8 +284,8 @@ export function SoundGame() {
             Conversation
           </h1>
           <p className="mt-3 max-w-md text-ink-soft">
-            A pre-match exchange between two heroes. Dialogue reveals as you
-            guess; the actual voice clip unlocks if you get stuck.
+            Try to guess which two characters are having a conversation :D
+            More dialogue is revealed as you go.
           </p>
         </div>
         <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
