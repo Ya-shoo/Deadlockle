@@ -42,6 +42,7 @@ import { NextModeCTA } from "./NextModeCTA";
 import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
+import { SpeakerToggle } from "./SpeakerToggle";
 import clsx from "clsx";
 
 const MODE = "sound";
@@ -74,6 +75,9 @@ function nextHintAtGuess(currentUnlocked: number): number {
 export function SoundGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ConversationState | null>(null);
+  // Which speaker the toggle is pointed at when *both* are still unsolved.
+  // Once one is solved, the derived `activeTarget` below forces the other.
+  const [chosenTarget, setChosenTarget] = useState<0 | 1>(0);
   // Dev-only override: `/sound/?conv=N` pins the conversation to pool
   // index N so the diarization splits can be QA'd across many clips
   // without waiting for the daily seed to roll over. Null in production
@@ -211,6 +215,10 @@ export function SoundGame() {
     state.guesses.filter((g) => g.target === 1).map((g) => g.heroKey),
   );
 
+  // Auto-jump the toggle to the unsolved side once one speaker is locked
+  // in. While both are open, honour the player's last tap (`chosenTarget`).
+  const activeTarget: 0 | 1 = aRevealed ? 1 : bRevealed ? 0 : chosenTarget;
+
   // Same dialogue reveal cadence as Quote: 1 visible to start, +1 per guess,
   // and a couple of redacted previews ahead so the player can see there's
   // more dialogue coming.
@@ -316,22 +324,24 @@ export function SoundGame() {
       </div>
 
       {!ended && (
-        <div className="mb-6 grid gap-4 md:grid-cols-2">
-          <SpeakerField
-            label="Speaker A"
-            tone="info"
-            revealed={aRevealed}
-            speakerHero={speakerA}
-            excluded={excludedA}
-            onGuess={(hero) => handleGuess(hero, 0)}
+        <div className="mb-6 space-y-3">
+          <SpeakerToggle
+            activeTarget={activeTarget}
+            aRevealed={aRevealed}
+            bRevealed={bRevealed}
+            speakerA={speakerA}
+            speakerB={speakerB}
+            onSelect={setChosenTarget}
           />
-          <SpeakerField
-            label="Speaker B"
-            tone="accent-soft"
-            revealed={bRevealed}
-            speakerHero={speakerB}
-            excluded={excludedB}
-            onGuess={(hero) => handleGuess(hero, 1)}
+          <HeroCombobox
+            heroes={HEROES}
+            excludeKeys={activeTarget === 0 ? excludedA : excludedB}
+            onSelect={(hero) => handleGuess(hero, activeTarget)}
+            placeholder={
+              activeTarget === 0
+                ? "Guess Speaker A — enter a hero…"
+                : "Guess Speaker B — enter a hero…"
+            }
           />
         </div>
       )}
@@ -481,59 +491,6 @@ export function SoundGame() {
         </div>
       )}
     </main>
-  );
-}
-
-function SpeakerField({
-  label,
-  tone,
-  revealed,
-  speakerHero,
-  excluded,
-  onGuess,
-}: {
-  label: string;
-  tone: "info" | "accent-soft";
-  revealed: boolean;
-  speakerHero: Hero;
-  excluded: Set<string>;
-  onGuess: (hero: Hero) => void;
-}) {
-  const toneClass = tone === "info" ? "text-info" : "text-accent-soft";
-
-  return (
-    <div>
-      <div className="mb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em]">
-        <span className={revealed ? "text-correct" : toneClass}>
-          {revealed ? `✓ ${speakerHero.name}` : label}
-        </span>
-        <span className="text-ink-faint">
-          {revealed ? "Solved" : "Guessing"}
-        </span>
-      </div>
-      {revealed ? (
-        <div className="flex items-center gap-3 rounded-(--radius-card) border border-correct/40 bg-correct/10 p-3">
-          {speakerHero.portrait_url && (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={media(speakerHero.portrait_url)}
-              alt=""
-              className="h-10 w-10 rounded-(--radius-card) bg-muted object-cover"
-            />
-          )}
-          <div className="font-display text-base text-ink">
-            {speakerHero.name}
-          </div>
-        </div>
-      ) : (
-        <HeroCombobox
-          heroes={HEROES}
-          excludeKeys={excluded}
-          onSelect={onGuess}
-          placeholder="Enter a hero…"
-        />
-      )}
-    </div>
   );
 }
 

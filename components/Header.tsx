@@ -19,10 +19,10 @@ export function Header() {
           </Link>
           <DevHubHeader />
         </div>
-        <div className="flex items-center gap-5 sm:gap-7">
+        <div className="flex items-center gap-4 sm:gap-7">
           <NextResetCountdown
-            label="next "
-            className="font-mono text-[10px] uppercase tracking-[0.2em] text-info"
+            label="next"
+            className="flex flex-col items-end leading-tight font-mono text-[10px] uppercase tracking-[0.2em] text-info sm:flex-row sm:items-baseline sm:gap-1 sm:leading-none"
           />
           <HeaderProgress />
         </div>
