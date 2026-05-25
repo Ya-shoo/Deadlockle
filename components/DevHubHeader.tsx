@@ -29,7 +29,7 @@ export function DevHubHeader() {
   return (
     <Link
       href="/labeler/"
-      className="inline-flex items-center gap-1.5 rounded-(--radius-card) border border-accent bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent/20"
+      className="hidden md:inline-flex items-center gap-1.5 rounded-(--radius-card) border border-accent bg-accent/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent/20"
     >
       <span aria-hidden>←</span>
       Dev hub

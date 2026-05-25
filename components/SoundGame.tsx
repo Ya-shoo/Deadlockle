@@ -288,7 +288,7 @@ export function SoundGame() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
             <span suppressHydrationWarning>{prettyDay(day)}</span>
           </p>
-          <h1 className="mt-3 font-display display-headline text-5xl text-ink sm:text-6xl">
+          <h1 className="mt-3 font-display display-headline text-3xl text-ink sm:text-6xl">
             Conversation
           </h1>
           <p className="mt-3 max-w-md text-ink-soft">
@@ -586,7 +586,7 @@ function ConversationCard({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="tile-shape relative w-full max-w-2xl border border-line bg-muted/40 px-7 py-10 shadow-2xl shadow-black/40 sm:px-12 sm:py-14"
+      className="tile-shape relative w-full min-w-0 max-w-2xl overflow-hidden border border-line bg-muted/40 px-7 py-10 shadow-2xl shadow-black/40 sm:px-12 sm:py-14"
     >
       <p className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] text-info">
         Pre-match
@@ -676,7 +676,7 @@ function ConversationLineRow({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="font-display text-xl leading-snug text-ink sm:text-2xl"
+            className="font-display text-xl leading-snug text-ink sm:text-2xl [overflow-wrap:anywhere]"
           >
             “{text}”
           </motion.p>
@@ -686,7 +686,7 @@ function ConversationLineRow({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="font-display text-xl leading-snug text-ink-faint sm:text-2xl select-none"
+            className="font-display text-xl leading-snug text-ink-faint sm:text-2xl select-none [overflow-wrap:anywhere]"
             aria-hidden
           >
             {redactedFor(text)}
