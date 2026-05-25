@@ -110,6 +110,22 @@ export function trackHintUsed(opts: {
   });
 }
 
+// Fired when the feedback dialog opens. Doubles as a PostHog session-
+// recording trigger (configured in project settings on the shared
+// DailyDles project): the moment this event fires, the recorder is
+// force-started for that session so the reviewer can see what the user
+// does inside the dialog even if they hadn't started a mode. Also
+// returns the current session_id so the caller can ship it along with
+// the feedback POST.
+export function trackFeedbackOpened(): string | null {
+  posthog.capture("feedback_opened");
+  try {
+    return posthog.get_session_id() ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export function trackDailyCompleted(opts: {
   dailyId: string;
   wonCount: number;

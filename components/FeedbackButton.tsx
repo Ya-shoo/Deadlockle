@@ -23,6 +23,7 @@ import clsx from "clsx";
 import { BUILT_MODE_SLUGS } from "@/lib/modes";
 import { loadModeState } from "@/lib/storage";
 import { dayString } from "@/lib/daily";
+import { trackFeedbackOpened } from "@/lib/tracking";
 
 const MAX_LEN = 150;
 const POPUP_MS = 10000;
@@ -88,6 +89,11 @@ export function FeedbackButton() {
   const [popupActive, setPopupActive] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  // Captured the moment the dialog opens. PostHog's event trigger config
+  // starts the session recording on `feedback_opened`, so the same
+  // session_id we read here is the one the eventual replay lives under.
+  // Shipped to /api/feedback so the Discord webhook can deep-link to it.
+  const sessionIdRef = useRef<string | null>(null);
 
   // Idle re-scans (focus, visibility) only refresh the allDone flag.
   // Completion events fire the popup, but only on the first-win and the
@@ -144,6 +150,7 @@ export function FeedbackButton() {
   }, [open]);
 
   const openDialog = () => {
+    sessionIdRef.current = trackFeedbackOpened();
     setOpen(true);
     // Once the player taps to open the dialog they've engaged with the
     // popup, so collapse the sticky footer immediately rather than
@@ -170,7 +177,10 @@ export function FeedbackButton() {
       const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ body: trimmed }),
+        body: JSON.stringify({
+          body: trimmed,
+          session_id: sessionIdRef.current,
+        }),
       });
       if (res.ok) {
         setStatus("sent");
