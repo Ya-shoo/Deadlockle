@@ -278,7 +278,7 @@
     "lore": "The cornerstone of the New York gambling scene, Wraith's organization is about as open a secret as it comes.  However, thanks to a non-trivial amount of bribes, shakedowns, and blackmail, Wraith knows that she's above the law.",
     "role": "Melts isolated targets",
     "gender": "female",
-    "nature": "mystical",
+    "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "carry",
     "damage_source": "weapon",
@@ -641,7 +641,7 @@
     "stamina": 3,
     "lore": "Forged by the hands of a widowed junk yard attendant; Bebop was more than just some scrap golem laborer... he was the son she couldn't have.  Together they would work in the iron yard during the day, and listen to jazz at night. It was a predictable, if not comforting routine.  But now, Bebop's creator has fallen ill and while Miss Shelly wouldn't approve of the activities that Bebop does at night to pay for her medicine, what she doesn't know can't hurt her.",
     "role": "Hooks an enemy for a knockout combo",
-    "gender": "neutral",
+    "gender": "male",
     "nature": "robot",
     "damage_style": "hybrid",
     "sub_role": "bruiser",
@@ -1840,7 +1840,7 @@
     "gender": "male",
     "nature": "mystical",
     "damage_style": "melee",
-    "sub_role": "mage",
+    "sub_role": "support",
     "damage_source": "spirit",
     "abilities": [
       {
