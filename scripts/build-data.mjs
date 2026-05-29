@@ -41,8 +41,10 @@ const SPLASH_QUALITY = 80;
 //                   capture the hero's identity well enough.
 //                   our refinement of Valve's 4-bucket hero_type
 //   damage_source:  "weapon" | "spirit" | "hybrid"  -- where damage comes from in team fights
-//   role:                fallback for the API tagline (`description.role`)
-//   hero_type, gun_tag:  fallback for Valve's 4-bucket archetype + weapon tag
+//   role:                overrides the API tagline (`description.role`) when set
+//   hero_type, gun_tag:  override Valve's 4-bucket archetype + weapon tag when set
+//                        (Valve sometimes mislabels — e.g. Silver as "Long Range"
+//                        marksman when she's a shotgun-wielding brawler)
 //   ability_overrides:   { [abilityName]: description } fallback for null ability text
 const OVERLAY = {
   "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
@@ -58,8 +60,8 @@ const OVERLAY = {
   "haze":         { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "carry",      damage_source: "weapon"  },
   "holliday":     { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
   "bebop":        { gender: "neutral",    nature: "robot",     damage_style: "hybrid",     sub_role: "bruiser",    damage_source: "spirit"  },
-  "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "weapon"  },
-  "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "weapon"  },
+  "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "spirit"  },
+  "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "spirit"  },
   "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "spirit"  },
   "shiv":         {
     gender: "male", nature: "human", damage_style: "hitscan", sub_role: "assassin", damage_source: "spirit",
@@ -324,8 +326,8 @@ async function main() {
       id: h.id,
       class_name: h.class_name,
       name: h.name,
-      hero_type: h.hero_type ?? overlay?.hero_type ?? null,
-      gun_tag: h.gun_tag ?? overlay?.gun_tag ?? null,
+      hero_type: overlay?.hero_type ?? h.hero_type ?? null,
+      gun_tag: overlay?.gun_tag ?? h.gun_tag ?? null,
       tags: Array.isArray(h.tags) ? h.tags : [],
       complexity: typeof h.complexity === "number" ? h.complexity : null,
       hp: num("max_health"),
@@ -333,7 +335,7 @@ async function main() {
       stamina: num("stamina"),
       lore:
         typeof h.description === "object" ? h.description?.lore ?? null : null,
-      role: apiRole ?? overlay?.role ?? null,
+      role: overlay?.role ?? apiRole ?? null,
       gender: overlay?.gender ?? null,
       nature: overlay?.nature ?? null,
       damage_style: overlay?.damage_style ?? null,
