@@ -38,6 +38,7 @@ const ZOOM_BY_GUESS = [10, 7.5, 5.5, 4, 3, 2.2, 1.5, 1];
 export function MugshotGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
+  const [hardMode, setHardMode] = useState(true);
 
   useEffect(() => {
     const d = dayString();
@@ -145,13 +146,17 @@ export function MugshotGame() {
         </div>
       </header>
 
-      <div className="mb-8 flex flex-col items-center">
+      <div className="mb-8 flex flex-col items-center gap-4">
         <MugshotFrame
           imageUrl={imageUrl}
           zoom={zoom}
           revealed={ended}
           heroName={answer.name}
+          grayscale={hardMode && !ended}
         />
+        {!ended && (
+          <HardModeToggle on={hardMode} onChange={setHardMode} />
+        )}
       </div>
 
       {!ended && (
@@ -270,11 +275,13 @@ function MugshotFrame({
   zoom,
   revealed,
   heroName,
+  grayscale,
 }: {
   imageUrl: string;
   zoom: number;
   revealed: boolean;
   heroName: string;
+  grayscale: boolean;
 }) {
   return (
     <div className="flex flex-col items-center gap-3">
@@ -290,10 +297,11 @@ function MugshotFrame({
         <img
           src={media(imageUrl)}
           alt=""
-          className="block h-full w-full object-cover transition-transform duration-700 ease-out"
+          className="block h-full w-full object-cover transition-[transform,filter] duration-700 ease-out"
           style={{
             transform: `scale(${zoom})`,
             transformOrigin: "50% 50%",
+            filter: grayscale ? "grayscale(1)" : "grayscale(0)",
           }}
           loading="eager"
           decoding="async"
@@ -308,5 +316,48 @@ function MugshotFrame({
         />
       </div>
     </div>
+  );
+}
+
+function HardModeToggle({
+  on,
+  onChange,
+}: {
+  on: boolean;
+  onChange: (next: boolean) => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      onClick={() => onChange(!on)}
+      className={`group flex items-center gap-2.5 border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.2em] transition-colors ${
+        on
+          ? "border-edge bg-accent/10 text-accent-soft"
+          : "border-line text-ink-faint hover:border-edge hover:text-ink-soft"
+      }`}
+    >
+      <span
+        className={`relative inline-flex h-4 w-7 items-center border transition-colors ${
+          on ? "border-edge bg-accent/20" : "border-line bg-canvas"
+        }`}
+      >
+        <span
+          aria-hidden
+          className={`absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 transition-all ${
+            on ? "left-[calc(100%-13px)] bg-accent" : "left-[2px] bg-line"
+          }`}
+        />
+      </span>
+      <span>Hard mode</span>
+      <span
+        className={`text-[9px] tracking-[0.18em] ${
+          on ? "text-accent-soft" : "text-ink-faint"
+        }`}
+      >
+        {on ? "on" : "off"}
+      </span>
+    </button>
   );
 }
