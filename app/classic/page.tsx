@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClassicGame } from "@/components/ClassicGame";
+import { ModeSchema } from "@/components/ModeSchema";
 
 const TITLE = "Classic: Guess the Deadlock Hero";
 const DESCRIPTION =
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function ClassicPage() {
-  return <ClassicGame />;
+  return (
+    <>
+      <ModeSchema slug="classic" label="Classic" description={DESCRIPTION} />
+      <ClassicGame />
+    </>
+  );
 }

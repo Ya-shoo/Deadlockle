@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MugshotGame } from "@/components/MugshotGame";
+import { ModeSchema } from "@/components/ModeSchema";
 
 const TITLE = "Mugshot: Guess the Deadlock Hero";
 const DESCRIPTION =
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function MugshotPage() {
-  return <MugshotGame />;
+  return (
+    <>
+      <ModeSchema slug="mugshot" label="Mugshot" description={DESCRIPTION} />
+      <MugshotGame />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AbilityGame } from "@/components/AbilityGame";
+import { ModeSchema } from "@/components/ModeSchema";
 
 const TITLE = "Ability: Whose Deadlock Ability Is This?";
 const DESCRIPTION =
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function AbilityPage() {
-  return <AbilityGame />;
+  return (
+    <>
+      <ModeSchema slug="ability" label="Ability" description={DESCRIPTION} />
+      <AbilityGame />
+    </>
+  );
 }

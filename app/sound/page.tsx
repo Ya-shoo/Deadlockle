@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SoundGame } from "@/components/SoundGame";
+import { ModeSchema } from "@/components/ModeSchema";
 
 const TITLE = "Conversation: Guess the Deadlock Speakers by Voice";
 const DESCRIPTION =
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function SoundPage() {
-  return <SoundGame />;
+  return (
+    <>
+      <ModeSchema slug="sound" label="Conversation" description={DESCRIPTION} />
+      <SoundGame />
+    </>
+  );
 }

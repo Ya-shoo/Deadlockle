@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ItemGame } from "@/components/ItemGame";
+import { ModeSchema } from "@/components/ModeSchema";
 
 const TITLE = "Item: Guess the Deadlock Item Icon";
 const DESCRIPTION =
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function ItemPage() {
-  return <ItemGame />;
+  return (
+    <>
+      <ModeSchema slug="item" label="Item" description={DESCRIPTION} />
+      <ItemGame />
+    </>
+  );
 }

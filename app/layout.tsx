@@ -29,7 +29,7 @@ const SITE_URL = "https://deadlockle.com";
 const SITE_NAME = "Deadlockle";
 const DEFAULT_TITLE = "Deadlockle · Daily Deadlock Quiz · Guess the Hero";
 const DEFAULT_DESCRIPTION =
-  "Deadlockle is the daily Wordle-style quiz for Valve's Deadlock. Guess the hero by attributes, ability icon, item, voice line conversation, or cropped mugshot. New puzzle every day, free, no signup.";
+  "Deadlockle is the daily Deadlock Wordle — a free hero quiz game for Valve's Deadlock. Guess the hero by attributes, ability icon, item, voice line conversation, or cropped mugshot. New puzzle every day, no signup.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     "deadlock dle",
     "deadlockdle",
     "deadlock wordle",
+    "deadlock daily quiz",
+    "deadlock quiz game",
     "daily deadlock quiz",
     "deadlock guessing game",
     "guess the deadlock hero",
@@ -98,6 +100,7 @@ const structuredData = {
       "@id": `${SITE_URL}/#publisher`,
       name: SITE_NAME,
       url: SITE_URL,
+      sameAs: ["https://ko-fi.com/yushoo"],
     },
     {
       "@type": "WebApplication",

@@ -122,6 +122,17 @@ const ORN = {
   })(),
   // Mugshot: 3 horizontal reveal bands (the camera-pull-back motif)
   mugshot: `<g transform="translate(${W / 2} 280)"><rect x="-90" y="-22" width="180" height="14" fill="${ACCENT}" opacity="0.3"/><rect x="-90" y="-4" width="180" height="14" fill="${ACCENT}" opacity="0.55"/><rect x="-90" y="14" width="180" height="14" fill="${ACCENT}" opacity="0.85"/></g>`,
+  // Sound/Conversation: an equalizer waveform (the voice-clip motif)
+  sound: (() => {
+    const cx = W / 2;
+    const bars = [26, 46, 18, 58, 34, 68, 40, 52, 22, 44, 30];
+    return bars
+      .map((h, i) => {
+        const x = cx + (i - (bars.length - 1) / 2) * 22;
+        return `<rect x="${x - 5}" y="${280 - h / 2}" width="10" height="${h}" rx="2" fill="${ACCENT}" opacity="${(0.5 + (h / 68) * 0.45).toFixed(2)}"/>`;
+      })
+      .join("");
+  })(),
 };
 
 const MODES = [
@@ -154,6 +165,12 @@ const MODES = [
     label: "MUGSHOT",
     tagline: "Identify the hero from a cropped portrait",
     ornament: ORN.mugshot,
+  },
+  {
+    slug: "sound",
+    label: "SOUND",
+    tagline: "Two heroes talk  ·  name both speakers",
+    ornament: ORN.sound,
   },
 ];
 
