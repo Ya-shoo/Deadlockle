@@ -91,10 +91,11 @@ const OVERLAY = {
   },
   "venator":      {
     gender: "male", nature: "human", damage_style: "projectile", sub_role: "sniper", damage_source: "weapon",
+    gun_tag: "SMG/Bow",
     role: "Hunts the supernatural with crossbow bolts and blessed traps",
   },
   "victor":       {
-    gender: "male", nature: "undead", damage_style: "hitscan", sub_role: "bruiser", damage_source: "weapon",
+    gender: "male", nature: "undead", damage_style: "hitscan", sub_role: "tank", damage_source: "spirit",
     role: "Channels his own pain into shocking, undying retribution",
   },
   "paige":        {

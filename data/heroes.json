@@ -1461,7 +1461,7 @@
     "class_name": "hero_priest",
     "name": "Venator",
     "hero_type": "marksman",
-    "gun_tag": "Crossbow",
+    "gun_tag": "SMG/Bow",
     "tags": [
       "Devout",
       "Arms Expert",
@@ -1528,8 +1528,8 @@
     "gender": "male",
     "nature": "undead",
     "damage_style": "hitscan",
-    "sub_role": "bruiser",
-    "damage_source": "weapon",
+    "sub_role": "tank",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Pain Battery",
