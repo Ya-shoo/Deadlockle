@@ -32,12 +32,53 @@ import {
 // Minimal handler shape — the runtime passes `params` keyed by the
 // route's `[code]` segment. We don't depend on @cloudflare/workers-
 // types here, matching the convention in functions/_lib/types.ts.
-type Handler = (ctx: {
+type R2BucketLite = {
+  get(key: string): Promise<{ arrayBuffer(): Promise<ArrayBuffer> } | null>;
+  put(key: string, value: ArrayBuffer): Promise<unknown>;
+};
+
+type HandlerCtx = {
   request: Request;
   params: { code: string };
-}) => Promise<Response>;
+  env: { OG_CACHE?: R2BucketLite };
+  waitUntil: (p: Promise<unknown>) => void;
+};
+
+type Handler = (ctx: HandlerCtx) => Promise<Response>;
+
+// Bump when the card DESIGN changes — stored renders are immortal, so
+// a stale revision would serve the old look forever. The bump makes
+// every code re-render (and re-store) under fresh keys.
+const RENDER_REV = "v1";
+
+function r2Key(code: string): string {
+  return `og-cache/deadlockle/${RENDER_REV}/${code}.png`;
+}
 
 const CARD = 960;
+
+// Warm the wasm pipeline (resvg + yoga, ~1.4MB) during MODULE
+// EVALUATION instead of inside the first request: module startup has
+// its own CPU budget, while lazy init inside a request blew the
+// per-request CPU limit and 503'd every cold-isolate render on launch
+// night (the isolate survived warm, so the NEXT request succeeded —
+// the observed 503/200 flip-flop). The dummy render is 8×8, text-free
+// (so the empty fonts list never resolves), and its result is
+// discarded; workers-og's internal "already initialized" guard turns
+// the real renders' init into a no-op. Handlers await this so a
+// not-yet-finished warmup can't race a real render.
+const WASM_WARMED: Promise<void> = (async () => {
+  try {
+    const warm = new ImageResponse(
+      <div style={{ display: "flex", width: 8, height: 8 }} />,
+      { width: 8, height: 8, fonts: [] },
+    );
+    await warm.arrayBuffer();
+  } catch (err) {
+    // Real renders re-attempt init themselves; this is best-effort.
+    console.error("og wasm warmup failed:", String(err));
+  }
+})();
 
 // Brand palette — mirrors app/globals.css. The card leans on the same
 // smoky-teal parlour base + amber accent the site uses, with the match
@@ -141,8 +182,46 @@ async function finalizeOg(
 }
 
 export const onRequestGet: Handler = async (ctx) => {
+  const { request, params, env, waitUntil } = ctx;
+  const host = new URL(request.url).hostname;
+  // Local dev always live-renders: stored cards would mask design
+  // iterations (the browser-side no-store + bust params assume it).
+  const isLocal = host === "localhost" || host === "127.0.0.1";
+  const key = r2Key(params.code);
   try {
-    return await handleOg(ctx);
+    // Render-once fast path: a previously stored card serves in ~1ms
+    // CPU. This is what makes unfurls durable on the free plan — cold
+    // wasm renders can exceed the per-request CPU limit, so each code
+    // only ever has to survive that gauntlet once (typically via the
+    // sharer's own retrying prefetch) and every later request — link
+    // unfurlers, re-scrapes, week-old links — reads storage instead.
+    if (!isLocal && env.OG_CACHE) {
+      try {
+        const stored = await env.OG_CACHE.get(key);
+        if (stored) {
+          return new Response(await stored.arrayBuffer(), {
+            headers: {
+              "content-type": "image/png",
+              "cache-control": "public, max-age=86400, s-maxage=86400, immutable",
+              "access-control-allow-origin": "*",
+            },
+          });
+        }
+      } catch {
+        // Storage hiccup — fall through to a live render.
+      }
+    }
+
+    await WASM_WARMED;
+    const res = await handleOg(ctx);
+    if (!isLocal && env.OG_CACHE && res.status === 200) {
+      // Persist AFTER responding (waitUntil) — the render is already
+      // fully buffered (finalizeOg), so the clone is cheap and the
+      // stored bytes are verified-complete.
+      const bytes = await res.clone().arrayBuffer();
+      waitUntil(env.OG_CACHE.put(key, bytes).catch(() => {}));
+    }
+    return res;
   } catch (err) {
     // Surface the root cause in `wrangler pages deployment tail` —
     // the launch-night 503s were undiagnosable while this swallowed

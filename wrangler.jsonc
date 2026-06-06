@@ -17,5 +17,19 @@
       "database_name": "owdle-votes",
       "database_id": "e51eedfa-9f64-4f22-86b2-29b26b413af8"
     }
+  ],
+
+  // R2 bucket for rendered OG share cards (functions/og/r/[code].tsx).
+  // Free-plan Workers CPU limits kill ~half of COLD wasm renders, so a
+  // card renders once (the sharer's prefetch retries until it lands)
+  // and every later request — unfurlers, re-scrapes, week-old links —
+  // serves the stored PNG without touching the render pipeline. Shared
+  // `dailydles` bucket; cards live under the og-cache/deadlockle/
+  // prefix, disjoint from both sites' media prefixes.
+  "r2_buckets": [
+    {
+      "binding": "OG_CACHE",
+      "bucket_name": "dailydles"
+    }
   ]
 }

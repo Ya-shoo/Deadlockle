@@ -56,6 +56,15 @@ unfurl into server-rendered 960×960 spray-style cards.
   hardening (errors never cache, buffered render, headers set
   post-construction, bounded image cache) each guard a shipped incident —
   do not simplify away.
+- **Renders persist to R2** (`OG_CACHE` binding → shared `dailydles` bucket,
+  keys `og-cache/deadlockle/<REV>/<code>.png`): free-plan Workers CPU limits
+  kill ~half of COLD wasm renders (lazy resvg/yoga init inside the request —
+  the isolate survives warm, so retries succeed), so each code renders once
+  and every later request serves storage. The sharer's prefetch + the share
+  modal both RETRY failed loads — the sharer's device shoulders that one cold
+  render. **Bump RENDER_REV in functions/og/r/[code].tsx whenever the card
+  design changes** — stored renders are immortal, an unbumped rev serves the
+  old look forever. Local dev bypasses storage entirely (live render always).
 - **Fonts are self-hosted subsets** (`public/og-fonts/*.ttf`, fetched
   same-origin with per-isolate memoization). Launch night (2026-06-05),
   per-render Google Fonts fetches from the edge failed ~50% of the time and
