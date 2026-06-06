@@ -126,6 +126,87 @@ export function trackFeedbackOpened(): string | null {
   }
 }
 
+// Fired when a user clicks a share affordance — currently the Classic
+// text-share block's Copy / Share actions; the link-share buttons join
+// when the share-card system lands (SHARE_CARDS_PLAN.md). Not
+// idempotent: every click counts, since the same person may re-share
+// or copy-then-tweet. `surface` is where they clicked from; `method`
+// is how the share happens. Event + prop names are OWdle-identical
+// (shared PostHog dashboards); the surface union here is the subset of
+// OWdle's that exists on Deadlockle — extend it as surfaces port over.
+export function trackShareClicked(opts: {
+  surface: "round_result" | "daily_complete";
+  method:
+    | "twitter_intent"
+    | "clipboard"
+    | "native"
+    | "clipboard-link"
+    | "clipboard-text"
+    | "download"
+    | "canceled"
+    | "error";
+  dailyId?: string;
+  mode?: string;
+}): void {
+  posthog.capture("share_clicked", {
+    surface: opts.surface,
+    method: opts.method,
+    daily_id: opts.dailyId ?? null,
+    mode: opts.mode ?? null,
+  });
+}
+
+// Fired when a visitor lands from a shared /r/[code] link — the redirect
+// appends ?c=<code> and the destination page reports it here, closing
+// the share → visit funnel that share_clicked opens. shared_* props
+// describe the SHARER's result (decoded from the code), not the
+// visitor's; landing_mode is where the visitor arrived ("home" for
+// daily codes). Not idempotent by design — every inbound click counts —
+// but the caller strips ?c= from the URL after firing so a reload
+// doesn't re-fire. Event + prop names are OWdle-identical (shared
+// PostHog dashboards; $host separates the sites).
+export function trackShareLinkVisited(opts: {
+  landingMode: string;
+  code: string;
+  sharedDate: string;
+  sharedMode?: string;
+  sharedOutcome?: "won" | "lost";
+}): void {
+  posthog.capture("share_link_visited", {
+    landing_mode: opts.landingMode,
+    code: opts.code,
+    shared_date: opts.sharedDate,
+    shared_mode: opts.sharedMode ?? null,
+    shared_outcome: opts.sharedOutcome ?? null,
+  });
+}
+
+// One-time "you can share now" release announcement modal. `shown`
+// fires when it pops; `dismissed` carries how it was closed so we can
+// see whether people actually read it.
+export function trackShareAnnounce(opts: {
+  action: "shown" | "dismissed";
+}): void {
+  posthog.capture("share_announce", { action: opts.action });
+}
+
+// Fired when a player reaches a new, higher streak rank tier
+// (Phantom → Ascendant → Eternus). StreakRankBadge gates this behind a
+// persistent localStorage ratchet, so it fires at most once per tier ever
+// reached — no per-day dedup needed here. Event + prop names are
+// OWdle-identical (shared PostHog dashboards; site splits the two).
+export function trackStreakRankPromoted(opts: {
+  tier: "eternus" | "ascendant" | "phantom";
+  streak: number;
+  poolN: number;
+}): void {
+  posthog.capture("streak_rank_promoted", {
+    tier: opts.tier,
+    streak: opts.streak,
+    pool_n: opts.poolN,
+  });
+}
+
 export function trackDailyCompleted(opts: {
   dailyId: string;
   wonCount: number;

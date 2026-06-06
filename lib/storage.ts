@@ -18,6 +18,13 @@ export type ModeState = {
   // Classic-mode hint system: attribute keys whose answer values have been
   // revealed. Capped at 2 by the UI; persisted so reveals survive reloads.
   hintsUsed?: string[];
+  // Mugshot-mode hard-mode latch, written at each guess submission:
+  // initialized from the grayscale toggle on the FIRST guess, then ANDed
+  // with the toggle on every subsequent one — a single guess submitted
+  // with hard mode off drops it for the round permanently (peeking at
+  // color between guesses costs nothing). Drives the HARD MODE badge on
+  // share cards; undefined (pre-feature rounds) never claims the badge.
+  hardMode?: boolean;
   bonus?: {
     selected: number;
     correct: boolean | null;

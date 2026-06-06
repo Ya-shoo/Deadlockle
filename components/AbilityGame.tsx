@@ -28,6 +28,9 @@ import { BonusRound } from "./BonusRound";
 import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
+import { ShareButton } from "./ShareButton";
+import { roundShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
 
 const MODE = "ability";
 
@@ -44,6 +47,8 @@ const MAX_GUESSES = 12;
 export function AbilityGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
+  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  useShareLinkVisit("ability");
 
   useEffect(() => {
     const d = dayString();
@@ -252,13 +257,45 @@ export function AbilityGame() {
               <div className="flex justify-center sm:justify-start">
                 <NextModeCTA current="ability" />
               </div>
+              {/* Share closes the card — single bottom-anchored
+                  affordance, consistent across every mode. */}
+              <div className="flex items-center justify-center gap-3">
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "ability",
+                    outcome: "won",
+                    guesses: state.guesses.length,
+                  })}
+                  filename={`deadlockle-ability-${day}.png`}
+                  surface="round_result"
+                  mode="ability"
+                  dailyId={day}
+                />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {failed && !state.won && (
-        <LossReveal current="ability">
+        <LossReveal
+          current="ability"
+          share={
+            <ShareButton
+              {...roundShareLinks({
+                day,
+                slug: "ability",
+                outcome: "lost",
+                guesses: state.guesses.length,
+              })}
+              filename={`deadlockle-ability-${day}.png`}
+              surface="round_result"
+              mode="ability"
+              dailyId={day}
+            />
+          }
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             {answer.portrait_url && (
               /* eslint-disable-next-line @next/next/no-img-element */

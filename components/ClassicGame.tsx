@@ -25,6 +25,11 @@ import { NextModeCTA } from "./NextModeCTA";
 import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
+import { TextShareBlock } from "./TextShareBlock";
+import { buildClassicShareText } from "@/lib/share";
+import { ShareButton } from "./ShareButton";
+import { roundShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
 
 // Hard ceiling on slots. Hints count toward this — `effectiveUsed` is
 // `guesses.length + hintsUsed.length`. Tenth slot hit without a correct
@@ -48,6 +53,8 @@ export function ClassicGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  useShareLinkVisit("classic");
 
   useEffect(() => {
     const d = dayString();
@@ -395,13 +402,71 @@ export function ClassicGame() {
               <div className="flex justify-center sm:justify-start">
                 <NextModeCTA current="classic" />
               </div>
+              {/* Emoji-grid text share — the guess path as 🟩🟨🟥 rows
+                  (latest first, capped), ported from OWdle Classic.
+                  Zero-friction copy/paste into Discord / group chats.
+                  The embedded URL is the personalized /r/<code> link,
+                  so even the text share unfurls the result card where
+                  chats render previews. The link-first ShareButton
+                  rides in the block's action row — ONE share affordance
+                  per card, at the bottom. */}
+              <TextShareBlock
+                text={buildClassicShareText({
+                  guesses: state.guesses,
+                  answer,
+                  won: true,
+                  hints: hintsUsed.length,
+                  url: roundShareLinks({
+                    day,
+                    slug: "classic",
+                    outcome: "won",
+                    guesses: state.guesses.length,
+                    hints: hintsUsed.length,
+                  }).url,
+                })}
+                surface="round_result"
+                mode="classic"
+                dailyId={day}
+                share={
+                  <ShareButton
+                    {...roundShareLinks({
+                      day,
+                      slug: "classic",
+                      outcome: "won",
+                      guesses: state.guesses.length,
+                      hints: hintsUsed.length,
+                    })}
+                    filename={`deadlockle-classic-${day}.png`}
+                    surface="round_result"
+                    mode="classic"
+                    dailyId={day}
+                  />
+                }
+              />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {failed && !state.won && (
-        <LossReveal current="classic">
+        <LossReveal
+          current="classic"
+          share={
+            <ShareButton
+              {...roundShareLinks({
+                day,
+                slug: "classic",
+                outcome: "lost",
+                guesses: state.guesses.length,
+                hints: hintsUsed.length,
+              })}
+              filename={`deadlockle-classic-${day}.png`}
+              surface="round_result"
+              mode="classic"
+              dailyId={day}
+            />
+          }
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             {answer.portrait_url && (
               /* eslint-disable-next-line @next/next/no-img-element */

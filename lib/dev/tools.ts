@@ -61,6 +61,33 @@ export const TOOL_GROUPS: DevToolGroup[] = [
     ],
   },
   {
+    title: "Share cards",
+    blurb:
+      "The /r/[code] link-share system — server-rendered OG cards via workers-og.",
+    tools: [
+      {
+        href: "/labeler/share-preview/",
+        label: "Card matrix",
+        description:
+          "Every OG card variant in one grid: per-mode win/loss, hint + hard-mode tallies, singulars, daily sweep / mixed / all-missed. Checkerboard backdrop verifies corner alpha.",
+        helper: "og-dev server on :8798 (part of npm run dev)",
+      },
+    ],
+  },
+  {
+    title: "Rewards",
+    blurb:
+      "Streak-rank reward system — percentile + floor tiers over the 30-day streak pool.",
+    tools: [
+      {
+        href: "/labeler/streak-rank-preview/",
+        label: "Streak rank",
+        description:
+          "Force any tier (Eternus / Ascendant / Phantom) + streak count to preview the header pill and promotion modal without real cutoff data.",
+      },
+    ],
+  },
+  {
     title: "Play",
     blurb: "Jump straight into a live mode — handy for sanity-checks.",
     tools: [

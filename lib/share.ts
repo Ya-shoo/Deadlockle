@@ -1,39 +1,50 @@
 import { HEROES_BY_KEY, type Hero } from "./heroes";
 import { compareHero } from "./compare";
 
-export function buildShareText(opts: {
-  modeLabel: string;
-  day: string;
+// Classic-mode emoji-grid share text, LoLdle-style: headline, then one
+// 🟩🟨🟥 row per guess (latest first, so the winning all-green row
+// leads), capped with a "+N more" line, then the share URL. The grid
+// teases the path without spoiling the answer. Ported from OWdle's
+// lib/share.ts — keep the two repos in lockstep.
+const MAX_GRID_ROWS = 5;
+
+export function buildClassicShareText(opts: {
+  // Hero keys, chronological (as stored in mode state).
   guesses: string[];
   answer: Hero;
-  headline?: string;
-  hintsUsed?: number;
+  won: boolean;
+  hints?: number;
+  url: string;
 }): string {
+  const { guesses, answer, won, hints = 0, url } = opts;
+  const rows = guesses
+    .map((key) => HEROES_BY_KEY[key])
+    .filter((h): h is Hero => Boolean(h))
+    .map((hero) =>
+      compareHero(hero, answer)
+        .map((r) => {
+          if (r.status === "correct") return "🟩";
+          if (r.status === "partial") return "🟨";
+          if (r.status === "far") return "🟥";
+          return "⬛";
+        })
+        .join(""),
+    )
+    .reverse();
+  const shown = rows.slice(0, MAX_GRID_ROWS);
+  const hidden = rows.length - shown.length;
+
   const lines: string[] = [];
-  lines.push(`Deadlockle ${opts.modeLabel} · ${opts.day}`);
-  const hintSuffix =
-    opts.hintsUsed && opts.hintsUsed > 0
-      ? ` (+${opts.hintsUsed} hint${opts.hintsUsed === 1 ? "" : "s"})`
-      : "";
+  const hintTag = hints > 0 ? ` (💡 ${hints})` : "";
   lines.push(
-    opts.headline
-      ? `${opts.headline} in ${opts.guesses.length}${hintSuffix}`
-      : `Solved in ${opts.guesses.length}${hintSuffix}`,
+    won
+      ? `I found today's #Deadlockle hero in Classic in ${guesses.length} ${
+          guesses.length === 1 ? "guess" : "guesses"
+        }${hintTag}:`
+      : `Today's #Deadlockle Classic got me ❌${hintTag}:`,
   );
-  lines.push("");
-  for (const key of opts.guesses) {
-    const hero = HEROES_BY_KEY[key];
-    if (!hero) continue;
-    const results = compareHero(hero, opts.answer);
-    const row = results
-      .map((r) => {
-        if (r.status === "correct") return "🟩";
-        if (r.status === "partial") return "🟨";
-        if (r.status === "far") return "🟥";
-        return "⬛";
-      })
-      .join("");
-    lines.push(row);
-  }
+  lines.push(...shown);
+  if (hidden > 0) lines.push(`➕ ${hidden} more`);
+  lines.push(url);
   return lines.join("\n");
 }

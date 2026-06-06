@@ -15,9 +15,14 @@ import { NextModeCTA } from "./NextModeCTA";
 // kept low so the card reads as muted, not alarming.
 export function LossReveal({
   current,
+  share,
   children,
 }: {
   current: ModeSlug;
+  // Optional share affordance (the mode's link-share ShareButton) —
+  // rendered beside the NextModeCTA so a miss is still shareable
+  // (the card is spoiler-free either way).
+  share?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -37,6 +42,13 @@ export function LossReveal({
           <div className="flex justify-center sm:justify-start">
             <NextModeCTA current={current} />
           </div>
+          {/* Share sits LAST — the card's closing action, matching the
+              win cards' bottom-anchored share row. */}
+          {share && (
+            <div className="flex items-center justify-center gap-3">
+              {share}
+            </div>
+          )}
         </div>
       </motion.div>
     </AnimatePresence>

@@ -43,6 +43,9 @@ import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
 import { SpeakerToggle } from "./SpeakerToggle";
+import { ShareButton } from "./ShareButton";
+import { roundShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
 import clsx from "clsx";
 
 const MODE = "sound";
@@ -75,6 +78,8 @@ function nextHintAtGuess(currentUnlocked: number): number {
 export function SoundGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ConversationState | null>(null);
+  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  useShareLinkVisit("sound");
   // Which speaker the toggle is pointed at when *both* are still unsolved.
   // Once one is solved, the derived `activeTarget` below forces the other.
   const [chosenTarget, setChosenTarget] = useState<0 | 1>(0);
@@ -411,13 +416,45 @@ export function SoundGame() {
               <div className="flex justify-center sm:justify-start">
                 <NextModeCTA current="sound" />
               </div>
+              {/* Share closes the card — single bottom-anchored
+                  affordance, consistent across every mode. */}
+              <div className="flex items-center justify-center gap-3">
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "sound",
+                    outcome: "won",
+                    guesses: state.guesses.length,
+                  })}
+                  filename={`deadlockle-conversation-${day}.png`}
+                  surface="round_result"
+                  mode="sound"
+                  dailyId={day}
+                />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {failed && !won && (
-        <LossReveal current="sound">
+        <LossReveal
+          current="sound"
+          share={
+            <ShareButton
+              {...roundShareLinks({
+                day,
+                slug: "sound",
+                outcome: "lost",
+                guesses: state.guesses.length,
+              })}
+              filename={`deadlockle-conversation-${day}.png`}
+              surface="round_result"
+              mode="sound"
+              dailyId={day}
+            />
+          }
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <div className="flex shrink-0 -space-x-3">
               {speakerA.portrait_url && (

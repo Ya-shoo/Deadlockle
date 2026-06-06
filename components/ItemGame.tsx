@@ -22,6 +22,9 @@ import { NextModeCTA } from "./NextModeCTA";
 import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
+import { ShareButton } from "./ShareButton";
+import { roundShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
 
 const MODE = "item";
 
@@ -55,6 +58,8 @@ export function ItemGame() {
   // straight blur fades to a recognizable shape too easily; rotation is the
   // real differentiator. Players who want a softer puzzle can toggle off.
   const [hardMode, setHardMode] = useState(true);
+  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  useShareLinkVisit("item");
 
   useEffect(() => {
     const d = dayString();
@@ -237,13 +242,45 @@ export function ItemGame() {
               <div className="flex justify-center sm:justify-start">
                 <NextModeCTA current="item" />
               </div>
+              {/* Share closes the card — single bottom-anchored
+                  affordance, consistent across every mode. */}
+              <div className="flex items-center justify-center gap-3">
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "item",
+                    outcome: "won",
+                    guesses: state.guesses.length,
+                  })}
+                  filename={`deadlockle-item-${day}.png`}
+                  surface="round_result"
+                  mode="item"
+                  dailyId={day}
+                />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {failed && !state.won && (
-        <LossReveal current="item">
+        <LossReveal
+          current="item"
+          share={
+            <ShareButton
+              {...roundShareLinks({
+                day,
+                slug: "item",
+                outcome: "lost",
+                guesses: state.guesses.length,
+              })}
+              filename={`deadlockle-item-${day}.png`}
+              surface="round_result"
+              mode="item"
+              dailyId={day}
+            />
+          }
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             {answer.icon && (
               /* eslint-disable-next-line @next/next/no-img-element */

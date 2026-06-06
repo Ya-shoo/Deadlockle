@@ -1,0 +1,949 @@
+// GET /og/r/[code].png
+//
+// Renders the personalized share image for the encoded results in the
+// path — the daily-complete summary for daily codes, or a single
+// mode's spoiler-free result card for round codes (see lib/shareUrl.ts
+// for the two formats). Uses workers-og (Satori on Cloudflare) so the
+// route is dynamic per-link without a Node runtime. The output is the
+// PNG that link unfurlers (Discord, iMessage, Twitter, Slack, etc.)
+// fetch via the og:image meta tag set in functions/r/[code].ts.
+//
+// All cards are SPOILER-FREE: no hero name, no ability/item art, no
+// speaker portraits. A link unfurl renders to everyone scrolling past,
+// not just the person who chose to look — answer art would leak the
+// day's puzzle into every chat it's posted in. The visual centerpiece
+// is a fixed per-mode art piece instead.
+//
+// Render budget: ~150-300ms cold, sub-100ms warm (per workers-og
+// benchmarks). Edge-cached 24h since the image is fully determined by
+// the path — same encoded code always produces the same bytes.
+//
+// Ported from OWdle functions/og/r/[code].tsx — keep the two repos'
+// hardening in lockstep (error no-store, buffered render, font retry,
+// post-construction headers, bounded image cache).
+
+import { ImageResponse, loadGoogleFont } from "workers-og";
+import {
+  decodeResults,
+  decodeRoundResult,
+  type DecodedRound,
+} from "../../../lib/shareUrl";
+
+// Minimal handler shape — the runtime passes `params` keyed by the
+// route's `[code]` segment. We don't depend on @cloudflare/workers-
+// types here, matching the convention in functions/_lib/types.ts.
+type Handler = (ctx: {
+  request: Request;
+  params: { code: string };
+}) => Promise<Response>;
+
+const CARD = 960;
+
+// Brand palette — mirrors app/globals.css. The card leans on the same
+// smoky-teal parlour base + amber accent the site uses, with the match
+// greens/reds for verdicts.
+const BG = "#0c1820";
+const CREAM = "#f3e8d3";
+const AMBER = "#d6a05c";
+const AMBER_SOFT = "#e9c694";
+const TEAL = "#5ec5d4";
+const GREEN = "#7fb86c";
+const RED = "#c75a4a";
+
+// Mode display labels — kept inline so this function has no dependency
+// on lib/modes.ts (whose IS_DEV_BUILD reads process.env at module
+// scope, unavailable on workerd).
+const MODE_LABEL: Record<string, string> = {
+  classic: "Classic",
+  ability: "Ability",
+  mugshot: "Mugshot",
+  sound: "Conversation",
+  item: "Item",
+};
+
+// Cache policy. Prod: deterministic code → deterministic bytes, so
+// cache hard and immutable. Local dev (wrangler on localhost):
+// no-store — an immutable 24h entry in the browser cache makes
+// card-design iteration invisible (the browser won't even revalidate;
+// ShareModal additionally cache-busts its preview URL in dev to evict
+// entries cached before this header existed).
+function ogCacheControl(request: Request): string {
+  const host = new URL(request.url).hostname;
+  return host === "localhost" || host === "127.0.0.1"
+    ? "no-store"
+    : "public, max-age=86400, s-maxage=86400, immutable";
+}
+
+// One retry — Google Fonts fetches occasionally hiccup on cold
+// isolates, and a single transient miss must not fail the card.
+function loadFont(opts: {
+  family: string;
+  weight: number;
+  text: string;
+}): Promise<ArrayBuffer> {
+  return loadGoogleFont(opts).catch(() => loadGoogleFont(opts));
+}
+
+// Buffer the rendered image fully before responding. Two reasons:
+// a mid-stream Satori failure throws HERE (caught by the handler's
+// error wrapper) instead of leaking a truncated-but-200 response, and
+// the cache headers only ever decorate verified-complete bytes.
+async function finalizeOg(
+  img: Response,
+  request: Request,
+): Promise<Response> {
+  const body = await img.arrayBuffer();
+  return new Response(body, {
+    headers: {
+      "content-type": "image/png",
+      "cache-control": ogCacheControl(request),
+      "access-control-allow-origin": "*",
+    },
+  });
+}
+
+export const onRequestGet: Handler = async (ctx) => {
+  try {
+    return await handleOg(ctx);
+  } catch {
+    // NEVER let a failure cache: a transient render error (cold
+    // isolate, font fetch hiccup) once got edge-cached on OWdle under
+    // the canonical URL and served a dead unfurl until expiry. no-store
+    // keeps errors self-healing on the next request.
+    return new Response("Card render failed — retry shortly.", {
+      status: 503,
+      headers: { "cache-control": "no-store", "retry-after": "5" },
+    });
+  }
+};
+
+const handleOg: Handler = async ({ params, request }) => {
+  const code = params.code;
+  const decoded = decodeResults(code);
+  if (!decoded) {
+    // Not a daily code — try the dash-free round format before bailing.
+    const round = decodeRoundResult(code);
+    if (round) return renderRoundOg(round, request);
+    return new Response("Invalid share code", { status: 400 });
+  }
+
+  const wonCount = decoded.results.filter((r) => r.outcome === "won").length;
+  const lostCount = decoded.results.filter((r) => r.outcome === "lost").length;
+  const totalGuesses = decoded.results.reduce((s, r) => s + r.guesses, 0);
+  const sweep = wonCount === decoded.results.length;
+  // Numeric date — the top-right corner takes the URL stamp + date so
+  // the bottom stays free for the centerpiece art.
+  const [dy, dm, dd] = decoded.date.split("-").map(Number);
+  const dateLabel = `${dm}/${dd}/${dy}`;
+
+  // Subset Google Fonts to just the characters we'll render. Includes
+  // both casings + every literal string on the card — `textTransform:
+  // uppercase` doesn't change which glyphs Satori asks for at load
+  // time, so missing the caps yields tofu boxes. The "—" (lost-mode
+  // count glyph in ModeChip) sits BEFORE the "/" — and NO "&" anywhere:
+  // loadGoogleFont ships this as a raw text= URL param, so an ampersand
+  // silently drops every character after it.
+  const fontText =
+    "DeadlockleabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "0123456789 ,.:·-—/" +
+    dateLabel +
+    Object.values(MODE_LABEL).join("");
+
+  const [cinzelBold, sourceSansSemi, sourceSansMedium, jetbrainsMono] =
+    await Promise.all([
+      loadFont({ family: "Cinzel", weight: 800, text: fontText }),
+      loadFont({ family: "Source Sans 3", weight: 600, text: fontText }),
+      loadFont({ family: "Source Sans 3", weight: 500, text: fontText }),
+      loadFont({ family: "JetBrains Mono", weight: 500, text: fontText }),
+    ]);
+
+  // Tally chips that flank the total-guesses number. Missed + hints
+  // condense to a single left-side label; the Mugshot hard-mode badge
+  // lives on the right.
+  const leftLabel = (() => {
+    const parts: string[] = [];
+    if (lostCount > 0) parts.push(`${lostCount} missed`);
+    if (decoded.hints > 0)
+      parts.push(`${decoded.hints} hint${decoded.hints === 1 ? "" : "s"}`);
+    return parts.length ? parts.join(" · ") : null;
+  })();
+  const rightLabel = decoded.hardMode ? "hard mode" : null;
+  // Single-tally case: promote the left label to the right side per the
+  // "preferred to the right" rule.
+  const promoteLeftToRight = leftLabel != null && rightLabel == null;
+  const finalLeft = promoteLeftToRight ? null : leftLabel;
+  const finalRight = promoteLeftToRight ? leftLabel : rightLabel;
+
+  // Verdict tone: green on a sweep, warm amber otherwise.
+  const tone = sweep ? { text: GREEN } : { text: AMBER };
+
+  // Split results into top row of 3 + centered bottom row of 2. Same
+  // visual rhythm as the in-app breakdown, but built with flex since
+  // Satori doesn't support CSS grid.
+  const topRow = decoded.results.slice(0, 3);
+  const bottomRow = decoded.results.slice(3);
+
+  // Centerpiece art (fixed per-card piece, shipped as a git-tracked
+  // static asset). When unreachable the card degrades to the verdict
+  // line alone.
+  const art = await loadImage(
+    `${new URL(request.url).origin}/og-spray-daily.png`,
+  );
+
+  const res = new ImageResponse(
+    (
+      <div
+        style={{
+          width: CARD,
+          height: CARD,
+          display: "flex",
+          flexDirection: "column",
+          background: BG,
+          // Chip treatment — rounded corners with TRUE transparency
+          // outside the radius (no parent fill; the PNG keeps alpha),
+          // so the card floats on whatever the chat renders behind it.
+          borderRadius: 100,
+          overflow: "hidden",
+          color: CREAM,
+          fontFamily: "Source Sans 3",
+          padding: 56,
+          position: "relative",
+        }}
+      >
+        {/* Top brand row — wordmark left; URL stamp + numeric date
+            stacked top-right. Cinzel renders the lowercase tail as
+            small caps, matching the site wordmark. */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* The wordmark IS the link — "Deadlockle.com" in the brand
+              face (Cinzel renders the tail as small caps), so no
+              separate URL stamp repeats it. */}
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Cinzel",
+              fontWeight: 800,
+              fontSize: 74,
+              lineHeight: 1,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            <span style={{ color: CREAM }}>Deadlock</span>
+            <span style={{ color: AMBER }}>le</span>
+            <span style={{ color: "rgba(233,198,148,0.85)" }}>.com</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              marginTop: 12,
+              marginLeft: 24,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "JetBrains Mono",
+                fontSize: 22,
+                letterSpacing: "0.16em",
+                color: "rgba(243,232,211,0.75)",
+              }}
+            >
+              {dateLabel}
+            </div>
+          </div>
+        </div>
+
+        {/* Centerpiece art — painted OUT OF FLOW behind the stats
+            column. Smaller than the round card's (430 vs 600): the
+            daily band starts higher and the badge art is face-forward,
+            so the stats may only graze the badge's bottom rim — never
+            cross the face. */}
+        {art && (
+          <div
+            style={{
+              position: "absolute",
+              top: 130,
+              left: 0,
+              right: 0,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt=""
+              src={art}
+              width={400}
+              height={400}
+              style={{ width: 400, height: 400 }}
+            />
+          </div>
+        )}
+
+        {/* Stats column — overlaps the art's base, sits above it in
+            paint order. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: 395,
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <svg
+              width={40}
+              height={40}
+              viewBox="0 0 56 56"
+              style={{ marginRight: 14 }}
+            >
+              <path
+                d="M10 28 L24 42 L46 16"
+                fill="none"
+                stroke={tone.text}
+                strokeWidth="6"
+                strokeLinecap="square"
+                strokeLinejoin="miter"
+              />
+            </svg>
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "JetBrains Mono",
+                fontSize: 26,
+                letterSpacing: "0.28em",
+                color: CREAM,
+                marginRight: 18,
+              }}
+            >
+              DAILY COMPLETE
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                fontFamily: "Cinzel",
+                fontWeight: 800,
+                color: tone.text,
+              }}
+            >
+              <span style={{ fontSize: 44 }}>{wonCount}</span>
+              <span
+                style={{
+                  fontSize: 32,
+                  color: "rgba(243,232,211,0.55)",
+                  marginLeft: 3,
+                  marginRight: 3,
+                }}
+              >
+                /
+              </span>
+              <span style={{ fontSize: 44 }}>{decoded.results.length}</span>
+            </div>
+          </div>
+
+          {/* Total guesses row — number flanked by modifier tally chips.
+              Bottom-anchored (NOT baseline): Satori computes different
+              baselines for Cinzel / Source Sans / JetBrains Mono boxes,
+              which left the tallies hanging a few px off the label. The
+              flex-end anchor + measured marginBottom nudges put all
+              three runs on one shared optical baseline (verified by
+              pixel-band measurement on the rendered PNG). */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "center",
+              marginTop: 12,
+            }}
+          >
+            {finalLeft && (
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "JetBrains Mono",
+                  fontSize: 30,
+                  lineHeight: 1,
+                  letterSpacing: "0.10em",
+                  color: "rgba(243,232,211,0.78)",
+                  marginRight: 22,
+                  marginBottom: 10,
+                }}
+              >
+                {finalLeft}
+              </div>
+            )}
+            <div style={{ display: "flex", alignItems: "baseline" }}>
+              <span
+                style={{
+                  fontFamily: "Cinzel",
+                  fontWeight: 800,
+                  fontSize: 130,
+                  lineHeight: 0.85,
+                  color: AMBER_SOFT,
+                  textShadow: "0 4px 24px rgba(0,0,0,0.6)",
+                }}
+              >
+                {totalGuesses}
+              </span>
+              <span
+                style={{
+                  fontFamily: "Source Sans 3",
+                  fontWeight: 500,
+                  fontSize: 36,
+                  color: "rgba(243,232,211,0.7)",
+                  marginLeft: 12,
+                }}
+              >
+                guess{totalGuesses === 1 ? "" : "es"}
+              </span>
+            </div>
+            {finalRight && (
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "JetBrains Mono",
+                  fontSize: 30,
+                  lineHeight: 1,
+                  letterSpacing: "0.10em",
+                  color: TEAL,
+                  marginLeft: 22,
+                  marginBottom: 10,
+                }}
+              >
+                {finalRight}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mode breakdown — top row of 3, bottom row of 2 centered.
+            Flex is sufficient since each chip hugs its content. The
+            outer column needs an explicit full width so the inner rows
+            can center within it. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 24,
+            width: "100%",
+          }}
+        >
+          <ModeRowFlex chips={topRow} />
+          {bottomRow.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                marginTop: 14,
+                width: "100%",
+              }}
+            >
+              <ModeRowFlex chips={bottomRow} />
+            </div>
+          )}
+        </div>
+      </div>
+    ),
+    {
+      width: CARD,
+      height: CARD,
+      fonts: [
+        { name: "Cinzel", data: cinzelBold, weight: 800 },
+        { name: "Source Sans 3", data: sourceSansSemi, weight: 600 },
+        { name: "Source Sans 3", data: sourceSansMedium, weight: 500 },
+        { name: "JetBrains Mono", data: jetbrainsMono, weight: 500 },
+      ],
+    },
+  );
+  // workers-og APPENDS caller headers to its own cache defaults (the
+  // names differ only by case), yielding a contradictory combo — so
+  // set on the response instead of passing through options.
+  return finalizeOg(res, request);
+};
+
+// Renders a centered row of up to three mode chips.
+function ModeRowFlex({
+  chips,
+}: {
+  chips: { slug: string; outcome: "won" | "lost"; guesses: number }[];
+}) {
+  // Content-hugging pills, every row centered — fixed-width chips leave
+  // a void between short mode names and their counts (and space-between
+  // stretches it wider still).
+  const GAP = 14;
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: "100%",
+        justifyContent: "center",
+      }}
+    >
+      {chips.map((r, i) => (
+        <div
+          key={r.slug}
+          style={{
+            display: "flex",
+            marginLeft: i === 0 ? 0 : GAP,
+          }}
+        >
+          <ModeChip result={r} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ModeChip({
+  result,
+}: {
+  result: { slug: string; outcome: "won" | "lost"; guesses: number };
+}) {
+  const won = result.outcome === "won";
+  const tone = won
+    ? {
+        bg: "rgba(127,184,108,0.12)",
+        border: "rgba(127,184,108,0.4)",
+        fg: GREEN,
+      }
+    : {
+        bg: "rgba(199,90,74,0.10)",
+        border: "rgba(199,90,74,0.35)",
+        fg: RED,
+      };
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        padding: "13px 20px",
+        borderRadius: 12,
+        background: tone.bg,
+        border: `1px solid ${tone.border}`,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {/* Icon as inline SVG, not text. The loaded fonts don't ship
+            ✓ / ✕ glyphs so the text path falls back to system fonts
+            which Satori renders as bare letters (a V, an X). */}
+        <div
+          style={{
+            display: "flex",
+            width: 28,
+            height: 28,
+            alignItems: "center",
+            justifyContent: "center",
+            marginRight: 10,
+          }}
+        >
+          <svg width={26} height={26} viewBox="0 0 26 26">
+            <path
+              d={won ? "M5 14 L11 20 L22 7" : "M6 6 L20 20 M20 6 L6 20"}
+              fill="none"
+              stroke={tone.fg}
+              strokeWidth={won ? 3.4 : 3}
+              strokeLinecap="square"
+            />
+          </svg>
+        </div>
+        <span
+          style={{
+            display: "flex",
+            fontFamily: "Source Sans 3",
+            fontWeight: 600,
+            fontSize: 32,
+            color: CREAM,
+          }}
+        >
+          {MODE_LABEL[result.slug] ?? result.slug}
+        </span>
+      </div>
+      <span
+        style={{
+          display: "flex",
+          fontFamily: "JetBrains Mono",
+          fontWeight: 500,
+          // Sized close to the mode name so the per-round count reads
+          // at a glance in chat thumbnails, not as a footnote.
+          fontSize: 31,
+          color: tone.fg,
+          letterSpacing: "0.06em",
+          // A readable beat between name and count — the chip hugs its
+          // content instead of stretching them apart.
+          marginLeft: 18,
+        }}
+      >
+        {won ? result.guesses : "—"}
+      </span>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Round card — single-mode result, art-centric and spoiler-free.
+// Mirrors the daily card's design language: flat dark canvas, wordmark
+// + URL/date header, a big fixed art piece as the centerpiece, stats
+// overlapping its base. One card per mode.
+
+// Per-mode centerpiece: the Deadlock eye-wheel emblem, pre-tinted per
+// mode (scripts: /tmp/tint-emblem.mjs pattern — disc recolored to the
+// mode tone, ink stays dark so the wheel reads as a cutout to the card
+// bg). One emblem, six tints = the mode color-coding system. All the
+// same source resolution (1024²), so one shared display size.
+const ART_CENTER_Y = 430;
+const ART_TUNE: Record<string, { file: string; size: number }> = {
+  classic: { file: "/og-spray-classic.png", size: 500 }, // amber
+  ability: { file: "/og-spray-ability.png", size: 500 }, // spirit purple
+  mugshot: { file: "/og-spray-mugshot.png", size: 500 }, // vitality green
+  sound: { file: "/og-spray-sound.png", size: 500 }, // teal
+  item: { file: "/og-spray-item.png", size: 500 }, // weapon orange
+};
+
+// Per-mode accent for the big count numeral — a lightened cousin of the
+// emblem tint so the stat reads as part of the mode's color identity.
+const MODE_NUMERAL: Record<string, string> = {
+  classic: "#e9c694",
+  ability: "#c8b4e4",
+  mugshot: "#abd698",
+  sound: "#9fdde8",
+  item: "#f2b095",
+};
+
+// Asset → data-URI cache. Bounded defensively; the art set is small
+// and stable, so in practice it warms once per isolate.
+const imageCache = new Map<string, string>();
+const IMAGE_CACHE_MAX = 24;
+
+async function loadImage(url: string): Promise<string | null> {
+  const cached = imageCache.get(url);
+  if (cached) return cached;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const bytes = new Uint8Array(await res.arrayBuffer());
+    let bin = "";
+    const CHUNK = 0x8000;
+    for (let i = 0; i < bytes.length; i += CHUNK) {
+      bin += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+    }
+    const mime = /\.png(\?|$)/i.test(url) ? "image/png" : "image/jpeg";
+    const dataUri = `data:${mime};base64,${btoa(bin)}`;
+    if (imageCache.size >= IMAGE_CACHE_MAX) imageCache.clear();
+    imageCache.set(url, dataUri);
+    return dataUri;
+  } catch {
+    return null;
+  }
+}
+
+async function renderRoundOg(
+  round: DecodedRound,
+  request: Request,
+): Promise<Response> {
+  const won = round.outcome === "won";
+  const modeLabel = (MODE_LABEL[round.slug] ?? round.slug).toUpperCase();
+  // Long labels (CONVERSATION, 12 glyphs of wide Cinzel caps) drop a
+  // size tier so the headline row never collides with the guess count.
+  const modeFontSize = modeLabel.length > 10 ? 62 : 84;
+  // Numeric date, matching the daily card's header.
+  const [dy, dm, dd] = round.date.split("-").map(Number);
+  const dateLabel = `${dm}/${dd}/${dy}`;
+  // At most one of these is nonzero (hints = Classic, hard = Mugshot).
+  const tally =
+    round.hints > 0
+      ? `${round.hints} hint${round.hints === 1 ? "" : "s"}`
+      : round.hardMode
+        ? "hard mode"
+        : null;
+  const cta = won ? "Can you beat it?" : "Can you solve it?";
+
+  const origin = new URL(request.url).origin;
+  const tune = ART_TUNE[round.slug] ?? { file: "/og-spray-daily.png", size: 480 };
+  const art = await loadImage(`${origin}${tune.file}`);
+
+  // NO "&" in this subset string: loadGoogleFont ships it as a raw
+  // text= URL param, so an ampersand terminates the param and silently
+  // drops every character after it (see the daily renderer's note).
+  const fontText =
+    "DeadlockleabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "0123456789 ,.:·-—/?" +
+    dateLabel +
+    modeLabel;
+
+  const [cinzelBold, sourceSansMedium, jetbrainsMono] = await Promise.all([
+    loadFont({ family: "Cinzel", weight: 800, text: fontText }),
+    loadFont({ family: "Source Sans 3", weight: 500, text: fontText }),
+    loadFont({ family: "JetBrains Mono", weight: 500, text: fontText }),
+  ]);
+
+  const res = new ImageResponse(
+    (
+      <div
+        style={{
+          width: CARD,
+          height: CARD,
+          display: "flex",
+          flexDirection: "column",
+          background: BG,
+          // Chip treatment — rounded corners with TRUE transparency
+          // outside the radius (no parent fill; the PNG keeps alpha),
+          // so the card floats on whatever the chat renders behind it.
+          borderRadius: 100,
+          overflow: "hidden",
+          color: CREAM,
+          fontFamily: "JetBrains Mono",
+          padding: 56,
+          position: "relative",
+        }}
+      >
+        {/* Top brand row — identical header to the daily card:
+            wordmark left, URL + numeric date stacked right. */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* The wordmark IS the link — "Deadlockle.com" in the brand
+              face (Cinzel renders the tail as small caps), so no
+              separate URL stamp repeats it. */}
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Cinzel",
+              fontWeight: 800,
+              fontSize: 74,
+              lineHeight: 1,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            <span style={{ color: CREAM }}>Deadlock</span>
+            <span style={{ color: AMBER }}>le</span>
+            <span style={{ color: "rgba(233,198,148,0.85)" }}>.com</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              marginTop: 12,
+              marginLeft: 24,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                fontFamily: "JetBrains Mono",
+                fontSize: 22,
+                letterSpacing: "0.16em",
+                color: "rgba(243,232,211,0.75)",
+              }}
+            >
+              {dateLabel}
+            </div>
+          </div>
+        </div>
+
+        {/* Centerpiece art — out of flow, big, with the stats band
+            clipping its base for depth (same trick as the daily card).
+            Size is per-piece (ART_TUNE); top keeps every piece anchored
+            on the same visual center. */}
+        {art && (
+          <div
+            style={{
+              position: "absolute",
+              top: ART_CENTER_Y - tune.size / 2,
+              left: 0,
+              right: 0,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt=""
+              src={art}
+              width={tune.size}
+              height={tune.size}
+              style={{ width: tune.size, height: tune.size }}
+            />
+          </div>
+        )}
+
+        {/* Stats band — lower third over the art's base. MODE big on
+            the left (the at-a-glance read), guess count on the right.
+            No backing fill: a translucent panel reads as a shadowy box
+            wherever the art crosses behind it. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: 504,
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+            }}
+          >
+            {/* Verdict eyebrow. */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <svg
+                width={30}
+                height={30}
+                viewBox="0 0 56 56"
+                style={{ marginRight: 12 }}
+              >
+                <path
+                  d={
+                    won ? "M10 28 L24 42 L46 16" : "M14 14 L42 42 M42 14 L14 42"
+                  }
+                  fill="none"
+                  stroke={won ? GREEN : RED}
+                  strokeWidth="7"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
+                />
+              </svg>
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "JetBrains Mono",
+                  fontSize: 26,
+                  letterSpacing: "0.28em",
+                  color: won ? GREEN : RED,
+                }}
+              >
+                {won ? "SOLVED" : "MISSED"}
+              </div>
+            </div>
+
+            {/* Headline row — mode name and count share the line,
+                bottom-aligned. Label stays vertically centered on the
+                numeral. */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "space-between",
+                width: "100%",
+                marginTop: 10,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Cinzel",
+                  fontWeight: 800,
+                  fontSize: modeFontSize,
+                  lineHeight: 0.9,
+                  color: CREAM,
+                  // Thin dark outline + ambient lift so the name stays
+                  // legible where the centerpiece art crosses behind it.
+                  textShadow:
+                    "2px 0 0 rgba(8,12,18,0.9), -2px 0 0 rgba(8,12,18,0.9), 0 2px 0 rgba(8,12,18,0.9), 0 -2px 0 rgba(8,12,18,0.9), 0 4px 24px rgba(0,0,0,0.6)",
+                }}
+              >
+                {modeLabel}
+              </div>
+              {won && (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <span
+                    style={{
+                      fontFamily: "Cinzel",
+                      fontWeight: 800,
+                      fontSize: 126,
+                      lineHeight: 0.85,
+                      color: MODE_NUMERAL[round.slug] ?? AMBER_SOFT,
+                      textShadow: "0 4px 24px rgba(0,0,0,0.6)",
+                    }}
+                  >
+                    {round.guesses}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "Source Sans 3",
+                      fontWeight: 500,
+                      fontSize: 36,
+                      color: "rgba(243,232,211,0.7)",
+                      marginLeft: 12,
+                    }}
+                  >
+                    guess{round.guesses === 1 ? "" : "es"}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Tally — tucked right under the count, right-aligned,
+                info teal so it reads as the count's footnote. */}
+            {tally && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  width: "100%",
+                  marginTop: 6,
+                  fontFamily: "JetBrains Mono",
+                  fontSize: 26,
+                  letterSpacing: "0.2em",
+                  color: TEAL,
+                }}
+              >
+                {tally.toUpperCase()}
+              </div>
+            )}
+          </div>
+
+          {/* CTA — the round card's growth hook. paddingLeft offsets
+              the trailing letter-spacing unit so the glyph run centers
+              optically (tracked text otherwise sits ~6px left). */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              // The tally row already pads the band's bottom when
+              // present; without one the CTA needs its own clearance
+              // from the mode name.
+              marginTop: tally ? 12 : 34,
+              paddingLeft: 6,
+              fontFamily: "JetBrains Mono",
+              fontSize: 26,
+              letterSpacing: "0.24em",
+              color: AMBER,
+            }}
+          >
+            {cta.toUpperCase()}
+          </div>
+        </div>
+      </div>
+    ),
+    {
+      width: CARD,
+      height: CARD,
+      fonts: [
+        { name: "Cinzel", data: cinzelBold, weight: 800 },
+        { name: "Source Sans 3", data: sourceSansMedium, weight: 500 },
+        { name: "JetBrains Mono", data: jetbrainsMono, weight: 500 },
+      ],
+    },
+  );
+  return finalizeOg(res, request);
+}

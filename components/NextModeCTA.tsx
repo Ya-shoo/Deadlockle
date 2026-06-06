@@ -16,6 +16,10 @@ import { NextResetCountdown } from "./NextResetCountdown";
 import { ScoreBadge } from "./ScoreBadge";
 import { StreakBadge } from "./StreakBadge";
 import { TryOWdleCard } from "./TryOWdleCard";
+import { ShareButton } from "./ShareButton";
+import { DailyTextShare } from "./DailyTextShare";
+import { dailyShareLinks } from "@/lib/shareLinks";
+import type { DailyModeResult } from "@/lib/dailyShareText";
 
 // Per-mode breakdown row shown as supporting info in DailyCompletePanel.
 // Each entry is one of the built modes the player engaged with today; status
@@ -43,10 +47,17 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
     next: ModeDef | null;
     wonCount: number;
     breakdown: ModeBreakdown[];
+    day: string;
+    totalHints: number;
+    hardMode: boolean;
   }>(() => {
     const day = dayString();
     const done = new Set<ModeSlug>();
     let wonCount = 0;
+    // Daily share-code counters: Classic hints spent + the Mugshot
+    // hard-mode latch (see lib/shareUrl.ts for the encoding).
+    let totalHints = 0;
+    let hardMode = false;
     const breakdown: ModeBreakdown[] = [];
     for (const slug of BUILT_MODE_SLUGS) {
       const st = loadModeState(slug, day);
@@ -54,6 +65,8 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
       const isFailed = st.failed === true || st.gaveUp === true;
       if (isWon || isFailed) done.add(slug);
       if (isWon) wonCount++;
+      if (slug === "classic") totalHints = st.hintsUsed?.length ?? 0;
+      if (slug === "mugshot") hardMode = st.hardMode === true;
       // ConversationState (Quote/Sound) shares the same on-disk shape: its
       // `guesses` is an array of objects, but `.length` still gives the
       // count we want.
@@ -75,6 +88,9 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
       next: nextUnfinishedMode(current, done),
       wonCount,
       breakdown,
+      day,
+      totalHints,
+      hardMode,
     };
   });
 
@@ -97,6 +113,9 @@ export function NextModeCTA({ current }: { current: ModeSlug }) {
         modeCount={BUILT_MODE_SLUGS.length}
         wonCount={data.wonCount}
         breakdown={data.breakdown}
+        day={data.day}
+        totalHints={data.totalHints}
+        hardMode={data.hardMode}
       />
     );
   }
@@ -163,12 +182,40 @@ function DailyCompletePanel({
   modeCount,
   wonCount,
   breakdown,
+  day,
+  totalHints,
+  hardMode,
 }: {
   modeCount: number;
   wonCount: number;
   breakdown: ModeBreakdown[];
+  day: string;
+  totalHints: number;
+  hardMode: boolean;
 }) {
   const sweep = wonCount === modeCount;
+  // Personalized daily share — the /r/[code] link unfurls the summary
+  // card, the text block carries the LoLdle-style per-mode lines with
+  // the same link embedded. Breakdown only holds finished modes, so the
+  // mapping to won/lost is total.
+  const results: DailyModeResult[] = breakdown.map((b) => ({
+    slug: b.slug,
+    outcome: b.status === "won" ? ("won" as const) : ("lost" as const),
+    guesses: b.count,
+  }));
+  const shareLinks =
+    breakdown.length > 0
+      ? dailyShareLinks({
+          day,
+          results: results as {
+            slug: ModeSlug;
+            outcome: "won" | "lost";
+            guesses: number;
+          }[],
+          hints: totalHints,
+          hardMode,
+        })
+      : null;
   // This panel always renders nested inside a green win card (or red
   // LossReveal), so it doesn't need its own border/background — that
   // would double up the parent's tinted frame. The wins/N hex is the
@@ -204,6 +251,30 @@ function DailyCompletePanel({
             is below threshold (cold start, low DAU day) or when the
             stats endpoint serves an empty payload (secrets missing). */}
         <DailyStatsBand />
+
+        {/* Share the day — copyable results text (with the /r/[code]
+            link embedded); the link-share button rides in the block's
+            action row, previewing the summary card the link unfurls
+            into. One share affordance, at the bottom. */}
+        <div className="mt-3">
+          <DailyTextShare
+            day={day}
+            results={results}
+            totalHints={totalHints}
+            hardMode={hardMode}
+            share={
+              shareLinks ? (
+                <ShareButton
+                  url={shareLinks.url}
+                  ogImageUrl={shareLinks.ogImageUrl}
+                  filename={`deadlockle-daily-${day}.png`}
+                  surface="daily_complete"
+                  dailyId={day}
+                />
+              ) : undefined
+            }
+          />
+        </div>
 
         {/* Countdown band. The live pulse dot signals the timer is ticking,
             and the display itself reads at a glance from a phone tab. */}

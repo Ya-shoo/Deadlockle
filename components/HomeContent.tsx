@@ -20,8 +20,21 @@ import { RequestNextGame } from "./RequestNextGame";
 import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
+import { ShareButton } from "./ShareButton";
+import { DailyTextShare } from "./DailyTextShare";
+import { dailyShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
+import type { DailyModeResult } from "@/lib/dailyShareText";
 
-type Status = { won: boolean; failed: boolean; guesses: number };
+type Status = {
+  won: boolean;
+  failed: boolean;
+  guesses: number;
+  // Share-code counters, populated only on the modes that own them:
+  // Classic carries hints, Mugshot carries the hard-mode latch.
+  hints?: number;
+  hardMode?: boolean;
+};
 type StatusMap = Partial<Record<ModeSlug, Status>>;
 
 export function HomeContent() {
@@ -33,6 +46,9 @@ export function HomeContent() {
   // Conversation). Production builds have ARCHIVED_MODES === [], so the
   // toggle never renders.
   const [showArchive, setShowArchive] = useState(false);
+  // Inbound share-link attribution — daily /r/[code] links land here
+  // with ?c= appended.
+  useShareLinkVisit("home");
 
   useEffect(() => {
     const d = dayString();
@@ -44,6 +60,8 @@ export function HomeContent() {
         won: st.won === true,
         failed: st.failed === true || st.gaveUp === true,
         guesses: st.guesses.length,
+        hints: slug === "classic" ? (st.hintsUsed?.length ?? 0) : undefined,
+        hardMode: slug === "mugshot" ? st.hardMode === true : undefined,
       };
     }
     setStatuses(map);
@@ -58,6 +76,18 @@ export function HomeContent() {
     (sum, s) => sum + (statuses[s]?.guesses ?? 0),
     0,
   );
+  // Per-mode rollup + share-code counters for the daily share surfaces.
+  const results: DailyModeResult[] = BUILT_MODE_SLUGS.map((slug) => ({
+    slug,
+    outcome: statuses[slug]?.won
+      ? ("won" as const)
+      : statuses[slug]?.failed
+        ? ("lost" as const)
+        : ("pending" as const),
+    guesses: statuses[slug]?.guesses ?? 0,
+  }));
+  const totalHints = statuses.classic?.hints ?? 0;
+  const hardMode = statuses.mugshot?.hardMode === true;
 
   return (
     <main className="flex-1">
@@ -70,6 +100,9 @@ export function HomeContent() {
               modeCount={BUILT_MODE_SLUGS.length}
               wonCount={wonCount}
               totalGuesses={totalGuesses}
+              results={results}
+              totalHints={totalHints}
+              hardMode={hardMode}
             />
           ) : (
             <DefaultHero day={day} />
@@ -189,7 +222,7 @@ export function HomeContent() {
       <footer className="border-t border-line bg-inset/40">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 font-mono text-xs text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <p>
-            Hero & item data:{" "}
+            Hero, item & rank data:{" "}
             <a
               className="underline-offset-2 hover:underline"
               href="https://deadlock-api.com"
@@ -314,13 +347,35 @@ function DailyCompleteHero({
   modeCount,
   wonCount,
   totalGuesses,
+  results,
+  totalHints,
+  hardMode,
 }: {
   day: string;
   modeCount: number;
   wonCount: number;
   totalGuesses: number;
+  results: DailyModeResult[];
+  totalHints: number;
+  hardMode: boolean;
 }) {
   const sweep = wonCount === modeCount;
+  // Personalized daily share links — the hero only renders once every
+  // mode is finished, so pending entries are filtered defensively.
+  const completed = results.filter((r) => r.outcome !== "pending") as {
+    slug: ModeSlug;
+    outcome: "won" | "lost";
+    guesses: number;
+  }[];
+  const shareLinks =
+    completed.length > 0
+      ? dailyShareLinks({
+          day,
+          results: completed,
+          hints: totalHints,
+          hardMode,
+        })
+      : null;
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -364,6 +419,29 @@ function DailyCompleteHero({
           <span className="text-ink">2:15am Pacific</span>.
         </p>
         <StreakBadge variant="hero" />
+        {/* Copyable results text — LoLdle-style strings; the embedded
+            /r/[code] link still unfurls the per-player card in chats
+            that render previews. The link-share button rides in the
+            block's action row — one share affordance, at the bottom. */}
+        <div className="mt-4 max-w-md">
+          <DailyTextShare
+            day={day}
+            results={results}
+            totalHints={totalHints}
+            hardMode={hardMode}
+            share={
+              shareLinks ? (
+                <ShareButton
+                  url={shareLinks.url}
+                  ogImageUrl={shareLinks.ogImageUrl}
+                  filename={`deadlockle-daily-${day}.png`}
+                  surface="daily_complete"
+                  dailyId={day}
+                />
+              ) : undefined
+            }
+          />
+        </div>
       </div>
     </motion.div>
   );

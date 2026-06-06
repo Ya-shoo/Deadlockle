@@ -18,6 +18,9 @@ import { NextModeCTA } from "./NextModeCTA";
 import { GuessesLeftBadge } from "./GuessesLeftBadge";
 import { LossReveal } from "./LossReveal";
 import { ModeStatsLine } from "./ModeStatsLine";
+import { ShareButton } from "./ShareButton";
+import { roundShareLinks } from "@/lib/shareLinks";
+import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
 
 const MODE = "mugshot";
 
@@ -39,6 +42,8 @@ export function MugshotGame() {
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
   const [hardMode, setHardMode] = useState(true);
+  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  useShareLinkVisit("mugshot");
 
   useEffect(() => {
     const d = dayString();
@@ -54,6 +59,12 @@ export function MugshotGame() {
       saveModeState(MODE, st);
     }
     setState(st);
+    // Restore the toggle for an in-flight round that already dropped the
+    // hard-mode latch — otherwise a reload would show the switch ON while
+    // the round can no longer earn the badge.
+    if (st.guesses.length > 0 && st.hardMode === false) {
+      setHardMode(false);
+    }
   }, []);
 
   // mode_started — once per day. Tracker dedupes via localStorage.
@@ -120,6 +131,16 @@ export function MugshotGame() {
       guesses: newGuesses,
       won,
       failed: justFailed ? true : state.failed,
+      // Hard-mode latch (drives the share-card badge): the first guess
+      // initializes it from the toggle; afterwards it only ratchets
+      // DOWN — any guess submitted with hard mode off drops it for the
+      // round. Toggling off to peek between guesses doesn't count;
+      // pre-feature rounds (no stored field, guesses already made) can
+      // never claim it.
+      hardMode:
+        state.guesses.length === 0
+          ? hardMode
+          : state.hardMode === true && hardMode,
     };
     setState(next);
     saveModeState(MODE, next);
@@ -213,13 +234,47 @@ export function MugshotGame() {
               <div className="flex justify-center sm:justify-start">
                 <NextModeCTA current="mugshot" />
               </div>
+              {/* Share closes the card — single bottom-anchored
+                  affordance, consistent across every mode. */}
+              <div className="flex items-center justify-center gap-3">
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "mugshot",
+                    outcome: "won",
+                    guesses: state.guesses.length,
+                    hardMode: state.hardMode === true,
+                  })}
+                  filename={`deadlockle-mugshot-${day}.png`}
+                  surface="round_result"
+                  mode="mugshot"
+                  dailyId={day}
+                />
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {failed && !state.won && (
-        <LossReveal current="mugshot">
+        <LossReveal
+          current="mugshot"
+          share={
+            <ShareButton
+              {...roundShareLinks({
+                day,
+                slug: "mugshot",
+                outcome: "lost",
+                guesses: state.guesses.length,
+                hardMode: state.hardMode === true,
+              })}
+              filename={`deadlockle-mugshot-${day}.png`}
+              surface="round_result"
+              mode="mugshot"
+              dailyId={day}
+            />
+          }
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             {answer.portrait_url && (
               /* eslint-disable-next-line @next/next/no-img-element */

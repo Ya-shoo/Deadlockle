@@ -3,6 +3,8 @@ import { Cinzel, Source_Sans_3, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { FeedbackButton } from "@/components/FeedbackButton";
+import { ShareAnnounceModal } from "@/components/ShareAnnounceModal";
+import { SITE_URL } from "@/lib/site";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -25,7 +27,6 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
-const SITE_URL = "https://deadlockle.com";
 const SITE_NAME = "Deadlockle";
 const DEFAULT_TITLE = "Deadlockle · Daily Deadlock Quiz · Guess the Hero";
 const DEFAULT_DESCRIPTION =
@@ -145,6 +146,7 @@ export default function RootLayout({
         <Header />
         {children}
         <FeedbackButton />
+        <ShareAnnounceModal />
       </body>
     </html>
   );

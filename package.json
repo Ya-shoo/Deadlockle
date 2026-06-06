@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n next -c cyan --kill-others-on-fail \"next dev -p 3001\"",
+    "dev": "concurrently -n next,og -c cyan,magenta --kill-others-on-fail \"next dev -p 3001\" \"node scripts/og-dev-server.mjs\"",
     "dev:next": "next dev -p 3001",
     "build": "next build",
     "start": "next start -p 3001",
@@ -18,7 +18,8 @@
     "next": "16.2.4",
     "posthog-js": "^1.374.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "workers-og": "^0.0.27"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
