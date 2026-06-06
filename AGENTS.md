@@ -53,9 +53,19 @@ unfurl into server-rendered 960×960 spray-style cards.
   (type-only import from lib/modes.ts — its IS_DEV_BUILD reads process.env).
 - `functions/r/[code].ts` — unfurl HTML shell (meta-refresh to `/{mode}/?c=`),
   `functions/og/r/[code].tsx` — workers-og card renderer. The renderer's
-  hardening (errors never cache, buffered render, font-fetch retry, headers set
-  post-construction, bounded image cache) each guard a shipped OWdle incident —
+  hardening (errors never cache, buffered render, headers set
+  post-construction, bounded image cache) each guard a shipped incident —
   do not simplify away.
+- **Fonts are self-hosted subsets** (`public/og-fonts/*.ttf`, fetched
+  same-origin with per-isolate memoization). Launch night (2026-06-05),
+  per-render Google Fonts fetches from the edge failed ~50% of the time and
+  503'd cold cards; same-origin statics never flake. The glyph coverage is
+  pinned in `scripts/fetch-og-fonts.mjs` — if a card ever renders a NEW glyph,
+  add it to that script's SUBSET and re-run it, or it draws as tofu.
+- The share announcement modal embeds a PRE-BAKED card
+  (`public/announce-example.png`) rather than hitting the OG worker.
+  Regenerate after card-design changes:
+  `curl -s http://localhost:8798/og/r/260606-32432-00 -o public/announce-example.png`
 - `components/ShareButton.tsx` / `ShareModal.tsx` — native share on touch
   devices (bare URL, no file attach), Copy-link modal on desktop, prefetch on
   result-mount. `lib/useShareLinkVisit.ts` reports inbound `?c=` visits.
