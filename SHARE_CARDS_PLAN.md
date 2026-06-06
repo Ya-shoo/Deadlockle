@@ -61,12 +61,19 @@ result card mounts
 
 paste link → unfurler fetches deadlockle.com/r/CODE/
   └─ functions/r/[code].ts   → minimal HTML: og:image + meta-refresh
+        ├─ bot UA? → share_link_unfurled (SERVER-side PostHog, fire-and-
+        │   forget via ctx.waitUntil — unfurlers never run JS, so this
+        │   middle funnel beat is only observable here)
         og:image → functions/og/r/[code].tsx (workers-og / Satori)
         redirect → /{mode}/?c=CODE  (daily: /?c=CODE)
 
 landing page → useShareLinkVisit(mode) → share_link_visited event,
   strips ?c= so reloads don't double-count
 ```
+
+The full measured funnel: `share_clicked` (sharer, client) →
+`share_link_unfurled` (paste, server, platform-classified) →
+`share_link_visited` (recipient, client).
 
 Everything is a Cloudflare Pages Function (this repo already has
 `functions/`); the OG renderer is Satori via **workers-og** (add to
@@ -85,7 +92,9 @@ Copy-adapt these, in this order:
 | `components/ShareButton.tsx` | button + native path + prefetch + companion icon | near-verbatim |
 | `components/ShareModal.tsx` | slim modal | near-verbatim |
 | `lib/useShareLinkVisit.ts` | inbound attribution hook | verbatim |
-| `lib/tracking.ts` (additions) | `share_clicked` methods, `share_link_visited`, `share_announce` | **keep event/prop names IDENTICAL** — both sites share one PostHog project and dashboards span them ($host separates sites) |
+| `functions/_lib/posthog.ts` | `captureServerEvent` — fire-and-forget server capture (anonymous `distinct_id`, `$process_person_profile: false`, direct `us.i.posthog.com`, public `phc_` key inline — same shared-project key) | near-verbatim; make sure the `site` prop says `deadlockle` (the client registers it as a super-prop; server events must set it explicitly) |
+| `functions/r/[code].ts` → `unfurlPlatform()` + `captureUnfurl()` | UA→platform classifier (discord/imessage/slack/twitter/…/search_crawler/other_bot; humans return null — they're counted client-side, capturing both would double-count) + `share_link_unfurled` emit; localhost logs instead of sending | verbatim — the UA matching encodes ordering traps (e.g. iMessage's `facebot twitterbot` combo must match before twitter/facebook) |
+| `lib/tracking.ts` (additions) | `share_clicked` methods, `share_link_visited`, `share_announce` | **keep event/prop names IDENTICAL** — both sites share one PostHog project and dashboards span them |
 | `scripts/og-dev-server.mjs` | wrangler-pages-dev helper for `npm run dev` | change port (below) |
 | `components/ShareAnnounceModal.tsx` | optional one-time release popup | optional; new expiry date + new localStorage key (`deadlockle.announce.shareLinks`) |
 
@@ -274,6 +283,10 @@ sprays; the Deadlock equivalent is his call). Requirements + pipeline:
       --outdir /tmp/x` + gzip — OWdle sits ~730KB compressed; 1MB is
       the free-plan ceiling)
 - [ ] PostHog events fire with the OWdle-identical names/props
+      (`share_clicked`, `share_link_unfurled` — test with `curl -A
+      Discordbot` against the dev /r/ route and look for the localhost
+      log line — and `share_link_visited`); server events carry
+      `site: deadlockle`
 - [ ] **Deploy needs Yash's express consent** (his rule: verify in dev
       first; "deploy" = deploy + commit + push, this repo's
       `deploy:live` does all three)
