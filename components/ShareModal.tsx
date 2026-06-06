@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { createPortal } from "react-dom";
-import { ogPreviewSrc } from "@/lib/shareLinks";
+import { ogPreviewSrc, ogRetrySrc } from "@/lib/shareLinks";
 import { trackShareClicked } from "@/lib/tracking";
 import type { ModeSlug } from "@/lib/modes";
 
@@ -47,10 +47,13 @@ export function ShareModal({
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   // Preview attempt counter — a failed/stalled load retries up to
-  // twice (fresh <img> via key) before the final "unavailable" copy.
-  // Launch night showed transient cold-render 503s (no-store, so a
-  // refetch self-heals); a single-shot <img> turned those into a dead
+  // three times (fresh <img> via key) before the final "unavailable"
+  // copy. Launch night showed transient cold-render 503s (no-store, so
+  // a refetch self-heals); a single-shot <img> turned those into a dead
   // preview even though the very next request would have succeeded.
+  // Each retry fetches a DISTINCT URL (ogRetrySrc) — WebKit replays a
+  // same-URL failure from its memory cache, which silently defeated
+  // the whole ladder on iOS.
   const [previewTry, setPreviewTry] = useState(0);
   const retryTimer = useRef<number | null>(null);
   const [downloadBusy, setDownloadBusy] = useState(false);
@@ -60,6 +63,10 @@ export function ShareModal({
   // Shared with ShareButton's result-mount prefetch — identical URL,
   // identical cache key, so the prefetched render is the one shown.
   const ogSrc = ogPreviewSrc(ogImageUrl);
+  // The per-attempt src the <img> actually fetches — retries MUST
+  // differ from the failed attempt's URL or WebKit serves the failure
+  // from cache (see ogRetrySrc). Attempt 0 matches the prefetch.
+  const previewSrc = ogRetrySrc(ogImageUrl, previewTry);
 
   const ogStatus: "loading" | "ready" | "error" = loaded
     ? "ready"
@@ -68,10 +75,17 @@ export function ShareModal({
       : "loading";
 
   const handlePreviewError = useCallback(() => {
-    if (previewTry < 2) {
-      retryTimer.current = window.setTimeout(() => {
-        setPreviewTry((t) => t + 1);
-      }, 1800);
+    // Backoff grows per attempt (1.8s/3.6s/5.4s): instant 503s
+    // otherwise burn the ladder in seconds, and the later spacing
+    // honors the function's retry-after: 5 while giving the platform
+    // time to route off the cold isolate.
+    if (previewTry < 3) {
+      retryTimer.current = window.setTimeout(
+        () => {
+          setPreviewTry((t) => t + 1);
+        },
+        1800 * (previewTry + 1),
+      );
     } else {
       setFailed(true);
     }
@@ -233,7 +247,7 @@ export function ShareModal({
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 key={previewTry}
-                src={ogSrc}
+                src={previewSrc}
                 alt="Share preview"
                 onLoad={() => setLoaded(true)}
                 onError={handlePreviewError}

@@ -62,7 +62,13 @@ unfurl into server-rendered 960×960 spray-style cards.
   the isolate survives warm, so retries succeed), so each code renders once
   and every later request serves storage. The sharer's prefetch + the share
   modal both RETRY failed loads — the sharer's device shoulders that one cold
-  render. **Bump RENDER_REV in functions/og/r/[code].tsx whenever the card
+  render. **Retries fetch DISTINCT URLs** (`ogRetrySrc` adds `?r=N`): WebKit
+  replays a same-URL image failure from its in-session memory cache without
+  re-requesting (no-store notwithstanding), which silently made every retry a
+  no-op on iOS — daily-summary codes (per-player unique, never prewarmed)
+  showed "Preview unavailable" and went un-warmed for unfurlers. The query
+  param is invisible server-side (R2 keys on the path code alone). **Bump
+  RENDER_REV in functions/og/r/[code].tsx whenever the card
   design changes** — stored renders are immortal, an unbumped rev serves the
   old look forever. Local dev bypasses storage entirely (live render always).
 - **Fonts are self-hosted subsets** (`public/og-fonts/*.ttf`, fetched
