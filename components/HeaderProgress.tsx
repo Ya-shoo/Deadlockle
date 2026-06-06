@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { dayString } from "@/lib/daily";
 import { loadModeState } from "@/lib/storage";
 import { BUILT_MODE_SLUGS } from "@/lib/modes";
-import { StreakBadge } from "./StreakBadge";
+import { StreakRankBadge } from "./StreakRankBadge";
 
 type ModeStatus = "won" | "failed" | "open";
 
@@ -69,7 +69,7 @@ export function HeaderProgress() {
 
   return (
     <div className="flex items-center gap-3" title={title} aria-label={title}>
-      <StreakBadge variant="header" />
+      <StreakRankBadge />
       <div className="flex items-center gap-2.5">
         <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-info sm:inline">
           {wonCount} / {total}

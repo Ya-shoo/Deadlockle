@@ -33,6 +33,7 @@ const STAGED = [
   "abilities",
   "items",
   "mugshots",
+  "ranks",
 ];
 
 async function exists(p) {

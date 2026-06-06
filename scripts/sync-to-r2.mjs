@@ -14,16 +14,17 @@
 //   ~/.wrangler/config/default.toml   (or platform equivalent)
 //
 // Behavior:
-//   - Walks public/{voicelines,banners,portraits,splash,abilities,items,mugshots}
+//   - Walks public/{voicelines,banners,portraits,splash,abilities,items,mugshots,ranks}
 //   - HEAD each key; skip if R2 has it at the same size
 //   - PUT new/changed files at 8× concurrency
 //   - Sets Cache-Control for CDN-friendly serving
 //
 // The bucket is shared with OWdle. Deadlockle's key prefixes live
 // under voicelines/<hero>/, voicelines/conversations/, banners/heroes/,
-// portraits/, splash/, abilities/, items/, mugshots/ — all disjoint
-// from OWdle's (voicelines/quote/, banners/{key-art,maps}/, skins/,
-// sounds/). No collisions.
+// portraits/, splash/, abilities/, items/, mugshots/, ranks/ — all
+// disjoint from OWdle's (voicelines/quote/, banners/{key-art,maps}/,
+// skins/, sounds/; OWdle's rank art ships git-tracked via Pages, not
+// R2). No collisions.
 //
 // Run from repo root:
 //   node scripts/sync-to-r2.mjs
@@ -45,6 +46,7 @@ const SYNC_DIRS = [
   "public/abilities",
   "public/items",
   "public/mugshots",
+  "public/ranks",
 ];
 const CONCURRENCY = 8;
 const CACHE_CONTROL = "public, max-age=86400, s-maxage=31536000, immutable";
