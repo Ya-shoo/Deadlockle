@@ -1,0 +1,77 @@
+# Pre-warms every possible ROUND share card for the current Pacific
+# puzzle day, right after the 2:15am PT reset. First renders on the
+# free Workers plan can exceed the per-request CPU limit (cold wasm
+# init) — but a successful render persists to R2 forever, so warming
+# the full round-code space once per day makes every round card a
+# storage hit before any player shares one. Daily-summary codes are
+# combinatorially unbounded and stay on-demand (sharer prefetch retries
+# + permanent storage cover them).
+#
+# Two UTC schedules cover PST/PDT; the off-season run lands before the
+# reset and harmlessly re-warms yesterday (already stored). Code space
+# (~73/day) mirrors lib/shareUrl.ts + per-mode caps:
+#   classic c: wins g1-10 with hints h0-2 (g+h<=10), losses z/z1/z2
+#   ability a: wins 1-12, loss z
+#   mugshot m: wins 1-5 x hard(0/1), losses z/z1
+#   sound   s: wins 1-8, loss z          (cap 8)
+#   item    i: wins 1-8, loss z          (cap 8)
+
+name: Pre-warm OG cards
+
+on:
+  schedule:
+    - cron: "20 9 * * *" # 02:20 PDT (summer) / 01:20 PST (harmless)
+    - cron: "20 10 * * *" # 02:20 PST (winter) / 03:20 PDT (harmless)
+  workflow_dispatch:
+
+jobs:
+  prewarm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Render every round code for today
+        run: |
+          DAY=$(TZ=America/Los_Angeles date +%y%m%d)
+          echo "Pacific puzzle day: $DAY"
+
+          codes=()
+          # classic: wins (guesses+hints<=10), losses with hint tally
+          for h in 0 1 2; do
+            max=$((10 - h))
+            for g in $(seq 1 $max); do
+              gc=$(printf '%x' $g); [ $g -eq 10 ] && gc=a
+              if [ $h -eq 0 ]; then codes+=("${DAY}c${gc}"); else codes+=("${DAY}c${gc}${h}"); fi
+            done
+          done
+          codes+=("${DAY}cz" "${DAY}cz1" "${DAY}cz2")
+          # ability: 1-12 + loss (base36: 10=a 11=b 12=c)
+          for g in 1 2 3 4 5 6 7 8 9 a b c; do codes+=("${DAY}a${g}"); done
+          codes+=("${DAY}az")
+          # mugshot: 1-5 x hard flag + losses
+          for g in 1 2 3 4 5; do codes+=("${DAY}m${g}" "${DAY}m${g}1"); done
+          codes+=("${DAY}mz" "${DAY}mz1")
+          # sound + item: 1-8 + loss
+          for g in 1 2 3 4 5 6 7 8; do codes+=("${DAY}s${g}" "${DAY}i${g}"); done
+          codes+=("${DAY}sz" "${DAY}iz")
+
+          echo "${#codes[@]} codes"
+          failed=()
+          for code in "${codes[@]}"; do
+            ok=0
+            for try in 1 2 3 4 5; do
+              st=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+                "https://deadlockle.com/og/r/${code}")
+              if [ "$st" = "200" ]; then ok=1; break; fi
+              sleep 2
+            done
+            if [ $ok -eq 0 ]; then
+              failed+=("$code")
+              echo "::warning::$code never rendered (last status $st)"
+            fi
+          done
+
+          echo "warmed $(( ${#codes[@]} - ${#failed[@]} ))/${#codes[@]}"
+          if [ ${#failed[@]} -gt 0 ]; then
+            echo "::error::${#failed[@]} codes failed all retries: ${failed[*]}"
+            exit 1
+          fi
