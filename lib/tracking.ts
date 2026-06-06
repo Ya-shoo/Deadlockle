@@ -164,7 +164,11 @@ export function trackShareClicked(opts: {
 // daily codes). Not idempotent by design — every inbound click counts —
 // but the caller strips ?c= from the URL after firing so a reload
 // doesn't re-fire. Event + prop names are OWdle-identical (shared
-// PostHog dashboards; $host separates the sites).
+// PostHog dashboards; $host separates the sites). The middle beat,
+// share_link_unfurled, is captured SERVER-side in functions/r/[code].ts
+// when a platform bot (Discord, iMessage, Slack…) fetches the link
+// shell — bots don't run JS, so it can't live in this file; its
+// shared_* props mirror this event's.
 export function trackShareLinkVisited(opts: {
   landingMode: string;
   code: string;
