@@ -233,3 +233,21 @@ export function trackDailyCompleted(opts: {
     sweep: opts.lostCount === 0,
   });
 }
+
+// Ghost-rail ad-inventory measurement (components/AdRails.tsx). Events are
+// cumulative snapshots per pageview: pv_id identifies the pageview, seq
+// orders its snapshots, so dashboards take argMax(seq) per pv_id and never
+// double-count a pageview that flushed more than once (hidden → shown →
+// pagehide). `beacon` switches transport for the unload-adjacent flushes
+// that would otherwise race tab teardown and silently drop. Event + prop
+// names are OWdle-identical (shared DailyDles dashboards).
+export function trackAdInventory(
+  props: Record<string, unknown>,
+  opts?: { beacon?: boolean },
+): void {
+  posthog.capture(
+    "ad_inventory",
+    props,
+    opts?.beacon ? { transport: "sendBeacon" } : undefined,
+  );
+}

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { FeedbackButton } from "@/components/FeedbackButton";
 import { ShareAnnounceModal } from "@/components/ShareAnnounceModal";
+import { AdRails } from "@/components/AdRails";
 import { SITE_URL } from "@/lib/site";
 
 const cinzel = Cinzel({
@@ -147,6 +148,7 @@ export default function RootLayout({
         {children}
         <FeedbackButton />
         <ShareAnnounceModal />
+        <AdRails />
       </body>
     </html>
   );
