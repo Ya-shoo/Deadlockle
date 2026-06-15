@@ -213,6 +213,13 @@ export function SoundGame() {
   const failed = state.failed === true;
   const ended = won || failed;
 
+  // Per-speaker guess tallies. The two speakers are independent sub-puzzles,
+  // so first-try-both should read as "1 / 1" (one-shot each) rather than a
+  // conflated "2". Each guess is target-tagged and a slot locks once solved,
+  // so the per-speaker count is just the number of guesses aimed at it.
+  const aGuessCount = state.guesses.filter((g) => g.target === 0).length;
+  const bGuessCount = state.guesses.filter((g) => g.target === 1).length;
+
   const excludedA = new Set(
     state.guesses.filter((g) => g.target === 0).map((g) => g.heroKey),
   );
@@ -407,7 +414,7 @@ export function SoundGame() {
                   <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
                     {speakerA.name} & {speakerB.name}{" "}
                     <span className="text-ink-soft">
-                      in {state.guesses.length}
+                      in {aGuessCount} - {bGuessCount}
                     </span>
                   </div>
                   <ModeStatsLine mode="sound" />
@@ -822,7 +829,18 @@ function ConversationGuessRow({
   isLatest: boolean;
 }) {
   const targetLabel = target === 0 ? "A" : "B";
-  const targetColor = target === 0 ? "text-info" : "text-accent-soft";
+  const isA = target === 0;
+  // Speaker hue is consistent with the dialogue line labels and the toggle
+  // (A = info, B = accent-soft). Correctness is shown by intensity (a
+  // brighter fill + ✓), never by switching hue — so the colour always
+  // answers "which speaker was this guess for?".
+  const speakerChip = isCorrect
+    ? isA
+      ? "bg-info/25 text-info ring-info/70"
+      : "bg-accent-soft/25 text-accent-soft ring-accent-soft/70"
+    : isA
+      ? "bg-info/15 text-info ring-info/45"
+      : "bg-accent-soft/15 text-accent-soft ring-accent-soft/45";
   const results = compareHero(guess, speaker);
 
   return (
@@ -854,13 +872,11 @@ function ConversationGuessRow({
         </div>
         <span
           className={clsx(
-            "shrink-0 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] border",
-            isCorrect
-              ? "border-correct/50 bg-correct/15 text-correct"
-              : `border-line bg-muted/50 ${targetColor}`,
+            "shrink-0 px-3 py-1.5 text-xs font-normal uppercase tracking-[0.14em] ring-1",
+            speakerChip,
           )}
         >
-          {isCorrect ? "✓" : "for"} Speaker {targetLabel}
+          {isCorrect ? "✓ " : ""}Speaker {targetLabel}
         </span>
       </div>
 
