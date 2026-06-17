@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { FeedbackButton } from "@/components/FeedbackButton";
 import { ShareAnnounceModal } from "@/components/ShareAnnounceModal";
 import { AdRails } from "@/components/AdRails";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SITE_URL } from "@/lib/site";
 
 const cinzel = Cinzel({
@@ -149,6 +150,7 @@ export default function RootLayout({
         <FeedbackButton />
         <ShareAnnounceModal />
         <AdRails />
+        <GoogleAnalytics />
       </body>
     </html>
   );
