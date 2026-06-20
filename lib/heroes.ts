@@ -5,7 +5,7 @@ import heroesData from "@/data/heroes.json";
 export type HeroType = "marksman" | "mystic" | "brawler" | "assassin";
 
 // Hand-curated overlay fields (not in the API).
-export type Gender = "male" | "female" | "non-binary" | "neutral";
+export type Gender = "male" | "female" | "non-binary" | "male & female";
 export type Nature = "human" | "undead" | "spirit" | "beast" | "robot" | "mystical" | "ixian";
 export type DamageStyle = "hitscan" | "projectile" | "hybrid" | "melee";
 // Refinement of Valve's 4-bucket hero_type — Deadlockle-authored.
