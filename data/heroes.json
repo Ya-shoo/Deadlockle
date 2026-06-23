@@ -489,7 +489,7 @@
     "nature": "undead",
     "damage_style": "projectile",
     "sub_role": "tank",
-    "damage_source": "hybrid",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Frost Grenade",
@@ -1721,7 +1721,7 @@
     "class_name": "hero_necro",
     "name": "Graves",
     "hero_type": "marksman",
-    "gun_tag": "Pistol",
+    "gun_tag": "Beam Weapon",
     "tags": [
       "Morbid",
       "Area Denial",
