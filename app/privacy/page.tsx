@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 
-const SITE_NAME = "Deadlockle";
 const LAST_UPDATED = "June 26, 2026";
 const PRIVACY_EMAIL = "privacy@deadlockle.com";
 
@@ -33,9 +32,9 @@ export default function PrivacyPolicyPage() {
 
         <h2>Site operator</h2>
         <p>
-          {SITE_NAME} ({SITE_URL}) is an independent, unofficial fan project and
+          Deadlockle ({SITE_URL}) is an independent, unofficial fan project and
           is not endorsed by or affiliated with Valve Corporation. For privacy
-          purposes, the operator of {SITE_NAME} is the data controller and can
+          purposes, the operator of Deadlockle is the data controller and can
           be reached at{" "}
           <a className={linkCls} href={`mailto:${PRIVACY_EMAIL}`}>
             {PRIVACY_EMAIL}
@@ -58,7 +57,7 @@ export default function PrivacyPolicyPage() {
           <li>
             Tips. If a user tips through the embedded Ko-fi panel, the payment is
             handled entirely by Ko-fi; card details are never seen by{" "}
-            {SITE_NAME}.
+            Deadlockle.
           </li>
         </ul>
         <h3>Collected automatically</h3>
@@ -92,12 +91,12 @@ export default function PrivacyPolicyPage() {
         <p>
           Puzzle progress, streaks, and game settings are saved in the
           browser&rsquo;s local storage. That data stays on the device and is
-          not transmitted to {SITE_NAME}.
+          not transmitted to Deadlockle.
         </p>
 
         <h2 id="cookies">Cookies and similar technologies</h2>
         <p>
-          {SITE_NAME} and its partners use cookies and similar browser storage
+          Deadlockle and its partners use cookies and similar browser storage
           for the purposes below. In the EU/UK, non-essential and advertising
           cookies are only set after the user consents through the cookie banner
           (see{" "}
@@ -136,9 +135,9 @@ export default function PrivacyPolicyPage() {
         </p>
 
         <h2 id="advertising">Advertising</h2>
-        <p>{SITE_NAME} is supported by ads, managed through Monumetric.</p>
+        <p>Deadlockle is supported by ads, managed through Monumetric.</p>
         <p>
-          {MONUMETRIC_DISCLOSURE} To learn more about Monumetric&rsquo;s data
+          {MONUMETRIC_DISCLOSURE}{" "}To learn more about Monumetric&rsquo;s data
           usage, click here:{" "}
           <a
             className={linkCls}
@@ -193,7 +192,7 @@ export default function PrivacyPolicyPage() {
 
         <h2>Legal bases (EEA / UK)</h2>
         <p>
-          For users in the European Economic Area or the UK, {SITE_NAME} relies
+          For users in the European Economic Area or the UK, Deadlockle relies
           on these legal bases under the GDPR:
         </p>
         <ul>
@@ -209,7 +208,7 @@ export default function PrivacyPolicyPage() {
 
         <h2>How information is shared</h2>
         <p>
-          {SITE_NAME} does not sell users&rsquo; personal information for money.
+          Deadlockle does not sell users&rsquo; personal information for money.
           Data is shared only with the providers needed to run the site:
         </p>
         <ul>
@@ -254,9 +253,9 @@ export default function PrivacyPolicyPage() {
           <a className={linkCls} href={`mailto:${PRIVACY_EMAIL}`}>
             {PRIVACY_EMAIL}
           </a>
-          . Because {SITE_NAME} does not maintain user accounts, much of the data
+          . Because Deadlockle does not maintain user accounts, much of the data
           held is anonymous and may not be linkable to a specific person;
-          {SITE_NAME} may request information to help locate the data or verify a
+          Deadlockle may request information to help locate the data or verify a
           request.
         </p>
 
@@ -289,9 +288,9 @@ export default function PrivacyPolicyPage() {
 
         <h2>Children&rsquo;s privacy</h2>
         <p>
-          {SITE_NAME} is intended for a general audience and is not directed to
+          Deadlockle is intended for a general audience and is not directed to
           children under 13 (or under 16 where that is the applicable age of
-          digital consent). {SITE_NAME} does not knowingly collect personal
+          digital consent). Deadlockle does not knowingly collect personal
           information from children. Anyone who believes a child has provided
           information can contact{" "}
           <a className={linkCls} href={`mailto:${PRIVACY_EMAIL}`}>
@@ -310,7 +309,7 @@ export default function PrivacyPolicyPage() {
 
         <h2>Security</h2>
         <p>
-          {SITE_NAME} uses reasonable technical and organizational measures to
+          Deadlockle uses reasonable technical and organizational measures to
           protect the limited data it handles, including serving the site over
           HTTPS. No method of transmission or storage is completely secure, so
           absolute security cannot be guaranteed.
