@@ -230,7 +230,13 @@ export function HomeContent() {
               deadlock-api.com
             </a>
             . Deadlock is a trademark of Valve Corporation. Deadlockle is an
-            unofficial fan project.
+            unofficial fan project.{" · "}
+            <Link
+              href="/privacy/"
+              className="underline-offset-2 transition-colors hover:text-accent hover:underline"
+            >
+              Privacy
+            </Link>
           </p>
           <Link
             href="/guides/"
