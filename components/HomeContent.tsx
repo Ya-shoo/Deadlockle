@@ -132,6 +132,13 @@ export function HomeContent() {
               />
             </li>
           ))}
+          {/* Teaser for the upcoming Map mode — faded, non-interactive.
+              Lives only on the home screen (not in the modes data) so it
+              stays out of the live count, share-code grammar, and sitemap
+              until the mode actually ships. */}
+          <li key="map-teaser">
+            <MapTeaserCard index={MODES.length + 1} />
+          </li>
         </ul>
 
         {IS_DEV_BUILD && ARCHIVED_MODES.length > 0 && (
@@ -656,6 +663,38 @@ function ModeCard({
         showArrow
       />
     </Link>
+  );
+}
+
+// Faded tease for a not-yet-built mode. Deliberately mirrors ModeCard's
+// disabled state (the .mode-card--disabled opacity + "Soon" tag) rather
+// than threading a real ModeDef through the modes data: an unbuilt mode
+// has no slug in the ModeSlug union, no route, no share-code slot, and no
+// sitemap entry, so keeping the tease purely presentational avoids rippling
+// into the share/lockstep layer. When Map ships, delete this and promote a
+// real built ModeDef in lib/modes.ts instead.
+function MapTeaserCard({ index }: { index: number }) {
+  const indexLabel = String(index).padStart(2, "0");
+  return (
+    <div
+      className="mode-card mode-card--disabled relative flex h-full flex-col p-5"
+      aria-disabled="true"
+      // Lift above the shared .mode-card--disabled 0.45 so the tease reads
+      // a touch brighter than a fully-dimmed unbuilt card, while staying
+      // clearly faded against the live (opacity 1) mode cards.
+      style={{ opacity: 0.62 }}
+    >
+      <ModeCardInner
+        label="Map"
+        blurb="Guess the spot on the map from an image."
+        indexLabel={indexLabel}
+        tag={
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-info">
+            Soon
+          </span>
+        }
+      />
+    </div>
   );
 }
 
