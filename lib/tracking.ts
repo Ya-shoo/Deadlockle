@@ -239,8 +239,13 @@ export function trackDailyCompleted(opts: {
 // orders its snapshots, so dashboards take argMax(seq) per pv_id and never
 // double-count a pageview that flushed more than once (hidden → shown →
 // pagehide). `beacon` switches transport for the unload-adjacent flushes
-// that would otherwise race tab teardown and silently drop. Event + prop
-// names are OWdle-identical (shared DailyDles dashboards).
+// that would otherwise race tab teardown and silently drop. Props carry both
+// inventory stacks: desktop side rails (rail_tier / slots_* /
+// est_impressions_total) and the mobile stack that serves when no rail fit
+// (anchor_eligible / anchor_imps / incontent_fit / incontent_viewed /
+// mobile_imps_total, plus doc_scroll_h / max_scroll_px). The two are
+// mutually exclusive per pageview. Event + prop names are OWdle-identical
+// (shared DailyDles dashboards).
 export function trackAdInventory(
   props: Record<string, unknown>,
   opts?: { beacon?: boolean },
