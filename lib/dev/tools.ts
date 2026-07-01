@@ -88,6 +88,18 @@ export const TOOL_GROUPS: DevToolGroup[] = [
     ],
   },
   {
+    title: "Site chrome",
+    blurb: "Home-page mascot + greeter analytics.",
+    tools: [
+      {
+        href: "/labeler/polls/",
+        label: "Poll results",
+        description:
+          "Vote counts for every greeter mini-poll, with an OWdle/Deadlockle split + live % bars. Toggle local dev vs the live site.",
+      },
+    ],
+  },
+  {
     title: "Play",
     blurb: "Jump straight into a live mode — handy for sanity-checks.",
     tools: [

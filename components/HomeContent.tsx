@@ -20,6 +20,7 @@ import { RequestNextGame } from "./RequestNextGame";
 import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
+import { SiteGreeter } from "./SiteGreeter";
 import { ShareButton } from "./ShareButton";
 import { DailyTextShare } from "./DailyTextShare";
 import { dailyShareLinks } from "@/lib/shareLinks";
@@ -91,6 +92,7 @@ export function HomeContent() {
 
   return (
     <main className="flex-1">
+      <SiteGreeter />
       <section className="relative isolate flex min-h-[min(72vh,720px)] items-end overflow-hidden">
         <HomeBanner />
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-14 pt-24 sm:pb-20 sm:pt-32">

@@ -266,6 +266,82 @@ select:focus-visible {
   }
 }
 
+/* ---------- Avatar greeter idle chip (home-page mascot) ----------
+   The mascot's pop-in / collapse / fade are Tailwind transitions in
+   components/AvatarGreeter.tsx. The one keyframe lives here: once the mascot
+   tucks away into its little "•••" chip, the chip gives a friendly bobble
+   every 3s to signal it's interactive (hover / tap to replay). The chip's
+   show/hide is opacity-only so this transform-based nudge doesn't fight it. */
+@keyframes greeter-chip-nudge {
+  0%,
+  20%,
+  100% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-6px);
+  }
+  11% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-3px);
+  }
+}
+.greeter-chip-nudge {
+  animation: greeter-chip-nudge 3s ease-in-out infinite;
+}
+
+/* ---------- Avatar greeter idle-chip typing indicator ----------
+   Alternative to the whole-chip bobble: the three dots ripple upward in
+   sequence like a chat "typing…" cue, hinting the mascot has something to say.
+   One shared keyframe; each dot is staggered by an inline animation-delay.
+   Under reduced motion the blanket rule stops the loop and these resets hold
+   the dots solid + still for a clean static frame. */
+@keyframes greeter-typing {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  28% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+.greeter-typing-dot {
+  animation: greeter-typing 1.35s ease-in-out infinite;
+}
+
+/* The chip bubble itself bobs in lockstep with the dots (same 1.35s cycle,
+   cresting mid-ripple) so the bubble + typing read as one lively motion.
+   transform-origin at the tail so it "speaks" from its anchor. */
+@keyframes greeter-chip-bob {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-2px) scale(1.025);
+  }
+}
+.greeter-chip-bob {
+  animation: greeter-chip-bob 1.35s ease-in-out infinite;
+  transform-origin: bottom right;
+}
+@media (prefers-reduced-motion: reduce) {
+  .greeter-typing-dot {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .greeter-chip-bob {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 /* ---------- mode card ----------
    Compact deco-card for the home grid. Each mode is a tactile,
    liftable surface; amber corner ticks flicker in on hover, and
