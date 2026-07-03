@@ -34,16 +34,8 @@ const FAQ: Array<{ q: string; a: string }> = [
     a: "Every day at 2:15am Pacific Time. The home page shows a countdown to the next reset. Once you finish all five modes, the home page switches to a Daily Complete state showing your total guesses.",
   },
   {
-    q: "Do I need to sign up or pay?",
-    a: "No. Deadlockle is free, has no ads, and requires no account. Your daily progress is stored in your browser's localStorage so you can close the tab and resume later in the day.",
-  },
-  {
     q: "How is Deadlockle different from other daily Deadlock guessing games?",
     a: "Deadlockle is its own game at deadlockle.com — separate from Deadlockdle, Lockle, DLDE, and other Deadlock -dle variants. Deadlockle's Classic mode uses a seven attribute comparison grid (role, gun, damage, nature, gender, HP, move speed) and pairs it with four image and dialogue modes that progressively reveal more of the answer with each wrong guess. The visual style leans into Deadlock's deco-noir aesthetic.",
-  },
-  {
-    q: "Is Deadlockle official?",
-    a: "No. Deadlockle is an unofficial fan project. Deadlock and all hero, item, and ability names are trademarks of Valve Corporation. Hero and item data come from deadlock-api.com.",
   },
 ];
 
@@ -78,7 +70,7 @@ export default function HowToPlayPage() {
           <strong className="text-ink">Deadlockle</strong> is a free daily
           Wordle-style game for Valve's Deadlock. Each day at 2:15am Pacific Time,
           five new Deadlockle puzzles unlock, one for each mode. There's no
-          signup, no ads, and no gating. Your progress is saved in your
+          signup and no gating. Your progress is saved in your
           browser, so you can solve a few, close the tab, and come back later
           in the day to finish.
         </p>
