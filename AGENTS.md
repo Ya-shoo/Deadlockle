@@ -2,109 +2,49 @@
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 
-# Media pipeline (R2)
+# Deadlockle — daily Deadlock guessing game (deadlockle.com)
 
-Heavy assets — `public/voicelines/<hero>/`, `public/voicelines/conversations/`, `public/banners/heroes/`, `public/portraits/`, `public/splash/`, `public/abilities/`, `public/items/`, `public/mugshots/`, `public/ranks/` — live in Cloudflare R2, served via the custom domain `media.deadlockle.com`. They are **not in the git repo** (gitignored). Data files in `data/` (voicelines.json, sound-conversations.json, banners.json, heroes.json, items.json) keep RELATIVE paths like `/voicelines/infernus/select-01.mp3` — never bake the R2 hostname into stored data.
+One daily hero, guessed across several modes. **Next.js 16.2.4 / React 19**, static export (`output: "export"` → `out/`) deployed to **Cloudflare Pages**; dynamic bits are **Pages Functions** (`functions/`). Shared infra with the siblings: R2 bucket `dailydles`, D1 `owdle-votes`, one PostHog project. Dev runs on **:3001** (OWdle owns :3000).
 
-The R2 bucket `dailydles` is shared with OWdle. The two projects use disjoint key prefixes so they don't collide. OWdle owns `voicelines/quote/`, `banners/{key-art,maps}/`, `skins/`, `sounds/`; Deadlockle owns everything else, including `ranks/` (OWdle's rank art ships git-tracked via Pages, not R2 — the prefix is Deadlockle's alone).
+Sibling repos (same architecture — keep shared machinery in lockstep): **`../OWdle` is the canonical reference** (this repo was ported from it); `../WuWadle` is the third site. **For anything cross-site — the shared engine model, the R2/D1/PostHog conventions, or procedures like "add a mode" / "update media" / "deploy" — use the `dailydles` skill.**
 
-URL resolution at the rendering boundary:
+## Where things live
+- `app/` — App Router routes: home + one dir per mode (`/classic`, `/ability`, `/mugshot`, `/sound`, `/item`) plus `/guides`, `/how-to-play`, `/privacy`, `robots.ts`, `sitemap.ts`. Dev hub `app/labeler/` redirects to OWdle's (`:3000/labeler/`).
+- `components/` — ~50 components: the per-mode `*Game.tsx` engines, comboboxes (`HeroCombobox`/`ItemCombobox`), share stack (`ShareButton`/`ShareModal`/`ShareAnnounceModal`), `NextModeCTA`, `TryOWdleCard`, streak/greeter/ad UI.
+- `lib/` — the game engine (see next section).
+- `data/` — committed JSON: `heroes.json` (38), `items.json` (155), `sound-conversations.json` (408 exchanges), `voicelines.json`, `voiceprints.json` (build-time diarization fingerprints), `banners.json`. **Relative media paths only — never bake the R2 host into data.**
+- `db/` — D1 schema + migrations (`owdle-votes`, shared; tables `votes`, `feedback` + greeter polls).
+- `functions/` — Pages Functions: `og/r/[code].tsx` (OG render → R2 cache), `r/[code].ts` (unfurl shell), `ingest/[[path]].ts` (PostHog proxy), `api/*` (vote, feedback, greeter, stats, …).
+- `scripts/` — data/build pipeline (`build-data`, `build-voicelines`, `build-conversation-audio` + `scripts/lib/{diarize,whisper-align}`, `sync-to-r2`, `build-for-deploy`, OG tooling) + `og-dev-server.mjs` (:8798).
+- `public/` — Pages-served static (`og-spray-*.png`, `og-fonts/`, `ranks/`, `announce-example.png`, `ads.txt`). Heavy media dirs (voicelines, portraits, abilities, items, mugshots) are gitignored → R2 (see `docs/media-and-r2.md`).
 
-```ts
-import { media } from "@/lib/media";
-// <img src={media(hero.portrait_url)} />
-// <audio src={media(audioUrl)} />
-// new Audio(media(audioUrl))
-```
+## The engine — how a "mode" works
+A mode is an entry in `ALL_MODES` (`lib/modes.ts`), typed `ModeDef {slug,label,blurb,built,devOnly?}`; `MODES` filters out `devOnly`; `BUILT_MODE_SLUGS` is the canonical play order + share-code slot order. Each mode has a thin server route `app/<slug>/page.tsx` (metadata + schema + `<XGame/>`); the client engine is `components/XGame.tsx`. It derives the **date-seeded** answer via `getXForDay(dayString())` in `lib/daily.ts` (FNV-1a seed, or the shuffle-bag in `lib/dailyBag.ts` after `BAG_CUTOVER_DAY = "2026-06-02"`), hydrates/persists `ModeState` via `lib/storage.ts` (key `deadlockle.<mode>.<day>`), scores guesses (Classic via `compareHero` in `lib/compare.ts`, 7 attributes), fires `lib/tracking.ts` events, and on completion renders `NextModeCTA` + `ShareButton`. Day rolls **2:15am America/Los_Angeles**.
 
-In production builds `lib/media.ts` resolves the relative path against `https://media.deadlockle.com` (default fallback). In dev it falls through to a relative URL served from local `public/` if those files exist.
+Key engine files: `lib/modes.ts` · `lib/daily.ts` + `lib/dailyBag.ts` · `lib/storage.ts` (`ModeState` incl. `hardMode` latch + `ConversationState`) · `lib/compare.ts` · `lib/heroes.ts` / `lib/items.ts` · `lib/shareUrl.ts` · `lib/media.ts`.
 
-The build pipeline keeps R2 media out of the Pages deploy by staging the eight R2-bound dirs to `.staged-media/` during `next build`, then restoring. The wrapper script is `scripts/build-for-deploy.mjs` and `npm run build:deploy` calls it. The full `npm run deploy:live` chains `sync-to-r2 → build:deploy → wrangler pages deploy → git push`.
+## Modes
+| mode | route | component | cap | hard mode |
+|---|---|---|---|---|
+| classic | `/classic` | `ClassicGame.tsx` | 10 (+2 hints) | — |
+| ability | `/ability` | `AbilityGame.tsx` | 12 | — |
+| mugshot | `/mugshot` | `MugshotGame.tsx` | 5 | grayscale latch — **encoded** in share code |
+| sound (Conversation) | `/sound` | `SoundGame.tsx` | — | two-speaker (`ConversationState`), audio reveal |
+| item | `/item` | `ItemGame.tsx` | 8 | icon rotation — **not** encoded |
+| quote | `/quote` | `QuoteGame.tsx` | — | **archived** (`devOnly`; superseded by sound, letter `q` reserved) |
 
-To upload new media to R2: `npm run sync-to-r2`. Reads `~/.wrangler/config/default.toml` (or platform equivalent) for the OAuth token, walks the eight R2-bound dirs, HEAD-checks each key against R2 to skip already-uploaded files, then PUTs the rest at 8× concurrency.
+## Commands
+- `npm run dev` — `concurrently`: `next dev -p 3001` + `og-dev-server.mjs` (:8798). `npm run dev:next` = Next alone.
+- `npm run build` / `npm run build:deploy` — `build:deploy` (`scripts/build-for-deploy.mjs`) stages R2 media out of the Pages upload.
+- `npm run deploy:live` — `sync-to-r2 → build:deploy → wrangler pages deploy --branch=main → git push`. ("deploy" = deploy + commit + push; confirm with Yash first.)
+- `npm run sync-to-r2` — upload media to R2 (HEAD-diff, 8× concurrency).
 
-# Mac vs PC dev split
+## Deep dives — read only when working in these areas
+- Media / R2 pipeline + Mac↔PC dev setup → `docs/media-and-r2.md`
+- Share cards & the OG renderer (incident-hardened — do not simplify away) → `docs/share-cards.md`
+- Cross-site architecture, registries & procedures → the **`dailydles` skill**
 
-Yash develops Deadlockle on a Mac and Windows. Both machines can edit and deploy. The R2 bucket is the canonical store; local `public/` dirs are working state.
-
-For Mac dev to work after a fresh clone, the Mac needs:
-
-1. **Wrangler authenticated**: `npx wrangler login` once.
-2. **`.env.local` at the repo root** (gitignored) with:
-   ```
-   NEXT_PUBLIC_MEDIA_BASE=https://media.deadlockle.com
-   ```
-   Without this, `next dev` on Mac falls through to relative `/voicelines/...` URLs and can't serve them locally (there are no files in `public/voicelines`). Setting the env var routes dev fetches at R2.
-
-3. **No need to download media locally**. The Mac can run the full app against R2.
-
-# Share-card system (/r/ links)
-
-Link-first sharing, ported from OWdle (its repo at `../OWdle` is the canonical
-reference — keep the two implementations in lockstep when fixing bugs in
-either). Round results and the daily summary share via `/r/[code]` links that
-unfurl into server-rendered 960×960 spray-style cards.
-
-- `lib/shareUrl.ts` — code encode/decode. Daily `<YYMMDD>-<5 slots>-<hints><hard>`
-  (slots lockstep with BUILT_MODE_SLUGS order), round `<YYMMDD><letter><result>[modifier]`
-  with letters `c/a/m/s/i` (`q` reserved, archived Quote). Classic's modifier is
-  hints; Mugshot's is the hard-mode flag. This file is bundled into Pages
-  Functions: keep it free of app imports and of anything touching `process`
-  (type-only import from lib/modes.ts — its IS_DEV_BUILD reads process.env).
-- `functions/r/[code].ts` — unfurl HTML shell (meta-refresh to `/{mode}/?c=`),
-  `functions/og/r/[code].tsx` — workers-og card renderer. The renderer's
-  hardening (errors never cache, buffered render, headers set
-  post-construction, bounded image cache) each guard a shipped incident —
-  do not simplify away.
-- **Renders persist to R2** (`OG_CACHE` binding → shared `dailydles` bucket,
-  keys `og-cache/deadlockle/<REV>/<code>.png`): free-plan Workers CPU limits
-  kill ~half of COLD wasm renders (lazy resvg/yoga init inside the request —
-  the isolate survives warm, so retries succeed), so each code renders once
-  and every later request serves storage. The sharer's prefetch + the share
-  modal both RETRY failed loads — the sharer's device shoulders that one cold
-  render. **Retries fetch DISTINCT URLs** (`ogRetrySrc` adds `?r=N`): WebKit
-  replays a same-URL image failure from its in-session memory cache without
-  re-requesting (no-store notwithstanding), which silently made every retry a
-  no-op on iOS — daily-summary codes (per-player unique, never prewarmed)
-  showed "Preview unavailable" and went un-warmed for unfurlers. The query
-  param is invisible server-side (R2 keys on the path code alone). **Bump
-  RENDER_REV in functions/og/r/[code].tsx whenever the card
-  design changes** — stored renders are immortal, an unbumped rev serves the
-  old look forever. Local dev bypasses storage entirely (live render always).
-- **Fonts are self-hosted subsets** (`public/og-fonts/*.ttf`, fetched
-  same-origin with per-isolate memoization). Launch night (2026-06-05),
-  per-render Google Fonts fetches from the edge failed ~50% of the time and
-  503'd cold cards; same-origin statics never flake. The glyph coverage is
-  pinned in `scripts/fetch-og-fonts.mjs` — if a card ever renders a NEW glyph,
-  add it to that script's SUBSET and re-run it, or it draws as tofu.
-- The share announcement modal embeds a PRE-BAKED card
-  (`public/announce-example.png`) rather than hitting the OG worker.
-  Regenerate after card-design changes:
-  `curl -s http://localhost:8798/og/r/260606-32432-00 -o public/announce-example.png`
-- `components/ShareButton.tsx` / `ShareModal.tsx` — native share on touch
-  devices (bare URL, no file attach), Copy-link modal on desktop, prefetch on
-  result-mount. `lib/useShareLinkVisit.ts` reports inbound `?c=` visits.
-- PostHog event/prop names (`share_clicked`, `share_link_visited`,
-  `share_announce`) are OWdle-IDENTICAL — shared DailyDles dashboards span both
-  sites, `$host` separates them. Never rename on one side only.
-- Mugshot hard mode: persisted as a one-way latch in ModeState (`hardMode`),
-  written at each guess — a guess submitted with the toggle off drops the badge
-  for the round; toggling to peek between guesses doesn't. Item mode's hard
-  mode (rotation) is NOT encoded (decided at port time; slot grammar has room).
-- Card art: `public/og-spray-*.png`, git-tracked (NOT in the R2 dirs — same-origin
-  fetch for the worker). The set is ONE asset — the Deadlock eye-wheel emblem —
-  recolored per mode (classic amber `#d6a05c`, ability spirit-purple `#9d7fc7`,
-  mugshot vitality-green `#7fb86c`, sound teal `#5ec5d4`, item weapon-orange
-  `#e07a4f`, daily cream `#e8dcc0`). Regenerate any tint with
-  `node scripts/tint-og-emblem.mjs scripts/og-emblem-master.png public/og-spray-<slug>.png "#hex"`
-  (master is the SteamGridDB full-res emblem, downsampled to 1024²). The
-  numeral tint twins live in MODE_NUMERAL inside functions/og/r/[code].tsx —
-  keep both in sync when adding a mode. If sourcing NEW raster art ever again:
-  re-encode to true PNG first (`sips -s format png`) — fandom CDNs serve WebP
-  under .png URLs and Satori silently skips WebP.
-- Dev: `scripts/og-dev-server.mjs` runs the functions on :8798 inside
-  `npm run dev` (OWdle's stack owns :8799; both run simultaneously).
-  `lib/shareLinks.ts` points previews at :8798 in dev — keep the ports in sync.
-  Review every card variant at `/labeler/share-preview/`. After swapping a
-  static asset, `touch` the functions source — the per-isolate data-URI cache
-  survives asset-only changes.
+## Conventions
+- Media URLs resolve at the render boundary — always `media(path)` from `lib/media.ts`, never a bare R2 host in stored data.
+- PostHog event/prop names are **network-identical across all three sites** (`$host`/`site` splits them; here `"deadlockle"`). Never rename on one side only.
+- Keep the ported/mirrored files in lockstep with OWdle: `lib/{shareUrl,streakRank,streakStats,dailyShareText,adblock,site,banners}.ts` and the share components. Bump `RENDER_REV` in `functions/og/r/[code].tsx` on any card-design change.
