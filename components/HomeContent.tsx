@@ -20,6 +20,7 @@ import { RequestNextGame } from "./RequestNextGame";
 import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
+import { TryWuWadleCard } from "./TryWuWadleCard";
 import { SiteGreeter } from "./SiteGreeter";
 import { ShareButton } from "./ShareButton";
 import { DailyTextShare } from "./DailyTextShare";
@@ -208,9 +209,13 @@ export function HomeContent() {
         </div>
       </section>
 
-      {/* Sister-site card — sits between modes grid and engagement strip */}
-      <section className="mx-auto max-w-6xl px-6 pb-12 pt-4">
+      {/* Sister-site cards — two small branded cross-promo cards, centered
+          side by side (stacking on mobile), between the modes grid and the
+          engagement strip. Each card is themed to its destination's
+          accent-on-dark, consistent across the network. */}
+      <section className="mx-auto flex max-w-3xl flex-wrap items-stretch justify-center gap-4 px-6 pb-12 pt-4">
         <TryOWdleCard />
+        <TryWuWadleCard />
       </section>
 
       {/* Engagement strip: vote on next game + tip jar in one row.

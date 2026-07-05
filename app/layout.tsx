@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Cinzel, Source_Sans_3, JetBrains_Mono } from "next/font/google";
+import {
+  Cinzel,
+  Source_Sans_3,
+  JetBrains_Mono,
+  Bricolage_Grotesque,
+  Noto_Sans,
+} from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { FeedbackButton } from "@/components/FeedbackButton";
@@ -28,6 +34,24 @@ const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500"],
+});
+
+// Sister-site typefaces — loaded only so the cross-promo cards can render
+// each destination in its real display face: Bricolage Grotesque is OWdle's,
+// Noto Sans is WuWadle's. Minimal weights; used solely by TryOWdleCard /
+// TryWuWadleCard, keep in lockstep with the sibling repos' layouts.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "700"],
+});
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "700"],
 });
 
 const SITE_NAME = "Deadlockle";
@@ -137,7 +161,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${sourceSans.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${sourceSans.variable} ${jetbrains.variable} ${bricolage.variable} ${notoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script
