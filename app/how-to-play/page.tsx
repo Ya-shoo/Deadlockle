@@ -157,16 +157,43 @@ export default function HowToPlayPage() {
         <h2 className="font-display text-3xl text-ink">
           Frequently asked questions
         </h2>
-        <dl className="mt-8 space-y-8">
+        {/* Collapsed by default (no `open`), matching the home-page FAQ.
+            Native <details> keeps every answer in the DOM for crawlers even
+            while visually collapsed, so the FAQPage JSON-LD above stays true. */}
+        <ul className="mt-8 flex flex-col gap-px border border-line bg-line">
           {FAQ.map((item) => (
-            <div key={item.q}>
-              <dt className="font-display text-xl text-ink">{item.q}</dt>
-              <dd className="mt-2 text-base leading-relaxed text-ink-soft">
-                {item.a}
-              </dd>
-            </div>
+            <li key={item.q}>
+              <details className="group bg-canvas">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-muted [&::-webkit-details-marker]:hidden">
+                  <h3 className="font-display text-lg font-semibold text-ink">
+                    {item.q}
+                  </h3>
+                  {/* plus → x on open */}
+                  <svg
+                    aria-hidden
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    className="shrink-0 text-ink-faint transition-transform duration-200 group-open:rotate-45"
+                  >
+                    <path
+                      d="M7 1 V13 M1 7 H13"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="square"
+                    />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 pt-0">
+                  <p className="max-w-2xl text-sm leading-relaxed text-ink-soft">
+                    {item.a}
+                  </p>
+                </div>
+              </details>
+            </li>
           ))}
-        </dl>
+        </ul>
 
         <hr className="my-12 border-line" />
 
