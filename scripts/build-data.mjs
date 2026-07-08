@@ -120,7 +120,10 @@ const OVERLAY = {
   },
   "apollo":       {
     gender: "male", nature: "ixian", damage_style: "hybrid", sub_role: "skirmisher", damage_source: "spirit",
+    gun_tag: "Pistol",
     role: "A dueling prince who parries every blow and ends fights in a flash",
+    // Valve's API tags his single-bullet sword-pistol as "Spreadshot"; every
+    // real Spreadshot/Shotgun hero fires >1 pellet per shot, so override it.
   },
   "rem":          {
     gender: "male", nature: "mystical", damage_style: "melee", sub_role: "mage", damage_source: "spirit",
