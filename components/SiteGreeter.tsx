@@ -37,6 +37,13 @@ const GREETER_RIGHT_CLEAR_OF_RAIL = `calc(50% - ${
 }px)`;
 const GREETER_RIGHT_DEFAULT = "5rem"; // Tailwind right-20
 
+// Greeter temporarily disabled on Deadlockle: no active Discord announcement
+// and the bundled fallback greeting isn't wanted right now. Flip to `true` to
+// restore the mascot on home + classic — nothing else needs to change. The
+// message source is the Discord-backed /api/greeter (see lib/greeter.ts); the
+// channel's `[off]` post is the runtime kill-switch, this is the code one.
+const GREETER_ENABLED: boolean = false;
+
 export function SiteGreeter() {
   const [state, setState] = useState<{
     done: boolean;
@@ -57,7 +64,7 @@ export function SiteGreeter() {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return;
+    if (!isDesktop || !GREETER_ENABLED) return;
     const ctrl = new AbortController();
     const timeout = setTimeout(() => ctrl.abort(), 4000);
     // No custom headers — keeps it a "simple" cross-origin GET in dev (an
@@ -84,7 +91,8 @@ export function SiteGreeter() {
   // mock shows).
   const railVisible = useRightRailVisible();
 
-  if (!isDesktop || !state.done || !state.announcement) return null;
+  if (!GREETER_ENABLED || !isDesktop || !state.done || !state.announcement)
+    return null;
 
   return (
     <div
