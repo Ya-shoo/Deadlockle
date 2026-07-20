@@ -384,7 +384,8 @@ function ItemBlurCard({
         <img
           src={media(iconUrl)}
           alt={revealed ? item.name : "Mystery item"}
-          className="h-full w-full object-contain p-6 transition-[filter,transform] duration-700 ease-out"
+          className="puzzle-art h-full w-full object-contain p-6 transition-[filter,transform] duration-700 ease-out"
+          draggable={false}
           style={{
             filter: `blur(${blur}px)`,
             transform: `rotate(${rotation}deg)`,

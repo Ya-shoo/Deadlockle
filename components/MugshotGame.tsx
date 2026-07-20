@@ -352,7 +352,8 @@ function MugshotFrame({
         <img
           src={media(imageUrl)}
           alt=""
-          className="block h-full w-full object-cover transition-[transform,filter] duration-700 ease-out"
+          className="puzzle-art block h-full w-full object-cover transition-[transform,filter] duration-700 ease-out"
+          draggable={false}
           style={{
             transform: `scale(${zoom})`,
             transformOrigin: "50% 50%",
