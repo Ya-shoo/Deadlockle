@@ -49,7 +49,12 @@
       }
     ],
     "portrait_url": "/portraits/infernus.png",
-    "splash_url": "/splash/infernus.jpg"
+    "splash_url": "/splash/infernus.jpg",
+    "splash_variants": {
+      "normal": "/splash/infernus-normal.jpg",
+      "critical": "/splash/infernus.jpg",
+      "gloat": "/splash/infernus-gloat.jpg"
+    }
   },
   {
     "key": "seven",
@@ -101,7 +106,12 @@
       }
     ],
     "portrait_url": "/portraits/seven.png",
-    "splash_url": "/splash/seven.jpg"
+    "splash_url": "/splash/seven.jpg",
+    "splash_variants": {
+      "normal": "/splash/seven-normal.jpg",
+      "critical": "/splash/seven.jpg",
+      "gloat": "/splash/seven-gloat.jpg"
+    }
   },
   {
     "key": "vindicta",
@@ -153,7 +163,12 @@
       }
     ],
     "portrait_url": "/portraits/vindicta.png",
-    "splash_url": "/splash/vindicta.jpg"
+    "splash_url": "/splash/vindicta.jpg",
+    "splash_variants": {
+      "normal": "/splash/vindicta-normal.jpg",
+      "critical": "/splash/vindicta.jpg",
+      "gloat": "/splash/vindicta-gloat.jpg"
+    }
   },
   {
     "key": "lady-geist",
@@ -205,7 +220,12 @@
       }
     ],
     "portrait_url": "/portraits/lady-geist.png",
-    "splash_url": "/splash/lady-geist.jpg"
+    "splash_url": "/splash/lady-geist.jpg",
+    "splash_variants": {
+      "normal": "/splash/lady-geist-normal.jpg",
+      "critical": "/splash/lady-geist.jpg",
+      "gloat": "/splash/lady-geist-gloat.jpg"
+    }
   },
   {
     "key": "abrams",
@@ -257,7 +277,12 @@
       }
     ],
     "portrait_url": "/portraits/abrams.png",
-    "splash_url": "/splash/abrams.jpg"
+    "splash_url": "/splash/abrams.jpg",
+    "splash_variants": {
+      "normal": "/splash/abrams-normal.jpg",
+      "critical": "/splash/abrams.jpg",
+      "gloat": "/splash/abrams-gloat.jpg"
+    }
   },
   {
     "key": "wraith",
@@ -309,7 +334,12 @@
       }
     ],
     "portrait_url": "/portraits/wraith.png",
-    "splash_url": "/splash/wraith.jpg"
+    "splash_url": "/splash/wraith.jpg",
+    "splash_variants": {
+      "normal": "/splash/wraith-normal.jpg",
+      "critical": "/splash/wraith.jpg",
+      "gloat": "/splash/wraith-gloat.jpg"
+    }
   },
   {
     "key": "mcginnis",
@@ -361,7 +391,12 @@
       }
     ],
     "portrait_url": "/portraits/mcginnis.png",
-    "splash_url": "/splash/mcginnis.jpg"
+    "splash_url": "/splash/mcginnis.jpg",
+    "splash_variants": {
+      "normal": "/splash/mcginnis-normal.jpg",
+      "critical": "/splash/mcginnis.jpg",
+      "gloat": "/splash/mcginnis-gloat.jpg"
+    }
   },
   {
     "key": "paradox",
@@ -413,7 +448,12 @@
       }
     ],
     "portrait_url": "/portraits/paradox.png",
-    "splash_url": "/splash/paradox.jpg"
+    "splash_url": "/splash/paradox.jpg",
+    "splash_variants": {
+      "normal": "/splash/paradox-normal.jpg",
+      "critical": "/splash/paradox.jpg",
+      "gloat": "/splash/paradox-gloat.jpg"
+    }
   },
   {
     "key": "dynamo",
@@ -465,7 +505,12 @@
       }
     ],
     "portrait_url": "/portraits/dynamo.png",
-    "splash_url": "/splash/dynamo.jpg"
+    "splash_url": "/splash/dynamo.jpg",
+    "splash_variants": {
+      "normal": "/splash/dynamo-normal.jpg",
+      "critical": "/splash/dynamo.jpg",
+      "gloat": "/splash/dynamo-gloat.jpg"
+    }
   },
   {
     "key": "kelvin",
@@ -517,7 +562,12 @@
       }
     ],
     "portrait_url": "/portraits/kelvin.png",
-    "splash_url": "/splash/kelvin.jpg"
+    "splash_url": "/splash/kelvin.jpg",
+    "splash_variants": {
+      "normal": "/splash/kelvin-normal.jpg",
+      "critical": "/splash/kelvin.jpg",
+      "gloat": "/splash/kelvin-gloat.jpg"
+    }
   },
   {
     "key": "haze",
@@ -569,7 +619,12 @@
       }
     ],
     "portrait_url": "/portraits/haze.png",
-    "splash_url": "/splash/haze.jpg"
+    "splash_url": "/splash/haze.jpg",
+    "splash_variants": {
+      "normal": "/splash/haze-normal.jpg",
+      "critical": "/splash/haze.jpg",
+      "gloat": "/splash/haze-gloat.jpg"
+    }
   },
   {
     "key": "holliday",
@@ -621,7 +676,12 @@
       }
     ],
     "portrait_url": "/portraits/holliday.png",
-    "splash_url": "/splash/holliday.jpg"
+    "splash_url": "/splash/holliday.jpg",
+    "splash_variants": {
+      "normal": "/splash/holliday-normal.jpg",
+      "critical": "/splash/holliday.jpg",
+      "gloat": "/splash/holliday-gloat.jpg"
+    }
   },
   {
     "key": "bebop",
@@ -673,7 +733,12 @@
       }
     ],
     "portrait_url": "/portraits/bebop.png",
-    "splash_url": "/splash/bebop.jpg"
+    "splash_url": "/splash/bebop.jpg",
+    "splash_variants": {
+      "normal": "/splash/bebop-normal.jpg",
+      "critical": "/splash/bebop.jpg",
+      "gloat": "/splash/bebop-gloat.jpg"
+    }
   },
   {
     "key": "calico",
@@ -725,7 +790,12 @@
       }
     ],
     "portrait_url": "/portraits/calico.png",
-    "splash_url": "/splash/calico.jpg"
+    "splash_url": "/splash/calico.jpg",
+    "splash_variants": {
+      "normal": "/splash/calico-normal.jpg",
+      "critical": "/splash/calico.jpg",
+      "gloat": "/splash/calico-gloat.jpg"
+    }
   },
   {
     "key": "grey-talon",
@@ -777,7 +847,12 @@
       }
     ],
     "portrait_url": "/portraits/grey-talon.png",
-    "splash_url": "/splash/grey-talon.jpg"
+    "splash_url": "/splash/grey-talon.jpg",
+    "splash_variants": {
+      "normal": "/splash/grey-talon-normal.jpg",
+      "critical": "/splash/grey-talon.jpg",
+      "gloat": "/splash/grey-talon-gloat.jpg"
+    }
   },
   {
     "key": "mo-krill",
@@ -829,7 +904,12 @@
       }
     ],
     "portrait_url": "/portraits/mo-krill.png",
-    "splash_url": "/splash/mo-krill.jpg"
+    "splash_url": "/splash/mo-krill.jpg",
+    "splash_variants": {
+      "normal": "/splash/mo-krill-normal.jpg",
+      "critical": "/splash/mo-krill.jpg",
+      "gloat": "/splash/mo-krill-gloat.jpg"
+    }
   },
   {
     "key": "shiv",
@@ -881,7 +961,12 @@
       }
     ],
     "portrait_url": "/portraits/shiv.png",
-    "splash_url": "/splash/shiv.jpg"
+    "splash_url": "/splash/shiv.jpg",
+    "splash_variants": {
+      "normal": "/splash/shiv-normal.jpg",
+      "critical": "/splash/shiv.jpg",
+      "gloat": "/splash/shiv-gloat.jpg"
+    }
   },
   {
     "key": "ivy",
@@ -933,7 +1018,12 @@
       }
     ],
     "portrait_url": "/portraits/ivy.png",
-    "splash_url": "/splash/ivy.jpg"
+    "splash_url": "/splash/ivy.jpg",
+    "splash_variants": {
+      "normal": "/splash/ivy-normal.jpg",
+      "critical": "/splash/ivy.jpg",
+      "gloat": "/splash/ivy-gloat.jpg"
+    }
   },
   {
     "key": "warden",
@@ -985,7 +1075,12 @@
       }
     ],
     "portrait_url": "/portraits/warden.png",
-    "splash_url": "/splash/warden.jpg"
+    "splash_url": "/splash/warden.jpg",
+    "splash_variants": {
+      "normal": "/splash/warden-normal.jpg",
+      "critical": "/splash/warden.jpg",
+      "gloat": "/splash/warden-gloat.jpg"
+    }
   },
   {
     "key": "yamato",
@@ -1037,7 +1132,12 @@
       }
     ],
     "portrait_url": "/portraits/yamato.png",
-    "splash_url": "/splash/yamato.jpg"
+    "splash_url": "/splash/yamato.jpg",
+    "splash_variants": {
+      "normal": "/splash/yamato-normal.jpg",
+      "critical": "/splash/yamato.jpg",
+      "gloat": "/splash/yamato-gloat.jpg"
+    }
   },
   {
     "key": "lash",
@@ -1089,7 +1189,12 @@
       }
     ],
     "portrait_url": "/portraits/lash.png",
-    "splash_url": "/splash/lash.jpg"
+    "splash_url": "/splash/lash.jpg",
+    "splash_variants": {
+      "normal": "/splash/lash-normal.jpg",
+      "critical": "/splash/lash.jpg",
+      "gloat": "/splash/lash-gloat.jpg"
+    }
   },
   {
     "key": "viscous",
@@ -1141,7 +1246,12 @@
       }
     ],
     "portrait_url": "/portraits/viscous.png",
-    "splash_url": "/splash/viscous.jpg"
+    "splash_url": "/splash/viscous.jpg",
+    "splash_variants": {
+      "normal": "/splash/viscous-normal.jpg",
+      "critical": "/splash/viscous.jpg",
+      "gloat": "/splash/viscous-gloat.jpg"
+    }
   },
   {
     "key": "pocket",
@@ -1193,7 +1303,12 @@
       }
     ],
     "portrait_url": "/portraits/pocket.png",
-    "splash_url": "/splash/pocket.jpg"
+    "splash_url": "/splash/pocket.jpg",
+    "splash_variants": {
+      "normal": "/splash/pocket-normal.jpg",
+      "critical": "/splash/pocket.jpg",
+      "gloat": "/splash/pocket-gloat.jpg"
+    }
   },
   {
     "key": "mirage",
@@ -1245,7 +1360,12 @@
       }
     ],
     "portrait_url": "/portraits/mirage.png",
-    "splash_url": "/splash/mirage.jpg"
+    "splash_url": "/splash/mirage.jpg",
+    "splash_variants": {
+      "normal": "/splash/mirage-normal.jpg",
+      "critical": "/splash/mirage.jpg",
+      "gloat": "/splash/mirage-gloat.jpg"
+    }
   },
   {
     "key": "vyper",
@@ -1297,7 +1417,12 @@
       }
     ],
     "portrait_url": "/portraits/vyper.png",
-    "splash_url": "/splash/vyper.jpg"
+    "splash_url": "/splash/vyper.jpg",
+    "splash_variants": {
+      "normal": "/splash/vyper-normal.jpg",
+      "critical": "/splash/vyper.jpg",
+      "gloat": "/splash/vyper-gloat.jpg"
+    }
   },
   {
     "key": "sinclair",
@@ -1349,7 +1474,12 @@
       }
     ],
     "portrait_url": "/portraits/sinclair.png",
-    "splash_url": "/splash/sinclair.jpg"
+    "splash_url": "/splash/sinclair.jpg",
+    "splash_variants": {
+      "normal": "/splash/sinclair-normal.jpg",
+      "critical": "/splash/sinclair.jpg",
+      "gloat": "/splash/sinclair-gloat.jpg"
+    }
   },
   {
     "key": "mina",
@@ -1401,7 +1531,12 @@
       }
     ],
     "portrait_url": "/portraits/mina.png",
-    "splash_url": "/splash/mina.jpg"
+    "splash_url": "/splash/mina.jpg",
+    "splash_variants": {
+      "normal": "/splash/mina-normal.jpg",
+      "critical": "/splash/mina.jpg",
+      "gloat": "/splash/mina-gloat.jpg"
+    }
   },
   {
     "key": "drifter",
@@ -1453,7 +1588,12 @@
       }
     ],
     "portrait_url": "/portraits/drifter.png",
-    "splash_url": "/splash/drifter.jpg"
+    "splash_url": "/splash/drifter.jpg",
+    "splash_variants": {
+      "normal": "/splash/drifter-normal.jpg",
+      "critical": "/splash/drifter.jpg",
+      "gloat": "/splash/drifter-gloat.jpg"
+    }
   },
   {
     "key": "venator",
@@ -1505,7 +1645,12 @@
       }
     ],
     "portrait_url": "/portraits/venator.png",
-    "splash_url": "/splash/venator.jpg"
+    "splash_url": "/splash/venator.jpg",
+    "splash_variants": {
+      "normal": "/splash/venator-normal.jpg",
+      "critical": "/splash/venator.jpg",
+      "gloat": "/splash/venator-gloat.jpg"
+    }
   },
   {
     "key": "victor",
@@ -1557,7 +1702,12 @@
       }
     ],
     "portrait_url": "/portraits/victor.png",
-    "splash_url": "/splash/victor.jpg"
+    "splash_url": "/splash/victor.jpg",
+    "splash_variants": {
+      "normal": "/splash/victor-normal.jpg",
+      "critical": "/splash/victor.jpg",
+      "gloat": "/splash/victor-gloat.jpg"
+    }
   },
   {
     "key": "paige",
@@ -1609,7 +1759,12 @@
       }
     ],
     "portrait_url": "/portraits/paige.png",
-    "splash_url": "/splash/paige.jpg"
+    "splash_url": "/splash/paige.jpg",
+    "splash_variants": {
+      "normal": "/splash/paige-normal.jpg",
+      "critical": "/splash/paige.jpg",
+      "gloat": "/splash/paige-gloat.jpg"
+    }
   },
   {
     "key": "the-doorman",
@@ -1661,7 +1816,12 @@
       }
     ],
     "portrait_url": "/portraits/the-doorman.png",
-    "splash_url": "/splash/the-doorman.jpg"
+    "splash_url": "/splash/the-doorman.jpg",
+    "splash_variants": {
+      "normal": "/splash/the-doorman-normal.jpg",
+      "critical": "/splash/the-doorman.jpg",
+      "gloat": "/splash/the-doorman-gloat.jpg"
+    }
   },
   {
     "key": "billy",
@@ -1713,7 +1873,12 @@
       }
     ],
     "portrait_url": "/portraits/billy.png",
-    "splash_url": "/splash/billy.jpg"
+    "splash_url": "/splash/billy.jpg",
+    "splash_variants": {
+      "normal": "/splash/billy-normal.jpg",
+      "critical": "/splash/billy.jpg",
+      "gloat": "/splash/billy-gloat.jpg"
+    }
   },
   {
     "key": "graves",
@@ -1765,7 +1930,12 @@
       }
     ],
     "portrait_url": "/portraits/graves.png",
-    "splash_url": "/splash/graves.jpg"
+    "splash_url": "/splash/graves.jpg",
+    "splash_variants": {
+      "normal": "/splash/graves-normal.jpg",
+      "critical": "/splash/graves.jpg",
+      "gloat": "/splash/graves-gloat.jpg"
+    }
   },
   {
     "key": "apollo",
@@ -1817,7 +1987,12 @@
       }
     ],
     "portrait_url": "/portraits/apollo.png",
-    "splash_url": "/splash/apollo.jpg"
+    "splash_url": "/splash/apollo.jpg",
+    "splash_variants": {
+      "normal": "/splash/apollo-normal.jpg",
+      "critical": "/splash/apollo.jpg",
+      "gloat": "/splash/apollo-gloat.jpg"
+    }
   },
   {
     "key": "rem",
@@ -1869,7 +2044,12 @@
       }
     ],
     "portrait_url": "/portraits/rem.png",
-    "splash_url": "/splash/rem.jpg"
+    "splash_url": "/splash/rem.jpg",
+    "splash_variants": {
+      "normal": "/splash/rem-normal.jpg",
+      "critical": "/splash/rem.jpg",
+      "gloat": "/splash/rem-gloat.jpg"
+    }
   },
   {
     "key": "silver",
@@ -1921,7 +2101,12 @@
       }
     ],
     "portrait_url": "/portraits/silver.png",
-    "splash_url": "/splash/silver.jpg"
+    "splash_url": "/splash/silver.jpg",
+    "splash_variants": {
+      "normal": "/splash/silver-normal.jpg",
+      "critical": "/splash/silver.jpg",
+      "gloat": "/splash/silver-gloat.jpg"
+    }
   },
   {
     "key": "celeste",
@@ -1973,6 +2158,11 @@
       }
     ],
     "portrait_url": "/portraits/celeste.png",
-    "splash_url": "/splash/celeste.jpg"
+    "splash_url": "/splash/celeste.jpg",
+    "splash_variants": {
+      "normal": "/splash/celeste-normal.jpg",
+      "critical": "/splash/celeste.jpg",
+      "gloat": "/splash/celeste-gloat.jpg"
+    }
   }
 ]

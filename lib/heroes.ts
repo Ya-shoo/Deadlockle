@@ -52,7 +52,16 @@ export type Hero = {
   // assets
   abilities: Ability[];
   portrait_url: string | null;
+  // Mugshot art. `splash_url` is the legacy critical-health crop (kept for
+  // back-compat and as the fallback). `splash_variants` holds the three
+  // Deadlock hero-card states so Mugshot can rotate which one it shows per
+  // day; `critical` reuses the `splash_url` file. Null on heroes with no crop.
   splash_url: string | null;
+  splash_variants: {
+    normal: string | null;
+    critical: string | null;
+    gloat: string | null;
+  } | null;
 };
 
 export const HEROES: Hero[] = heroesData as Hero[];

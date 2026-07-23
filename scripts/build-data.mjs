@@ -291,18 +291,38 @@ async function main() {
       });
     }
 
-    // Splash: hero_card_critical is the hero-focused art, perfect for the
-    // smartcrop-then-zoom mode. Falls back to background_image.
+    // Splash / Mugshot art. Deadlock ships three hero-card states; we crop
+    // all three so Mugshot can rotate the state per day (critical-only felt
+    // samey to players). `critical` is the hero-focused art (angry, low HP)
+    // and keeps the legacy `<key>.jpg` path — it's also `splash_url` for
+    // back-compat and the fallback. `normal` (neutral icon card) and `gloat`
+    // (smug killstreak card) get suffixed files. All smartcrop-then-zoom well.
     let splashUrl = null;
-    const splashSrc =
+    let splashVariants = null;
+    const criticalSrc =
       h.images?.hero_card_critical_webp ||
       h.images?.hero_card_critical ||
       h.images?.background_image_webp ||
       h.images?.background_image ||
       null;
-    if (splashSrc) {
+    const normalSrc =
+      h.images?.icon_hero_card_webp || h.images?.icon_hero_card || null;
+    const gloatSrc =
+      h.images?.hero_card_gloat_webp || h.images?.hero_card_gloat || null;
+    if (criticalSrc) {
       process.stdout.write("splash ");
-      splashUrl = await smartcropToJpg(splashSrc, SPLASH_OUT, key);
+      splashUrl = await smartcropToJpg(criticalSrc, SPLASH_OUT, key);
+      const normalUrl = normalSrc
+        ? await smartcropToJpg(normalSrc, SPLASH_OUT, `${key}-normal`)
+        : null;
+      const gloatUrl = gloatSrc
+        ? await smartcropToJpg(gloatSrc, SPLASH_OUT, `${key}-gloat`)
+        : null;
+      splashVariants = {
+        normal: normalUrl,
+        critical: splashUrl,
+        gloat: gloatUrl,
+      };
     }
 
     // Portrait: small icon for autocomplete dropdown. icon_image_small is
@@ -348,6 +368,7 @@ async function main() {
       abilities,
       portrait_url: portraitUrl,
       splash_url: splashUrl,
+      splash_variants: splashVariants,
     });
 
     console.log("ok");
@@ -361,6 +382,9 @@ async function main() {
   );
   console.log(
     `  with splash crop:  ${heroesOut.filter((h) => h.splash_url).length}`,
+  );
+  console.log(
+    `  with all 3 states: ${heroesOut.filter((h) => h.splash_variants?.normal && h.splash_variants?.critical && h.splash_variants?.gloat).length}`,
   );
   console.log(
     `  with all 4 abilities: ${heroesOut.filter((h) => h.abilities.length === 4).length}`,

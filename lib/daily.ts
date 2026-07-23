@@ -106,6 +106,29 @@ const ABILITY_POOL: Hero[] = ANSWER_POOL.filter(
 // the underlying art is the same hero card crop either way.
 const MUGSHOT_POOL: Hero[] = ANSWER_POOL.filter((h) => h.splash_url != null);
 
+// Deadlock ships three hero-card states per hero: the neutral "normal" card,
+// the bloodied "critical" card (low health), and the smug "gloat" card
+// (killstreak). Mugshot used to only ever show critical, which players found
+// samey; we now rotate the state per day so a hero looks different across its
+// appearances. Array order is the pick order.
+const MUGSHOT_VARIANT_ORDER = ["normal", "critical", "gloat"] as const;
+
+// Resolve the portrait URL for a hero on a given day, choosing a card state
+// deterministically from the day seed (same seed → same state for everyone).
+// Falls back to splash_url (critical) when a hero has no variant map or the
+// chosen state is missing its crop.
+function mugshotImageForDay(day: string, hero: Hero): string {
+  const variants = hero.splash_variants;
+  if (!variants) return hero.splash_url!;
+  const available = MUGSHOT_VARIANT_ORDER.filter((k) => variants[k]);
+  if (available.length === 0) return hero.splash_url!;
+  const pick =
+    available[
+      fnv1a(`deadlockle:mugshot-variant:${day}${salt(day)}`) % available.length
+    ];
+  return variants[pick] ?? hero.splash_url!;
+}
+
 export function getAbilityForDay(day: string): {
   hero: Hero;
   ability: Ability;
@@ -137,13 +160,12 @@ export function getMugshotForDay(day: string): {
   if (MUGSHOT_POOL.length === 0) {
     throw new Error("MUGSHOT_POOL is empty");
   }
-  if (shouldUseBag(day)) {
-    const hero = bagMugshotHero(day);
-    return { hero, imageUrl: hero.splash_url! };
-  }
-  const heroIdx = fnv1a(`deadlockle:mugshot:${day}${salt(day)}`) % MUGSHOT_POOL.length;
-  const hero = MUGSHOT_POOL[heroIdx];
-  return { hero, imageUrl: hero.splash_url! };
+  const hero = shouldUseBag(day)
+    ? bagMugshotHero(day)
+    : MUGSHOT_POOL[
+        fnv1a(`deadlockle:mugshot:${day}${salt(day)}`) % MUGSHOT_POOL.length
+      ];
+  return { hero, imageUrl: mugshotImageForDay(day, hero) };
 }
 
 export function getItemForDay(day: string): { item: Item; iconUrl: string } {
