@@ -233,7 +233,7 @@
     "class_name": "hero_atlas",
     "name": "Abrams",
     "hero_type": "brawler",
-    "gun_tag": "Shotgun",
+    "gun_tag": "Spreadshot",
     "tags": [
       "Tank",
       "Brawler",
@@ -306,7 +306,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "carry",
-    "damage_source": "weapon",
+    "damage_source": "hybrid",
     "abilities": [
       {
         "name": "Card Trick",
@@ -875,7 +875,7 @@
     "gender": "male",
     "nature": "beast",
     "damage_style": "hitscan",
-    "sub_role": "bruiser",
+    "sub_role": "tank",
     "damage_source": "spirit",
     "abilities": [
       {

@@ -51,8 +51,14 @@ const OVERLAY = {
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "vindicta":     { gender: "female",     nature: "spirit",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
   "lady-geist":   { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
-  "abrams":       { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "tank",       damage_source: "weapon"  },
-  "wraith":       { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "carry",      damage_source: "weapon"  },
+  "abrams":       {
+    gender: "male", nature: "ixian", damage_style: "hitscan", sub_role: "tank", damage_source: "weapon",
+    gun_tag: "Spreadshot",
+    // Valve tags his shotgun as the lone "Shotgun" in the roster; every other
+    // pellet-spread hero (Silver, Mo & Krill, Calico, ...) is "Spreadshot", so
+    // normalize him to the cohort.
+  },
+  "wraith":       { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "carry",      damage_source: "hybrid"  },
   "mcginnis":     { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "support",    damage_source: "weapon"  },
   "paradox":      { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
   "dynamo":       { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "support",    damage_source: "spirit"  },
@@ -62,7 +68,7 @@ const OVERLAY = {
   "bebop":        { gender: "neutral",    nature: "robot",     damage_style: "hybrid",     sub_role: "bruiser",    damage_source: "spirit"  },
   "calico":       { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "diver",      damage_source: "spirit"  },
   "grey-talon":   { gender: "male",       nature: "human",     damage_style: "projectile", sub_role: "sniper",     damage_source: "spirit"  },
-  "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "bruiser",    damage_source: "spirit"  },
+  "mo-krill":     { gender: "male",       nature: "beast",     damage_style: "hitscan",    sub_role: "tank",       damage_source: "spirit"  },
   "shiv":         {
     gender: "male", nature: "human", damage_style: "hitscan", sub_role: "assassin", damage_source: "spirit",
     ability_overrides: {
