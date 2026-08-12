@@ -17,7 +17,6 @@ import {
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { media } from "@/lib/media";
 import {
-  trackGuessSubmitted,
   trackModeCompleted,
   trackModeStarted,
 } from "@/lib/tracking";
@@ -93,8 +92,9 @@ export function AbilityGame() {
       cap: MAX_GUESSES,
       answerId: hero.key,
       abilityIndex,
+      guessIds: state?.guesses ?? [],
     });
-  }, [day, stateWon, stateFailed, state?.guesses.length, state?.gaveUp]);
+  }, [day, stateWon, stateFailed, state?.guesses, state?.gaveUp]);
 
   if (!day || !state) {
     return (
@@ -120,14 +120,6 @@ export function AbilityGame() {
     const newGuesses = [...state.guesses, hero.key];
     const won = hero.key === answer.key;
     const justFailed = !won && newGuesses.length >= MAX_GUESSES;
-    trackGuessSubmitted({
-      mode: "ability",
-      dailyId: day,
-      guessNumber: newGuesses.length,
-      isCorrect: won,
-      guessId: hero.key,
-      answerId: answer.key,
-    });
     const next: ModeState = {
       ...state,
       guesses: newGuesses,

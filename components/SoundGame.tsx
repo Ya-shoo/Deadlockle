@@ -34,7 +34,6 @@ import { AttributeTile } from "./AttributeTile";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
 import {
-  trackGuessSubmitted,
   trackModeCompleted,
   trackModeStarted,
 } from "@/lib/tracking";
@@ -185,6 +184,9 @@ export function SoundGame() {
       cap: MAX_GUESSES,
       answerId: `${todaySpeakers[0].key}_${todaySpeakers[1].key}`,
       conversationId: conversation.audio,
+      // "<heroKey>@<target>" — mirrors the retired guess_submitted
+      // guess_id encoding so speaker-slot analysis stays possible.
+      guessIds: state.guesses.map((g) => `${g.heroKey}@${g.target}`),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [day, devConvIdx, completionWon, completionFailed, state?.guesses.length]);
@@ -271,17 +273,6 @@ export function SoundGame() {
     );
     const newWon = newARevealed && newBRevealed;
     const justFailed = !newWon && newGuesses.length >= MAX_GUESSES;
-    if (devConvIdx == null) {
-      const speakerHero = target === 0 ? speakerA : speakerB;
-      trackGuessSubmitted({
-        mode: "sound",
-        dailyId: day,
-        guessNumber: newGuesses.length,
-        isCorrect: hero.key === speakerHero.key,
-        guessId: `${hero.key}@${target}`,
-        answerId: `${speakerA.key}_${speakerB.key}`,
-      });
-    }
     const next: ConversationState = {
       day,
       speakers: [speakerA.key, speakerB.key],

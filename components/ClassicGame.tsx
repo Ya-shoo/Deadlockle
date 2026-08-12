@@ -13,7 +13,6 @@ import {
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
 import { media } from "@/lib/media";
 import {
-  trackGuessSubmitted,
   trackHintUsed,
   trackModeCompleted,
   trackModeStarted,
@@ -102,13 +101,14 @@ export function ClassicGame() {
       cap: MAX_GUESSES,
       hintsUsed: hintsLen,
       answerId: answer.key,
+      guessIds: state?.guesses ?? [],
     });
   }, [
     day,
     answer,
     stateWon,
     stateFailed,
-    state?.guesses.length,
+    state?.guesses,
     state?.hintsUsed?.length,
     state?.gaveUp,
   ]);
@@ -168,14 +168,6 @@ export function ClassicGame() {
     const won = hero.key === answer.key;
     const newEffective = newGuesses.length + hintsUsed.length;
     const justFailed = !won && newEffective >= MAX_GUESSES;
-    trackGuessSubmitted({
-      mode: "classic",
-      dailyId: day,
-      guessNumber: newGuesses.length,
-      isCorrect: won,
-      guessId: hero.key,
-      answerId: answer.key,
-    });
     const next: ModeState = {
       ...state,
       guesses: newGuesses,

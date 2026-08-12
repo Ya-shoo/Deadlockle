@@ -10,7 +10,6 @@ import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
 import {
-  trackGuessSubmitted,
   trackModeCompleted,
   trackModeStarted,
 } from "@/lib/tracking";
@@ -87,8 +86,9 @@ export function MugshotGame() {
       totalGuesses: state?.guesses.length ?? 0,
       cap: MAX_GUESSES,
       answerId: hero.key,
+      guessIds: state?.guesses ?? [],
     });
-  }, [day, stateWon, stateFailed, state?.guesses.length, state?.gaveUp]);
+  }, [day, stateWon, stateFailed, state?.guesses, state?.gaveUp]);
 
   if (!day || !state) {
     return (
@@ -118,14 +118,6 @@ export function MugshotGame() {
     const newGuesses = [...state.guesses, hero.key];
     const won = hero.key === answer.key;
     const justFailed = !won && newGuesses.length >= MAX_GUESSES;
-    trackGuessSubmitted({
-      mode: "mugshot",
-      dailyId: day,
-      guessNumber: newGuesses.length,
-      isCorrect: won,
-      guessId: hero.key,
-      answerId: answer.key,
-    });
     const next: ModeState = {
       ...state,
       guesses: newGuesses,
