@@ -34,16 +34,28 @@ jobs:
           DAY=$(TZ=America/Los_Angeles date +%y%m%d)
           echo "Pacific puzzle day: $DAY"
 
-          # Both UTC crons fire daily (GitHub Actions has no DST awareness),
-          # so the job ran twice/day and re-warmed already-stored codes at
-          # full request cost. Only the trigger landing at ~02:xx PT (just
-          # after the 2:15am reset) should proceed; skip the duplicate.
-          # Manual dispatch (workflow_dispatch) always runs.
+          # Both UTC crons fire daily (GitHub Actions has no DST awareness).
+          # An earlier guard required the run to land at EXACTLY 02:xx PT, but
+          # GitHub delays scheduled crons by 1-3h, so the real trigger kept
+          # arriving at 03-05 PT and self-skipped — every run went green while
+          # warming nothing, and R2 silently stopped being topped up. Accept a
+          # post-reset WINDOW (02:00-08:59 PT) instead: it catches the delayed
+          # trigger. Both crons can now land in the window on the same day, and
+          # that's fine — re-warming an already-stored code is a cheap R2 hit
+          # (the render-once fast path), not a fresh render, so a duplicate run
+          # just re-confirms storage in seconds. Firings before 02:00 PT (incl.
+          # the winter early cron at 01:25 PST) still skip, so we never warm
+          # ahead of the 2:15am puzzle roll. Manual dispatch always runs.
           HOUR=$(TZ=America/Los_Angeles date +%H)
-          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$HOUR" != "02" ]; then
-            echo "Pacific hour $HOUR — off-season duplicate trigger, skipping."
-            exit 0
-          fi
+          case "$HOUR" in
+            02 | 03 | 04 | 05 | 06 | 07 | 08) ;;
+            *)
+              if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+                echo "Pacific hour $HOUR — outside the post-reset warm window, skipping."
+                exit 0
+              fi
+              ;;
+          esac
 
           codes=()
           # classic: wins (guesses+hints<=10), losses with hint tally
