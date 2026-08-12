@@ -12,6 +12,7 @@
 // Run once and commit the output. Re-run when the roster changes.
 
 import { writeFile, mkdir } from "node:fs/promises";
+import { realpathSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import sharp from "sharp";
@@ -46,7 +47,7 @@ const SPLASH_QUALITY = 80;
 //                        (Valve sometimes mislabels — e.g. Silver as "Long Range"
 //                        marksman when she's a shotgun-wielding brawler)
 //   ability_overrides:   { [abilityName]: description } fallback for null ability text
-const OVERLAY = {
+export const OVERLAY = {
   "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "vindicta":     { gender: "female",     nature: "spirit",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
@@ -87,6 +88,12 @@ const OVERLAY = {
   "mina":         {
     gender: "female", nature: "undead", damage_style: "hitscan", sub_role: "assassin", damage_source: "spirit",
     role: "Drains life at mid-range and slips away as a swarm of bats",
+    ability_overrides: {
+      // API returns no description for Rake; text below is derived from the
+      // ability's own mechanics (spirit damage scaling with missing health,
+      // heal-on-kill, hold-to-float).
+      "Rake": "Active: Slash with your umbrella, dealing spirit damage that increases with the target's missing health and healing you for each kill. Passive: Hold to briefly float.",
+    },
   },
   "drifter":      {
     gender: "male", nature: "undead", damage_style: "hitscan", sub_role: "skirmisher", damage_source: "weapon",
@@ -164,18 +171,40 @@ function toKey(name) {
 // Deadlock ability descriptions embed inline SVG icons + HTML markup. Strip
 // to plain prose and keep only the first 1-2 sentences (the rest covers
 // detailed mechanics that read like patch notes).
-function cleanDescription(s) {
+//
+// Tag boundaries MUST collapse to a space, never to nothing: the source glues
+// clauses together with <br> and wraps inline stat values in <svg>/<span>, so
+// naively deleting tags mashes words ("delay.Once cast", "connectionConnection")
+// and eats the space around icons. Replace structural tags with a space, then
+// tidy any space that lands before punctuation ("silenced ." -> "silenced.").
+export function cleanDescription(s) {
   if (!s || typeof s !== "string") return null;
-  let out = s.replace(/<svg[\s\S]*?<\/svg>/gi, "");
+  let out = s.replace(/<svg[\s\S]*?<\/svg>/gi, " ");
+  out = out.replace(/<br\s*\/?>/gi, " ");
+  out = out.replace(/<\/(p|div|li|ul|ol)>/gi, " ");
   out = out.replace(/<\/?span[^>]*>/gi, "");
-  out = out.replace(/<[^>]+>/g, "");
+  out = out.replace(/<[^>]+>/g, " ");
+  // An icon-led upgrade note collapses to a dangling ": ..." right after a
+  // sentence end (e.g. "...upon use. : Bring nearby allies"). That's tooltip
+  // metadata, not prose — drop it.
+  out = out.replace(/([.!?])\s*:\s.*$/s, "$1");
+  // A dropped inline input-key icon leaves "Ability N or to <verb>"; keep the
+  // primary input and drop the dangling alternate.
+  out = out.replace(/\b(Ability \d+)\s+or\s+to\b/gi, "$1 to");
+  out = out.replace(/\s+([.,;:!?])/g, "$1");
   out = out.replace(/\s+/g, " ").trim();
   if (!out) return null;
-  const sentences = out.match(/[^.!?]+[.!?]+(\s|$)/g);
-  if (sentences && sentences.length > 2) {
-    out = sentences.slice(0, 2).join("").trim();
-  }
-  return out;
+  // Keep only the first two sentences, but guard decimals first: a period
+  // inside a number ("1.0s") must not read as a sentence boundary. Without
+  // this, the splitter dropped "...charged after 1.0s" down to a bare "0s".
+  const DOT = "";
+  const guarded = out.replace(/(\d)\.(\d)/g, `$1${DOT}$2`);
+  const sentences = guarded.match(/[^.!?]+[.!?]+(\s|$)/g);
+  out =
+    sentences && sentences.length > 2
+      ? sentences.slice(0, 2).join("").trim()
+      : guarded;
+  return out.replaceAll(DOT, ".").trim();
 }
 
 async function fetchJson(url) {
@@ -404,7 +433,15 @@ async function main() {
   // Run `node scripts/build-items-wiki.mjs` to refresh data/items.json.
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run the full pipeline when invoked directly (`node scripts/build-data.mjs`).
+// When imported (e.g. by scripts/refresh-descriptions.mjs to reuse cleanDescription
+// + OVERLAY) this guard prevents the heavy scrape/image side effects from firing.
+const invokedDirectly =
+  process.argv[1] &&
+  realpathSync(process.argv[1]) === fileURLToPath(import.meta.url);
+if (invokedDirectly) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

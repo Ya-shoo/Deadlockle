@@ -37,13 +37,13 @@
       },
       {
         "name": "Afterburn",
-        "description": "Weapon hits build up a burning effect, dealing spirit damage over time. Abilities refresh the base burn duration.",
+        "description": "Weapon hits build up a burning effect, dealing spirit damage over time. Abilities refresh to the base burn duration and weapon hits extend it.",
         "icon": "/abilities/infernus-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_deflect.png"
       },
       {
         "name": "Concussive Combustion",
-        "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay.Once cast, Concussive Combustion cannot be interrupted.",
+        "description": "Become a living bomb, dealing spirit damage and applying stun to all nearby enemies after a delay. Once cast, Concussive Combustion cannot be interrupted.",
         "icon": "/abilities/infernus-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/inferno_bomb.png"
       }
@@ -157,7 +157,7 @@
       },
       {
         "name": "Assassinate",
-        "description": "Use your scoped rifle to fire a powerful shot over long distances. 0s of being scoped.",
+        "description": "Use your scoped rifle to fire a powerful shot over long distances. Deal only partial damage until fully charged after 1.0s of being scoped.",
         "icon": "/abilities/vindicta-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/hornet/hornet_assassinate.png"
       }
@@ -196,7 +196,7 @@
     "abilities": [
       {
         "name": "Essence Bomb",
-        "description": "Sacrifice some of your health to launch a bomb that deals damage after a brief arm time.Self damage type is Spirit and can be mitigated.",
+        "description": "Sacrifice some of your health to launch a bomb that deals damage after a brief arm time. Self damage type is Spirit and can be mitigated.",
         "icon": "/abilities/lady-geist-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/spectre/blood_bomb.png"
       },
@@ -259,7 +259,7 @@
       },
       {
         "name": "Shoulder Charge",
-        "description": "Charge forward, pulling enemies you hit. Pushing a hero into a wall applies stun.If you collide with a hero you move faster during your charge.",
+        "description": "Charge forward, pulling enemies you hit. Pushing a hero into a wall applies stun.",
         "icon": "/abilities/abrams-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/bull_charge.png"
       },
@@ -367,7 +367,7 @@
     "abilities": [
       {
         "name": "Mini Turret",
-        "description": "Deploy a turret that shoots enemies, dealing spirit damage over time. The turret expires after a limited lifetime.Turrets deal reduced damage to troopers and objectives.",
+        "description": "Deploy a turret that shoots enemies, dealing spirit damage over time. The turret expires after a limited lifetime.",
         "icon": "/abilities/mcginnis-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/engineer_turret.png"
       },
@@ -430,7 +430,7 @@
       },
       {
         "name": "Time Wall",
-        "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. Enemies that touch the wall will be briefly slowed and silenced .",
+        "description": "Create a time warping wall that stops time for all enemy projectiles and bullets that touch it and increases the speed and damage of friendly bullets. Enemies that touch the wall will be briefly slowed and silenced.",
         "icon": "/abilities/paradox-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/chrono/chrono_time_wall.png"
       },
@@ -493,7 +493,7 @@
       },
       {
         "name": "Rejuvenating Aurora",
-        "description": "While channeling, restore health over time to you and any allies nearby.You can dash and melee without breaking the channel.",
+        "description": "While channeling, restore health over time to you and any allies nearby. You can dash and melee without breaking the channel.",
         "icon": "/abilities/dynamo-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/sumo/sumo_pork_bun.png"
       },
@@ -670,7 +670,7 @@
       },
       {
         "name": "Spirit Lasso",
-        "description": "Throw out your lasso, dealing spirit damage, pulling, and applying stun.Using a Bounce Pad extends the duration of Spirit Lasso.",
+        "description": "Throw out your lasso, dealing spirit damage, pulling, and applying stun. Using a Bounce Pad extends the duration of Spirit Lasso.",
         "icon": "/abilities/holliday-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/astro/holliday_spirit_lasso.png"
       }
@@ -766,7 +766,7 @@
     "abilities": [
       {
         "name": "Gloom Bombs",
-        "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage.Enemies hit by multiple bombs take 65% damage.",
+        "description": "Throw a cluster of bombs that detonate after a delay, dealing spirit damage. Enemies hit by multiple bombs take 65% damage.",
         "icon": "/abilities/calico-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/nano/nano_clustergrenade.png"
       },
@@ -823,7 +823,7 @@
     "abilities": [
       {
         "name": "Charged Shot",
-        "description": "Charge up a powerful shot that pierces through enemies. Hold Ability 1 or to hold the shot.",
+        "description": "Charge up a powerful shot that pierces through enemies. Hold Ability 1 to hold the shot.",
         "icon": "/abilities/grey-talon-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_charged_shot.png"
       },
@@ -835,13 +835,13 @@
       },
       {
         "name": "Spirit Snare",
-        "description": "Throw out a trap that begins to arm itself. Once armed, the trap will trigger when an enemy enters its radius, applying Curse and Movement Slow that interrupts, Silences, Disarms, and prevents item usage.Hit the trap with a Charged Shot to detonate early with increased radius.",
+        "description": "Throw out a trap that begins to arm itself. Once armed, the trap will trigger when an enemy enters its radius, applying Curse and Movement Slow that interrupts, Silences, Disarms, and prevents item usage.",
         "icon": "/abilities/grey-talon-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/imobolize_trap.png"
       },
       {
         "name": "Guided Owl",
-        "description": "5s cast time, launch a spirit owl that you control and which explodes on impact, damaging and stunning enemies. Press Jump / mantle to release control.",
+        "description": "After 1.5s cast time, launch a spirit owl that you control and which explodes on impact, damaging and stunning enemies. Hold [W] to accelerate the owl.",
         "icon": "/abilities/grey-talon-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/archer/archer_guided_arrow.png"
       }
@@ -1000,7 +1000,7 @@
       },
       {
         "name": "Kudzu Connection",
-        "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting.Receive 50% of Bonuses with no connectionConnection requires line of sight.",
+        "description": "Connect with a nearby ally to gain bonuses, replicated healing, and ignore the move speed penalty while shooting. Receive 50% of Bonuses with no connection Connection requires line of sight.",
         "icon": "/abilities/ivy-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/tengu/tengu_tether.png"
       },
@@ -1108,7 +1108,7 @@
     "abilities": [
       {
         "name": "Power Slash",
-        "description": "Channel to increase damage over 1.4 seconds, then release a fully-charged sword strike.Press Ability 1 or to trigger the strike early, dealing partial damage.",
+        "description": "Channel to increase damage over 1.4 seconds, then release a fully-charged sword strike. Press Ability 1 to trigger the strike early, dealing partial damage.",
         "icon": "/abilities/yamato-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/yamato/yamato_power_slash.png"
       },
@@ -1234,7 +1234,7 @@
       },
       {
         "name": "Puddle Punch",
-        "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. Punching an enemy deals melee damage and applies slow.You and your allies have increased Air Control.",
+        "description": "Materialize a fist in the world that punches everyone in the area, applying knockup. Punching an enemy deals melee damage and applies slow.",
         "icon": "/abilities/viscous-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/viscous/viscous_goo_punch.png"
       },
@@ -1279,7 +1279,7 @@
     "abilities": [
       {
         "name": "Barrage",
-        "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks.Casting while airborne will cause Pocket to float.Casting AirDash or Flying Cloaking will not cancel Barrage.",
+        "description": "Channel to start launching projectiles that deal spirit damage and apply slow around their impact point. Projectiles that hit a hero grant Pocket increased damage that stacks.",
         "icon": "/abilities/pocket-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_barrage.png"
       },
@@ -1297,7 +1297,7 @@
       },
       {
         "name": "Affliction",
-        "description": "Applies damage over time to enemies nearby.Affliction's damage is non-lethal and does not apply item procs.",
+        "description": "Applies damage over time to enemies nearby. Affliction's damage is non-lethal and does not apply item procs.",
         "icon": "/abilities/pocket-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/synth/synth_affliction.png"
       }
@@ -1462,13 +1462,13 @@
       },
       {
         "name": "Rabbit Hex",
-        "description": "Hex a target area and transforming all enemies into a Rabbit for a limited duration. Rabbits are small and move faster, but take increased Damage and are unable to perform most actions.Hex does not interrupt abilities.",
+        "description": "Hex a target area and transforming all enemies into a Rabbit for a limited duration. Rabbits are small and move faster, but take increased Damage and are unable to perform most actions.",
         "icon": "/abilities/sinclair-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_animalcurse.png"
       },
       {
         "name": "Audience Participation",
-        "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead.Copies will inherit this ability's upgrade points.Audience Participation will also copy the cooldown.",
+        "description": "Copy the Ultimate of an enemy hero for a limited time. Reactivating the ability will use the Copied Ultimate instead.",
         "icon": "/abilities/sinclair-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/magician/magician_copyult.png"
       }
@@ -1507,7 +1507,7 @@
     "abilities": [
       {
         "name": "Rake",
-        "description": "Active: Slash with your umbrella, dealing spirit damage, increasing with their missing health. Receive a heal for every target killed.Passive: Holding causes you to briefly float.Rake executes non-heroes below 60 health.",
+        "description": "Active: Slash with your umbrella, dealing spirit damage that increases with the target's missing health and healing you for each kill. Passive: Hold to briefly float.",
         "icon": "/abilities/mina-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_rake.png"
       },
@@ -1519,13 +1519,13 @@
       },
       {
         "name": "Love Bites",
-        "description": "Bullets and abilities apply spirit damage, building up to a burst of bonus spirit damage. Love Bites has a unique cooldown per target.",
+        "description": "Your bullets apply additional spirit damage. Dealing damage your abilities builds up to a vicious bite, dealing a burst of bonus spirit damage.",
         "icon": "/abilities/mina-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_love_bites.png"
       },
       {
         "name": "Nox Nostra",
-        "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence.Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
+        "description": "Active: Unleash a cloud of bats that seek out targets, each dealing spirit damage and applying Silence. Passive: Triggering Love Bites against heroes permanently increases the number of bats released.",
         "icon": "/abilities/mina-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/vampirebat/vampirebat_nox_nostra.png"
       }
@@ -1570,7 +1570,7 @@
       },
       {
         "name": "Stalker's Mark",
-        "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time.While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
+        "description": "Send out a mark that bleeds the first target it hits, dealing spirit damage over time. While the enemy is bleeding you can re-activate Stalker's Mark to instantly appear behind their back.",
         "icon": "/abilities/drifter-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/drifter_stalkersmark.png"
       },
@@ -1582,7 +1582,7 @@
       },
       {
         "name": "Eternal Night",
-        "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration.You gain bonus sprint speed.",
+        "description": "Surround nearby enemy heroes in darkness, severely limiting their vision of other units. Affected enemies are briefly revealed to you and are considered isolated for the duration.",
         "icon": "/abilities/drifter-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/drifter/darkness.png"
       }
@@ -1639,7 +1639,7 @@
       },
       {
         "name": "Ira Domini",
-        "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage.The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
+        "description": "Load your crossbow with 3 stakes, dealing massively increased weapon damage. The final stake is blessed, dealing bonus pure damage and executing low-health enemies.",
         "icon": "/abilities/venator-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/priest/priest_crossbow.png"
       }
@@ -1792,7 +1792,7 @@
     "abilities": [
       {
         "name": "Call Bell",
-        "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow.Can be shot to detonate early.",
+        "description": "Throw out a call bell that deals spirit damage on impact. After a short delay it explodes, dealing additional spirit damage and causing affected enemies to suffer reduced weapon accuracy and movement slow.",
         "icon": "/abilities/the-doorman-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/doorman/doorman_bell.png"
       },
@@ -1849,13 +1849,13 @@
     "abilities": [
       {
         "name": "Bashdown",
-        "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage.The slam creates a shockwave that deals spirit damage and applies knockup.",
+        "description": "Slam your bat into the ground, pulling enemies down and dealing melee damage. The slam creates a shockwave that deals spirit damage and applies knockup.",
         "icon": "/abilities/billy-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_sigilslam.png"
       },
       {
         "name": "Rising Ram",
-        "description": "Charge head-first into an enemy and send them into the air along with Billy.Cooldown reduced by 50% on impact.",
+        "description": "Charge head-first into an enemy and send them into the air along with Billy. Cooldown reduced by 50% on impact.",
         "icon": "/abilities/billy-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_risingram.png"
       },
@@ -1867,7 +1867,7 @@
       },
       {
         "name": "Chain Gang",
-        "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain.After a delay, yank everyone towards Billy and deal spirit damage.The chain breaks if you lose line of sight for a short while.",
+        "description": "Chain nearby enemies to you. Chained enemies cannot use movement abilities and receive a heavy slow when they pull on the chain.",
         "icon": "/abilities/billy-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/punkgoat/goat_chaingang.png"
       }
@@ -1906,13 +1906,13 @@
     "abilities": [
       {
         "name": "Jar of Dead",
-        "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead.Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies. Deadheads follow you instead if there's no nearby enemies, and prioritize the target of your weapon.",
+        "description": "Passive: Collect death when anything dies nearby and store it in your Jar of Dead. Active: Throw a jar to summon Deadheads that repeatedly deal spirit damage to enemies.",
         "icon": "/abilities/graves-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_skull.png"
       },
       {
         "name": "Grasping Hands",
-        "description": "Unearth a line of grasping hands, dealing spirit damage and applying immobilize to enemies when they pass through. Alt-Cast rotates the orientation of the wall.",
+        "description": "Unearth a line of grasping hands, summoning a Ghoul and leaving behind a rift. Enemies who pass through take spirit damage and receive immobilize.",
         "icon": "/abilities/graves-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/necro/necro_hands.png"
       },
@@ -1969,7 +1969,7 @@
       },
       {
         "name": "Riposte",
-        "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable, before performing a dash forward that stuns an enemy and reduces their Melee Resist.Does not trigger against trooper or neutral damage.",
+        "description": "Prepare to deflect the next incoming attack. On a successful deflection, briefly become invulnerable and target an enemy hero to dash towards them, stunning them and reducing their Melee Resist.",
         "icon": "/abilities/apollo-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/fencer/fencer_riposte.png"
       },
@@ -2020,25 +2020,25 @@
     "abilities": [
       {
         "name": "Pillow Toss",
-        "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback.Landing hits reduces the cooldown of your other abilities.",
+        "description": "Throw your trusty pillow inflicting spirit damage and heavy knockback. Landing hits reduces the cooldown of your other abilities.",
         "icon": "/abilities/rem-signature1.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_pillow.png"
       },
       {
         "name": "Tag Along",
-        "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration.Hop between allies with Ability 2 to refresh the duration, once per ally.You are knocked off if stunned by an ultimate ability.You can use items and all self-casts target your ally instead.",
+        "description": "Jump to an ally and nap alongside them. Both you and the ally receive a burst heal based on missing health followed by lingering regeneration.",
         "icon": "/abilities/rem-signature2.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_tag_along.png"
       },
       {
         "name": "Lil Helpers",
-        "description": "Signal a Helper to lend a hand. Follow a trooper: Provides healing, damage, resists, and allows tagging along.",
+        "description": "Signal a Helper to lend a hand. They can collect boxes, do Sinner's Sacrifices, or be sent to support allies and troopers.",
         "icon": "/abilities/rem-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_helpers.png"
       },
       {
         "name": "Naptime",
-        "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities.When the channel ends they fall asleep before waking up to a splitting headache that deals heavy spirit damage.",
+        "description": "Cast your gaze forward, piercing walls and floors. Enemies in the gaze are slowed, have reduced dash distance, and cannot use movement abilities.",
         "icon": "/abilities/rem-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/familiar/familiar_sleep.png"
       }
@@ -2089,13 +2089,13 @@
       },
       {
         "name": "Entangling Bola",
-        "description": "Throw a bola, dealing spirit damage, applying slow and preventing movement abilities, stamina, or jumping.",
+        "description": "Throw a bola, dealing spirit damage, applying slow and preventing movement abilities or stamina.",
         "icon": "/abilities/silver-signature3.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_bola.png"
       },
       {
         "name": "Lycan Curse",
-        "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse.Active: Instantly transform, gaining increased max health, and stacking fire rate on enemy heroes, and replacing your abilities and weapon with their ferocious versions.",
+        "description": "Passive: Dealing damage generates bloodlust, increased at low health. At max bloodlust, you automatically cast Lycan Curse.",
         "icon": "/abilities/silver-signature4.png",
         "sourceImage": "https://assets-bucket.deadlock-api.com/assets-api-res/images/abilities/werewolf/werewolf_lycancurse.png"
       }
