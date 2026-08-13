@@ -105,6 +105,30 @@ export function trackHintUsed(opts: {
   });
 }
 
+// Fired once when a past-day ARCHIVE replay reaches a terminal state
+// (won or lost). Archive play is a private retention surface: the daily
+// funnel events (mode_started / mode_completed / daily_completed) must
+// NEVER fire from it, so the daily_id-keyed funnels stay pristine. The
+// past Pacific puzzle day being replayed rides on its own `day` prop,
+// kept distinct from daily_id for exactly that reason. Event + prop names
+// are network-identical to OWdle's archive_round_completed so the shared
+// dashboards line up.
+export function trackArchiveRoundCompleted(opts: {
+  mode: Mode;
+  day: string;
+  outcome: "won" | "lost";
+  guesses: number;
+  hints: number;
+}): void {
+  posthog.capture("archive_round_completed", {
+    mode: opts.mode,
+    day: opts.day,
+    outcome: opts.outcome,
+    guesses: opts.guesses,
+    hints: opts.hints,
+  });
+}
+
 // Fired when the feedback dialog opens. Doubles as a PostHog session-
 // recording trigger (configured in project settings on the shared
 // DailyDles project): the moment this event fires, the recorder is

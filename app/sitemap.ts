@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/guides/sound/", priority: 0.7, changeFrequency: "monthly" },
     { path: "/guides/item/", priority: 0.7, changeFrequency: "monthly" },
     { path: "/how-to-play/", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
+    // Archive HUB only — the per-mode replay routes (/archive/<mode>/) are
+    // client-only game surfaces, noindex + robots-disallowed, so they stay
+    // out of the sitemap.
+    { path: "/archive/", priority: 0.6, changeFrequency: "weekly" },
+    { path: "/whats-next/", priority: 0.5, changeFrequency: "monthly" },
   ];
   return routes.map(({ path, priority, changeFrequency }) => ({
     url: `${BASE}${path}`,

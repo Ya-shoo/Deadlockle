@@ -13,10 +13,10 @@ import {
   type ModeDef,
   type ModeSlug,
 } from "@/lib/modes";
+import { ArchiveCta } from "./ArchiveCta";
 import { Brand } from "./Brand";
 import { HomeBanner } from "./HomeBanner";
 import { NextResetCountdown } from "./NextResetCountdown";
-import { RequestNextGame } from "./RequestNextGame";
 import { StreakBadge } from "./StreakBadge";
 import { SupportLinks } from "./SupportLinks";
 import { TryOWdleCard } from "./TryOWdleCard";
@@ -144,6 +144,14 @@ export function HomeContent() {
           </li>
         </ul>
 
+        {/* Entry to the past-week replay. Centered under the grid, it's the
+            primary discovery point for the archive (replay a missed day,
+            redeem a red day to green). Distinct from the dev-only
+            ARCHIVED_MODES "retired modes" toggle below. */}
+        <div className="mt-8 flex justify-center">
+          <ArchiveCta />
+        </div>
+
         {IS_DEV_BUILD && ARCHIVED_MODES.length > 0 && (
           <div className="mt-8 border-t border-dashed border-line/60 pt-5">
             <button
@@ -173,63 +181,43 @@ export function HomeContent() {
         )}
       </section>
 
-      {/* About section — keyword-rich intro for new visitors and search
-          crawlers. Sits below the modes grid so it doesn't gate the daily
-          play loop for returning players. */}
-      <section className="mx-auto max-w-3xl px-6 pb-12 pt-4">
-        <div className="border-l-2 border-accent/40 pl-6">
-          <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-info">
-            About
-          </h2>
-          <h3 className="mt-3 font-display text-2xl text-ink">
-            What is Deadlockle?
-          </h3>
-          <p className="mt-3 text-base leading-relaxed text-ink-soft">
-            <strong className="text-ink">Deadlockle</strong> is the daily
-            Wordle-style quiz for Valve's{" "}
-            <a
-              href="https://store.steampowered.com/app/1422450/Deadlock/"
-              className="text-accent underline-offset-2 hover:underline"
-            >
-              Deadlock
-            </a>
-            . Five modes, one hero per day — Deadlockle's Classic mode is the
-            seven attribute deduction grid, and Ability, Item, Mugshot, and
-            Conversation each reveal the answer in their own way as you guess.
-            New puzzles arrive at 2:15am Pacific, and your board waits where you
-            left it. Solve a few, come back later, take your time.
-          </p>
-          <Link
-            href="/guides/"
-            className="mt-6 inline-flex items-center gap-3 border border-edge bg-muted px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft transition-colors hover:bg-inset hover:text-ink"
-          >
-            Guides
-            <span aria-hidden>→</span>
-          </Link>
+      {/* Support panel — the tip jar, centered on its own light "paper"
+          card so the one personal/human panel pops off the dark board. The
+          "which game next" vote moved to /whats-next; max-w-lg keeps the
+          card at roughly the width its column had before. */}
+      <section className="mx-auto max-w-6xl px-6 pb-12 pt-4">
+        <div className="mx-auto max-w-lg rounded-(--radius-card) bg-[#e1e6f3] p-6 shadow-[0_16px_40px_-20px_rgba(0,0,0,0.7)] sm:p-8">
+          <SupportLinks />
         </div>
       </section>
 
       {/* Sister-site cards — two small branded cross-promo cards, centered
-          side by side (stacking on mobile), between the modes grid and the
-          engagement strip. Each card is themed to its destination's
-          accent-on-dark, consistent across the network. */}
-      <section className="mx-auto flex max-w-3xl flex-wrap items-stretch justify-center gap-4 px-6 pb-12 pt-4">
-        <TryOWdleCard />
-        <TryWuWadleCard />
-      </section>
-
-      {/* Engagement strip: vote on next game + tip jar in one row.
-          60/40 split (3:2 grid) — vote gets a touch more horizontal room
-          since it's the more interactive ask. Single vertical hairline
-          divider between the two columns. */}
-      <section className="mx-auto max-w-6xl border-t border-line px-6 pt-12 pb-20 sm:pt-14">
-        <div className="grid gap-y-14 md:grid-cols-5 md:gap-y-0 md:divide-x md:divide-line">
-          <div className="md:col-span-3 md:pr-10 lg:pr-14">
-            <RequestNextGame />
-          </div>
-          <div className="md:col-span-2 md:pl-10 lg:pl-14">
-            <SupportLinks />
-          </div>
+          side by side (stacking on mobile), a softer outbound suggestion
+          below the support ask (arrangement mirrors OWdle's homepage). Each
+          card keeps its own accent-on-dark design. Beneath them, a quiet
+          "What's next?" link is the only entry to the roadmap vote (now at
+          /whats-next), kept low-key so it doesn't headline the homepage. */}
+      <section className="mx-auto max-w-3xl px-6 pb-16 pt-4">
+        <div className="flex flex-wrap items-stretch justify-center gap-4">
+          <TryOWdleCard />
+          <TryWuWadleCard />
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Link
+            href="/whats-next/"
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-info"
+          >
+            What&rsquo;s next?
+            <svg aria-hidden width="14" height="10" viewBox="0 0 14 10">
+              <path
+                d="M0 5 L12 5 M8 1 L13 5 L8 9"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="square"
+              />
+            </svg>
+          </Link>
         </div>
       </section>
 
@@ -245,6 +233,13 @@ export function HomeContent() {
             </a>
             . Deadlock is a trademark of Valve Corporation. Deadlockle is an
             unofficial fan project.{" · "}
+            <Link
+              href="/about/"
+              className="underline-offset-2 transition-colors hover:text-accent hover:underline"
+            >
+              About
+            </Link>
+            {" · "}
             <Link
               href="/privacy/"
               className="underline-offset-2 transition-colors hover:text-accent hover:underline"

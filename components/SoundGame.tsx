@@ -11,6 +11,7 @@
 // single MP3 per conversation).
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { HEROES, HEROES_BY_KEY, type Hero } from "@/lib/heroes";
 import {
@@ -21,6 +22,7 @@ import {
   SOUND_POOL_SIZE,
 } from "@/lib/daily";
 import { IS_DEV_BUILD } from "@/lib/modes";
+import { archiveMode } from "@/lib/archive";
 import type { SoundConversation } from "@/lib/sound-conversations";
 import { compareHero } from "@/lib/compare";
 import {
@@ -34,6 +36,7 @@ import { AttributeTile } from "./AttributeTile";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
 import {
+  trackArchiveRoundCompleted,
   trackModeCompleted,
   trackModeStarted,
 } from "@/lib/tracking";
@@ -45,6 +48,11 @@ import { SpeakerToggle } from "./SpeakerToggle";
 import { ShareButton } from "./ShareButton";
 import { roundShareLinks } from "@/lib/shareLinks";
 import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
+import {
+  ArchiveBanner,
+  ArchiveOutcomeActions,
+  ArchiveResultCard,
+} from "./ArchivePlayChrome";
 import clsx from "clsx";
 
 const MODE = "sound";
@@ -74,10 +82,17 @@ function nextHintAtGuess(currentUnlocked: number): number {
   return FIRST_HINT_AT + currentUnlocked * HINT_INTERVAL;
 }
 
-export function SoundGame() {
+export function SoundGame({ archiveDay }: { archiveDay?: string } = {}) {
+  // Archive mode: replay a past day. All archive behavior is gated on this
+  // flag; when it's absent the daily code path is unchanged. State persists
+  // under the streak-neutral `archive.sound` namespace (see lib/archive).
+  const archive = archiveDay != null;
+  const storageMode = archive ? archiveMode(MODE) : MODE;
+
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ConversationState | null>(null);
-  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  // Inbound share-link attribution (?c= from /r/[code] redirects). A no-op
+  // on archive pages (they carry ?d=, never ?c=).
   useShareLinkVisit("sound");
   // Which speaker the toggle is pointed at when *both* are still unsolved.
   // Once one is solved, the derived `activeTarget` below forces the other.
@@ -85,17 +100,18 @@ export function SoundGame() {
   // Dev-only override: `/sound/?conv=N` pins the conversation to pool
   // index N so the diarization splits can be QA'd across many clips
   // without waiting for the daily seed to roll over. Null in production
-  // and on first paint; populated from URL on mount.
+  // and on first paint; populated from URL on mount. Never used in archive.
   const [devConvIdx, setDevConvIdx] = useState<number | null>(null);
 
   useEffect(() => {
-    const d = dayString();
+    const d = archiveDay ?? dayString();
     setDay(d);
 
     // Read ?conv=N from URL (dev only). Treat anything outside [0, pool)
     // as null so a stray query string doesn't break the regular flow.
+    // Archive replays a fixed past day — never honor the dev override.
     let convIdx: number | null = null;
-    if (IS_DEV_BUILD && typeof window !== "undefined") {
+    if (!archive && IS_DEV_BUILD && typeof window !== "undefined") {
       const param = new URLSearchParams(window.location.search).get("conv");
       const parsed = param == null ? NaN : parseInt(param, 10);
       if (Number.isFinite(parsed) && parsed >= 0 && parsed < SOUND_POOL_SIZE) {
@@ -107,7 +123,7 @@ export function SoundGame() {
     const { speakers: today } =
       convIdx != null ? getSoundByIndex(convIdx) : getSoundForDay(d);
     const todayPair: [string, string] = [today[0].key, today[1].key];
-    const loaded = loadConversationState(MODE, d);
+    const loaded = loadConversationState(storageMode, d);
     const matchesToday =
       loaded.speakers?.[0] === todayPair[0] &&
       loaded.speakers?.[1] === todayPair[1];
@@ -121,7 +137,7 @@ export function SoundGame() {
       setState(fresh);
       // Don't persist dev-override fresh state — it'd clobber the real
       // daily progress. Real flow keeps the original save behaviour.
-      if (convIdx == null) saveConversationState(MODE, fresh);
+      if (convIdx == null) saveConversationState(storageMode, fresh);
     } else {
       let next: ConversationState = { ...loaded, speakers: todayPair };
       // Self-heal: if a stale save passed the new cap without finishing,
@@ -134,16 +150,18 @@ export function SoundGame() {
         convIdx == null
       ) {
         next = { ...next, failed: true };
-        saveConversationState(MODE, next);
+        saveConversationState(storageMode, next);
       }
       setState(next);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [archiveDay]);
 
   // mode_started — fires once per day on first mount. Skips dev
-  // overrides (?conv=N) so QA runs don't pollute prod analytics.
+  // overrides (?conv=N) so QA runs don't pollute prod analytics. NEVER
+  // fires from archive: the daily funnel stays pristine.
   useEffect(() => {
-    if (!day) return;
+    if (!day || archive) return;
     if (devConvIdx != null) return;
     const { speakers: today } = getSoundForDay(day);
     trackModeStarted({
@@ -151,7 +169,7 @@ export function SoundGame() {
       dailyId: day,
       answerId: `${today[0].key}_${today[1].key}`,
     });
-  }, [day, devConvIdx]);
+  }, [day, archive, devConvIdx]);
 
   // mode_completed — kept above the loading guard so the hook order is
   // stable across renders (React breaks if hooks are conditional). All
@@ -172,7 +190,7 @@ export function SoundGame() {
   );
   const completionFailed = !!state?.failed;
   useEffect(() => {
-    if (!day || devConvIdx != null) return;
+    if (!day || archive || devConvIdx != null) return;
     if (!completionWon && !completionFailed) return;
     if (!state || !todaySpeakers) return;
     const conversation = getSoundForDay(day).conversation;
@@ -189,11 +207,11 @@ export function SoundGame() {
       guessIds: state.guesses.map((g) => `${g.heroKey}@${g.target}`),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [day, devConvIdx, completionWon, completionFailed, state?.guesses.length]);
+  }, [day, archive, devConvIdx, completionWon, completionFailed, state?.guesses.length]);
 
   if (!day || !state) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-16">
+      <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-6 py-16`}>
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
           Loading…
         </div>
@@ -201,8 +219,12 @@ export function SoundGame() {
     );
   }
 
+  // Archive replays a fixed past day — always the deterministic daily pick,
+  // never the dev ?conv= override.
   const { conversation, speakers } =
-    devConvIdx != null ? getSoundByIndex(devConvIdx) : getSoundForDay(day);
+    !archive && devConvIdx != null
+      ? getSoundByIndex(devConvIdx)
+      : getSoundForDay(day);
   const [speakerA, speakerB] = speakers;
 
   const aRevealed = state.guesses.some(
@@ -261,6 +283,14 @@ export function SoundGame() {
     ? null
     : nextHintAtGuess(audioUnlockedCount) - state.guesses.length;
 
+  // Redemption: this past day was LOST when played live, and the player has
+  // now won it in the archive — the grid cell flips red → green. Only ever
+  // read in archive mode.
+  const redeemedLiveLoss =
+    archive &&
+    won &&
+    loadConversationState(MODE, day).failed === true;
+
   const handleGuess = (hero: Hero, target: 0 | 1) => {
     if (ended) return;
     const newGuess: ConversationGuess = { heroKey: hero.key, target };
@@ -281,31 +311,80 @@ export function SoundGame() {
       failed: justFailed ? true : state.failed,
     };
     setState(next);
-    saveConversationState(MODE, next);
+    saveConversationState(storageMode, next);
+    // Archive-only completion event, fired from the terminating action so a
+    // resume/reload never re-counts. Conversation has no separate hint/skip
+    // count, so hints is always 0.
+    if (archive && (newWon || justFailed)) {
+      trackArchiveRoundCompleted({
+        mode: "sound",
+        day,
+        outcome: newWon ? "won" : "lost",
+        guesses: newGuesses.length,
+        hints: 0,
+      });
+    }
+  };
+
+  // Archive "Play again" — wipe the round back to empty in the archive
+  // namespace only. Unused by the daily.
+  const resetRound = () => {
+    const fresh: ConversationState = {
+      day,
+      speakers: [speakerA.key, speakerB.key],
+      guesses: [],
+      won: false,
+    };
+    setChosenTarget(0);
+    setState(fresh);
+    saveConversationState(storageMode, fresh);
   };
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-16">
-      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
-            <span suppressHydrationWarning>{prettyDay(day)}</span>
-          </p>
-          <h1 className="mt-3 font-display display-headline text-3xl text-ink sm:text-6xl">
-            Conversation
-          </h1>
-          <p className="mt-3 max-w-md text-ink-soft">
-            Try to guess which two characters are having a conversation :D
-            More dialogue is revealed as you go.
-          </p>
-        </div>
-        <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
-          <Brand size="sm" />
-          <span className="mt-1 text-info">conversation mode</span>
-        </div>
-      </header>
+    <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-4 py-10 sm:px-6 lg:py-16`}>
+      {archive ? (
+        <>
+          <ArchiveBanner />
+          <header className="mb-8">
+            <Link
+              href="/archive/sound/"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint transition-colors hover:text-accent"
+            >
+              <span aria-hidden>←</span> Archive
+            </Link>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-info">
+              {prettyDay(day)}
+            </p>
+            <h1 className="mt-2 font-display display-headline text-3xl text-ink sm:text-5xl">
+              Conversation
+            </h1>
+            <p className="mt-2 max-w-md text-ink-soft">
+              Replaying a past puzzle. Guess which two characters are talking.
+            </p>
+          </header>
+        </>
+      ) : (
+        <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
+              <span suppressHydrationWarning>{prettyDay(day)}</span>
+            </p>
+            <h1 className="mt-3 font-display display-headline text-3xl text-ink sm:text-6xl">
+              Conversation
+            </h1>
+            <p className="mt-3 max-w-md text-ink-soft">
+              Try to guess which two characters are having a conversation :D
+              More dialogue is revealed as you go.
+            </p>
+          </div>
+          <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
+            <Brand size="sm" />
+            <span className="mt-1 text-info">conversation mode</span>
+          </div>
+        </header>
+      )}
 
-      {IS_DEV_BUILD && (
+      {IS_DEV_BUILD && !archive && (
         <DevConversationRotator
           currentIdx={devConvIdx}
           speakers={[speakerA.name, speakerB.name]}
@@ -369,17 +448,185 @@ export function SoundGame() {
         </div>
       )}
 
-      <AnimatePresence>
-        {won && (
-          <motion.div
-            key="win"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
-          >
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+      {archive ? (
+        <>
+          <AnimatePresence>
+            {won && (
+              <ArchiveResultCard key="win" tone="won">
+                <div className="flex shrink-0 -space-x-3">
+                  {speakerA.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerA.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                  {speakerB.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerB.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    {redeemedLiveLoss ? "Redeemed" : "Solved"}
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {speakerA.name} & {speakerB.name}{" "}
+                    <span className="text-ink-soft">
+                      in {aGuessCount} - {bGuessCount}
+                    </span>
+                  </div>
+                  {redeemedLiveLoss && (
+                    <div className="mt-1 text-sm text-correct">
+                      Turned a red day green. Your record for this day now
+                      shows a win.
+                    </div>
+                  )}
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {failed && !won && (
+              <ArchiveResultCard key="loss" tone="lost">
+                <div className="flex shrink-0 -space-x-3">
+                  {speakerA.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerA.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                  {speakerB.portrait_url && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={media(speakerB.portrait_url)}
+                      alt=""
+                      className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                    />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Missed
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {speakerA.name} & {speakerB.name}
+                  </div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                    {aRevealed
+                      ? "Caught A · missed B"
+                      : bRevealed
+                        ? "Caught B · missed A"
+                        : "Missed both"}
+                  </div>
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          {ended && (
+            <ArchiveOutcomeActions
+              mode="sound"
+              day={day}
+              onReplay={resetRound}
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <AnimatePresence>
+            {won && (
+              <motion.div
+                key="win"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
+              >
+                <div className="flex flex-col gap-5">
+                  <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                    <div className="flex shrink-0 -space-x-3">
+                      {speakerA.portrait_url && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={media(speakerA.portrait_url)}
+                          alt=""
+                          className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                        />
+                      )}
+                      {speakerB.portrait_url && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={media(speakerB.portrait_url)}
+                          alt=""
+                          className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
+                        />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                        Solved
+                      </div>
+                      <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                        {speakerA.name} & {speakerB.name}{" "}
+                        <span className="text-ink-soft">
+                          in {aGuessCount} - {bGuessCount}
+                        </span>
+                      </div>
+                      <ModeStatsLine mode="sound" />
+                    </div>
+                  </div>
+                  <div className="flex justify-center sm:justify-start">
+                    <NextModeCTA current="sound" />
+                  </div>
+                  {/* Share closes the card — single bottom-anchored
+                      affordance, consistent across every mode. */}
+                  <div className="flex items-center justify-center gap-3">
+                    <ShareButton
+                      {...roundShareLinks({
+                        day,
+                        slug: "sound",
+                        outcome: "won",
+                        guesses: state.guesses.length,
+                      })}
+                      filename={`deadlockle-conversation-${day}.png`}
+                      surface="round_result"
+                      mode="sound"
+                      dailyId={day}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {failed && !won && (
+            <LossReveal
+              current="sound"
+              share={
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "sound",
+                    outcome: "lost",
+                    guesses: state.guesses.length,
+                  })}
+                  filename={`deadlockle-conversation-${day}.png`}
+                  surface="round_result"
+                  mode="sound"
+                  dailyId={day}
+                />
+              }
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <div className="flex shrink-0 -space-x-3">
                   {speakerA.portrait_url && (
                     /* eslint-disable-next-line @next/next/no-img-element */
@@ -399,99 +646,27 @@ export function SoundGame() {
                   )}
                 </div>
                 <div className="flex-1">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                    Solved
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Speakers
                   </div>
                   <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                    {speakerA.name} & {speakerB.name}{" "}
-                    <span className="text-ink-soft">
-                      in {aGuessCount} - {bGuessCount}
-                    </span>
+                    {speakerA.name} & {speakerB.name}
+                  </div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                    {aRevealed
+                      ? bRevealed
+                        ? ""
+                        : "Caught A · missed B"
+                      : bRevealed
+                        ? "Caught B · missed A"
+                        : "Missed both"}
                   </div>
                   <ModeStatsLine mode="sound" />
                 </div>
               </div>
-              <div className="flex justify-center sm:justify-start">
-                <NextModeCTA current="sound" />
-              </div>
-              {/* Share closes the card — single bottom-anchored
-                  affordance, consistent across every mode. */}
-              <div className="flex items-center justify-center gap-3">
-                <ShareButton
-                  {...roundShareLinks({
-                    day,
-                    slug: "sound",
-                    outcome: "won",
-                    guesses: state.guesses.length,
-                  })}
-                  filename={`deadlockle-conversation-${day}.png`}
-                  surface="round_result"
-                  mode="sound"
-                  dailyId={day}
-                />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {failed && !won && (
-        <LossReveal
-          current="sound"
-          share={
-            <ShareButton
-              {...roundShareLinks({
-                day,
-                slug: "sound",
-                outcome: "lost",
-                guesses: state.guesses.length,
-              })}
-              filename={`deadlockle-conversation-${day}.png`}
-              surface="round_result"
-              mode="sound"
-              dailyId={day}
-            />
-          }
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <div className="flex shrink-0 -space-x-3">
-              {speakerA.portrait_url && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(speakerA.portrait_url)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
-                />
-              )}
-              {speakerB.portrait_url && (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={media(speakerB.portrait_url)}
-                  alt=""
-                  className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover ring-2 ring-canvas sm:h-20 sm:w-20"
-                />
-              )}
-            </div>
-            <div className="flex-1">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
-                Speakers
-              </div>
-              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                {speakerA.name} & {speakerB.name}
-              </div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
-                {aRevealed
-                  ? bRevealed
-                    ? ""
-                    : "Caught A · missed B"
-                  : bRevealed
-                    ? "Caught B · missed A"
-                    : "Missed both"}
-              </div>
-              <ModeStatsLine mode="sound" />
-            </div>
-          </div>
-        </LossReveal>
+            </LossReveal>
+          )}
+        </>
       )}
 
       <div className="space-y-4">

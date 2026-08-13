@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { HEROES, HEROES_BY_KEY, type Hero } from "@/lib/heroes";
 import { dayString, getMugshotForDay, prettyDay } from "@/lib/daily";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
+import { archiveMode } from "@/lib/archive";
 import { HeroCombobox } from "./HeroCombobox";
 import { GuessRow } from "./GuessRow";
 import { Brand } from "./Brand";
 import { media } from "@/lib/media";
 import {
+  trackArchiveRoundCompleted,
   trackModeCompleted,
   trackModeStarted,
 } from "@/lib/tracking";
@@ -20,6 +23,11 @@ import { ModeStatsLine } from "./ModeStatsLine";
 import { ShareButton } from "./ShareButton";
 import { roundShareLinks } from "@/lib/shareLinks";
 import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
+import {
+  ArchiveBanner,
+  ArchiveOutcomeActions,
+  ArchiveResultCard,
+} from "./ArchivePlayChrome";
 
 const MODE = "mugshot";
 
@@ -37,17 +45,25 @@ const MAX_GUESSES = 5;
 // cliff-edge jump.
 const ZOOM_BY_GUESS = [10, 7.5, 5.5, 4, 3, 2.2, 1.5, 1];
 
-export function MugshotGame() {
+export function MugshotGame({ archiveDay }: { archiveDay?: string } = {}) {
+  // Archive mode: replay a past day. All archive behavior is gated on this
+  // flag; when it's absent the daily code path is unchanged. State persists
+  // under the streak-neutral `archive.mugshot` namespace (see lib/archive).
+  const archive = archiveDay != null;
+  const storageMode = archive ? archiveMode(MODE) : MODE;
+
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
   const [hardMode, setHardMode] = useState(true);
-  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  // Inbound share-link attribution (?c= from /r/[code] redirects). A no-op
+  // on archive pages (they carry ?d=, never ?c=), so it's safe to always run
+  // and keeps the hook order stable.
   useShareLinkVisit("mugshot");
 
   useEffect(() => {
-    const d = dayString();
+    const d = archiveDay ?? dayString();
     setDay(d);
-    let st = loadModeState(MODE, d);
+    let st = loadModeState(storageMode, d);
     if (
       !st.won &&
       !st.failed &&
@@ -55,7 +71,7 @@ export function MugshotGame() {
       st.guesses.length >= MAX_GUESSES
     ) {
       st = { ...st, failed: true };
-      saveModeState(MODE, st);
+      saveModeState(storageMode, st);
     }
     setState(st);
     // Restore the toggle for an in-flight round that already dropped the
@@ -64,19 +80,21 @@ export function MugshotGame() {
     if (st.guesses.length > 0 && st.hardMode === false) {
       setHardMode(false);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [archiveDay]);
 
-  // mode_started — once per day. Tracker dedupes via localStorage.
+  // mode_started — once per day. Tracker dedupes via localStorage. NEVER
+  // fires from archive: the daily funnel stays pristine.
   useEffect(() => {
-    if (!day) return;
+    if (!day || archive) return;
     const { hero } = getMugshotForDay(day);
     trackModeStarted({ mode: "mugshot", dailyId: day, answerId: hero.key });
-  }, [day]);
+  }, [day, archive]);
 
   const stateWon = state?.won === true;
   const stateFailed = state?.failed === true || state?.gaveUp === true;
   useEffect(() => {
-    if (!day) return;
+    if (!day || archive) return;
     if (!stateWon && !stateFailed) return;
     const { hero } = getMugshotForDay(day);
     trackModeCompleted({
@@ -88,11 +106,11 @@ export function MugshotGame() {
       answerId: hero.key,
       guessIds: state?.guesses ?? [],
     });
-  }, [day, stateWon, stateFailed, state?.guesses, state?.gaveUp]);
+  }, [day, archive, stateWon, stateFailed, state?.guesses, state?.gaveUp]);
 
   if (!day || !state) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-16">
+      <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-6 py-16`}>
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
           Loading…
         </div>
@@ -108,6 +126,17 @@ export function MugshotGame() {
 
   const failed = state.failed === true || state.gaveUp === true;
   const ended = state.won || failed;
+
+  // Redemption: this past day was LOST when played live, and the player has
+  // now won it in the archive — the grid cell flips red → green. Only ever
+  // read in archive mode.
+  const redeemedLiveLoss =
+    archive &&
+    state.won &&
+    (() => {
+      const live = loadModeState(MODE, day);
+      return live.failed === true || live.gaveUp === true;
+    })();
 
   const wrongCount = ended ? ZOOM_BY_GUESS.length - 1 : state.guesses.length;
   const zoomIdx = Math.min(wrongCount, ZOOM_BY_GUESS.length - 1);
@@ -135,29 +164,73 @@ export function MugshotGame() {
           : state.hardMode === true && hardMode,
     };
     setState(next);
-    saveModeState(MODE, next);
+    saveModeState(storageMode, next);
+    // Archive-only completion event, fired from the terminating action so a
+    // resume/reload never re-counts. Daily funnel events never fire here.
+    if (archive && (won || justFailed)) {
+      trackArchiveRoundCompleted({
+        mode: "mugshot",
+        day,
+        outcome: won ? "won" : "lost",
+        guesses: newGuesses.length,
+        hints: 0,
+      });
+    }
+  };
+
+  // Archive "Play again" — wipe the round back to empty in the archive
+  // namespace only. Unused by the daily.
+  const resetRound = () => {
+    const fresh: ModeState = { day, guesses: [], won: false };
+    setHardMode(true);
+    setState(fresh);
+    saveModeState(storageMode, fresh);
   };
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-16">
-      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
-            <span suppressHydrationWarning>{prettyDay(day)}</span>
-          </p>
-          <h1 className="mt-3 font-display display-headline text-5xl text-ink sm:text-6xl">
-            Mugshot
-          </h1>
-          <p className="mt-3 max-w-md text-ink-soft">
-            Identify the suspect from a cropped portrait. Each wrong guess
-            pulls the camera back.
-          </p>
-        </div>
-        <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
-          <Brand size="sm" />
-          <span className="mt-1 text-info">mugshot mode</span>
-        </div>
-      </header>
+    <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-4 py-10 sm:px-6 lg:py-16`}>
+      {archive ? (
+        <>
+          <ArchiveBanner />
+          <header className="mb-8">
+            <Link
+              href="/archive/mugshot/"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint transition-colors hover:text-accent"
+            >
+              <span aria-hidden>←</span> Archive
+            </Link>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-info">
+              {prettyDay(day)}
+            </p>
+            <h1 className="mt-2 font-display display-headline text-4xl text-ink sm:text-5xl">
+              Mugshot
+            </h1>
+            <p className="mt-2 max-w-md text-ink-soft">
+              Replaying a past puzzle. Identify the suspect as the camera pulls
+              back.
+            </p>
+          </header>
+        </>
+      ) : (
+        <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
+              <span suppressHydrationWarning>{prettyDay(day)}</span>
+            </p>
+            <h1 className="mt-3 font-display display-headline text-5xl text-ink sm:text-6xl">
+              Mugshot
+            </h1>
+            <p className="mt-3 max-w-md text-ink-soft">
+              Identify the suspect from a cropped portrait. Each wrong guess
+              pulls the camera back.
+            </p>
+          </div>
+          <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
+            <Brand size="sm" />
+            <span className="mt-1 text-info">mugshot mode</span>
+          </div>
+        </header>
+      )}
 
       <div className="mb-8 flex flex-col items-center gap-4">
         <MugshotFrame
@@ -191,17 +264,154 @@ export function MugshotGame() {
         </div>
       )}
 
-      <AnimatePresence>
-        {state.won && (
-          <motion.div
-            key="win"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
-          >
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+      {archive ? (
+        <>
+          <AnimatePresence>
+            {state.won && (
+              <ArchiveResultCard key="win" tone="won">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    {redeemedLiveLoss ? "Redeemed" : "Solved"}
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  {redeemedLiveLoss && (
+                    <div className="mt-1 text-sm text-correct">
+                      Turned a red day green. Your record for this day now
+                      shows a win.
+                    </div>
+                  )}
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {failed && !state.won && (
+              <ArchiveResultCard key="loss" tone="lost">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Missed
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}
+                  </div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                    {state.guesses.length}{" "}
+                    {state.guesses.length === 1 ? "guess" : "guesses"}
+                  </div>
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          {ended && (
+            <ArchiveOutcomeActions
+              mode="mugshot"
+              day={day}
+              onReplay={resetRound}
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <AnimatePresence>
+            {state.won && (
+              <motion.div
+                key="win"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
+              >
+                <div className="flex flex-col gap-5">
+                  <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                    {answer.portrait_url && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={media(answer.portrait_url)}
+                        alt=""
+                        className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+                      />
+                    )}
+                    <div className="flex-1">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                        Solved
+                      </div>
+                      <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                        {answer.name}{" "}
+                        <span className="text-ink-soft">
+                          in {state.guesses.length}
+                        </span>
+                      </div>
+                      <ModeStatsLine mode="mugshot" />
+                    </div>
+                  </div>
+                  <div className="flex justify-center sm:justify-start">
+                    <NextModeCTA current="mugshot" />
+                  </div>
+                  {/* Share closes the card — single bottom-anchored
+                      affordance, consistent across every mode. */}
+                  <div className="flex items-center justify-center gap-3">
+                    <ShareButton
+                      {...roundShareLinks({
+                        day,
+                        slug: "mugshot",
+                        outcome: "won",
+                        guesses: state.guesses.length,
+                        hardMode: state.hardMode === true,
+                      })}
+                      filename={`deadlockle-mugshot-${day}.png`}
+                      surface="round_result"
+                      mode="mugshot"
+                      dailyId={day}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {failed && !state.won && (
+            <LossReveal
+              current="mugshot"
+              share={
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "mugshot",
+                    outcome: "lost",
+                    guesses: state.guesses.length,
+                    hardMode: state.hardMode === true,
+                  })}
+                  filename={`deadlockle-mugshot-${day}.png`}
+                  surface="round_result"
+                  mode="mugshot"
+                  dailyId={day}
+                />
+              }
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 {answer.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -211,82 +421,18 @@ export function MugshotGame() {
                   />
                 )}
                 <div className="flex-1">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                    Solved
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Answer
                   </div>
                   <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                    {answer.name}{" "}
-                    <span className="text-ink-soft">
-                      in {state.guesses.length}
-                    </span>
+                    {answer.name}
                   </div>
                   <ModeStatsLine mode="mugshot" />
                 </div>
               </div>
-              <div className="flex justify-center sm:justify-start">
-                <NextModeCTA current="mugshot" />
-              </div>
-              {/* Share closes the card — single bottom-anchored
-                  affordance, consistent across every mode. */}
-              <div className="flex items-center justify-center gap-3">
-                <ShareButton
-                  {...roundShareLinks({
-                    day,
-                    slug: "mugshot",
-                    outcome: "won",
-                    guesses: state.guesses.length,
-                    hardMode: state.hardMode === true,
-                  })}
-                  filename={`deadlockle-mugshot-${day}.png`}
-                  surface="round_result"
-                  mode="mugshot"
-                  dailyId={day}
-                />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {failed && !state.won && (
-        <LossReveal
-          current="mugshot"
-          share={
-            <ShareButton
-              {...roundShareLinks({
-                day,
-                slug: "mugshot",
-                outcome: "lost",
-                guesses: state.guesses.length,
-                hardMode: state.hardMode === true,
-              })}
-              filename={`deadlockle-mugshot-${day}.png`}
-              surface="round_result"
-              mode="mugshot"
-              dailyId={day}
-            />
-          }
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            {answer.portrait_url && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={media(answer.portrait_url)}
-                alt=""
-                className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
-              />
-            )}
-            <div className="flex-1">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
-                Answer
-              </div>
-              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                {answer.name}
-              </div>
-              <ModeStatsLine mode="mugshot" />
-            </div>
-          </div>
-        </LossReveal>
+            </LossReveal>
+          )}
+        </>
       )}
 
       <div className="space-y-4">

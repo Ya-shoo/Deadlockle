@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { HEROES, HEROES_BY_KEY, type Hero } from "@/lib/heroes";
 import { dayString, getHeroForDay, prettyDay } from "@/lib/daily";
@@ -11,8 +12,10 @@ import {
   getUnsolvedAttrs,
 } from "@/lib/compare";
 import { loadModeState, saveModeState, type ModeState } from "@/lib/storage";
+import { archiveMode } from "@/lib/archive";
 import { media } from "@/lib/media";
 import {
+  trackArchiveRoundCompleted,
   trackHintUsed,
   trackModeCompleted,
   trackModeStarted,
@@ -29,6 +32,11 @@ import { buildClassicShareText } from "@/lib/share";
 import { ShareButton } from "./ShareButton";
 import { roundShareLinks } from "@/lib/shareLinks";
 import { useShareLinkVisit } from "@/lib/useShareLinkVisit";
+import {
+  ArchiveBanner,
+  ArchiveOutcomeActions,
+  ArchiveResultCard,
+} from "./ArchivePlayChrome";
 
 // Hard ceiling on slots. Hints count toward this — `effectiveUsed` is
 // `guesses.length + hintsUsed.length`. Tenth slot hit without a correct
@@ -48,17 +56,24 @@ function isAttrKey(v: unknown): v is AttrKey {
   return typeof v === "string" && ATTR_KEY_SET.has(v as AttrKey);
 }
 
-export function ClassicGame() {
+export function ClassicGame({ archiveDay }: { archiveDay?: string } = {}) {
+  // Archive mode: replay a past day. All archive behavior is gated on this
+  // flag; when it's absent the daily code path is unchanged. State persists
+  // under the streak-neutral `archive.classic` namespace (see lib/archive).
+  const archive = archiveDay != null;
+  const storageMode = archive ? archiveMode("classic") : "classic";
+
   const [day, setDay] = useState<string | null>(null);
   const [state, setState] = useState<ModeState | null>(null);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  // Inbound share-link attribution (?c= from /r/[code] redirects).
+  // Inbound share-link attribution (?c= from /r/[code] redirects). A no-op
+  // on archive pages (they carry ?d=, never ?c=).
   useShareLinkVisit("classic");
 
   useEffect(() => {
-    const d = dayString();
+    const d = archiveDay ?? dayString();
     setDay(d);
-    let st = loadModeState("classic", d);
+    let st = loadModeState(storageMode, d);
     const hintsLen = (st.hintsUsed ?? []).length;
     if (
       !st.won &&
@@ -67,29 +82,43 @@ export function ClassicGame() {
       st.guesses.length + hintsLen >= MAX_GUESSES
     ) {
       st = { ...st, failed: true };
-      saveModeState("classic", st);
+      saveModeState(storageMode, st);
     }
     setState(st);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [archiveDay]);
 
-  const answer = useMemo(() => (day ? getHeroForDay(day) : null), [day]);
+  // Sticky answer in archive: prefer the hero stamped into the stored state
+  // so a replayed day stays pinned even if the daily bag reshuffles later.
+  // A fresh, never-played archive day (and the live daily) falls back to the
+  // deterministic day derivation.
+  const answer = useMemo(() => {
+    if (!day) return null;
+    if (archive) {
+      const pinned = state?.answerKey ? HEROES_BY_KEY[state.answerKey] : null;
+      if (pinned) return pinned;
+    }
+    return getHeroForDay(day);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [day, archive, state?.answerKey]);
 
   // mode_started — fires once per day on first mount (the tracker
   // dedupes via localStorage marker, so this is safe to re-run across
-  // remounts).
+  // remounts). NEVER fires from archive: the daily funnel stays pristine.
   useEffect(() => {
-    if (!day || !answer) return;
+    if (!day || !answer || archive) return;
     trackModeStarted({ mode: "classic", dailyId: day, answerId: answer.key });
-  }, [day, answer]);
+  }, [day, answer, archive]);
 
   // mode_completed — fires once when the puzzle transitions to a
   // terminal state (won or failed). Tracker dedupes; the effect just
-  // re-runs cheaply when the terminal flags or counts change.
+  // re-runs cheaply when the terminal flags or counts change. NEVER fires
+  // from archive (archive uses trackArchiveRoundCompleted instead).
   const stateWon = state?.won === true;
   const stateFailed =
     state?.failed === true || state?.gaveUp === true;
   useEffect(() => {
-    if (!day || !answer) return;
+    if (!day || !answer || archive) return;
     if (!stateWon && !stateFailed) return;
     const guessesLen = state?.guesses.length ?? 0;
     const hintsLen = state?.hintsUsed?.length ?? 0;
@@ -106,6 +135,7 @@ export function ClassicGame() {
   }, [
     day,
     answer,
+    archive,
     stateWon,
     stateFailed,
     state?.guesses,
@@ -147,7 +177,7 @@ export function ClassicGame() {
 
   if (!day || !state || !answer) {
     return (
-      <main className="mx-auto max-w-6xl px-6 py-16">
+      <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-6 py-16`}>
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
           Loading…
         </div>
@@ -162,20 +192,54 @@ export function ClassicGame() {
   const effectiveUsed = state.guesses.length + hintsUsed.length;
   const effectiveRemaining = Math.max(0, MAX_GUESSES - effectiveUsed);
 
+  // Redemption: this past day was LOST when played live, and the player has
+  // now won it in the archive — the grid cell flips red → green. Only ever
+  // read in archive mode.
+  const redeemedLiveLoss =
+    archive &&
+    state.won &&
+    (() => {
+      const live = loadModeState("classic", day);
+      return live.failed === true || live.gaveUp === true;
+    })();
+
+  // Archive-only: stamp the resolved answer key so a replayed day stays
+  // pinned to this hero even if the daily bag reshuffles later.
+  const withAnswerKey = (st: ModeState): ModeState =>
+    archive ? { ...st, answerKey: answer.key } : st;
+
   const handleGuess = (hero: Hero) => {
     if (ended) return;
     const newGuesses = [...state.guesses, hero.key];
     const won = hero.key === answer.key;
     const newEffective = newGuesses.length + hintsUsed.length;
     const justFailed = !won && newEffective >= MAX_GUESSES;
-    const next: ModeState = {
+    const next: ModeState = withAnswerKey({
       ...state,
       guesses: newGuesses,
       won,
       failed: justFailed ? true : state.failed,
-    };
+    });
     setState(next);
-    saveModeState("classic", next);
+    saveModeState(storageMode, next);
+    if (archive && (won || justFailed)) {
+      trackArchiveRoundCompleted({
+        mode: "classic",
+        day,
+        outcome: won ? "won" : "lost",
+        guesses: newGuesses.length,
+        hints: hintsUsed.length,
+      });
+    }
+  };
+
+  // Archive "Play again" — wipe the round back to empty in the archive
+  // namespace only, re-stamping the pinned answer. Unused by the daily.
+  const resetRound = () => {
+    const fresh = withAnswerKey({ day, guesses: [], hintsUsed: [], won: false });
+    setConfirmOpen(false);
+    setState(fresh);
+    saveModeState(storageMode, fresh);
   };
 
   // Hint gates:
@@ -222,42 +286,78 @@ export function ClassicGame() {
     const newHints = [...hintsUsed, pick];
     const newEffective = state.guesses.length + newHints.length;
     const justFailed = !state.won && newEffective >= MAX_GUESSES;
-    trackHintUsed({
-      mode: "classic",
-      dailyId: day,
-      hintIndex: hintsUsed.length,
-      atGuessNumber: state.guesses.length,
-      attributeRevealed: pick,
-    });
-    const next: ModeState = {
+    // hint_used is a daily analytics event — never fire it from archive.
+    if (!archive) {
+      trackHintUsed({
+        mode: "classic",
+        dailyId: day,
+        hintIndex: hintsUsed.length,
+        atGuessNumber: state.guesses.length,
+        attributeRevealed: pick,
+      });
+    }
+    const next: ModeState = withAnswerKey({
       ...state,
       hintsUsed: newHints,
       failed: justFailed ? true : state.failed,
-    };
+    });
     setState(next);
-    saveModeState("classic", next);
+    saveModeState(storageMode, next);
     setConfirmOpen(false);
+    // A hint can burn the last slot and end the round — count it in archive.
+    if (archive && justFailed) {
+      trackArchiveRoundCompleted({
+        mode: "classic",
+        day,
+        outcome: "lost",
+        guesses: state.guesses.length,
+        hints: newHints.length,
+      });
+    }
   };
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-16">
-      <header className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
-            <span suppressHydrationWarning>{prettyDay(day)}</span>
-          </p>
-          <h1 className="mt-3 font-display display-headline text-5xl text-ink sm:text-6xl">
-            Classic
-          </h1>
-          <p className="mt-3 max-w-md text-ink-soft">
-            Type a hero. Match the seven attributes. New puzzle daily.
-          </p>
-        </div>
-        <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
-          <Brand size="sm" />
-          <span className="mt-1 text-info">classic mode</span>
-        </div>
-      </header>
+    <main className={`mx-auto ${archive ? "max-w-2xl" : "max-w-6xl"} px-4 py-10 sm:px-6 lg:py-16`}>
+      {archive ? (
+        <>
+          <ArchiveBanner />
+          <header className="mb-10">
+            <Link
+              href="/archive/classic/"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint transition-colors hover:text-accent"
+            >
+              <span aria-hidden>←</span> Archive
+            </Link>
+            <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-info">
+              {prettyDay(day)}
+            </p>
+            <h1 className="mt-2 font-display display-headline text-4xl text-ink sm:text-5xl">
+              Classic
+            </h1>
+            <p className="mt-2 max-w-md text-ink-soft">
+              Replaying a past puzzle. Match the seven attributes.
+            </p>
+          </header>
+        </>
+      ) : (
+        <header className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-info">
+              <span suppressHydrationWarning>{prettyDay(day)}</span>
+            </p>
+            <h1 className="mt-3 font-display display-headline text-5xl text-ink sm:text-6xl">
+              Classic
+            </h1>
+            <p className="mt-3 max-w-md text-ink-soft">
+              Type a hero. Match the seven attributes. New puzzle daily.
+            </p>
+          </div>
+          <div className="hidden flex-col items-end font-mono text-xs uppercase tracking-[0.2em] text-ink-faint sm:flex">
+            <Brand size="sm" />
+            <span className="mt-1 text-info">classic mode</span>
+          </div>
+        </header>
+      )}
 
       {!ended && (
         <div className="mb-6 space-y-3">
@@ -358,18 +458,187 @@ export function ClassicGame() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {state.won && (
-          <motion.div
-            key="win"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
-          >
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+      {archive ? (
+        <>
+          <AnimatePresence>
+            {state.won && (
+              <ArchiveResultCard key="win" tone="won">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                    {redeemedLiveLoss ? "Redeemed" : "Solved"}
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}{" "}
+                    <span className="text-ink-soft">
+                      in {state.guesses.length}
+                    </span>
+                  </div>
+                  {hintsUsed.length > 0 && (
+                    <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-soft">
+                      💡 {hintsUsed.length}{" "}
+                      {hintsUsed.length === 1 ? "hint" : "hints"}
+                    </div>
+                  )}
+                  {redeemedLiveLoss && (
+                    <div className="mt-1 text-sm text-correct">
+                      Turned a red day green. Your record for this day now
+                      shows a win.
+                    </div>
+                  )}
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {failed && !state.won && (
+              <ArchiveResultCard key="loss" tone="lost">
+                {answer.portrait_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={media(answer.portrait_url)}
+                    alt=""
+                    className="h-16 w-16 rounded-(--radius-card) bg-surface object-cover sm:h-20 sm:w-20"
+                  />
+                )}
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Missed
+                  </div>
+                  <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                    {answer.name}
+                  </div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                    {state.guesses.length}{" "}
+                    {state.guesses.length === 1 ? "guess" : "guesses"}
+                    {hintsUsed.length > 0 &&
+                      ` · ${hintsUsed.length} hint${hintsUsed.length === 1 ? "" : "s"}`}
+                  </div>
+                </div>
+              </ArchiveResultCard>
+            )}
+          </AnimatePresence>
+
+          {ended && (
+            <ArchiveOutcomeActions
+              mode="classic"
+              day={day}
+              onReplay={resetRound}
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <AnimatePresence>
+            {state.won && (
+              <motion.div
+                key="win"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="mx-auto mb-8 w-full max-w-md rounded-(--radius-card) border border-correct/40 bg-correct/10 p-4 sm:p-5"
+              >
+                <div className="flex flex-col gap-5">
+                  <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:text-left">
+                    {answer.portrait_url && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={media(answer.portrait_url)}
+                        alt=""
+                        className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
+                      />
+                    )}
+                    <div className="flex-1">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
+                        Solved
+                      </div>
+                      <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
+                        {answer.name}{" "}
+                        <span className="text-ink-soft">
+                          in {state.guesses.length}
+                        </span>
+                      </div>
+                      <ModeStatsLine mode="classic" />
+                    </div>
+                  </div>
+                  <div className="flex justify-center sm:justify-start">
+                    <NextModeCTA current="classic" />
+                  </div>
+                  {/* Emoji-grid text share — the guess path as 🟩🟨🟥 rows
+                      (latest first, capped), ported from OWdle Classic.
+                      Zero-friction copy/paste into Discord / group chats.
+                      The embedded URL is the personalized /r/<code> link,
+                      so even the text share unfurls the result card where
+                      chats render previews. The link-first ShareButton
+                      rides in the block's action row — ONE share affordance
+                      per card, at the bottom. */}
+                  <TextShareBlock
+                    text={buildClassicShareText({
+                      guesses: state.guesses,
+                      answer,
+                      won: true,
+                      hints: hintsUsed.length,
+                      url: roundShareLinks({
+                        day,
+                        slug: "classic",
+                        outcome: "won",
+                        guesses: state.guesses.length,
+                        hints: hintsUsed.length,
+                      }).url,
+                    })}
+                    surface="round_result"
+                    mode="classic"
+                    dailyId={day}
+                    share={
+                      <ShareButton
+                        {...roundShareLinks({
+                          day,
+                          slug: "classic",
+                          outcome: "won",
+                          guesses: state.guesses.length,
+                          hints: hintsUsed.length,
+                        })}
+                        filename={`deadlockle-classic-${day}.png`}
+                        surface="round_result"
+                        mode="classic"
+                        dailyId={day}
+                      />
+                    }
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {failed && !state.won && (
+            <LossReveal
+              current="classic"
+              share={
+                <ShareButton
+                  {...roundShareLinks({
+                    day,
+                    slug: "classic",
+                    outcome: "lost",
+                    guesses: state.guesses.length,
+                    hints: hintsUsed.length,
+                  })}
+                  filename={`deadlockle-classic-${day}.png`}
+                  surface="round_result"
+                  mode="classic"
+                  dailyId={day}
+                />
+              }
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 {answer.portrait_url && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -379,112 +648,24 @@ export function ClassicGame() {
                   />
                 )}
                 <div className="flex-1">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-info">
-                    Solved
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
+                    Answer
                   </div>
                   <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                    {answer.name}{" "}
-                    <span className="text-ink-soft">
-                      in {state.guesses.length}
-                    </span>
+                    {answer.name}
+                  </div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                    {state.guesses.length}{" "}
+                    {state.guesses.length === 1 ? "guess" : "guesses"}
+                    {hintsUsed.length > 0 &&
+                      ` · ${hintsUsed.length} hint${hintsUsed.length === 1 ? "" : "s"}`}
                   </div>
                   <ModeStatsLine mode="classic" />
                 </div>
               </div>
-              <div className="flex justify-center sm:justify-start">
-                <NextModeCTA current="classic" />
-              </div>
-              {/* Emoji-grid text share — the guess path as 🟩🟨🟥 rows
-                  (latest first, capped), ported from OWdle Classic.
-                  Zero-friction copy/paste into Discord / group chats.
-                  The embedded URL is the personalized /r/<code> link,
-                  so even the text share unfurls the result card where
-                  chats render previews. The link-first ShareButton
-                  rides in the block's action row — ONE share affordance
-                  per card, at the bottom. */}
-              <TextShareBlock
-                text={buildClassicShareText({
-                  guesses: state.guesses,
-                  answer,
-                  won: true,
-                  hints: hintsUsed.length,
-                  url: roundShareLinks({
-                    day,
-                    slug: "classic",
-                    outcome: "won",
-                    guesses: state.guesses.length,
-                    hints: hintsUsed.length,
-                  }).url,
-                })}
-                surface="round_result"
-                mode="classic"
-                dailyId={day}
-                share={
-                  <ShareButton
-                    {...roundShareLinks({
-                      day,
-                      slug: "classic",
-                      outcome: "won",
-                      guesses: state.guesses.length,
-                      hints: hintsUsed.length,
-                    })}
-                    filename={`deadlockle-classic-${day}.png`}
-                    surface="round_result"
-                    mode="classic"
-                    dailyId={day}
-                  />
-                }
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {failed && !state.won && (
-        <LossReveal
-          current="classic"
-          share={
-            <ShareButton
-              {...roundShareLinks({
-                day,
-                slug: "classic",
-                outcome: "lost",
-                guesses: state.guesses.length,
-                hints: hintsUsed.length,
-              })}
-              filename={`deadlockle-classic-${day}.png`}
-              surface="round_result"
-              mode="classic"
-              dailyId={day}
-            />
-          }
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            {answer.portrait_url && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={media(answer.portrait_url)}
-                alt=""
-                className="h-16 w-16 rounded-(--radius-card) bg-muted object-cover sm:h-20 sm:w-20"
-              />
-            )}
-            <div className="flex-1">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-far">
-                Answer
-              </div>
-              <div className="mt-1 font-display text-2xl text-ink sm:text-3xl">
-                {answer.name}
-              </div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
-                {state.guesses.length}{" "}
-                {state.guesses.length === 1 ? "guess" : "guesses"}
-                {hintsUsed.length > 0 &&
-                  ` · ${hintsUsed.length} hint${hintsUsed.length === 1 ? "" : "s"}`}
-              </div>
-              <ModeStatsLine mode="classic" />
-            </div>
-          </div>
-        </LossReveal>
+            </LossReveal>
+          )}
+        </>
       )}
 
       <div className="space-y-4">

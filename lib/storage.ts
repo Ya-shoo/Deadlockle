@@ -18,6 +18,12 @@ export type ModeState = {
   // Classic-mode hint system: attribute keys whose answer values have been
   // revealed. Capped at 2 by the UI; persisted so reveals survive reloads.
   hintsUsed?: string[];
+  // Archive-only: the resolved answer key, stamped into every saved archive
+  // state so a replayed past day stays pinned to the hero it was played
+  // against even if the daily bag reshuffles later (e.g. a new hero ships).
+  // The live daily never writes this — today's answer is stable intraday —
+  // so the stored shape of live rounds is unchanged.
+  answerKey?: string;
   // Mugshot-mode hard-mode latch, written at each guess submission:
   // initialized from the grayscale toggle on the FIRST guess, then ANDed
   // with the toggle on every subsequent one — a single guess submitted
