@@ -192,7 +192,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "mage",
-    "damage_source": "spirit",
+    "damage_source": "hybrid",
     "abilities": [
       {
         "name": "Essence Bomb",
@@ -363,7 +363,7 @@
     "nature": "human",
     "damage_style": "hitscan",
     "sub_role": "support",
-    "damage_source": "weapon",
+    "damage_source": "spirit",
     "abilities": [
       {
         "name": "Mini Turret",
@@ -1616,7 +1616,7 @@
     "gender": "male",
     "nature": "human",
     "damage_style": "projectile",
-    "sub_role": "sniper",
+    "sub_role": "carry",
     "damage_source": "weapon",
     "abilities": [
       {
@@ -2114,7 +2114,7 @@
     "class_name": "hero_unicorn",
     "name": "Celeste",
     "hero_type": "marksman",
-    "gun_tag": "Burst Fire",
+    "gun_tag": "Magic Weapon",
     "tags": [
       "Performer",
       "Disruptive",

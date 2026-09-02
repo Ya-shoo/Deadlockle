@@ -51,7 +51,7 @@ export const OVERLAY = {
   "infernus":     { gender: "male",       nature: "ixian",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "weapon"  },
   "seven":        { gender: "male",       nature: "undead",    damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
   "vindicta":     { gender: "female",     nature: "spirit",    damage_style: "hitscan",    sub_role: "sniper",     damage_source: "weapon"  },
-  "lady-geist":   { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "spirit"  },
+  "lady-geist":   { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "mage",       damage_source: "hybrid"  },
   "abrams":       {
     gender: "male", nature: "ixian", damage_style: "hitscan", sub_role: "tank", damage_source: "weapon",
     gun_tag: "Spreadshot",
@@ -60,7 +60,7 @@ export const OVERLAY = {
     // normalize him to the cohort.
   },
   "wraith":       { gender: "female",     nature: "mystical",  damage_style: "hitscan",    sub_role: "carry",      damage_source: "hybrid"  },
-  "mcginnis":     { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "support",    damage_source: "weapon"  },
+  "mcginnis":     { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "support",    damage_source: "spirit"  },
   "paradox":      { gender: "female",     nature: "human",     damage_style: "hitscan",    sub_role: "skirmisher", damage_source: "hybrid"  },
   "dynamo":       { gender: "male",       nature: "spirit",    damage_style: "hitscan",    sub_role: "support",    damage_source: "spirit"  },
   "kelvin":       { gender: "male",       nature: "undead",    damage_style: "projectile", sub_role: "tank",       damage_source: "hybrid"  },
@@ -103,7 +103,7 @@ export const OVERLAY = {
     },
   },
   "venator":      {
-    gender: "male", nature: "human", damage_style: "projectile", sub_role: "sniper", damage_source: "weapon",
+    gender: "male", nature: "human", damage_style: "projectile", sub_role: "carry", damage_source: "weapon",
     gun_tag: "SMG/Bow",
     role: "Hunts the supernatural with crossbow bolts and blessed traps",
   },
@@ -155,6 +155,8 @@ export const OVERLAY = {
   },
   "celeste":      {
     gender: "female", nature: "mystical", damage_style: "hitscan", sub_role: "mage", damage_source: "hybrid",
+    // Valve tags her arcane-orb gun "Burst Fire"; it isn't a burst weapon, so label it as magic.
+    gun_tag: "Magic Weapon",
     role: "Dazzles the battlefield with prismatic light and bouncing arcane orbs",
   },
 };
